@@ -1,8 +1,8 @@
 import type { Alternative } from '../types';
 
-// Generated from tmp/european-alternatives-master-research.md
+// Generated from data/research/master-research.md
 // via scripts/generate-research-catalog.mjs
-// Last generated: 2026-02-10T19:44:33.050Z
+// Last generated: 2026-02-10T21:36:06.227Z
 
 export const researchAlternatives: Alternative[] = [
   {

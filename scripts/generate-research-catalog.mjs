@@ -4,8 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const repoRoot = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
-const researchPath = path.join(repoRoot, 'tmp/european-alternatives-master-research.md');
-const spawnPath = path.join(repoRoot, 'tmp/spawn-vetters.sh');
+const researchPath = path.join(repoRoot, 'data/research/master-research.md');
 const outPath = path.join(repoRoot, 'src/data/researchAlternatives.ts');
 
 const sectionToCategory = {
@@ -36,14 +35,11 @@ function normalizeName(value) {
     .trim();
 }
 
-function parseNameToIdMap(spawnScript) {
-  const map = new Map();
-  const regex = /spawn_vetter\s+"([^"]+)"\s+"([^"]+)"\s+"([^"]+)"/g;
-  for (const match of spawnScript.matchAll(regex)) {
-    map.set(normalizeName(match[2]), match[1]);
-  }
-  return map;
-}
+const nameToIdOverrides = new Map([
+  ['infomaniak kdrive', 'kdrive'],
+  ['pirsch analytics', 'pirsch'],
+  ['plausible analytics', 'plausible'],
+]);
 
 function parseOpenSourceLevel(raw) {
   const low = raw.toLowerCase();
@@ -144,7 +140,7 @@ function slugifyName(name) {
     .replace(/-{2,}/g, '-');
 }
 
-function parseResearchEntries(markdown, nameToIdMap) {
+function parseResearchEntries(markdown) {
   const lines = markdown.split(/\r?\n/);
   const entries = [];
   let currentSection = '';
@@ -166,8 +162,8 @@ function parseResearchEntries(markdown, nameToIdMap) {
       .trim();
 
     const id =
-      nameToIdMap.get(normalizeName(rawName)) ??
-      nameToIdMap.get(normalizeName(cleanName)) ??
+      nameToIdOverrides.get(normalizeName(rawName)) ??
+      nameToIdOverrides.get(normalizeName(cleanName)) ??
       slugifyName(cleanName);
 
     const entry = {
@@ -260,7 +256,7 @@ function sortObjectKeysStable(entries) {
 
 function emitTypeScript(entries) {
   const header = `import type { Alternative } from '../types';\n\n` +
-    `// Generated from tmp/european-alternatives-master-research.md\n` +
+    `// Generated from data/research/master-research.md\n` +
     `// via scripts/generate-research-catalog.mjs\n` +
     `// Last generated: ${new Date().toISOString()}\n\n`;
 
@@ -270,9 +266,7 @@ function emitTypeScript(entries) {
 }
 
 const researchMarkdown = fs.readFileSync(researchPath, 'utf8');
-const spawnScript = fs.readFileSync(spawnPath, 'utf8');
-const nameToIdMap = parseNameToIdMap(spawnScript);
-const entries = parseResearchEntries(researchMarkdown, nameToIdMap);
+const entries = parseResearchEntries(researchMarkdown);
 
 if (entries.length !== 61) {
   throw new Error(`Expected 61 research entries, got ${entries.length}`);

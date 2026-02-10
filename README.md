@@ -79,7 +79,8 @@ The site will be available at `http://localhost:5173`.
 npm run build     # Type-check and build for production
 npm run preview   # Preview the production build locally
 npm run lint      # Run ESLint
-npm run generate:research  # Regenerate research catalogue from tmp/european-alternatives-master-research.md
+npm run generate:research  # Regenerate research catalogue from data/research/master-research.md
+npm run generate:trust-signals  # Re-crawl vendor websites for trust signals
 ```
 
 ## Project Structure
@@ -98,6 +99,7 @@ src/
 │   ├── manualAlternatives.ts   # Hand-curated seed entries
 │   ├── researchAlternatives.ts # Generated from master research markdown
 │   ├── trustOverrides.ts       # Vetting status/reservations/score overrides
+│   ├── trustWebSignals.ts      # Generated web-derived trust signals for each vendor
 │   ├── categories.ts           # Category definitions
 │   └── index.ts                # Re-exports
 ├── types/
@@ -106,7 +108,8 @@ src/
 │   ├── trustScore.ts    # Trust scoring engine
 │   └── alternativeText.ts  # Localized text helpers
 ├── scripts/
-│   └── generate-research-catalog.mjs # Markdown to TS dataset generator
+│   ├── generate-research-catalog.mjs # Markdown to TS dataset generator
+│   └── generate-trust-web-signals.mjs # Vendor website trust signal crawler
 ├── index.css            # Full design system
 └── main.tsx             # Entry point
 ```
@@ -122,11 +125,13 @@ Each listing includes:
 
 Scoring is deterministic and evidence-weighted:
 - Rewards European jurisdiction, open-source transparency, and privacy/self-hosting signals
+- Adds web-derived trust signals crawled from each vendor site (`src/data/trustWebSignals.ts`)
 - Applies reservation penalties by severity
-- Uses vetted outcomes from `tmp/vetted/*-approved.md` and `tmp/vetted/*-rejected.md` where available
+- Uses vetted outcomes encoded in `src/data/trustOverrides.ts`
 - Keeps non-vetted entries visible with lower confidence so coverage stays broad while certainty stays explicit
 
-Full formula and rationale: `docs/TRUST-METHODOLOGY.md`.
+Full formula is implemented in `src/utils/trustScore.ts`.
+Primary source links for manual reservations are documented in `docs/TRUST-SOURCES.md`.
 
 ## Contributing
 
@@ -139,7 +144,7 @@ See [**CONTRIBUTING.md**](CONTRIBUTING.md) for the full guide, including:
 - Coding standards and commit conventions
 - Design system guidelines
 
-The fastest way to contribute: add or improve an entry in `tmp/european-alternatives-master-research.md` and run `npm run generate:research`.
+The fastest way to contribute: add or improve an entry in `data/research/master-research.md` and run `npm run generate:research`.
 
 ## License
 

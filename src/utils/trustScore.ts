@@ -6,6 +6,7 @@ import type {
   TrustTier,
   VettingStatus,
 } from '../types';
+import { trustWebSignalsById } from '../data/trustWebSignals';
 
 const reservationPenalty: Record<ReservationSeverity, number> = {
   minor: 1,
@@ -48,12 +49,15 @@ export function computeTrustFields(alternative: Alternative): Alternative {
   const status = normalizeStatus(alternative.vettingStatus);
   const openSourceLevel = alternative.openSourceLevel ?? (alternative.isOpenSource ? 'full' : 'none');
   const reservations = alternative.reservations ?? [];
+  const webSignals = trustWebSignalsById[alternative.id];
 
-  let score = 3;
+  let score = 4;
   const reasons: TrustReasonKey[] = [];
 
   if (alternative.country === 'eu') {
-    score -= 1;
+    // "eu" is used for exceptions (non-EU HQ or diffuse governance),
+    // so keep a stronger baseline penalty than explicit EU/EEA countries.
+    score -= 2;
     reasons.push('non-eu-exception');
   } else {
     score += 2;
@@ -67,6 +71,7 @@ export function computeTrustFields(alternative: Alternative): Alternative {
     score += 1;
     reasons.push('open-source-partial');
   } else {
+    score -= 1;
     reasons.push('closed-source');
   }
 
@@ -83,6 +88,24 @@ export function computeTrustFields(alternative: Alternative): Alternative {
   if (alternative.tags.some((tag) => privacySignalTags.has(tag.toLowerCase()))) {
     score += 1;
     reasons.push('privacy-centric-features');
+  }
+
+  if (webSignals?.signals.openSourceMention && openSourceLevel !== 'none') {
+    score += 0.5;
+  }
+
+  if (webSignals?.signals.encryption || webSignals?.signals.noLogs) {
+    score += 0.5;
+    reasons.push('privacy-centric-features');
+  }
+
+  if (webSignals?.signals.selfHosting) {
+    score += 0.5;
+    reasons.push('self-hosting-possible');
+  }
+
+  if (webSignals?.signals.audit) {
+    score += 1;
   }
 
   if (status === 'vetted-approved') {
@@ -104,10 +127,15 @@ export function computeTrustFields(alternative: Alternative): Alternative {
     reasons.push('reservations-present');
   }
 
+  const sourcedReservations = reservations.filter((reservation) => reservation.sourceUrl).length;
   let confidence: TrustConfidence = 'low';
-  if (status === 'vetted-approved' || status === 'vetted-rejected') {
+  if (
+    status === 'vetted-approved' ||
+    status === 'vetted-rejected' ||
+    ((webSignals?.signalCount ?? 0) >= 4 && sourcedReservations > 0)
+  ) {
     confidence = 'high';
-  } else if (alternative.githubUrl || reservations.length > 0) {
+  } else if (alternative.githubUrl || reservations.length > 0 || (webSignals?.signalCount ?? 0) >= 2) {
     confidence = 'medium';
   }
 

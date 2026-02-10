@@ -69,7 +69,7 @@ export const categories: Category[] = [
     name: 'VPN',
     description: 'Virtual private network services',
     emoji: '🔒',
-    usGiants: ['NordVPN', 'ExpressVPN'],
+    usGiants: ['ExpressVPN'],
   },
   {
     id: 'analytics',
