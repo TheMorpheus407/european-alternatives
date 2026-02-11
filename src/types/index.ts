@@ -62,6 +62,7 @@ export type CategoryId =
   | 'office-suite'
   | 'maps'
   | 'browser'
+  | 'desktop-os'
   | 'vpn'
   | 'analytics'
   | 'project-management'

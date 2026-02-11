@@ -65,6 +65,13 @@ export const categories: Category[] = [
     usGiants: ['Google Chrome', 'Safari', 'Edge'],
   },
   {
+    id: 'desktop-os',
+    name: 'Desktop Operating Systems',
+    description: 'Desktop operating systems and kernels',
+    emoji: '💻',
+    usGiants: ['Microsoft Windows', 'Apple macOS'],
+  },
+  {
     id: 'vpn',
     name: 'VPN',
     description: 'Virtual private network services',

@@ -472,12 +472,12 @@ export const researchAlternatives: Alternative[] = [
     ],
     "pricing": "freemium",
     "website": "https://www.infomaniak.com/en/ksuite/kdrive",
-    "description": "Sovereign Swiss cloud storage by employee-owned Infomaniak, offering 15 GB free and built-in online office tools. Hosted exclusively in Swiss data centres powered by 100% renewable energy, kDrive is GDPR- and nFADP-compliant with no data resale.",
+    "description": "Swiss cloud storage by Infomaniak with 15 GB free and integrated online office tools. kDrive data is hosted in Swiss data centers operated by Infomaniak, while the open-source footprint is focused on clients and regular storage is not end-to-end zero-knowledge encrypted by default.",
     "localizedDescriptions": {
-      "de": "Souveräner Schweizer Cloud-Speicher vom mitarbeitergeführten Unternehmen Infomaniak, mit 15 GB gratis und integrierten Online-Office-Tools. Ausschließlich in Schweizer Rechenzentren mit 100 % erneuerbarer Energie gehostet, ist kDrive DSGVO- und nDSG-konform — ohne Weiterverkauf von Daten."
+      "de": "Schweizer Cloud-Speicher von Infomaniak mit 15 GB gratis und integrierten Online-Office-Tools. kDrive-Daten liegen in von Infomaniak betriebenen Schweizer Rechenzentren; quelloffen sind vor allem die Clients, waehrend regulaerer Speicher standardmaessig nicht Ende-zu-Ende- bzw. Zero-Knowledge-verschluesselt ist."
     },
     "isOpenSource": true,
-    "openSourceLevel": "full",
+    "openSourceLevel": "partial",
     "tags": [
       "cloud-storage",
       "freemium",
@@ -491,7 +491,7 @@ export const researchAlternatives: Alternative[] = [
     "foundedYear": 1994,
     "headquartersCity": "Geneva",
     "githubUrl": "https://github.com/Infomaniak",
-    "license": "GPL-3.0"
+    "license": "GPL-3.0 (clients); proprietary managed backend"
   },
   {
     "id": "ionos",
@@ -506,9 +506,9 @@ export const researchAlternatives: Alternative[] = [
     ],
     "pricing": "paid",
     "website": "https://www.ionos.com",
-    "description": "Europe's largest hosting provider, born from the 1988-founded German pioneer 1&1 and cloud specialist ProfitBricks. IONOS serves over 6 million customers, manages 22 million domains, and operates 31 data centers — including German facilities powered by 100% renewable energy — with full GDPR compliance and ISO 27001 certification.",
+    "description": "German hosting and cloud provider with EU jurisdiction, public-company governance, and strong assurance signals including ISO 27001/BSI certifications and a public cloud vulnerability register. Key trust caveats remain around pricing and renewal dynamics, no official public bug bounty program, and privacy-policy language that allows AI-related processing and possible international data transfers.",
     "localizedDescriptions": {
-      "de": "Europas größter Hosting-Anbieter, hervorgegangen aus dem 1988 gegründeten deutschen Pionier 1&1 und dem Cloud-Spezialisten ProfitBricks. IONOS betreut über 6 Millionen Kunden, verwaltet 22 Millionen Domains und betreibt 31 Rechenzentren — darunter deutsche Standorte mit 100 % erneuerbarer Energie — bei vollständiger DSGVO-Konformität und ISO-27001-Zertifizierung."
+      "de": "Deutscher Hosting- und Cloud-Anbieter mit EU-Jurisdiktion, boersennotierter Governance und starken Assurance-Signalen inklusive ISO-27001-/BSI-Zertifizierungen sowie einem oeffentlichen Cloud-Schwachstellenregister. Relevante Vertrauensvorbehalte bleiben bei Preis- und Verlaengerungsdynamik, fehlendem offiziellem oeffentlichem Bug-Bounty-Programm sowie Datenschutzklauseln zu KI-bezogener Verarbeitung und moeglichen internationalen Datentransfers."
     },
     "isOpenSource": false,
     "openSourceLevel": "none",
@@ -744,9 +744,9 @@ export const researchAlternatives: Alternative[] = [
     ],
     "pricing": "free",
     "website": "https://joinmastodon.org",
-    "description": "Decentralized microblogging platform built in Germany as a non-profit. Mastodon connects millions of users across independently operated servers via ActivityPub, offering a timeline free of ads, algorithms, and corporate surveillance.",
+    "description": "German-founded, AGPL-licensed federated social platform where independent servers interoperate via ActivityPub. Mastodon removes ad-driven ranking by default, while privacy and moderation practices depend on the instance you choose.",
     "localizedDescriptions": {
-      "de": "Dezentrale Microblogging-Plattform, als gemeinnütziges Projekt in Deutschland entwickelt. Mastodon verbindet Millionen Nutzer über unabhängig betriebene Server via ActivityPub — frei von Werbung, Algorithmen und Überwachung durch Konzerne."
+      "de": "Deutsch gegruendete, AGPL-lizenzierte foederierte Social-Plattform, bei der unabhaengige Server ueber ActivityPub zusammenarbeiten. Mastodon verzichtet standardmaessig auf werbegetriebenes Ranking, waehrend Datenschutz und Moderation von der gewaehlten Instanz abhaengen."
     },
     "isOpenSource": true,
     "openSourceLevel": "full",
@@ -754,6 +754,8 @@ export const researchAlternatives: Alternative[] = [
       "social-media",
       "free",
       "open-source",
+      "federated",
+      "activitypub",
       "x-twitter",
       "facebook"
     ],

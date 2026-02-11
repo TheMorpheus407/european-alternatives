@@ -9,6 +9,7 @@
     "office-suite": { "name": "Office Suite", "description": "Document editing and collaboration" },
     "maps": { "name": "Maps & Navigation", "description": "Mapping and navigation services" },
     "browser": { "name": "Browser", "description": "Web browsers" },
+    "desktop-os": { "name": "Desktop Operating Systems", "description": "Desktop operating systems and kernels" },
     "vpn": { "name": "VPN", "description": "Virtual private network services" },
     "analytics": { "name": "Analytics", "description": "Web and product analytics" },
     "project-management": { "name": "Project Management", "description": "Task and project management tools" },

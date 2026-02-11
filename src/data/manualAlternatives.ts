@@ -27,9 +27,9 @@ export const manualAlternatives: Alternative[] = [
     id: 'mistral',
     name: 'Mistral AI',
     description:
-      'French AI company building frontier large language models and Le Chat, founded by former Google DeepMind and Meta researchers. Mistral uses a hybrid model strategy: open models like Mistral 7B and Mixtral are Apache 2.0, while larger flagship models are proprietary via API.',
+      'French AI company building frontier large language models and Le Chat, founded by former Google DeepMind and Meta researchers. Mistral uses a hybrid model strategy: some models are Apache 2.0, while stronger flagship tiers remain proprietary via API; consumer plans support training opt-out, and paid API/Team tiers are positioned as no-train.',
     localizedDescriptions: {
-      de: 'Französisches KI-Unternehmen, das führende Open-Weight-Sprachmodelle und Le Chat, einen schnellen, datenschutzorientierten Assistenten, entwickelt. Gegründet von ehemaligen Forschern von Google DeepMind und Meta, setzt sich Mistral für europäische Datensouveränität mit DSGVO-konformer Infrastruktur ein.',
+      de: 'Franzoesisches KI-Unternehmen, das leistungsstarke Sprachmodelle und Le Chat entwickelt. Mistral verfolgt eine hybride Modellstrategie: einige Modelle sind unter Apache-2.0 verfuegbar, waehrend staerkere Flaggschiff-Tiers proprietaer per API bereitgestellt werden; fuer Consumer-Training gibt es Opt-out, waehrend bezahlte API- und Team-Tiers als no-train positioniert sind.',
     },
     website: 'https://mistral.ai',
     logo: '/logos/mistral.svg',
@@ -131,6 +131,27 @@ export const manualAlternatives: Alternative[] = [
     headquartersCity: 'Berlin',
   },
   {
+    id: 'hetzner',
+    name: 'Hetzner',
+    description:
+      'German infrastructure provider for cloud, dedicated servers, storage, and web hosting. Hetzner publishes ISO/IEC 27001:2022 and BSI C5 Type 2 assurance for its cloud stack and offers strong EU-centered governance options, but production setups should still enforce offsite backups and tested failover paths.',
+    localizedDescriptions: {
+      de: 'Deutscher Infrastruktur-Anbieter fuer Cloud, Dedicated Server, Storage und Webhosting. Hetzner veroeffentlicht Nachweise zu ISO/IEC 27001:2022 und BSI C5 Typ 2 fuer den Cloud-Stack und bietet starke EU-zentrierte Governance-Optionen, dennoch sollten Produktiv-Setups Offsite-Backups und getestete Failover-Pfade verbindlich umsetzen.',
+    },
+    website: 'https://www.hetzner.com',
+    logo: '/logos/hetzner.svg',
+    country: 'de',
+    category: 'hosting',
+    replacesUS: ['AWS', 'Google Cloud', 'Azure', 'Cloudflare'],
+    isOpenSource: false,
+    openSourceLevel: 'none',
+    githubUrl: 'https://github.com/hetznercloud',
+    pricing: 'paid',
+    tags: ['hosting', 'cloud', 'iaas', 'vps', 'dedicated-servers', 'gdpr', 'api', 'data-sovereignty'],
+    foundedYear: 1997,
+    headquartersCity: 'Gunzenhausen',
+  },
+  {
     id: 'openstreetmap',
     name: 'OpenStreetMap',
     description:
@@ -150,5 +171,26 @@ export const manualAlternatives: Alternative[] = [
     foundedYear: 2004,
     headquartersCity: 'London',
     license: 'ODbL 1.0',
+  },
+  {
+    id: 'linux-kernel',
+    name: 'Linux Kernel',
+    description:
+      'The upstream Linux kernel is a globally maintained, GPL-licensed operating-system kernel distributed via kernel.org. It combines transparent review with frequent stable/LTS updates, while real-world security still depends on downstream patch speed and local update discipline.',
+    localizedDescriptions: {
+      de: 'Der Upstream-Linux-Kernel ist ein global gepflegter, GPL-lizenzierter Betriebssystem-Kernel, der ueber kernel.org verteilt wird. Er kombiniert transparente Review-Prozesse mit haeufigen Stable-/LTS-Updates, waehrend die reale Sicherheit weiterhin stark von Downstream-Patch-Geschwindigkeit und lokaler Update-Disziplin abhaengt.',
+    },
+    website: 'https://www.kernel.org',
+    country: 'eu',
+    category: 'desktop-os',
+    replacesUS: ['Microsoft Windows', 'Apple macOS'],
+    isOpenSource: true,
+    openSourceLevel: 'full',
+    githubUrl: 'https://github.com/torvalds/linux',
+    pricing: 'free',
+    tags: ['desktop-os', 'operating-system', 'kernel', 'open-source', 'self-hosting', 'lts', 'security'],
+    foundedYear: 1991,
+    headquartersCity: 'Global upstream community',
+    license: 'GPL-2.0-only',
   },
 ];
