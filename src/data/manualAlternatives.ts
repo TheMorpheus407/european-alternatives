@@ -71,9 +71,9 @@ export const manualAlternatives: Alternative[] = [
     id: 'startpage',
     name: 'Startpage',
     description:
-      'Dutch privacy-first search engine that delivers Google search results without tracking, logging IP addresses, or storing personal data. Features an Anonymous View proxy for browsing search results with full anonymity, and has held the European Privacy Seal since 2011.',
+      'Dutch privacy-focused search engine that strips identifying metadata from queries and offers an Anonymous View proxy for result pages. Operated from The Hague under Surfboard Holding B.V., while Startpage also states it is part of US-listed System1.',
     localizedDescriptions: {
-      de: 'Niederländische Suchmaschine mit Fokus auf Datenschutz, die Google-Suchergebnisse liefert, ohne zu tracken, IP-Adressen zu speichern oder persönliche Daten zu erfassen. Bietet einen Anonymous-View-Proxy zum anonymen Durchsuchen von Ergebnissen und trägt seit 2011 das Europäische Datenschutzsiegel.',
+      de: 'Niederlaendische Suchmaschine mit Datenschutzfokus, die identifizierende Metadaten aus Suchanfragen entfernt und einen Anonymous-View-Proxy fuer Ergebnisse anbietet. Der Betrieb erfolgt in Den Haag ueber Surfboard Holding B.V.; zugleich gibt Startpage an, Teil des boersennotierten US-Unternehmens System1 zu sein.',
     },
     website: 'https://www.startpage.com',
     logo: '/logos/startpage.svg',

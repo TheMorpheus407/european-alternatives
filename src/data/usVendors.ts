@@ -228,16 +228,16 @@ const US_VENDOR_TRUST_PROFILES: Record<string, USVendorTrustProfile> = {
   'google-search': {
     trustScore: 2.0,
     description:
-      'US-operated search platform with strong engineering depth, but structural ad-surveillance incentives, AI training defaults, and major legal findings materially reduce trust.',
+      'US-operated search platform with strong engineering depth, but ad-driven data monetization, AI training defaults, and major legal findings materially reduce trust.',
     descriptionDe:
-      'US-Suchplattform mit starker technischer Reife, deren Vertrauen aber durch strukturelle Ad-Surveillance-Anreize, KI-Trainings-Defaults und schwere Rechtsbefunde deutlich sinkt.',
+      'US-Suchplattform mit starker technischer Reife, deren Vertrauen aber durch werbegetriebene Datennutzung, KI-Trainings-Defaults und schwere Rechtsbefunde deutlich sinkt.',
     reservations: [
       {
         id: 'search-ad-surveillance-business-model',
-        text: 'Google Search is tied to Alphabet\'s advertising-driven business model, creating structural incentives to maximize data extraction and ad targeting.',
-        textDe: 'Google Search ist an Alphabets werbefinanziertes Geschaeftsmodell gekoppelt, was strukturelle Anreize fuer maximale Datenerhebung und Ad-Targeting schafft.',
+        text: 'Google Search is monetized via advertising and personalization signals, creating a structural conflict with strict privacy-first expectations.',
+        textDe: 'Google Search wird ueber Werbung und Personalisierungssignale monetarisiert, was einen strukturellen Konflikt mit strikten Privacy-First-Erwartungen schafft.',
         severity: 'major',
-        sourceUrl: 'https://www.sec.gov/ixviewer/ix.html?doc=/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm',
+        sourceUrl: 'https://policies.google.com/privacy',
       },
       {
         id: 'search-default-ai-training-controls',
@@ -252,7 +252,7 @@ const US_VENDOR_TRUST_PROFILES: Record<string, USVendorTrustProfile> = {
         textDe: 'Das US-Gericht stellte fest, dass Google ein illegales Suchmonopol aufrechterhalten hat; die verhaengten Auflagen betreffen unter anderem Default-Distribution und Datenzugang.',
         severity: 'major',
         date: '2024-08-05',
-        sourceUrl: 'https://www.justice.gov/opa/pr/department-justice-wins-significant-remedies-against-google',
+        sourceUrl: 'https://apnews.com/article/846916fda0943c5fa359385044a02c8b',
       },
       {
         id: 'search-major-privacy-settlement-2025',

@@ -138,9 +138,9 @@ export const researchAlternatives: Alternative[] = [
     ],
     "pricing": "freemium",
     "website": "https://cryptpad.org",
-    "description": "End-to-end encrypted collaborative office suite built by XWiki SAS in Paris. Documents, spreadsheets, presentations, kanban boards and polls are all encrypted in the browser before reaching the server — making it a zero-knowledge alternative adopted even by the United Nations.",
+    "description": "End-to-end encrypted collaborative office suite built by XWiki SAS in Paris. Documents, spreadsheets, presentations, kanban boards and polls are all encrypted in the browser before reaching the server, but trust still depends on the chosen instance serving untampered client code and secure link-sharing practices.",
     "localizedDescriptions": {
-      "de": "Ende-zu-Ende-verschlüsselte kollaborative Office-Suite, entwickelt von XWiki SAS in Paris. Dokumente, Tabellen, Präsentationen, Kanban-Boards und Umfragen werden im Browser verschlüsselt, bevor sie den Server erreichen — eine Zero-Knowledge-Alternative, die sogar von den Vereinten Nationen genutzt wird."
+      "de": "Ende-zu-Ende-verschlüsselte kollaborative Office-Suite, entwickelt von XWiki SAS in Paris. Dokumente, Tabellen, Präsentationen, Kanban-Boards und Umfragen werden im Browser verschlüsselt, bevor sie den Server erreichen; das Vertrauen hängt jedoch weiterhin davon ab, dass die gewählte Instanz unveränderten Client-Code ausliefert und Freigabe-Links sicher geteilt werden."
     },
     "isOpenSource": true,
     "openSourceLevel": "full",
