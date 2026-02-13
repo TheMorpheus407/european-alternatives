@@ -520,8 +520,12 @@ export const manualAlternatives: Alternative[] = [
   {
     id: 'jitsi',
     name: 'Jitsi',
+    logo: '/logos/jitsi.svg',
     description:
       'Open-source video conferencing platform for browser-based meetings with chat, screen sharing, and collaborative notes. Jitsi offers a free public instance at meet.jit.si, no account required, and supports self-hosting for teams that want EU-friendly data and infrastructure control.',
+    localizedDescriptions: {
+      de: 'Open-Source-Video-Konferenzplattform fuer browserbasierte Meetings mit Chat, Bildschirmfreigabe und kollaborativen Notizen. Jitsi bietet eine kostenlose Oeffentliche Instanz unter meet.jit.si ohne Konto und unterstuetzt Self-Hosting fuer Teams, die EU-konforme Daten- und Infrastrukturkontrolle wünschen.',
+    },
     website: 'https://jitsi.org',
     country: 'fr',
     category: 'meeting-software',
