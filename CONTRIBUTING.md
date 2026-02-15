@@ -64,7 +64,7 @@ Gather the following about the alternative:
 
 ### Step 2: Add the Entry
 
-Open `src/data/alternatives.ts` and add your entry to the `alternatives` array:
+Open `src/data/manualAlternatives.ts` and add your entry to the `alternatives` array:
 
 ```typescript
 {
@@ -157,7 +157,7 @@ export type CategoryId =
   | 'your-new-category';
 ```
 
-### Step 2: Add the Category Definition
+### Step 2: Add the Category Definition and localization
 
 In `src/data/categories.ts`, add an entry to the `categories` array:
 
@@ -170,6 +170,11 @@ In `src/data/categories.ts`, add an entry to the `categories` array:
   emoji: '🔧',
 },
 ```
+
+In `src/i18n/locales/{de,en}/data.json`, add an entry to the `catagories`
+
+`"cloud-storage": { "name": "Cloud-Speicher", "description": "Dateispeicher- und Synchronisierungsdienste" },`
+`"cloud-storage": { "name": "Cloud Storage", "description": "File storage and sync services" },`
 
 ### Step 3: Update Filters (If Needed)
 

@@ -144,7 +144,7 @@ See [**CONTRIBUTING.md**](CONTRIBUTING.md) for the full guide, including:
 - Coding standards and commit conventions
 - Design system guidelines
 
-The fastest way to contribute: add or improve an entry in `data/research/master-research.md` and run `npm run generate:research`.
+The fastest way to contribute: add or improve an entry in `src/data/manualAlternatives` and run `npm run generate:research`.
 
 ## License
 
