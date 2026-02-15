@@ -550,7 +550,9 @@ export const manualAlternatives: Alternative[] = [
     country: 'at',
     category: 'cloud-storage',
     replacesUS: ['Google Photos', 'Apple Photos', 'Amazon Photos', 'Apple iCloud', 'Google Drive'],
-    isOpenSource: false,
+    isOpenSource: true,
+    license: 'GPL3v3',
+    sourceCodeUrl: 'https://codeberg.org/zeitkapsl/zeitkapsl',
     pricing: 'paid',
     tags: ['images', 'photo', 'cloud', 'storage', 'privacy', 'E2EE'],
     headquartersCity: 'Vienna'
