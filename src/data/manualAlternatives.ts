@@ -538,4 +538,19 @@ export const manualAlternatives: Alternative[] = [
     headquartersCity: 'Strasbourg',
     license: 'Apache-2.0',
   },
+  {
+    id: 'herewego',
+    name: 'HERE WeGo Maps & Navigation',
+    description: 'The personal navigation app that helps you find the best routes, avoid traffic jams and explore new places stress-free wherever you go, both online and offline.',
+    website: 'https://here.com/products/wego',
+    logo: '/logos/wego-light.svg',
+    country: 'nl',
+    category: 'maps',
+    replacesUS: ['Google Maps', 'Apple Maps'],
+    isOpenSource: false,
+    pricing: 'free',
+    tags: ['maps', 'navigation', 'privacy'],
+    foundedYear: 2012,
+    headquartersCity: 'Einhoven',
+  }
 ];
