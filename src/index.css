@@ -1293,19 +1293,20 @@ button:disabled {
 
 .alt-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   gap: var(--spacing-lg);
+  max-width: 100%;
 }
 
 @media (min-width: 768px) {
   .alt-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr));
   }
 }
 
 @media (min-width: 1200px) {
   .alt-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr));
   }
 }
 
