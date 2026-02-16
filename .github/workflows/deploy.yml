@@ -1,3 +1,15 @@
+# DEPLOYMENT WORKFLOW
+#
+# dist/ is gitignored so developers never commit build artifacts manually.
+# This workflow handles it: on every push to main it builds the project,
+# force-commits dist/ back to main (with [skip ci] to avoid loops), and
+# then deploys to GitHub Pages.
+#
+# Hostinger auto-pulls from main and serves static files from dist/.
+# GitHub Pages gets the same build via the upload-pages-artifact action.
+#
+# TL;DR: just push source changes — dist/ takes care of itself.
+
 name: Deploy to GitHub Pages
 
 on:
@@ -6,7 +18,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -33,6 +45,18 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Commit dist to main (for Hostinger)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f dist/
+          if git diff --cached --quiet; then
+            echo "No dist changes to commit"
+          else
+            git commit -m "chore: rebuild dist artifacts [skip ci]"
+            git push
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

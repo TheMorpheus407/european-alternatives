@@ -9,6 +9,9 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+# dist/ is gitignored but force-committed by CI (see .github/workflows/deploy.yml).
+# NEVER commit dist/ manually — the CI workflow builds and pushes it automatically.
+# Hostinger auto-pulls from main and serves from dist/.
 dist
 dist-ssr
 *.local
