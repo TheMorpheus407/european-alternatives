@@ -559,4 +559,25 @@ export const manualAlternatives: Alternative[] = [
     headquartersCity: 'International',
     license: 'AGPL-3',
   },
+  {
+    id: 'briar',
+    name: 'Briar',
+    logo: '/logos/briar.svg',
+    description: 
+      'Censorship-resistant peer-to-peer messaging that bypasses centralized servers. Connect via Bluetooth, Wi-Fi or Tor, with privacy built-in.',
+    localizedDescriptions: {
+      de: 'Zensurresistente Peer-to-Peer-Nachrichtenübermittlung, die zentralisierte Server umgeht. Verbindung über Bluetooth, WLAN oder Tor, mit integrierter Datenschutzfunktion.'
+    },
+    website: 'https://briarproject.org/',
+    country: 'eu',
+    category: 'messaging',
+    replacesUS: ['WhatsApp', 'iMessage', 'Facebook Messanger'],
+    isOpenSource: true,
+    openSourceLevel: 'full',
+    sourceCodeUrl: 'https://code.briarproject.org/briar',
+    pricing: 'free',
+    tags: ['messaging', 'e2ee', 'privacy', 'encryption', 'gdpr'],
+    headquartersCity: 'International',
+    license: 'GPLv3',
+  },
 ];
