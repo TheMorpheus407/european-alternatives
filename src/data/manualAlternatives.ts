@@ -259,6 +259,43 @@ export const manualAlternatives: Alternative[] = [
     license: 'MPL-2.0',
   },
   {
+    id: 'em-client',
+    name: 'eM Client',
+    description:
+      'Full-featured desktop and mobile email client from Prague with integrated calendar, contacts, tasks, and notes. eM Client supports IMAP, POP3, Exchange, and EWS protocols plus PGP encryption, positioning itself as a cross-platform Outlook replacement. Free tier allows up to two email accounts; paid plans unlock unlimited accounts and commercial use.',
+    localizedDescriptions: {
+      de: 'Umfassender Desktop- und mobiler E-Mail-Client aus Prag mit integriertem Kalender, Kontakten, Aufgaben und Notizen. eM Client unterstuetzt IMAP, POP3, Exchange und EWS sowie PGP-Verschluesselung und positioniert sich als plattformuebergreifender Outlook-Ersatz. Die kostenlose Version erlaubt bis zu zwei E-Mail-Konten; bezahlte Plaene bieten unbegrenzte Konten und kommerzielle Nutzung.',
+    },
+    website: 'https://www.emclient.com',
+    logo: '/logos/em-client.svg',
+    country: 'cz',
+    category: 'mail-client',
+    replacesUS: ['Outlook'],
+    isOpenSource: false,
+    openSourceLevel: 'none',
+    pricing: 'freemium',
+    tags: ['mail-client', 'cross-platform', 'pgp', 'calendar', 'contacts', 'exchange', 'imap'],
+    foundedYear: 2006,
+    headquartersCity: 'Prague',
+    reservations: [
+      {
+        id: 'ai-uses-microsoft-azure',
+        text: 'Built-in AI features route data through Microsoft Azure OpenAI, including device identification for license verification. Users concerned about data sovereignty should disable or avoid the AI assistant.',
+        textDe: 'Integrierte KI-Funktionen leiten Daten ueber Microsoft Azure OpenAI, einschliesslich Geraeteidentifikation zur Lizenzueberpruefung. Datenschutzbewusste Nutzer sollten den KI-Assistenten deaktivieren oder meiden.',
+        severity: 'moderate',
+        sourceUrl: 'https://www.emclient.com/privacy-policy',
+      },
+      {
+        id: 'postbox-acquisition-discontinuation',
+        text: 'eM Client acquired Postbox Inc. in October 2024 and immediately discontinued the Postbox email client, drawing criticism from its user base.',
+        textDe: 'eM Client uebernahm Postbox Inc. im Oktober 2024 und stellte den Postbox-E-Mail-Client umgehend ein, was Kritik der Postbox-Nutzer hervorrief.',
+        severity: 'minor',
+        date: '2024-10-23',
+        sourceUrl: 'https://support.postbox-inc.com/hc/en-us/articles/26987964800023-eM-Client-Acquisition-FAQ',
+      },
+    ],
+  },
+  {
     id: 'privacyidea-authenticator',
     name: 'privacyIDEA Authenticator',
     description:
