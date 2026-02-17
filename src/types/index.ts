@@ -56,7 +56,7 @@ export type CountryCode =
   | 'lt' | 'lu' | 'mt' | 'nl' | 'pl' | 'pt' | 'ro' | 'sk'
   | 'si' | 'es' | 'se'
   | 'ch' | 'no' | 'gb' | 'is'
-  | 'eu' | 'us' | 'open-source';
+  | 'eu' | 'us' | 'open-source' | 'ca';
 
 export type CategoryId =
   | 'cloud-storage'
@@ -71,6 +71,7 @@ export type CategoryId =
   | 'maps'
   | 'browser'
   | 'desktop-os'
+  | 'mobile-os'
   | 'vpn'
   | 'analytics'
   | 'project-management'

@@ -12,6 +12,7 @@
     "maps": { "name": "Karten & Navigation", "description": "Karten- und Navigationsdienste" },
     "browser": { "name": "Browser", "description": "Webbrowser" },
     "desktop-os": { "name": "Desktop-Betriebssysteme", "description": "Desktop-Betriebssysteme und Kernel" },
+    "mobile-os": { "name": "Mobile-Betriebssysteme", "description": "Mobile-Betriebssysteme" },
     "vpn": { "name": "VPN", "description": "VPN-Dienste" },
     "analytics": { "name": "Analyse", "description": "Web- und Produktanalyse" },
     "project-management": { "name": "Projektmanagement", "description": "Aufgaben- und Projektmanagement-Tools" },
@@ -58,7 +59,8 @@
     "is": "Island",
     "us": "Vereinigte Staaten",
     "eu": "Open Source (Nicht-EU-HQ)",
-    "open-source": "Open-Source (Kein HQ)"
+    "open-source": "Open-Source (Kein HQ)",
+    "ca": "Kanada"
   },
   "alternatives": {
     "tuta": {
