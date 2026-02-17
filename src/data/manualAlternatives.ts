@@ -832,16 +832,23 @@ export const manualAlternatives: Alternative[] = [
   },
   {
     id: 'grapheneos',
-    name: 'Graphene OS',
-    description: 'The private and secure mobile operating system with Android app compatibility. Developed as a non-profit open source project.',
+    name: 'GrapheneOS',
+    description: 'Privacy and security focused mobile operating system with Android app compatibility. Developed as a non-profit open-source project, GrapheneOS hardens the Android Open Source Project with exploit mitigations, sandboxed Google Play, and a strict permission model.',
+    localizedDescriptions: {
+      de: 'Datenschutz- und sicherheitsorientiertes mobiles Betriebssystem mit Android-App-Kompatibilitaet. GrapheneOS wird als gemeinnuetziges Open-Source-Projekt entwickelt und haertet das Android Open Source Project mit Exploit-Absicherungen, sandboxed Google Play und einem strikten Berechtigungsmodell.',
+    },
     website: 'https://grapheneos.org',
     logo: '/logos/grapheneos.svg',
     country: 'ca',
     category: 'mobile-os',
     replacesUS: ['Android', 'iOS'],
     isOpenSource: true,
-    sourceCodeUrl: 'https://github.com/grapheneos',
+    openSourceLevel: 'full',
+    sourceCodeUrl: 'https://github.com/GrapheneOS',
     pricing: 'free',
-    tags: ['operating-system', 'mobile', 'android', 'security', 'privacy']
+    tags: ['operating-system', 'mobile', 'android', 'security', 'privacy', 'open-source'],
+    foundedYear: 2014,
+    headquartersCity: 'Toronto',
+    license: 'MIT, Apache-2.0',
   },
 ];
