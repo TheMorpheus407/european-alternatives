@@ -76,6 +76,7 @@ const US_VENDOR_RECORDS: USVendorRecord[] = [
       'google analytics',
       'google translate',
       'google imagen',
+      'google photos',
       'waze',
       'youtube',
     ],
@@ -123,12 +124,12 @@ const US_VENDOR_RECORDS: USVendorRecord[] = [
   {
     id: 'amazon',
     name: 'Amazon',
-    aliases: ['aws', 'aws ai', 'aws translate', 'twitch'],
+    aliases: ['aws', 'aws ai', 'aws translate', 'amazon photos', 'twitch'],
   },
   {
     id: 'apple',
     name: 'Apple',
-    aliases: ['icloud', 'apple maps', 'safari', 'imessage'],
+    aliases: ['icloud', 'apple photos', 'apple maps', 'safari', 'imessage'],
   },
   {
     id: 'meta',
