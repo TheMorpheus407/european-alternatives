@@ -723,6 +723,7 @@ export const manualAlternatives: Alternative[] = [
   {
     id: 'vaultwarden',
     name: 'Vaultwarden',
+    logo: '/logos/vaultwarden.svg',
     description:
       'Lightweight, community-driven Rust implementation of the Bitwarden server API, designed for self-hosting. Vaultwarden is fully open source under AGPL-3.0 and compatible with official Bitwarden clients, enabling secure password management with end-to-end encryption and full control over your data.',
     localizedDescriptions: {
