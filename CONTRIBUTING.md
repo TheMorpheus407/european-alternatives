@@ -135,7 +135,7 @@ All country codes below are valid in the type system. Note that the browse page'
 
 **Other European:** CH, NO, GB, IS
 
-**Open-source exception:** US (only for clearly open-source entries that fit project scope)
+**Open-source exception:** US, CA (only for **fully open-source** entries — client and server code under an OSI-approved license; see [DECISION_MATRIX.md](DECISION_MATRIX.md))
 
 **Multi-country:** `eu` (for pan-European services)
 
@@ -397,9 +397,11 @@ refactor: extract filter logic into custom hook
 
 ## What Makes a Good Alternative
 
-When adding an alternative, please verify:
+We use a transparent, documented decision framework. For the full criteria (including the two-tier system, scoring formula, and denial triggers), see [**DECISION_MATRIX.md**](DECISION_MATRIX.md).
 
-- **It's European** — headquartered in a European country (EU, Switzerland, Norway, Iceland, UK)
+The short version — when adding an alternative, please verify:
+
+- **It's European** — headquartered in a European country (EU, Switzerland, Norway, Iceland, UK). Non-European entries are only accepted if they are **fully open-source** (client + server).
 - **It's actively maintained** — the service or software is alive and receiving updates
 - **It actually replaces something** — it should serve a similar purpose to a US product
 - **The information is accurate** — double-check the website, pricing, and open-source status
@@ -411,6 +413,8 @@ When adding an alternative, please verify:
 - Abandoned or discontinued projects
 - Products in pre-alpha without a usable offering
 - Services that require US-based dependencies to function (e.g., built entirely on AWS with no alternative)
+- Non-European services that are not fully open-source (see [DECISION_MATRIX.md](DECISION_MATRIX.md) for rationale)
+- Services with serious trust, legal, or sanctions concerns (documented in [DENIED_ALTERNATIVES.md](DENIED_ALTERNATIVES.md))
 
 ---
 

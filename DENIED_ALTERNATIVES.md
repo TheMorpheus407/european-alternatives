@@ -4,36 +4,6 @@ Alternatives that were evaluated and rejected from the catalogue, with reasoning
 
 ---
 
-## black.com (Email Provider)
-
-**Proposed in:** PR #91 (2026-02-16)
-**Claimed origin:** Vienna, Austria
-**Category:** Email
-
-### Reason for Denial
-
-The founder, Patrick Brunner, has a documented SEC and CFTC enforcement history. Brunner was CEO and sole owner of 1pool Ltd. (a.k.a. 1Broker), a Marshall Islands-registered bitcoin derivatives platform that was charged in September 2018 with illegally offering securities-based swaps and failing to implement anti-money laundering procedures. The FBI seized the 1broker.com domain, and the total settlement was approximately $990,000.
-
-Beyond the founder's background, black.com fails multiple trust and transparency criteria:
-
-- **Proprietary and closed-source** — encryption claims cannot be independently verified
-- **No independent security audit** published
-- **No PGP support**
-- **AI features** integrated into email contradict genuine privacy commitment
-- **Privacy Guides explicitly refuses to recommend it**, calling it "proprietary trash"
-
-### Sources
-
-- [SEC Press Release 2018-218 — 1Broker/Patrick Brunner charges](https://www.sec.gov/newsroom/press-releases/2018-218)
-- [CFTC Press Release 7809-18 — 1pool/Brunner charges](https://www.cftc.gov/PressRoom/PressReleases/7809-18)
-- [CFTC Consent Order — $990,000 settlement](https://www.cftc.gov/PressRoom/PressReleases/7886-19)
-- [Privacy Guides discussion on black.com](https://discuss.privacyguides.net/t/encrypted-mail-black-com/21327)
-- [black.com GmbH on NorthData](https://www.northdata.com/black.com+GmbH,+Wien/448732a)
-- [CoinDesk — SEC/CFTC charge 1Broker](https://www.coindesk.com/markets/2018/09/27/sec-cftc-charge-bitcoin-futures-firm-1broker-with-securities-law-violations/)
-- [LeapRate — 1pool fined $990,000](https://www.leaprate.com/financial-services/charges/bitcoin-funded-securities-dealer-1pool-and-ceo-patrick-brunner-fined-990000/)
-
----
-
 ## Cryptostorm (VPN)
 
 **Proposed in:** PR #91 (2026-02-16)
@@ -105,3 +75,17 @@ Further concerns:
 - [P7-Office / NKT company profile — TAdviser](https://tadviser.com/index.php/Company:P7-Office_(formerly_New_Communication_Technologies,_NKT))
 - [Ascensio System SIA — Latvian company register (Lursoft)](https://company.lursoft.lv/en/ascensio-system/40103265308)
 - [BLOMSTEIN — EU sanctions on IT and software compliance](https://www.blomstein.com/en/news/sanctions-101)
+
+---
+
+## Hubitat Elevation (Smart Home)
+
+**Previously listed, removed in:** Decision Matrix policy update (2026-02-18)
+**Origin:** United States
+**Category:** Smart Home
+
+### Reason for Removal
+
+Hubitat Elevation is a US-based, fully proprietary smart home hub. Under the [Decision Matrix](DECISION_MATRIX.md) two-tier system (criterion G6), non-European entries require full open-source status — client and server code publicly available under an OSI-approved license. Hubitat is closed-source and does not meet this requirement.
+
+European users seeking a local-first smart home hub should consider **Home Assistant** (already listed, fully open-source, Apache-2.0) or **openHAB** (already listed, fully open-source, EPL-2.0).

@@ -543,24 +543,6 @@ export const manualAlternatives: Alternative[] = [
     license: 'Proprietary',
   },
   {
-    id: 'hubitat-elevation',
-    name: 'Hubitat Elevation',
-    description:
-      'Local home automation hub focused on low-latency control and privacy by running most automations directly on the hub.',
-    localizedDescriptions: {
-      de: 'Lokaler Smart-Home-Hub mit Fokus auf niedrige Latenz und Datenschutz, da die meisten Automationen direkt auf dem Hub laufen.',
-    },
-    website: 'https://hubitat.com',
-    logo: '/logos/hubitat-elevation.svg?v=20260212',
-    country: 'us',
-    category: 'smart-home',
-    replacesUS: ['Google Home', 'Amazon Alexa', 'Apple HomeKit', 'Samsung SmartThings'],
-    isOpenSource: false,
-    openSourceLevel: 'none',
-    pricing: 'paid',
-    tags: ['smart-home', 'home-automation', 'local-control', 'hub', 'privacy'],
-  },
-  {
     id: 'homey',
     name: 'Homey',
     description:
@@ -895,6 +877,48 @@ export const manualAlternatives: Alternative[] = [
     pricing: 'free',
     tags: ['encryption', 'privacy', 'docker', 'spam-filter', 'self-hosted', 'easy-admin-interface'],
     license: 'MIT',
+  },
+  {
+    id: 'black-com',
+    name: 'black.com',
+    description:
+      'Austrian encrypted email service with zero-access encryption (AES-GCM-256, RSA-OAEP-4096 key sharing) hosted on Swiss infrastructure. Offers AI-powered email composition, alias addresses, 25 GB storage growing by 2 GB annually, and organization features with custom domains. The service is fully proprietary with no published independent security audit and does not support PGP.',
+    localizedDescriptions: {
+      de: 'Verschluesselter E-Mail-Dienst aus Oesterreich mit Zero-Access-Verschluesselung (AES-GCM-256, RSA-OAEP-4096) auf Schweizer Infrastruktur. Bietet KI-gestuetzte E-Mail-Erstellung, Alias-Adressen, 25 GB Speicher (jaehrlich um 2 GB wachsend) und Organisationsfunktionen mit eigenen Domains. Der Dienst ist vollstaendig proprietaer, ohne veroeffentlichtes unabhaengiges Sicherheitsaudit und ohne PGP-Unterstuetzung.',
+    },
+    website: 'https://black.com',
+    country: 'at',
+    category: 'email',
+    replacesUS: ['Gmail', 'Outlook', 'Yahoo Mail'],
+    isOpenSource: false,
+    openSourceLevel: 'none',
+    pricing: 'paid',
+    tags: ['encryption', 'privacy', 'gdpr', 'zero-access', 'ad-free', 'ai'],
+    foundedYear: 2016,
+    headquartersCity: 'Vienna',
+    reservations: [
+      {
+        id: 'proprietary-no-audit',
+        text: 'Fully proprietary and closed-source with no published independent security audit. Encryption claims (AES-GCM-256, RSA-OAEP-4096) cannot be independently verified.',
+        textDe: 'Vollstaendig proprietaer und Closed-Source ohne veroeffentlichtes unabhaengiges Sicherheitsaudit. Verschluesselungsangaben (AES-GCM-256, RSA-OAEP-4096) koennen nicht unabhaengig verifiziert werden.',
+        severity: 'major' as const,
+        sourceUrl: 'https://discuss.privacyguides.net/t/encrypted-mail-black-com/21327',
+      },
+      {
+        id: 'no-pgp-support',
+        text: 'Does not support PGP/GPG, limiting interoperability with other encrypted email ecosystems.',
+        textDe: 'Keine PGP/GPG-Unterstuetzung, was die Interoperabilitaet mit anderen verschluesselten E-Mail-Systemen einschraenkt.',
+        severity: 'moderate' as const,
+        sourceUrl: 'https://discuss.privacyguides.net/t/encrypted-mail-black-com/21327',
+      },
+      {
+        id: 'founder-sec-cftc-regulatory-history',
+        text: 'Founder Patrick Brunner was subject to SEC and CFTC civil enforcement actions in 2018 for operating an unregistered crypto trading platform (1Broker). This was a regulatory compliance case (not fraud): no anti-fraud charges were filed, no criminal conviction occurred, and all customer funds were returned. Total civil settlement was approximately $990,000.',
+        textDe: 'Gruender Patrick Brunner war 2018 Gegenstand ziviler SEC- und CFTC-Durchsetzungsmassnahmen wegen Betrieb einer nicht registrierten Krypto-Handelsplattform (1Broker). Es handelte sich um einen Regulierungsverstoss (kein Betrug): keine Betrugsanklage, keine strafrechtliche Verurteilung, alle Kundengelder wurden zurueckgegeben. Zivilrechtliche Gesamtvereinbarung ca. 990.000 USD.',
+        severity: 'moderate' as const,
+        sourceUrl: 'https://www.sec.gov/newsroom/press-releases/2018-218',
+      },
+    ],
   },
   {
     id: 'papra',

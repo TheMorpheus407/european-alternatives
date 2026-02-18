@@ -144,7 +144,7 @@ See [**CONTRIBUTING.md**](CONTRIBUTING.md) for the full guide, including:
 - Coding standards and commit conventions
 - Design system guidelines
 
-Not every proposed alternative makes it in. Entries that fail our vetting process (e.g. non-European ownership misrepresented as European, serious trust/legal concerns) are documented with full reasoning and sources in [**DENIED_ALTERNATIVES.md**](DENIED_ALTERNATIVES.md).
+We use a transparent [**Decision Matrix**](DECISION_MATRIX.md) to evaluate every proposed alternative. Not every entry makes it in — those that fail our vetting process are documented with full reasoning and sources in [**DENIED_ALTERNATIVES.md**](DENIED_ALTERNATIVES.md).
 
 The fastest way to contribute: add or improve an entry in `src/data/manualAlternatives` and run `npm run generate:research`.
 
