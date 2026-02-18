@@ -83,6 +83,7 @@ export type CategoryId =
   | 'payments'
   | 'smart-home'
   | 'ecommerce'
+  | 'version-control'
   | 'other';
 
 export interface Category {

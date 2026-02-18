@@ -165,9 +165,9 @@ export const categories: Category[] = [
   {
     id: 'version-control',
     name: 'Version Control Services',
-    description: 'Version Control services and platforms',
+    description: 'Version control services and platforms',
     emoji: '🧑‍💻',
-    usGiants: ['GitHub'],
+    usGiants: ['GitHub', 'GitLab'],
   },
   {
     id: 'other',
