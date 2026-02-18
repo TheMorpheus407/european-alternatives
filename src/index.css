@@ -1322,6 +1322,8 @@ button:disabled {
   flex-direction: column;
   gap: var(--spacing-lg);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .alt-card:hover {
@@ -1419,6 +1421,7 @@ button:disabled {
   letter-spacing: 0.02em;
   color: var(--text-primary);
   margin: 0;
+  min-width: 0;
 }
 
 .alt-card-trust-stamp {
@@ -1563,6 +1566,7 @@ button:disabled {
   font-size: var(--font-size-sm);
   font-weight: 500;
   color: var(--text-primary);
+  min-width: 0;
 }
 
 .alt-card-us-vendor-description {
@@ -1593,6 +1597,7 @@ button:disabled {
   font-size: 0.72rem;
   line-height: 1.4;
   color: var(--text-secondary);
+  min-width: 0;
 }
 
 .alt-card-us-vendor-summary .alt-card-badge {
