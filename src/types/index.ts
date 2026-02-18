@@ -18,6 +18,7 @@ export interface Alternative {
   usVendorComparisons?: USVendorComparison[];
   isOpenSource: boolean;
   openSourceLevel?: OpenSourceLevel;
+  openSourceAuditUrl?: string;
   sourceCodeUrl?: string;
   actionLinks?: AlternativeActionLink[];
   pricing: 'free' | 'freemium' | 'paid';

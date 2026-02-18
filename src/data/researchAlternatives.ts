@@ -20,7 +20,8 @@ export const researchAlternatives: Alternative[] = [
       "de": "Italienisches Privatsphäre-VPN, gegründet von Hacktivisten und Bürgerrechtlern, mit erweiterten Funktionen wie SSH/SSL-Tunneling und direkter Tor-Integration. Betreibt eigene Bare-Metal-Server mit Festplattenverschlüsselung und veröffentlicht Echtzeit-Serverauslastung."
     },
     "isOpenSource": true,
-    "openSourceLevel": "full",
+    "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://github.com/orgs/AirVPN/repositories",
     "tags": [
       "vpn",
       "paid",
@@ -32,7 +33,7 @@ export const researchAlternatives: Alternative[] = [
     "foundedYear": 2010,
     "headquartersCity": "Perugia",
     "sourceCodeUrl": "https://github.com/AirVPN/Eddie",
-    "license": "GPL-3.0"
+    "license": "GPL-3.0 (Eddie client); proprietary server infrastructure"
   },
   {
     "id": "bitwarden",
@@ -85,6 +86,7 @@ export const researchAlternatives: Alternative[] = [
     },
     "isOpenSource": true,
     "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://github.com/black-forest-labs/flux",
     "tags": [
       "ai-ml",
       "freemium",
@@ -294,7 +296,8 @@ export const researchAlternatives: Alternative[] = [
       "de": "Zero-Knowledge-verschlüsselter Cloud-Speicher, vollständig in Deutschland entwickelt und gehostet, mit allen Apps unter der AGPL-3.0-Lizenz quelloffen. Filen bietet günstige Lifetime-Tarife und verzichtet auf Logs, Tracker und Hintertüren — eine datenschutzorientierte Alternative zu Big-Tech-Clouds."
     },
     "isOpenSource": true,
-    "openSourceLevel": "full",
+    "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://github.com/orgs/FilenCloudDienste/repositories",
     "tags": [
       "cloud-storage",
       "freemium",
@@ -308,7 +311,7 @@ export const researchAlternatives: Alternative[] = [
     "foundedYear": 2021,
     "headquartersCity": "Recklinghausen",
     "sourceCodeUrl": "https://github.com/FilenCloudDienste",
-    "license": "AGPL-3.0"
+    "license": "AGPL-3.0 (clients/SDKs); proprietary backend"
   },
   {
     "id": "friendica",
@@ -417,7 +420,8 @@ export const researchAlternatives: Alternative[] = [
       "de": "Die führende Open-Source-KI-Plattform und Modell-Hub, gegründet von französischen Unternehmern in Paris. Beherbergt über 500.000 Modelle, 100.000 Datensätze und die weit verbreitete Transformers-Bibliothek. Bietet kostenlosen Community-Zugang neben kostenpflichtigen Rechen- und Enterprise-Funktionen und setzt sich für offene und kollaborative KI-Entwicklung ein."
     },
     "isOpenSource": true,
-    "openSourceLevel": "full",
+    "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://github.com/orgs/huggingface/repositories",
     "tags": [
       "ai-ml",
       "freemium",
@@ -428,7 +432,7 @@ export const researchAlternatives: Alternative[] = [
     "foundedYear": 2016,
     "headquartersCity": "Paris",
     "sourceCodeUrl": "https://github.com/huggingface",
-    "license": "Apache-2.0"
+    "license": "Apache-2.0 (libraries/tools); proprietary Hub platform"
   },
   {
     "id": "infomaniak",
@@ -479,6 +483,7 @@ export const researchAlternatives: Alternative[] = [
     },
     "isOpenSource": true,
     "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://github.com/orgs/Infomaniak/repositories",
     "tags": [
       "cloud-storage",
       "freemium",
@@ -540,7 +545,8 @@ export const researchAlternatives: Alternative[] = [
       "de": "In Gibraltar ansässiges Privatsphäre-VPN, empfohlen von der Freedom of the Press Foundation, mit transparenter Anti-Tracking-Haltung und keinen Verbindungen zu Überwachungsjurisdiktionen. Unterstützt anonyme Anmeldung, akzeptiert Bar- und Kryptozahlungen und veröffentlicht eine Ethik-Seite."
     },
     "isOpenSource": true,
-    "openSourceLevel": "full",
+    "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://www.ivpn.net/blog/ivpn-applications-are-now-open-source/",
     "tags": [
       "vpn",
       "paid",
@@ -552,7 +558,7 @@ export const researchAlternatives: Alternative[] = [
     "foundedYear": 2009,
     "headquartersCity": "Gibraltar",
     "sourceCodeUrl": "https://github.com/ivpn",
-    "license": "GPL-3.0"
+    "license": "GPL-3.0 (client apps); proprietary server infrastructure"
   },
   {
     "id": "keepassxc",
@@ -782,7 +788,8 @@ export const researchAlternatives: Alternative[] = [
       "de": "Die führende Open-Source-Alternative zu Google Analytics, im Einsatz auf über 1,4 Millionen Websites in mehr als 190 Ländern. Matomo bietet volle Datenhoheit durch Self-Hosting oder EU-gehostete Cloud, umfassende Besucheranalysen, Heatmaps und A/B-Tests — alles unter der GPL-Lizenz."
     },
     "isOpenSource": true,
-    "openSourceLevel": "full",
+    "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://matomo.org/faq/general/faq_22573/",
     "tags": [
       "analytics",
       "freemium",
@@ -796,7 +803,7 @@ export const researchAlternatives: Alternative[] = [
     "foundedYear": 2007,
     "headquartersCity": "French",
     "sourceCodeUrl": "https://github.com/matomo-org/matomo",
-    "license": "GPL-3.0"
+    "license": "GPL-3.0 (core); InnoCraft EULA (premium plugins)"
   },
   {
     "id": "mollie",
@@ -878,7 +885,8 @@ export const researchAlternatives: Alternative[] = [
       "de": "Schwedisches VPN mit absolutem Fokus auf Privatsphäre — keine E-Mail, kein Name, keine persönlichen Daten erforderlich. Pauschal 5 EUR/Monat ohne Upselling, Vertragsbindung oder Rabattaktionen, zum gleichen Preis seit 2009."
     },
     "isOpenSource": true,
-    "openSourceLevel": "full",
+    "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://github.com/orgs/mullvad/repositories",
     "tags": [
       "vpn",
       "paid",
@@ -890,7 +898,7 @@ export const researchAlternatives: Alternative[] = [
     "foundedYear": 2009,
     "headquartersCity": "Gothenburg",
     "sourceCodeUrl": "https://github.com/mullvad/mullvadvpn-app",
-    "license": "GPL-3.0"
+    "license": "GPL-3.0 (client app); relay server code not published"
   },
   {
     "id": "nextcloud",
@@ -942,6 +950,7 @@ export const researchAlternatives: Alternative[] = [
     },
     "isOpenSource": true,
     "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://github.com/NordSecurity/nordvpn-linux",
     "tags": [
       "vpn",
       "paid",
@@ -1006,6 +1015,7 @@ export const researchAlternatives: Alternative[] = [
     },
     "isOpenSource": true,
     "openSourceLevel": "full",
+    "openSourceAuditUrl": "https://www.openproject.org/docs/enterprise-guide/enterprise-on-premises-guide/enterprise-on-premises-faq/",
     "tags": [
       "project-management",
       "freemium",
@@ -1124,6 +1134,7 @@ export const researchAlternatives: Alternative[] = [
     },
     "isOpenSource": true,
     "openSourceLevel": "full",
+    "openSourceAuditUrl": "https://www.passbolt.com/pricing/pro",
     "tags": [
       "password-manager",
       "freemium",
@@ -1217,7 +1228,8 @@ export const researchAlternatives: Alternative[] = [
       "de": "Datenschutzfreundliche, cookiefreie Webanalyse — entwickelt und gehostet in Deutschland. Pirsch ist eine serverseitige Lösung mit Open-Source-Kern, DSGVO-, CCPA- und Schrems-II-konform — gemacht für Entwickler, die übersichtliche Dashboards ohne Einbußen bei der Privatsphäre wollen."
     },
     "isOpenSource": true,
-    "openSourceLevel": "full",
+    "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://github.com/orgs/pirsch-analytics/repositories",
     "tags": [
       "analytics",
       "paid",
@@ -1230,7 +1242,7 @@ export const researchAlternatives: Alternative[] = [
     "foundedYear": 2020,
     "headquartersCity": "Rheda",
     "sourceCodeUrl": "https://github.com/pirsch-analytics/pirsch",
-    "license": "AGPL-3.0"
+    "license": "AGPL-3.0 (core engine/SDKs); proprietary SaaS dashboard"
   },
   {
     "id": "pixelfed",
@@ -1280,6 +1292,7 @@ export const researchAlternatives: Alternative[] = [
     },
     "isOpenSource": true,
     "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://plausible.io/blog/open-source-licenses",
     "tags": [
       "analytics",
       "paid",
@@ -1374,6 +1387,7 @@ export const researchAlternatives: Alternative[] = [
     },
     "isOpenSource": true,
     "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://github.com/orgs/ProtonDriveApps/repositories",
     "tags": [
       "cloud-storage",
       "freemium",
@@ -1407,6 +1421,7 @@ export const researchAlternatives: Alternative[] = [
     },
     "isOpenSource": true,
     "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://proton.me/community/open-source",
     "tags": [
       "email",
       "freemium",
@@ -1439,6 +1454,7 @@ export const researchAlternatives: Alternative[] = [
     },
     "isOpenSource": true,
     "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://proton.me/community/open-source",
     "tags": [
       "password-manager",
       "freemium",
@@ -1470,6 +1486,7 @@ export const researchAlternatives: Alternative[] = [
     },
     "isOpenSource": true,
     "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://proton.me/community/open-source",
     "tags": [
       "vpn",
       "freemium",
@@ -1499,6 +1516,7 @@ export const researchAlternatives: Alternative[] = [
     },
     "isOpenSource": true,
     "openSourceLevel": "full",
+    "openSourceAuditUrl": "https://docs.saleor.io/overview/why-saleor/open-source",
     "tags": [
       "ecommerce",
       "freemium",
@@ -1556,7 +1574,8 @@ export const researchAlternatives: Alternative[] = [
       "de": "Deutsche Open-Source-E-Commerce-Plattform auf Basis von Symfony und Vue.js und Marktführer unter den Top-1000-Online-Shops in Deutschland. Die MIT-lizenzierte Community Edition ist kostenlos, während kommerzielle Pläne Headless-Fähigkeiten, B2B-Funktionen und SaaS-Hosting bieten."
     },
     "isOpenSource": true,
-    "openSourceLevel": "full",
+    "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://www.shopware.com/en/pricing/",
     "tags": [
       "ecommerce",
       "freemium",
@@ -1568,7 +1587,7 @@ export const researchAlternatives: Alternative[] = [
     "foundedYear": 2000,
     "headquartersCity": "Schöppingen",
     "sourceCodeUrl": "https://github.com/shopware/shopware",
-    "license": "MIT (Community Edition, with contributor CLA)"
+    "license": "MIT (Community Edition, with CLA); proprietary SwagCommercial plugin (enterprise features)"
   },
   {
     "id": "simple-analytics",
@@ -1617,6 +1636,7 @@ export const researchAlternatives: Alternative[] = [
     },
     "isOpenSource": true,
     "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://stability.ai/license",
     "tags": [
       "ai-ml",
       "freemium",
@@ -1705,7 +1725,8 @@ export const researchAlternatives: Alternative[] = [
       "de": "In der Schweiz entwickelter Ende-zu-Ende-verschlüsselter Messenger, der weder Telefonnummer noch E-Mail zur Registrierung benötigt und so maximale Anonymität bietet. Alle Server stehen in der Schweiz, die Apps sind vollständig Open Source, und ein einmaliger Kauf bedeutet keine Abonnements und keine Werbung."
     },
     "isOpenSource": true,
-    "openSourceLevel": "full",
+    "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://threema.ch/en/open-source",
     "tags": [
       "messaging",
       "paid",
@@ -1718,7 +1739,7 @@ export const researchAlternatives: Alternative[] = [
     "foundedYear": 2012,
     "headquartersCity": "Pfäffikon",
     "sourceCodeUrl": "https://github.com/threema-ch",
-    "license": "AGPL-3.0"
+    "license": "AGPL-3.0 (clients); proprietary server"
   },
   {
     "id": "vikunja",
@@ -1766,8 +1787,9 @@ export const researchAlternatives: Alternative[] = [
     "localizedDescriptions": {
       "de": "Funktionsreicher norwegischer Browser mit integriertem E-Mail-Client, Kalender, Feed-Reader und Übersetzung. Gegründet vom ehemaligen Opera-CEO Jon von Tetzchner, bietet Vivaldi unerreichte Anpassungsmöglichkeiten — Tab-Stacking, Split-Screen, Befehlsketten — und blockiert Werbung und Tracker standardmäßig."
     },
-    "isOpenSource": false,
-    "openSourceLevel": "none",
+    "isOpenSource": true,
+    "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://vivaldi.com/source/",
     "tags": [
       "browser",
       "free",
@@ -1777,6 +1799,7 @@ export const researchAlternatives: Alternative[] = [
     ],
     "foundedYear": 2013,
     "headquartersCity": "Oslo",
+    "sourceCodeUrl": "https://vivaldi.com/source/",
     "license": "proprietary UI, Chromium engine"
   }
 ];
