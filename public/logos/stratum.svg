@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient id="c" x1="342.96" x2="342.96" y1="379.6" y2="85.562" gradientTransform="translate(.406)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#098fcb" offset="0"/>
+   <stop stop-color="#a8e4ff" offset="1"/>
+  </linearGradient>
+  <linearGradient id="b" x1="342.96" x2="342.96" y1="379.6" y2="85.562" gradientTransform="translate(.406 101.23)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#245583" offset="0"/>
+   <stop stop-color="#088fcb" offset="1"/>
+  </linearGradient>
+  <linearGradient id="a" x1="342.96" x2="342.96" y1="379.6" y2="85.562" gradientTransform="translate(.406 202.46)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#1a3f5e" offset="0"/>
+   <stop stop-color="#2e6a9e" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g transform="translate(.03732 -.0086)">
+  <path transform="matrix(.1 0 0 .1 -8.6 -8.52)" d="m339.91 287.75c21.811 0 33.178 5.09 33.178 5.09l215.49 123.43s8.902 7.095 9.093 18.583c0.19 11.489-8.667 19.306-8.667 19.306l-208.2 120.84s-13.377 8.177-36.995 8.177-37.125-6.403-37.125-6.403l-199.82-114.47s-20.87-10.847-21.231-26.173c-0.362-15.326 15.239-23.543 15.239-23.543l206.7-119.32s10.527-5.52 32.338-5.52z" fill="url(#a)"/>
+  <path transform="matrix(.1 0 0 .1 -8.6 -8.52)" d="m339.92 186.52c21.811 0 33.178 5.09 33.178 5.09l215.49 123.43s8.902 7.095 9.093 18.583c0.19 11.489-8.667 19.306-8.667 19.306l-208.2 120.84s-13.378 8.177-36.996 8.177-37.124-6.403-37.124-6.403l-199.82-114.47s-20.87-10.847-21.231-26.173c-0.362-15.326 15.239-23.543 15.239-23.543l206.7-119.32s10.527-5.52 32.338-5.52z" fill="url(#b)"/>
+  <path transform="matrix(.1 0 0 .1 -8.6 -8.52)" d="m339.91 85.289c21.811 0 33.178 5.09 33.178 5.09l215.49 123.43s8.902 7.095 9.093 18.583-8.667 19.306-8.667 19.306l-208.2 120.84s-13.377 8.177-36.995 8.177-37.125-6.403-37.125-6.403l-199.82-114.47s-20.87-10.847-21.231-26.173 15.239-23.543 15.239-23.543l206.7-119.32s10.527-5.52 32.338-5.52z" fill="url(#c)"/>
+ </g>
+</svg>
