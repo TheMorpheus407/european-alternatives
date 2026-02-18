@@ -23,6 +23,7 @@
     "payments": { "name": "Payments", "description": "Payment processing and fintech" },
     "smart-home": { "name": "Smart Home", "description": "Smart home hubs and home automation platforms" },
     "ecommerce": { "name": "E-Commerce", "description": "Online store platforms" },
+    "version-control": { "name": "Version Control Services", "description": "Version Control Services" },
     "other": { "name": "Other", "description": "Other tools and services" }
   },
   "countries": {
