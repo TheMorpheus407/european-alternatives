@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { categories } from '../data';
 import { getLocalizedAlternativeDescription } from '../utils/alternativeText';
-import type { Alternative, USVendorComparison, ViewMode } from '../types';
+import type { Alternative, OpenSourceLevel, USVendorComparison, ViewMode } from '../types';
 
 interface AlternativeCardProps {
   alternative: Alternative;
@@ -14,6 +14,48 @@ function getTrustBadgeClass(score: number): string {
   if (score < 5) return 'alt-card-badge-trust-low';
   if (score <= 7) return 'alt-card-badge-trust-medium';
   return 'alt-card-badge-trust-high';
+}
+
+const opennessTagKeys = new Set([
+  'open-source',
+  'open-source-software',
+  'opensource',
+  'partial-open-source',
+  'partly-open-source',
+  'proprietary',
+]);
+
+function normalizeTagKey(tag: string): string {
+  return tag.trim().toLowerCase().replace(/[\s_]+/g, '-');
+}
+
+function getOpenSourceLevel(alternative: Pick<Alternative, 'isOpenSource' | 'openSourceLevel'>): OpenSourceLevel {
+  if (alternative.openSourceLevel === 'full' || alternative.openSourceLevel === 'partial' || alternative.openSourceLevel === 'none') {
+    return alternative.openSourceLevel;
+  }
+
+  return alternative.isOpenSource ? 'full' : 'none';
+}
+
+function getOpenSourceBadgeConfig(openSourceLevel: OpenSourceLevel): { className: string; labelKey: string } {
+  switch (openSourceLevel) {
+    case 'full':
+      return {
+        className: 'alt-card-badge-openness-full',
+        labelKey: 'common:openSourceFull',
+      };
+    case 'partial':
+      return {
+        className: 'alt-card-badge-openness-partial',
+        labelKey: 'common:openSourcePartial',
+      };
+    case 'none':
+    default:
+      return {
+        className: 'alt-card-badge-openness-none',
+        labelKey: 'common:proprietary',
+      };
+  }
 }
 
 export default function AlternativeCard({ alternative, viewMode }: AlternativeCardProps) {
@@ -45,6 +87,9 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
   const usVendorComparisons = alternative.usVendorComparisons?.length
     ? alternative.usVendorComparisons
     : fallbackUSVendorComparisons;
+  const openSourceLevel = getOpenSourceLevel(alternative);
+  const openSourceBadge = getOpenSourceBadgeConfig(openSourceLevel);
+  const visibleTags = alternative.tags.filter((tag) => !opennessTagKeys.has(normalizeTagKey(tag)));
 
   return (
     <motion.div
@@ -175,15 +220,10 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
         <span className={`alt-card-badge alt-card-badge-pricing ${alternative.pricing}`}>
           {t(`common:pricing.${alternative.pricing}`)}
         </span>
-        {alternative.isOpenSource && (
-          <span className="alt-card-badge alt-card-badge-oss">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12" aria-hidden="true">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-            </svg>
-            {t('common:openSource')}
-          </span>
-        )}
-        {alternative.tags.slice(0, 2).map((tag) => (
+        <span className={`alt-card-badge alt-card-badge-openness ${openSourceBadge.className}`}>
+          {t(openSourceBadge.labelKey)}
+        </span>
+        {visibleTags.slice(0, 2).map((tag) => (
           <span key={tag} className="alt-card-badge alt-card-badge-tag">{tag}</span>
         ))}
       </div>
@@ -250,11 +290,11 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
                 </div>
               )}
 
-              {alternative.tags.length > 0 && (
+              {visibleTags.length > 0 && (
                 <div className="alt-detail-section">
                   <h4 className="alt-detail-title">{t('browse:card.tags')}</h4>
                   <div className="alt-detail-tags">
-                    {alternative.tags.map((tag) => (
+                    {visibleTags.map((tag) => (
                       <span key={tag} className="alt-detail-tag">{tag}</span>
                     ))}
                   </div>

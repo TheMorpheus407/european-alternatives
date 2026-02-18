@@ -18,6 +18,9 @@
     "paid": "Kostenpflichtig"
   },
   "openSource": "Open Source",
+  "openSourceFull": "Open Source",
+  "openSourcePartial": "Teilweise Open Source",
+  "proprietary": "Proprietär",
   "replaces": "Ersetzt:",
   "meta": {
     "title": "Europäische Alternativen - Europäische & Open-Source-Software entdecken",

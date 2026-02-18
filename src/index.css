@@ -1663,16 +1663,26 @@ button:disabled {
   color: var(--text-muted);
 }
 
-.alt-card-badge-oss {
+.alt-card-badge-openness {
+  font-weight: 600;
+}
+
+.alt-card-badge-openness-full {
   background: var(--success-10);
   border-color: var(--success);
   color: var(--success);
-  gap: var(--spacing-xs);
 }
 
-.alt-card-badge-oss svg {
-  width: 0.75rem;
-  height: 0.75rem;
+.alt-card-badge-openness-partial {
+  background: var(--warning-10);
+  border-color: var(--warning);
+  color: var(--warning);
+}
+
+.alt-card-badge-openness-none {
+  background: var(--error-10);
+  border-color: var(--error);
+  color: var(--error);
 }
 
 .alt-card-badge-tag {
