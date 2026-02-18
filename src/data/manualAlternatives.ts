@@ -1258,16 +1258,23 @@ export const manualAlternatives: Alternative[] = [
   {
     id: 'simplex',
     name: 'SimpleX',
-    description: 'decentral, open-source, end-to-end encrypted messenger without unique identifiers.',
+    description:
+      'Decentralized, open-source, end-to-end encrypted messenger without unique user identifiers. Uses double-ratchet E2E encryption and operates without any user IDs, offering strong metadata privacy.',
+    localizedDescriptions: {
+      de: 'Dezentraler, quelloffener, Ende-zu-Ende verschluesselter Messenger ohne eindeutige Benutzerkennungen. Verwendet Double-Ratchet-E2E-Verschluesselung und arbeitet ohne jegliche Benutzer-IDs fuer starken Metadatenschutz.',
+    },
     website: 'https://simplex.chat/',
     logo: '/logos/simplex.svg',
     country: 'gb',
-    category: 'messenger',
+    category: 'messaging',
     replacesUS: ['WhatsApp', 'Signal', 'iMessage', 'Telegram'],
     isOpenSource: true,
+    openSourceLevel: 'full',
     sourceCodeUrl: 'https://github.com/simplex-chat',
     pricing: 'free',
-    tags: ['messenger', 'decentral', 'anti-censorship', 'GDPR', 'privacy'],
+    tags: ['messaging', 'e2ee', 'privacy', 'decentralized', 'anti-censorship', 'gdpr'],
+    foundedYear: 2021,
+    headquartersCity: 'London',
     license: 'AGPL-3.0',
   },
 ];
