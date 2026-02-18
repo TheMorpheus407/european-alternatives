@@ -12,9 +12,14 @@ body:
   - type: input
     id: description
     attributes:
-      label: Description
+      label: Description 🇬🇧
       description: 1-2 sentences describing what the alternative does
       placeholder: Self-hosted productivity platform providing file sync, collaboration, and communication tools with full data sovereignty.
+  - type: input
+    id: description-de
+    attributes:
+      label: Beschreibung 🇩🇪
+      description: 1-2 Sätze darüber, was die Alternative macht
   - type: input
     id: website
     attributes:
