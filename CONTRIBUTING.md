@@ -19,16 +19,16 @@ First off — thank you for being here. Every contribution helps build a more vi
 
 ## Ways to Contribute
 
-| Contribution | Difficulty | Impact |
-|---|---|---|
-| Add a European alternative | Easy | High |
-| Fix a typo or broken link | Easy | Medium |
-| Report a bug or inaccuracy | Easy | Medium |
-| Suggest a new category | Easy | Medium |
-| Fix a bug in code | Medium | High |
-| Improve accessibility | Medium | High |
-| Add a new feature | Advanced | High |
-| Improve the design system | Advanced | High |
+| Contribution               | Difficulty | Impact |
+|----------------------------|------------|--------|
+| Add a European alternative | Easy       | High   |
+| Fix a typo or broken link  | Easy       | Medium |
+| Report a bug or inaccuracy | Easy       | Medium |
+| Suggest a new category     | Easy       | Medium |
+| Fix a bug in code          | Medium     | High   |
+| Improve accessibility      | Medium     | High   |
+| Add a new feature          | Advanced   | High   |
+| Improve the design system  | Advanced   | High   |
 
 The most valuable contribution is **adding alternatives you personally use and trust**. Real-world experience makes entries authentic.
 
@@ -42,23 +42,23 @@ This is the most common and most impactful contribution. You don't need to know 
 
 Gather the following about the alternative:
 
-| Field | Required | Example |
-|---|---|---|
-| `id` | Yes | `"nextcloud"` (URL-safe, lowercase, unique) |
-| `name` | Yes | `"Nextcloud"` |
-| `description` | Yes | 1-2 sentences describing what it does |
-| `website` | Yes | `"https://nextcloud.com"` |
-| `country` | Yes | Two-letter code: `"de"`, `"fr"`, `"nl"`, etc. |
-| `category` | Yes | One of the [existing categories](#available-categories) |
-| `replacesUS` | Yes | `["Google Drive", "Dropbox"]` — US services it replaces |
-| `isOpenSource` | Yes | `true` or `false` |
-| `pricing` | Yes | `"free"`, `"freemium"`, or `"paid"` |
-| `tags` | Yes | `["privacy", "self-hosted", "GDPR"]` — relevant keywords |
-| `logo` | No | `"/logos/nextcloud.svg"` — path to logo file |
-| `sourceCodeUrl` | No | `"https://codeberg.org/nextcloud/server"` |
-| `foundedYear` | No | `2016` |
-| `headquartersCity` | No | `"Stuttgart"` |
-| `license` | No | `"AGPL-3.0"` |
+| Field              | Required | Example                                                  |
+|--------------------|----------|----------------------------------------------------------|
+| `id`               | Yes      | `"nextcloud"` (URL-safe, lowercase, unique)              |
+| `name`             | Yes      | `"Nextcloud"`                                            |
+| `description`      | Yes      | 1-2 sentences describing what it does                    |
+| `website`          | Yes      | `"https://nextcloud.com"`                                |
+| `country`          | Yes      | Two-letter code: `"de"`, `"fr"`, `"nl"`, etc.            |
+| `category`         | Yes      | One of the [existing categories](#available-categories)  |
+| `replacesUS`       | Yes      | `["Google Drive", "Dropbox"]` — US services it replaces  |
+| `isOpenSource`     | Yes      | `true` or `false`                                        |
+| `pricing`          | Yes      | `"free"`, `"freemium"`, or `"paid"`                      |
+| `tags`             | Yes      | `["privacy", "self-hosted", "GDPR"]` — relevant keywords |
+| `logo`             | No       | `"/logos/nextcloud.svg"` — path to logo file             |
+| `sourceCodeUrl`    | No       | `"https://codeberg.org/nextcloud/server"`                |
+| `foundedYear`      | No       | `2016`                                                   |
+| `headquartersCity` | No       | `"Stuttgart"`                                            |
+| `license`          | No       | `"AGPL-3.0"`                                             |
 
 `sourceCodeUrl` can point to any public repository host (GitHub, Codeberg, GitLab, Forgejo, or self-hosted Git).
 
@@ -103,27 +103,27 @@ npm run lint      # Ensure no linting issues
 
 ### Available Categories
 
-| ID | Name | Replaces |
-|---|---|---|
-| `cloud-storage` | Cloud Storage | Google Drive, Dropbox, iCloud, OneDrive |
-| `email` | Email | Gmail, Outlook, Yahoo Mail |
-| `search-engine` | Search Engine | Google Search, Bing |
-| `social-media` | Social Media | Facebook, Instagram, X/Twitter, LinkedIn |
-| `messaging` | Messaging | WhatsApp, iMessage, Discord, Slack |
-| `video-hosting` | Video Hosting | YouTube, Vimeo, Twitch |
-| `office-suite` | Office Suite | Microsoft Office, Google Workspace |
-| `maps` | Maps & Navigation | Google Maps, Apple Maps, Waze |
-| `browser` | Browser | Google Chrome, Safari, Edge |
-| `vpn` | VPN | NordVPN, ExpressVPN |
-| `analytics` | Analytics | Google Analytics, Mixpanel, Amplitude |
-| `project-management` | Project Management | Jira, Asana, Monday.com, Trello |
-| `password-manager` | Password Manager | LastPass, 1Password, Dashlane |
-| `2fa-authenticator` | 2FA Authenticators | Google Authenticator, Microsoft Authenticator, Authy |
-| `ai-ml` | AI & Machine Learning | OpenAI, Google AI, AWS AI |
-| `hosting` | Cloud & Hosting | AWS, Google Cloud, Azure, Cloudflare |
-| `payments` | Payments | Stripe, PayPal, Square |
-| `ecommerce` | E-Commerce | Shopify, Amazon, eBay |
-| `other` | Other | — |
+| ID                   | Name                  | Replaces                                             |
+|----------------------|-----------------------|------------------------------------------------------|
+| `cloud-storage`      | Cloud Storage         | Google Drive, Dropbox, iCloud, OneDrive              |
+| `email`              | Email                 | Gmail, Outlook, Yahoo Mail                           |
+| `search-engine`      | Search Engine         | Google Search, Bing                                  |
+| `social-media`       | Social Media          | Facebook, Instagram, X/Twitter, LinkedIn             |
+| `messaging`          | Messaging             | WhatsApp, iMessage, Discord, Slack                   |
+| `video-hosting`      | Video Hosting         | YouTube, Vimeo, Twitch                               |
+| `office-suite`       | Office Suite          | Microsoft Office, Google Workspace                   |
+| `maps`               | Maps & Navigation     | Google Maps, Apple Maps, Waze                        |
+| `browser`            | Browser               | Google Chrome, Safari, Edge                          |
+| `vpn`                | VPN                   | NordVPN, ExpressVPN                                  |
+| `analytics`          | Analytics             | Google Analytics, Mixpanel, Amplitude                |
+| `project-management` | Project Management    | Jira, Asana, Monday.com, Trello                      |
+| `password-manager`   | Password Manager      | LastPass, 1Password, Dashlane                        |
+| `2fa-authenticator`  | 2FA Authenticators    | Google Authenticator, Microsoft Authenticator, Authy |
+| `ai-ml`              | AI & Machine Learning | OpenAI, Google AI, AWS AI                            |
+| `hosting`            | Cloud & Hosting       | AWS, Google Cloud, Azure, Cloudflare                 |
+| `payments`           | Payments              | Stripe, PayPal, Square                               |
+| `ecommerce`          | E-Commerce            | Shopify, Amazon, eBay                                |
+| `other`              | Other                 | —                                                    |
 
 Don't see a fitting category? You can [propose a new one](#adding-a-new-category).
 
@@ -205,17 +205,17 @@ Understanding the codebase will help you contribute effectively:
 
 ### Key Files for Code Changes
 
-| File | Purpose |
-|---|---|
-| `src/components/App.tsx` | Routing (React Router v7) |
-| `src/components/Layout.tsx` | Header, footer, page wrapper |
-| `src/components/LandingPage.tsx` | Homepage with stats and featured alternative |
-| `src/components/BrowsePage.tsx` | Main browse page with filtering logic |
+| File                                 | Purpose                                        |
+|--------------------------------------|------------------------------------------------|
+| `src/components/App.tsx`             | Routing (React Router v7)                      |
+| `src/components/Layout.tsx`          | Header, footer, page wrapper                   |
+| `src/components/LandingPage.tsx`     | Homepage with stats and featured alternative   |
+| `src/components/BrowsePage.tsx`      | Main browse page with filtering logic          |
 | `src/components/AlternativeCard.tsx` | Individual alternative card (grid + list view) |
-| `src/components/Filters.tsx` | Search, filter, and sort controls |
-| `src/types/index.ts` | All TypeScript interfaces and types |
-| `src/data/alternatives.ts` | Alternative catalogue data |
-| `src/data/categories.ts` | Category definitions |
+| `src/components/Filters.tsx`         | Search, filter, and sort controls              |
+| `src/types/index.ts`                 | All TypeScript interfaces and types            |
+| `src/data/alternatives.ts`           | Alternative catalogue data                     |
+| `src/data/categories.ts`             | Category definitions                           |
 
 ---
 
@@ -233,18 +233,18 @@ The design system is implemented in a single CSS file (`src/index.css`, ~1800 li
 
 ### Color System
 
-| Variable | Value | Usage |
-|---|---|---|
-| `--bg-primary` | `#0d0d11` | Page background |
-| `--bg-card` | `#1a1a1f` | Card surfaces |
-| `--accent-primary` | `#6c35de` | Purple — links, active states, focus rings |
-| `--accent-secondary` | `#ff6b35` | Orange — highlights, labels |
-| `--accent-gradient` | Purple to Orange | Headlines, button backgrounds, brand expression |
-| `--text-primary` | `#f0f2f5` | Main text |
-| `--text-secondary` | `#d0d2d5` | Descriptions |
-| `--text-muted` | `#9a9ca0` | Metadata, disabled text |
-| `--success` | `#10b981` | Free/open-source badges |
-| `--warning` | `#f59e0b` | Freemium badges |
+| Variable             | Value            | Usage                                           |
+|----------------------|------------------|-------------------------------------------------|
+| `--bg-primary`       | `#0d0d11`        | Page background                                 |
+| `--bg-card`          | `#1a1a1f`        | Card surfaces                                   |
+| `--accent-primary`   | `#6c35de`        | Purple — links, active states, focus rings      |
+| `--accent-secondary` | `#ff6b35`        | Orange — highlights, labels                     |
+| `--accent-gradient`  | Purple to Orange | Headlines, button backgrounds, brand expression |
+| `--text-primary`     | `#f0f2f5`        | Main text                                       |
+| `--text-secondary`   | `#d0d2d5`        | Descriptions                                    |
+| `--text-muted`       | `#9a9ca0`        | Metadata, disabled text                         |
+| `--success`          | `#10b981`        | Free/open-source badges                         |
+| `--warning`          | `#f59e0b`        | Freemium badges                                 |
 
 ### Typography
 
@@ -254,13 +254,13 @@ The design system is implemented in a single CSS file (`src/index.css`, ~1800 li
 
 ### Responsive Breakpoints
 
-| Breakpoint | Target |
-|---|---|
-| Default | Mobile-first base styles |
-| `max-width: 480px` | Small mobile overrides |
-| `min-width: 768px` | Tablet |
-| `min-width: 1024px` | Desktop |
-| `min-width: 1200px` | Large desktop |
+| Breakpoint          | Target                   |
+|---------------------|--------------------------|
+| Default             | Mobile-first base styles |
+| `max-width: 480px`  | Small mobile overrides   |
+| `min-width: 768px`  | Tablet                   |
+| `min-width: 1024px` | Desktop                  |
+| `min-width: 1200px` | Large desktop            |
 
 ### Accessibility Standards
 
@@ -299,12 +299,12 @@ npm run dev
 
 ### Useful Commands
 
-| Command | What It Does |
-|---|---|
-| `npm run dev` | Start Vite dev server with hot reload |
-| `npm run build` | Type-check (tsc) + production build (vite) |
-| `npm run preview` | Serve the production build locally |
-| `npm run lint` | Run ESLint on all TypeScript files |
+| Command           | What It Does                               |
+|-------------------|--------------------------------------------|
+| `npm run dev`     | Start Vite dev server with hot reload      |
+| `npm run build`   | Type-check (tsc) + production build (vite) |
+| `npm run preview` | Serve the production build locally         |
+| `npm run lint`    | Run ESLint on all TypeScript files         |
 
 ---
 
@@ -351,14 +351,14 @@ We use [Conventional Commits](https://www.conventionalcommits.org/):
 
 ### Types
 
-| Type | When to Use |
-|---|---|
-| `feat` | Adding a new alternative, category, or feature |
-| `fix` | Bug fix |
-| `docs` | Documentation changes |
-| `style` | CSS/formatting changes (no logic change) |
-| `refactor` | Code restructuring without behavior change |
-| `chore` | Tooling, config, dependency updates |
+| Type       | When to Use                                    |
+|------------|------------------------------------------------|
+| `feat`     | Adding a new alternative, category, or feature |
+| `fix`      | Bug fix                                        |
+| `docs`     | Documentation changes                          |
+| `style`    | CSS/formatting changes (no logic change)       |
+| `refactor` | Code restructuring without behavior change     |
+| `chore`    | Tooling, config, dependency updates            |
 
 ### Examples
 
