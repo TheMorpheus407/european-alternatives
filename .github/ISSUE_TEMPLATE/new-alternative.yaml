@@ -91,6 +91,9 @@ body:
       label: Checklist
       options:
         - label: "I've searched for duplicates"
-        - label: "I've looked into [DENIED_ALTERNATIVES.md](https://github.com/TheMorpheus407/european-alternatives/blob/main/DENIED_ALTERNATIVES.md)"
+        - label: "I've looked into DENIED_ALTERNATIVES.md"
     validations:
       required: true
+  - type: markdown
+    attributes:
+      value: Here is a link to [DENIED_ALTERNATIVES.md](https://github.com/TheMorpheus407/european-alternatives/blob/main/DENIED_ALTERNATIVES.md).
