@@ -1,0 +1,96 @@
+name: New alternative
+title: "New Alternative: NAME"
+description: Propose a new alternative
+projects: []
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: The name of the alternative
+      placeholder: Nextcloud
+  - type: input
+    id: description
+    attributes:
+      label: Description
+      description: 1-2 sentences describing what the alternative does
+      placeholder: Self-hosted productivity platform providing file sync, collaboration, and communication tools with full data sovereignty.
+  - type: input
+    id: website
+    attributes:
+      label: Website
+      description: The website for the alternative
+      placeholder: https://nextcloud.com
+  - type: input
+    id: country
+    attributes:
+      label: Country
+      description: 'Tow-letter code: "de", "fr", "nl", "eu", ...'
+      placeholder: de
+  - type: input
+    id: category
+    attributes:
+      label: Category
+      description: The category of the alternative
+      placeholder: cloud-storage
+  - type: input
+    id: replacesUS
+    attributes:
+      label: Replaces US
+      description: US services the alternative replaces
+      placeholder: Google Drive, Dropbox, OneDrive
+  - type: dropdown
+    id: isOpenSource
+    attributes:
+      label: Is open source?
+      options:
+        - "true"
+        - "false"
+  - type: dropdown
+    id: pricing
+    attributes:
+      label: Pricing
+      description: Is the alternative free, fremium or paid?
+      options:
+        - free
+        - fremium
+        - paid
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: Relevant keywords for the alternative
+      placeholder: self-hosted, file-sync, collaboration, GDPR, privacy
+  - type: input
+    id: sourceCodeUrl
+    attributes:
+      label: Source code URL
+      description: The URL for the source code
+      placeholder: https://codeberg.org/nextcloud/server
+  - type: input
+    id: foundedYear
+    attributes:
+      label: Founded year
+      description: The year the alternative was founded
+      placeholder: "2016"
+  - type: input
+    id: headquartersCity
+    attributes:
+      label: Headquarters city
+      description: The HQ of the alternative
+      placeholder: Stuttgart
+  - type: input
+    id: license
+    attributes:
+      label: License
+      description: The license of the alternative
+      placeholder: AGPL-3.0
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: "I've searched for duplicates"
+        - label: "I've looked into [DENIED_ALTERNATIVES.md](https://github.com/TheMorpheus407/european-alternatives/blob/main/DENIED_ALTERNATIVES.md)"
+    validations:
+      required: true
