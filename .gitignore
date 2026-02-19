@@ -27,6 +27,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# Python virtual environments (created by scripts/audit.py)
+.venv
+
 # Agent documentation (local only)
 agents/
 CLAUDE.md
