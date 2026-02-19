@@ -36,7 +36,9 @@ The most valuable contribution is **adding alternatives you personally use and t
 
 ## Adding an Alternative
 
-This is the most common and most impactful contribution. You don't need to know React — just TypeScript data entry.
+The easiest way to suggest a new alternative is to [open an issue using the "New alternative" template](https://github.com/TheMorpheus407/european-alternatives/issues/new?template=new-alternative.yaml). Fill in what you know — most fields are optional — and maintainers will take it from there.
+
+If you'd rather contribute directly via code, read on. You don't need to know React — just TypeScript data entry.
 
 ### Step 1: Prepare the Information
 
