@@ -52,7 +52,7 @@ body:
         - "no"
   - type: markdown
     attributes:
-      value:
+      value: |
         > [!NOTE]
         > The alternative being open source is **required** for **US-based alternatives**, as stated in the [DECISION_MATRIX.md](https://github.com/TheMorpheus407/european-alternatives/blob/main/DECISION_MATRIX.md#two-tier-system). (e.g., Firefox)
   - type: dropdown
