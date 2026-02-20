@@ -4,6 +4,7 @@ First off — thank you for being here. Every contribution helps build a more vi
 
 ## Table of Contents
 
+- [Communication Guidelines](#communication-guidelines)
 - [Ways to Contribute](#ways-to-contribute)
 - [Adding an Alternative](#adding-an-alternative)
 - [Adding a New Category](#adding-a-new-category)
@@ -14,6 +15,18 @@ First off — thank you for being here. Every contribution helps build a more vi
 - [Commit Conventions](#commit-conventions)
 - [Pull Request Process](#pull-request-process)
 - [What Makes a Good Alternative](#what-makes-a-good-alternative)
+
+---
+
+## Communication Guidelines
+
+A constructive, fact-based environment helps everyone — contributors, maintainers, and users alike. Please keep these principles in mind when opening issues, commenting on PRs, or participating in discussions.
+
+- **Facts over emotions** — Technical and objective criticism is highly valued. Vague terms like "trash" or "failure" are not actionable. Instead, provide data, logs, or links to reputable sources (e.g., [Exodus Privacy](https://exodus-privacy.eu.org/), [Kuketz Blog](https://www.kuketz-blog.de/)).
+- **Stay within project scope** — This repository evaluates software alternatives based on privacy and digital sovereignty. Keep feedback relevant to that mission.
+- **Provide context** — When pointing out flaws (e.g., external CDN usage or third-party font loading), reference specific technical details or legal rulings (e.g., GDPR cases) so maintainers can prioritize effectively.
+- **Respect volunteers** — All contributors work on this project in their spare time, for free. Treat everyone with respect.
+- **Structure your feedback** — For proposals and bug reports, state the **problem**, provide **evidence**, and suggest a **solution**. This helps maintainers act on your input quickly.
 
 ---
 
