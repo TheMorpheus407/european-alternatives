@@ -29,7 +29,7 @@ body:
     id: country
     attributes:
       label: Country
-      description: 'Two-letter code: "de", "fr", "nl", "eu", ...'
+      description: "Two-letter code: de, fr, nl, eu, ..."
       placeholder: de
   - type: input
     id: category
@@ -48,8 +48,13 @@ body:
     attributes:
       label: Is open source?
       options:
-        - "true"
-        - "false"
+        - "yes"
+        - "no"
+  - type: markdown
+    attributes:
+      value: |
+        > [!NOTE]
+        > The alternative being open source is **required** for **US-based alternatives**, as stated in the [DECISION_MATRIX.md](https://github.com/TheMorpheus407/european-alternatives/blob/main/DECISION_MATRIX.md#two-tier-system). (e.g., Firefox)
   - type: dropdown
     id: pricing
     attributes:
@@ -98,6 +103,13 @@ body:
           required: true
         - label: "I've looked into DENIED_ALTERNATIVES.md"
           required: true
+        - label: "I've evaluated the alternative with the DECISION_MATRIX.md"
+          required: false
   - type: markdown
     attributes:
-      value: Here is a link to [DENIED_ALTERNATIVES.md](https://github.com/TheMorpheus407/european-alternatives/blob/main/DENIED_ALTERNATIVES.md).
+      value: Here is a link to [DENIED_ALTERNATIVES.md](https://github.com/TheMorpheus407/european-alternatives/blob/main/DENIED_ALTERNATIVES.md) and [DECISION_MATRIX.md](https://github.com/TheMorpheus407/european-alternatives/blob/main/DECISION_MATRIX.md).
+  - type: textarea
+    id: additional-information
+    attributes:
+      label: Additional Information
+      description: Anything else you want to add?
