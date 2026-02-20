@@ -10,14 +10,14 @@ A transparent, consistent framework for deciding which alternatives are included
 
 Alternatives are evaluated in two tiers based on headquarters jurisdiction. Each tier has different gateway requirements.
 
-| | Tier 1: European | Tier 2: Non-European |
-|---|---|---|
-| **Jurisdictions** | EU member states, CH, NO, GB, IS | US, CA, or any other non-European country |
-| **Open-source requirement** | None (but rewarded in scoring) | **Full open-source required** |
-| **Proprietary allowed?** | Yes | No |
-| **Partial open-source allowed?** | Yes | No |
-| **Trust score cap** | None (1-10) | US entries capped at 4 (lifted if self-hostable) |
-| **Rationale** | European jurisdiction + GDPR provides baseline trust | Without European legal protections, only full source transparency can compensate |
+|                                  | Tier 1: European                                     | Tier 2: Non-European                                                             |
+|----------------------------------|------------------------------------------------------|----------------------------------------------------------------------------------|
+| **Jurisdictions**                | EU member states, CH, NO, GB, IS                     | US, CA, or any other non-European country                                        |
+| **Open-source requirement**      | None (but rewarded in scoring)                       | **Full open-source required**                                                    |
+| **Proprietary allowed?**         | Yes                                                  | No                                                                               |
+| **Partial open-source allowed?** | Yes                                                  | No                                                                               |
+| **Trust score cap**              | None (1-10)                                          | US entries capped at 4 (lifted if self-hostable)                                 |
+| **Rationale**                    | European jurisdiction + GDPR provides baseline trust | Without European legal protections, only full source transparency can compensate |
 
 ### Why This Asymmetry Exists
 
@@ -37,11 +37,11 @@ The GDPR legal shield that justifies Tier 1 classification depends on the Europe
 2. **Automatic `major` reservation** — A reservation of `major` severity is required, documenting the parent entity, jurisdiction, and the legal compulsion risk (FISA/CLOUD Act exposure).
 3. **Severity escalation based on entanglement** — The reservation severity and score penalty scale with operational entanglement:
 
-| Entanglement Level | Indicator | Reservation Severity |
-|---|---|---|
-| **Passive financial** | PE firm holds shares; European management, staff, and infrastructure unchanged | `major` (ownership documented) |
-| **Active operational** | Parent's officers hold legal roles in subsidiary; shared infrastructure or personnel | `major` (with additional penalty) |
-| **Data routing through parent** | User data is processed by or routed through the parent's jurisdiction | **Re-evaluate G1** — may constitute a shell structure |
+| Entanglement Level              | Indicator                                                                            | Reservation Severity                                  |
+|---------------------------------|--------------------------------------------------------------------------------------|-------------------------------------------------------|
+| **Passive financial**           | PE firm holds shares; European management, staff, and infrastructure unchanged       | `major` (ownership documented)                        |
+| **Active operational**          | Parent's officers hold legal roles in subsidiary; shared infrastructure or personnel | `major` (with additional penalty)                     |
+| **Data routing through parent** | User data is processed by or routed through the parent's jurisdiction                | **Re-evaluate G1** — may constitute a shell structure |
 
 4. **G1 re-evaluation trigger** — If investigation reveals the European entity functions as a pass-through for a non-European parent (data routing, shared infrastructure, parent officers directing operations), the entry must be re-evaluated under G1 (Genuine headquarters). A legal entity that cannot independently resist compulsion from its parent is not a genuine European headquarters.
 
@@ -57,15 +57,15 @@ The GDPR legal shield that justifies Tier 1 classification depends on the Europe
 
 Every proposed alternative must pass ALL of the following. Failure on any single criterion results in denial.
 
-| # | Criterion | What It Means | Example Denial |
-|---|---|---|---|
-| G1 | **Genuine headquarters** | The actual corporate entity (not a shell or subsidiary) must be headquartered in an accepted jurisdiction. Beneficial ownership is traced. | Cryptostorm: `.is` domain but registered in Vancouver, Canada |
-| G2 | **Active maintenance** | The service/software must be alive and receiving updates. No abandoned projects. | — |
-| G3 | **Functional replacement** | Must serve a similar purpose to an identified US product (`replacesUS` field required). | — |
-| G4 | **Independent product** | Must not be a thin wrapper or reskin of a US service. Must not route data through US infrastructure without transparency. | — |
-| G5 | **Usable offering** | Must have a publicly available product. No pre-alpha, no vaporware. | — |
-| G6 | **Open-source (Tier 2 only)** | Non-European entries require `openSourceLevel: 'full'` — both client and server code publicly available under an OSI-approved license. | Hubitat Elevation: US-based, closed-source |
-| G7 | **No sanctions exposure** | Revenue must not ultimately flow to sanctioned jurisdictions or beneficial owners. EU Regulation 833/2014 and equivalent apply. | ONLYOFFICE: Russian beneficial ownership behind Latvian shell |
+| #  | Criterion                           | What It Means                                                                                                                                                                                                                  | Example Denial                                                                                         |
+|----|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
+| G1 | **Genuine headquarters**            | The actual corporate entity (not a shell or subsidiary) must be headquartered in an accepted jurisdiction. Beneficial ownership is traced.                                                                                     | Cryptostorm: `.is` domain but registered in Vancouver, Canada                                          |
+| G2 | **Active maintenance**              | The service/software must be alive and receiving updates. No abandoned projects.                                                                                                                                               | —                                                                                                      |
+| G3 | **Functional replacement**          | Must serve a similar purpose to an identified US product (`replacesUS` field required).                                                                                                                                        | —                                                                                                      |
+| G4 | **Independent product**             | Must not be a thin wrapper or reskin of a US service. Must not route data through US infrastructure without transparency.                                                                                                      | —                                                                                                      |
+| G5 | **Usable offering**                 | Must have a publicly available product. No pre-alpha, no vaporware.                                                                                                                                                            | —                                                                                                      |
+| G6 | **Open-source (Tier 2 only)**       | Non-European entries require `openSourceLevel: 'full'` — both client and server code publicly available under an OSI-approved license.                                                                                         | Hubitat Elevation: US-based, closed-source                                                             |
+| G7 | **No sanctions exposure**           | Revenue must not ultimately flow to sanctioned jurisdictions or beneficial owners. EU Regulation 833/2014 and equivalent apply.                                                                                                | ONLYOFFICE: Russian beneficial ownership behind Latvian shell                                          |
 | G8 | **No disqualifying trust concerns** | Founders/owners must not have serious criminal or regulatory enforcement history that undermines the product's trustworthiness. Evaluated in context — severity, relevance to the product, and time since incident all matter. | Cryptostorm: founder's cocaine smuggling conviction + honeypot suspicions + pseudo-anonymous operators |
 
 ### A Note on G8 (Trust Concerns)
@@ -90,11 +90,11 @@ Alternatives that pass all gateway criteria are scored on a 1-10 scale. The form
 
 Open-source transparency is the strongest signal of trustworthiness after jurisdiction.
 
-| Level | Points | What It Means |
-|---|---|---|
-| **Full open-source** | 3 | Client AND server code publicly available under OSI-approved license. Anyone can audit, fork, or self-host. |
-| **Partial open-source** | 2 | Client code is open but server/backend is proprietary (e.g., Tuta, Proton). Users can verify client behavior but must trust the server. |
-| **Proprietary** | 1 | Closed-source. Privacy and security claims cannot be independently verified. |
+| Level                   | Points | What It Means                                                                                                                           |
+|-------------------------|--------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| **Full open-source**    | 3      | Client AND server code publicly available under OSI-approved license. Anyone can audit, fork, or self-host.                             |
+| **Partial open-source** | 2      | Client code is open but server/backend is proprietary (e.g., Tuta, Proton). Users can verify client behavior but must trust the server. |
+| **Proprietary**         | 1      | Closed-source. Privacy and security claims cannot be independently verified.                                                            |
 
 **Preference order: full open-source > partial open-source > proprietary.** This is reflected directly in the score.
 
@@ -102,30 +102,30 @@ Open-source transparency is the strongest signal of trustworthiness after jurisd
 
 Jurisdiction scoring follows a trust hierarchy rooted in the project's threat model (FISA Section 702, CLOUD Act, EO 12333). EU member states under GDPR provide the strongest legal shield. European non-EU countries (CH, NO, GB, IS) have adequacy decisions but are not directly bound by GDPR. Sanctioned or authoritarian jurisdictions (RU, CN, etc.) are denied at the gateway level (G7) and never scored.
 
-| Jurisdiction | Points | Rationale |
-|---|---|---|
-| EU member state | 4 | Direct GDPR applicability, EU court jurisdiction |
-| European non-EU (CH, NO, GB, IS) | 3 | Adequacy decisions, strong privacy laws, but not directly GDPR-bound |
-| Pan-European (`eu`) | 3 | Cross-border entity, not tied to a single EU member state |
-| Other (non-European, non-US) | 2 | No European legal framework, but also no FISA/CLOUD Act exposure |
-| United States | 1 | FISA 702, CLOUD Act, EO 12333 — structural threat to European users' data |
-| Sanctioned/authoritarian | — | Denied at gateway (G7), not scored |
+| Jurisdiction                     | Points | Rationale                                                                 |
+|----------------------------------|--------|---------------------------------------------------------------------------|
+| EU member state                  | 4      | Direct GDPR applicability, EU court jurisdiction                          |
+| European non-EU (CH, NO, GB, IS) | 3      | Adequacy decisions, strong privacy laws, but not directly GDPR-bound      |
+| Pan-European (`eu`)              | 3      | Cross-border entity, not tied to a single EU member state                 |
+| Other (non-European, non-US)     | 2      | No European legal framework, but also no FISA/CLOUD Act exposure          |
+| United States                    | 1      | FISA 702, CLOUD Act, EO 12333 — structural threat to European users' data |
+| Sanctioned/authoritarian         | —      | Denied at gateway (G7), not scored                                        |
 
 ### Privacy Signals (0-2 points)
 
-| Signal Group | Points | Tags |
-|---|---|---|
-| Primary privacy | +1 (if any match) | `privacy`, `gdpr`, `encryption`, `zero-knowledge`, `no-logs` |
-| Secondary privacy | +1 (if any match) | `offline`, `federated`, `local` |
+| Signal Group      | Points            | Tags                                                         |
+|-------------------|-------------------|--------------------------------------------------------------|
+| Primary privacy   | +1 (if any match) | `privacy`, `gdpr`, `encryption`, `zero-knowledge`, `no-logs` |
+| Secondary privacy | +1 (if any match) | `offline`, `federated`, `local`                              |
 
 ### Sovereignty Bonus (0-2 points)
 
 Software that can be run entirely on infrastructure the user controls — whether a self-hosted server or a local device — provides **technical sovereignty** on top of any legal protections. Even if a European SaaS provider is compromised, self-hosted data stays on your infrastructure. This breaks the FISA compulsion chain: there is no third-party company to serve with a data request.
 
-| Condition | Points |
-|---|---|
-| `selfHostable: true` | +2 |
-| Not self-hostable (default) | 0 |
+| Condition                   | Points |
+|-----------------------------|--------|
+| `selfHostable: true`        | +2     |
+| Not self-hostable (default) | 0      |
 
 The `selfHostable` field is `true` when the software can be fully operated on user-controlled infrastructure (own server, own device) without relying on any third-party server for core functionality. This includes:
 - **Server software with self-hosting support** — Nextcloud, Mastodon, Jitsi, Vaultwarden, etc.
@@ -138,11 +138,11 @@ It does **not** include SaaS-only services, client applications that depend on a
 
 Reservations reduce the trust score based on severity. The values below are the **maximum** penalty per reservation — the actual deduction may be lower depending on context, mitigating factors, and how many reservations compound.
 
-| Severity | Max Penalty | When Applied |
-|---|---|---|
-| Major | up to -3 | Serious incidents, systemic issues, or critical trust failures |
-| Moderate | up to -2 | Notable concerns that users should be aware of |
-| Minor | up to -1 | Small caveats or historical incidents with limited ongoing impact |
+| Severity | Max Penalty | When Applied                                                      |
+|----------|-------------|-------------------------------------------------------------------|
+| Major    | up to -3    | Serious incidents, systemic issues, or critical trust failures    |
+| Moderate | up to -2    | Notable concerns that users should be aware of                    |
+| Minor    | up to -1    | Small caveats or historical incidents with limited ongoing impact |
 
 ### US Hard Cap
 
@@ -160,15 +160,15 @@ Not every concern warrants denial. The reservation system documents non-disquali
 
 ### When to Add a Reservation (Instead of Denying)
 
-| Situation | Action |
-|---|---|
-| Company has a concerning incident but remains otherwise trustworthy | Add reservation |
-| Product has a dependency on US infrastructure for one feature | Add reservation |
-| Terms of service contain unusual clauses | Add reservation |
-| Privacy practices have a specific gap (e.g., analytics enabled by default) | Add reservation |
-| Founder has severe criminal history AND product is unverifiable AND no accountability | **Deny** (G8) |
-| Company is a shell hiding non-European ownership | **Deny** (G1) |
-| Revenue flows to sanctioned jurisdiction | **Deny** (G7) |
+| Situation                                                                             | Action          |
+|---------------------------------------------------------------------------------------|-----------------|
+| Company has a concerning incident but remains otherwise trustworthy                   | Add reservation |
+| Product has a dependency on US infrastructure for one feature                         | Add reservation |
+| Terms of service contain unusual clauses                                              | Add reservation |
+| Privacy practices have a specific gap (e.g., analytics enabled by default)            | Add reservation |
+| Founder has severe criminal history AND product is unverifiable AND no accountability | **Deny** (G8)   |
+| Company is a shell hiding non-European ownership                                      | **Deny** (G1)   |
+| Revenue flows to sanctioned jurisdiction                                              | **Deny** (G7)   |
 
 ### Reservation Fields
 
@@ -218,15 +218,15 @@ Is the company genuinely headquartered in Europe?
 
 ## Examples Demonstrating Consistency
 
-| Alternative | Country | Open Source | Outcome | Reasoning |
-|---|---|---|---|---|
-| **Nextcloud** | DE | Full | Included (score ~9.8) | European, fully open-source, privacy-focused |
-| **Netcup** | DE | None | Included (lower score) | European jurisdiction provides trust baseline; proprietary is penalized in score but allowed |
-| **Bitwarden** | US | Full | Included (self-hostable, cap lifted) | Non-European, but fully open-source + self-hostable breaks FISA compulsion chain; US cap does not apply |
-| **black.com** | AT | None | Included (with reservations) | European jurisdiction provides trust baseline; proprietary + founder SEC history documented as reservations, not denial |
-| **Hubitat** | US | None | Not eligible | Non-European AND proprietary — fails G6 |
-| **Cryptostorm** | CA | — | Denied | Fails G1: claimed Iceland but actually Vancouver, Canada. Also fails G8. |
-| **ONLYOFFICE** | RU (via LV shell) | Full | Denied | Fails G1 (shell company) and G7 (sanctions exposure to Russia) |
+| Alternative     | Country           | Open Source | Outcome                              | Reasoning                                                                                                               |
+|-----------------|-------------------|-------------|--------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| **Nextcloud**   | DE                | Full        | Included (score ~9.8)                | European, fully open-source, privacy-focused                                                                            |
+| **Netcup**      | DE                | None        | Included (lower score)               | European jurisdiction provides trust baseline; proprietary is penalized in score but allowed                            |
+| **Bitwarden**   | US                | Full        | Included (self-hostable, cap lifted) | Non-European, but fully open-source + self-hostable breaks FISA compulsion chain; US cap does not apply                 |
+| **black.com**   | AT                | None        | Included (with reservations)         | European jurisdiction provides trust baseline; proprietary + founder SEC history documented as reservations, not denial |
+| **Hubitat**     | US                | None        | Not eligible                         | Non-European AND proprietary — fails G6                                                                                 |
+| **Cryptostorm** | CA                | —           | Denied                               | Fails G1: claimed Iceland but actually Vancouver, Canada. Also fails G8.                                                |
+| **ONLYOFFICE**  | RU (via LV shell) | Full        | Denied                               | Fails G1 (shell company) and G7 (sanctions exposure to Russia)                                                          |
 
 ---
 
