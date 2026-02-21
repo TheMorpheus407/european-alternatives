@@ -13,6 +13,7 @@ import {
   BASE_SCORES,
   CLASS_CAPS,
   AD_SURVEILLANCE_CAP,
+  CUMULATIVE_PENALTY_CAP,
   DIMENSION_MAXES,
   DIMENSION_BASELINE_FRACTION,
   NON_VETTED_DIMENSION_FRACTION,
@@ -64,22 +65,55 @@ export function getRecencyMultiplier(date?: string): number {
  * Compute per-dimension breakdown from reservations and positive signals.
  * Each dimension starts at a baseline fraction of MAX, penalties subtract
  * (with recency decay), positive signals add back. Effective is clamped to [0, max].
+ *
+ * A global cumulative penalty cap (CUMULATIVE_PENALTY_CAP) is applied before
+ * dimensional allocation: if total penalties across all tiers exceed the cap,
+ * each tier's penalties are scaled down proportionally.
+ *
+ * Penalties from reservations whose IDs are in `capExemptIds` bypass the cap
+ * and are applied at full value (used for structural penalties like the
+ * non-vetted dimension discount).
  */
 export function computeDimensions(
   reservations: Reservation[],
   signals: PositiveSignal[],
+  capExemptIds?: Set<string>,
 ): Record<PenaltyTier, DimensionBreakdown> {
   const result = {} as Record<PenaltyTier, DimensionBreakdown>;
 
+  // First pass: compute raw penalty sums per tier, separating capped and exempt
+  const cappedPenalties = {} as Record<PenaltyTier, number>;
+  const exemptPenalties = {} as Record<PenaltyTier, number>;
   for (const tier of PENALTY_TIERS) {
-    const max = DIMENSION_MAXES[tier];
-
-    let penaltySum = 0;
+    let cappedSum = 0;
+    let exemptSum = 0;
     for (const r of reservations) {
       if (r.penalty && r.penalty.tier === tier) {
-        penaltySum += r.penalty.amount * getRecencyMultiplier(r.date);
+        const effective = r.penalty.amount * getRecencyMultiplier(r.date);
+        if (capExemptIds?.has(r.id)) {
+          exemptSum += effective;
+        } else {
+          cappedSum += effective;
+        }
       }
     }
+    cappedPenalties[tier] = cappedSum;
+    exemptPenalties[tier] = exemptSum;
+  }
+
+  // Apply cumulative penalty cap to non-exempt penalties only
+  let totalCappedPenalties = 0;
+  for (const tier of PENALTY_TIERS) {
+    totalCappedPenalties += cappedPenalties[tier];
+  }
+  const penaltyScale = totalCappedPenalties > CUMULATIVE_PENALTY_CAP
+    ? CUMULATIVE_PENALTY_CAP / totalCappedPenalties
+    : 1;
+
+  // Second pass: compute dimensions with capped + exempt penalties
+  for (const tier of PENALTY_TIERS) {
+    const max = DIMENSION_MAXES[tier];
+    const penaltySum = cappedPenalties[tier] * penaltyScale + exemptPenalties[tier];
 
     let signalSum = 0;
     for (const s of signals) {
@@ -103,9 +137,10 @@ export function calculateTrustScoreV11(
   reservations: Reservation[],
   signals: PositiveSignal[],
   isAdSurveillance?: boolean,
+  capExemptIds?: Set<string>,
 ): V11ScoringResult {
   const baseScore = BASE_SCORES[baseClass];
-  const dimensions = computeDimensions(reservations, signals);
+  const dimensions = computeDimensions(reservations, signals, capExemptIds);
 
   let operationalTotal = 0;
   let penaltyTotal = 0;
@@ -254,7 +289,8 @@ export function calculateSimpleTrustScore(alt: {
   const reservationsWithPenalties = withEstimatedPenalties(alt.reservations ?? []);
   const estimatedSignals = estimateSignals(alt);
 
-  // Non-vetted: create virtual discount penalties so dimensions start at fraction of max
+  // Non-vetted: create virtual discount penalties so dimensions start at fraction of max.
+  // These are structural, not trust penalties — exempt them from the cumulative penalty cap.
   const discountReservations: Reservation[] = PENALTY_TIERS.map((tier) => ({
     id: `_non-vetted-discount-${tier}`,
     text: 'Non-vetted dimension discount',
@@ -264,11 +300,14 @@ export function calculateSimpleTrustScore(alt: {
       amount: DIMENSION_MAXES[tier] * DIMENSION_BASELINE_FRACTION * (1 - NON_VETTED_DIMENSION_FRACTION),
     },
   }));
+  const capExemptIds = new Set(discountReservations.map((r) => r.id));
 
   return calculateTrustScoreV11(
     baseClass,
     [...discountReservations, ...reservationsWithPenalties],
     estimatedSignals,
+    undefined,
+    capExemptIds,
   );
 }
 

@@ -115,6 +115,7 @@ export type TrustScoreStatus = 'pending' | 'ready';
 
 export interface DimensionBreakdown {
   max: number;
+  /** Effective penalties after cumulative penalty cap scaling (not raw). */
   penalties: number;
   signals: number;
   effective: number;

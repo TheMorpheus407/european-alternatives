@@ -8,6 +8,7 @@ First off — thank you for being here. Every contribution helps build a more vi
 - [Ways to Contribute](#ways-to-contribute)
 - [Adding an Alternative](#adding-an-alternative)
 - [Adding a New Category](#adding-a-new-category)
+- [Trust Scoring](#trust-scoring)
 - [Code Contributions](#code-contributions)
 - [Design Contributions](#design-contributions)
 - [Development Setup](#development-setup)
@@ -74,8 +75,11 @@ Gather the following about the alternative:
 | `foundedYear`      | No       | `2016`                                                   |
 | `headquartersCity` | No       | `"Stuttgart"`                                            |
 | `license`          | No       | `"AGPL-3.0"`                                             |
+| `reservations`     | No       | Known concerns — see [Trust Scoring](#trust-scoring)     |
 
 `sourceCodeUrl` can point to any public repository host (GitHub, Codeberg, GitLab, Forgejo, or self-hosted Git).
+
+**Trust scores are computed automatically.** You do not need to set `trustScore` or `trustScoreStatus`. New alternatives will show "Trust Score Pending" until they are vetted. If you know of documented concerns, you can add `reservations` -- see the [Trust Scoring](#trust-scoring) section for the format.
 
 ### Step 2: Add the Entry
 
@@ -194,6 +198,75 @@ In `src/i18n/locales/{de,en}/data.json`, add an entry to the `catagories`
 ### Step 3: Update Filters (If Needed)
 
 The filter component in `src/components/Filters.tsx` dynamically reads categories from the data file, so no changes should be needed there. Verify by running the dev server.
+
+---
+
+## Trust Scoring
+
+Every alternative on the site has a trust score (0-10). These scores are computed automatically by the Alignment v2 scoring engine -- you never hardcode them.
+
+### How It Works (Overview)
+
+Trust scores are built from two components:
+
+1. **Base alignment score** -- determined by jurisdiction and open-source status (e.g., a fully open-source project scores higher than a proprietary EU company, which scores higher than a US company).
+
+2. **Operational score** -- computed across four dimensions, each with its own maximum:
+
+   | Dimension       | Max Points | What It Covers                                              |
+   |-----------------|------------|-------------------------------------------------------------|
+   | **Security**    | 12         | Audits, disclosure processes, encryption, vulnerability handling |
+   | **Governance**  | 8          | Ownership clarity, legal transparency, regulatory compliance |
+   | **Reliability** | 6          | Uptime track record, incident response, maintenance maturity |
+   | **Contract**    | 6          | Data portability, cancellation terms, lock-in risk          |
+
+   Each dimension starts at 50% of its maximum. **Reservations** (documented concerns) subtract points. **Positive signals** (verified strengths like certifications or audit results) add points back. The effective score per dimension is clamped between 0 and the dimension maximum.
+
+Scoring constants live in `src/data/scoringConfig.ts`. Positive signals live in `src/data/positiveSignals.ts`.
+
+### What Contributors Need to Know
+
+**You do not need to compute trust scores.** When you add a new alternative, it will display "Trust Score Pending" on the site until a maintainer or scoring agent vets it with a full deep-research review.
+
+If you know about a concern worth documenting (e.g., a past data breach, a restrictive license change, or a privacy incident), you can add a **reservation** to your entry. Here's the format:
+
+```typescript
+reservations: [
+  {
+    id: 'past-data-breach-2023',
+    text: 'Suffered a data breach in March 2023 affecting 50,000 accounts.',
+    textDe: 'Datenpanne im Maerz 2023 mit 50.000 betroffenen Konten.',
+    severity: 'major',
+    date: '2023-03-15',
+    sourceUrl: 'https://example.com/breach-disclosure',
+  },
+],
+```
+
+The fields you should provide:
+
+| Field       | Required | Description                                                       |
+|-------------|----------|-------------------------------------------------------------------|
+| `id`        | Yes      | Unique kebab-case identifier for the reservation                  |
+| `text`      | Yes      | English description of the concern                                |
+| `textDe`    | No       | German translation (maintainers can add this later)               |
+| `severity`  | Yes      | `minor`, `moderate`, or `major` -- based on impact, not tone      |
+| `date`      | No       | ISO date (`YYYY-MM-DD`) if the concern is tied to a specific event |
+| `sourceUrl` | No       | Link to a reputable source documenting the concern                |
+
+### What Contributors Should NOT Do
+
+- **Don't assign penalty tiers or amounts** -- the `penalty` field on reservations (which maps concerns to scoring dimensions like `security` or `governance`) is handled by maintainers and scoring agents. Just provide the reservation with a severity.
+- **Don't assign trust scores manually** -- scores are always computed by the engine.
+- **Don't add positive signals** -- these require vetted deep-research documents and are added by maintainers.
+
+### Severity Guidelines
+
+| Severity     | When to Use                                                             | Examples                                              |
+|--------------|-------------------------------------------------------------------------|-------------------------------------------------------|
+| `minor`      | Low-impact caveat, worth monitoring but not alarming                    | Optional telemetry enabled by default, minor ToS quirk |
+| `moderate`   | Meaningful trust cost, but mitigable or partially addressed             | Past incident with good response, limited data export  |
+| `major`      | Structural or high-impact risk                                          | Data breach, hostile license change, ownership opacity  |
 
 ---
 
@@ -412,7 +485,7 @@ refactor: extract filter logic into custom hook
 
 ## What Makes a Good Alternative
 
-We use a transparent, documented decision framework. For the full criteria (including the two-tier system, scoring formula, and denial triggers), see [**DECISION_MATRIX.md**](DECISION_MATRIX.md).
+We use a transparent, documented decision framework. For the full criteria (including the two-tier system, gateway checks, and denial triggers), see [**DECISION_MATRIX.md**](DECISION_MATRIX.md). For how trust scores are computed, see the [Trust Scoring](#trust-scoring) section above.
 
 The short version — when adding an alternative, please verify:
 

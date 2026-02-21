@@ -23,6 +23,10 @@ export const CLASS_CAPS: Record<BaseClass, number> = {
 // Core ad-surveillance business model cap
 export const AD_SURVEILLANCE_CAP = 45;
 
+// Total effective penalties (after recency decay) are capped at this value.
+// No alternative loses more than CUMULATIVE_PENALTY_CAP points from penalties.
+export const CUMULATIVE_PENALTY_CAP = 15;
+
 // Per-dimension maximum operational scores (total = 32)
 export const DIMENSION_MAXES: Record<PenaltyTier, number> = {
   security: 12,
