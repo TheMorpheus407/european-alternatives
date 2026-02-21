@@ -21,7 +21,7 @@ export const researchAlternatives: Alternative[] = [
     },
     "isOpenSource": true,
     "openSourceLevel": "partial",
-    "openSourceAuditUrl": "https://github.com/orgs/AirVPN/repositories",
+    "openSourceAuditUrl": "https://github.com/AirVPN",
     "tags": [
       "vpn",
       "paid",

@@ -1,12 +1,3 @@
-// Strict privacy tag definitions — single source of truth for trust scoring.
-// Only tags in these lists contribute to the privacy-signal component of the trust score.
-// Types are exported for the planned audit script (see issue #163 point 4).
-export const PRIMARY_PRIVACY_TAGS = ['privacy', 'gdpr', 'encryption', 'zero-knowledge', 'no-logs'] as const;
-export const SECONDARY_PRIVACY_TAGS = ['offline', 'federated', 'local'] as const;
-export type PrimaryPrivacyTag = typeof PRIMARY_PRIVACY_TAGS[number];
-export type SecondaryPrivacyTag = typeof SECONDARY_PRIVACY_TAGS[number];
-export type PrivacyTag = PrimaryPrivacyTag | SecondaryPrivacyTag;
-
 export interface AlternativeActionLink {
   label: string;
   url: string;
@@ -37,6 +28,7 @@ export interface Alternative {
   headquartersCity?: string;
   license?: string;
   reservations?: Reservation[];
+  positiveSignals?: PositiveSignal[];
   trustScore?: number;
   trustScoreStatus?: TrustScoreStatus;
   trustScoreBreakdown?: TrustScoreBreakdown;
@@ -59,6 +51,11 @@ export interface Reservation {
   severity: ReservationSeverity;
   date?: string;
   sourceUrl?: string;
+  // If this reservation carries a trust-score penalty (omit for informational-only reservations)
+  penalty?: {
+    tier: PenaltyTier;
+    amount: number;   // positive number (will be subtracted from trust score)
+  };
 }
 
 // Tier 1: EU member states + European non-EU (CH, NO, GB, IS)
@@ -116,13 +113,41 @@ export type OpenSourceLevel = 'full' | 'partial' | 'none';
 export type ReservationSeverity = 'minor' | 'moderate' | 'major';
 export type TrustScoreStatus = 'pending' | 'ready';
 
+export interface DimensionBreakdown {
+  max: number;
+  penalties: number;
+  signals: number;
+  effective: number;
+}
+
 export interface TrustScoreBreakdown {
-  jurisdiction: number;
-  openness: number;
-  privacySignals: number;
-  sovereigntyBonus: number;
-  reservationPenalty: number;
-  usCapApplied: boolean;
+  baseClass: BaseClass;
+  baseScore: number;
+  dimensions: Record<PenaltyTier, DimensionBreakdown>;
+  operationalTotal: number;
+  penaltyTotal: number;
+  signalTotal: number;
+  capApplied: number | null;
+  finalScore100: number;
+}
+
+// --- Alignment v2 scoring types ---
+
+export type BaseClass = 'foss' | 'eu' | 'nonEU' | 'rest' | 'us' | 'autocracy';
+export type PenaltyTier = 'security' | 'governance' | 'reliability' | 'contract';
+
+export interface PositiveSignal {
+  id: string;
+  text: string;
+  textDe?: string;
+  dimension: PenaltyTier;
+  amount: number;
+  sourceUrl: string;
+}
+
+export interface ScoringMetadata {
+  baseClassOverride?: BaseClass;
+  isAdSurveillance?: boolean;
 }
 
 export type SortBy = 'trustScore' | 'name' | 'country' | 'category';

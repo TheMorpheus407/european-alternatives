@@ -79,6 +79,7 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
     ? getTrustBadgeClass(alternative.trustScore)
     : '';
   const hasReservations = (alternative.reservations?.length ?? 0) > 0;
+  const hasPositiveSignals = (alternative.positiveSignals?.length ?? 0) > 0;
   const fallbackUSVendorComparisons: USVendorComparison[] = alternative.replacesUS.map((name) => ({
       id: `us-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`,
       name,
@@ -315,6 +316,33 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
                         {reservation.sourceUrl && (
                           <a
                             href={reservation.sourceUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="alt-detail-source-link"
+                          >
+                            {t('browse:card.reservationSource')}
+                          </a>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {hasPositiveSignals && (
+                <div className="alt-detail-section">
+                  <h4 className="alt-detail-title">{t('browse:card.positiveSignals')}</h4>
+                  <ul className="alt-detail-signals">
+                    {alternative.positiveSignals?.map((signal) => (
+                      <li key={signal.id} className="alt-detail-signal-item">
+                        <p className="alt-detail-text">
+                          {i18n.language.startsWith('de') && signal.textDe
+                            ? signal.textDe
+                            : signal.text}
+                        </p>
+                        {signal.sourceUrl && (
+                          <a
+                            href={signal.sourceUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="alt-detail-source-link"

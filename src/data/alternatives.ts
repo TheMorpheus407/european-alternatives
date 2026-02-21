@@ -1,8 +1,10 @@
 import type { Alternative, OpenSourceLevel } from '../types';
 import { manualAlternatives } from './manualAlternatives';
 import { researchAlternatives } from './researchAlternatives';
-import { reservationsById, trustScoresById } from './trustOverrides';
-import { calculateTrustScore } from '../utils/trustScore';
+import { reservationsById } from './trustOverrides';
+import { scoringMetadata } from './scoringData';
+import { positiveSignalsById } from './positiveSignals';
+import { assignBaseClass, calculateTrustScoreV11, withEstimatedPenalties } from '../utils/trustScore';
 import { buildUSVendorComparisons } from './usVendors';
 
 const pricingLikeTagKeys = new Set(['free', 'freemium', 'paid', 'free-and-paid']);
@@ -86,16 +88,27 @@ function mergeCatalogue(): Alternative[] {
     const tags = [openSourceTagByLevel[openSourceLevel], ...sanitizeTags(alternative.tags)];
     const replacesUS = normalizeReplacesUS(alternative.replacesUS, alternative.category);
     const reservations = alternative.reservations ?? reservationsById[alternative.id] ?? [];
-    const computedTrustScore = calculateTrustScore({
-      country: alternative.country,
-      isOpenSource,
-      openSourceLevel,
-      tags,
-      selfHostable: alternative.selfHostable,
-      reservations,
-    });
-    const trustScore = trustScoresById[alternative.id];
-    const trustScoreStatus = trustScore != null ? 'ready' as const : 'pending' as const;
+
+    // Compute trust score using v2 engine
+    const metadata = scoringMetadata[alternative.id];
+    const signals = positiveSignalsById[alternative.id] ?? [];
+    const isVetted = metadata || signals.length > 0;
+    let trustScore: number | undefined;
+    let trustScoreStatus: 'ready' | 'pending';
+    let trustScoreBreakdown: Alternative['trustScoreBreakdown'];
+
+    if (isVetted) {
+      // Vetted alternative — signals + reservations drive dimensional scores
+      const baseClass = metadata?.baseClassOverride
+        ?? assignBaseClass(alternative.country, openSourceLevel);
+      const result = calculateTrustScoreV11(baseClass, withEstimatedPenalties(reservations), signals);
+      trustScore = result.score;
+      trustScoreStatus = 'ready';
+      trustScoreBreakdown = result.breakdown;
+    } else {
+      trustScore = undefined;
+      trustScoreStatus = 'pending';
+    }
 
     return {
       ...alternative,
@@ -105,10 +118,11 @@ function mergeCatalogue(): Alternative[] {
       replacesUS,
       logo: alternative.logo ?? `/logos/${alternative.id}.svg`,
       reservations,
+      positiveSignals: signals.length > 0 ? signals : undefined,
       trustScore,
       usVendorComparisons: buildUSVendorComparisons(replacesUS),
       trustScoreStatus,
-      trustScoreBreakdown: trustScoreStatus === 'pending' ? computedTrustScore.breakdown : undefined,
+      trustScoreBreakdown,
     };
   });
 

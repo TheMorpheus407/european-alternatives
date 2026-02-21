@@ -43,6 +43,7 @@
     "trustScorePending": "Trust-Score Pending",
     "trustScoreLabel": "Trust Score: {{score}}/10",
     "reservations": "Reservations",
+    "positiveSignals": "Positive Signals",
     "reservationSource": "Source"
   }
 }
