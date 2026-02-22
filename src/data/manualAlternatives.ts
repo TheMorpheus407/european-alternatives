@@ -1310,5 +1310,27 @@ export const manualAlternatives: Alternative[] = [
     headquartersCity: 'London',
     license: 'AGPL-3.0',
   },
+  {
+    id: 'anytype',
+    name: 'Anytype',
+    description:
+        'Decentralized, open-source, peer-to-peer project management software and knowledge database for collaboration and documentation based in Switzerland. You can host a remote backup node yourself or purchase one from the Any Association.',
+    localizedDescriptions: {
+      de: 'Dezentrale, quelloffene, peer-to-peer Projektmanagement-Software und Wissensdatenbank für die Zusammenarbeit und Dokumentation mit Sitz in der Schweiz. Einen Remote-Backup-Knoten kann man selbst hosten, oder bei der Any Association kaufen.',
+    },
+    website: 'https://anytype.io/',
+    logo: '/logos/anytype.svg',
+    country: 'ch',
+    category: 'project-management',
+    replacesUS: ['Notion', 'Microsoft Loop', 'Confluence'],
+    isOpenSource: true,
+    openSourceLevel: 'full',
+    sourceCodeUrl: 'https://github.com/anyproto',
+    pricing: 'freemium',
+    tags: ['project-management', 'collaboration', 'wiki', 'notion', 'self-hosted', 'decentralized'],
+    foundedYear: 2021,
+    headquartersCity: 'Zug',
+    license: 'Any Source Available License, ASAL',
+  },
 ];
  
