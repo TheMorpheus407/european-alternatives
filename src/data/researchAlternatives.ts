@@ -1452,6 +1452,40 @@ export const researchAlternatives: Alternative[] = [
     "license": "MIT"
   },
   {
+    "id": "opencloud",
+    "name": "OpenCloud",
+    "category": "cloud-storage",
+    "country": "de",
+    "replacesUS": [
+      "Google Drive",
+      "Dropbox",
+      "Microsoft OneDrive"
+    ],
+    "pricing": "freemium",
+    "selfHostable": true,
+    "website": "https://opencloud.eu",
+    "description": "German open-source file management and collaboration platform from Heinlein Gruppe (Berlin). Fork of ownCloud Infinite Scale, offering secure file storage, sharing, and real-time collaboration with GDPR compliance. Available as self-hosted solution or via partner SaaS.",
+    "localizedDescriptions": {
+      "de": "Deutsche Open-Source-Plattform für Dateimanagement und Zusammenarbeit von der Heinlein Gruppe (Berlin). Abspaltung von ownCloud Infinite Scale, bietet sichere Dateispeicherung, Teilen und Echtzeit-Zusammenarbeit mit DSGVO-Konformität. Als Self-Hosted-Lösung oder über Partner-SaaS verfügbar."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "openSourceAuditUrl": "https://github.com/opencloud-eu",
+    "tags": [
+      "cloud-storage",
+      "file-sync",
+      "open-source",
+      "self-hosted",
+      "collaboration",
+      "gdpr",
+      "data-sovereignty"
+    ],
+    "foundedYear": 2025,
+    "headquartersCity": "Berlin",
+    "sourceCodeUrl": "https://github.com/opencloud-eu/opencloud",
+    "license": "Apache-2.0"
+  },
+  {
     "id": "openproject",
     "name": "OpenProject",
     "category": "project-management",
