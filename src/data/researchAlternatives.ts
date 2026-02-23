@@ -448,6 +448,33 @@ export const researchAlternatives: Alternative[] = [
     "license": "MPL-2.0"
   },
   {
+    "id": "freeoffice",
+    "name": "FreeOffice",
+    "category": "office-suite",
+    "country": "de",
+    "replacesUS": [
+      "Microsoft Office"
+    ],
+    "pricing": "free",
+    "website": "https://www.freeoffice.com",
+    "description": "German-developed free office suite by SoftMaker, offering TextMaker (word processor), PlanMaker (spreadsheet), and Presentations. Features seamless Microsoft Office file format compatibility (DOCX, XLSX, PPTX) and is free for both personal and business use.",
+    "localizedDescriptions": {
+      "de": "Deutsche Entwickler bieten mit FreeOffice eine kostenlose Bürosoftware von SoftMaker mit TextMaker (Textverarbeitung), PlanMaker (Tabellenkalkulation) und Präsentationen. Nahtlose Kompatibilität mit Microsoft Office Dateiformaten (DOCX, XLSX, PPTX) für private und geschäftliche Nutzung."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "office-suite",
+      "free",
+      "microsoft-office",
+      "compatibility",
+      "desktop"
+    ],
+    "foundedYear": 1987,
+    "headquartersCity": "Nuremberg",
+    "license": "Proprietary (free version)"
+  },
+  {
     "id": "gajim",
     "name": "Gajim",
     "category": "messaging",
