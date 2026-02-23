@@ -378,6 +378,38 @@ export const researchAlternatives: Alternative[] = [
     "license": "uses FOSS"
   },
   {
+    "id": "quad9",
+    "name": "Quad9",
+    "category": "dns",
+    "country": "ch",
+    "replacesUS": [
+      "Google DNS",
+      "Cloudflare DNS",
+      "OpenDNS"
+    ],
+    "pricing": "free",
+    "website": "https://quad9.net",
+    "description": "Swiss-based not-for-profit DNS recursive resolver operated by the Quad9 Foundation, focusing on security and privacy. Blocks malicious domains using threat intelligence from multiple providers while not logging user IP addresses. Operates globally with 230+ resolver clusters in 110+ countries. GDPR-compliant and subject to Swiss privacy law.",
+    "localizedDescriptions": {
+      "de": "Schweizerischer nicht-kommerzieller DNS-Recursive-Resolver, betrieben von der Quad9 Foundation mit Fokus auf Sicherheit und Datenschutz. Blockiert bösartige Domains mittels Threat Intelligence von mehreren Anbietern, ohne Benutzer-IP-Adressen zu protokollieren. Global operierend mit über 230 Resolver-Clustern in über 110 Ländern. DSGVO-konform und schweizerischem Datenschutzrecht unterworfen."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://github.com/Quad9DNS",
+    "tags": [
+      "dns",
+      "free",
+      "privacy",
+      "gdpr",
+      "security",
+      "malware-blocking",
+      "non-profit"
+    ],
+    "foundedYear": 2016,
+    "headquartersCity": "Zürich",
+    "sourceCodeUrl": "https://github.com/Quad9DNS"
+  },
+  {
     "id": "element",
     "name": "Element",
     "category": "messaging",
