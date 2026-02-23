@@ -733,6 +733,37 @@ export const researchAlternatives: Alternative[] = [
     "license": "MIT"
   },
   {
+    "id": "forgejo",
+    "name": "Forgejo",
+    "category": "version-control",
+    "country": "de",
+    "replacesUS": [
+      "GitHub",
+      "GitLab"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://forgejo.org",
+    "description": "Self-hosted lightweight software forge developed by the community under the umbrella of Codeberg e.V., a democratic non-profit organization based in Berlin, Germany. A hard fork of Gitea focused on privacy, federation, and community ownership. 100% Free Software under GPLv3+ license.",
+    "localizedDescriptions": {
+      "de": "Selbst gehostete, leichtgewichtige Software-Forge, entwickelt von der Community unter dem Dach von Codeberg e.V., einer demokratischen gemeinnützigen Organisation mit Sitz in Berlin. Ein Hard-Fork von Gitea mit Fokus auf Datenschutz, Föderation und Community-Eigentum. 100% Freie Software unter GPLv3+-Lizenz."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://codeberg.org/forgejo/forgejo",
+    "tags": [
+      "version-control",
+      "devops",
+      "git",
+      "self-hosted",
+      "open-source",
+      "federation"
+    ],
+    "foundedYear": 2022,
+    "headquartersCity": "Berlin",
+    "license": "GPL-3.0-or-later"
+  },
+  {
     "id": "hetzner",
     "name": "Hetzner",
     "category": "hosting",
