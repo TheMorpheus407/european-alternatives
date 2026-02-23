@@ -820,6 +820,29 @@ export const manualAlternatives: Alternative[] = [
     license: 'AGPL-3.0',
   },
   {
+    id: 'iobroker',
+    name: 'ioBroker',
+    description:
+      'Open-source smart home automation platform that connects various devices, systems, and protocols through adapters. Supports automation via JavaScript scripts or visual tools, with local-first control and self-hosting capabilities.',
+    localizedDescriptions: {
+      de: 'Open-Source-Smart-Home-Automatisierungsplattform, die verschiedene Geräte, Systeme und Protokolle über Adapter verbindet. Unterstützt Automatisierung via JavaScript-Skripten oder visuellen Tools mit Local-First-Steuerung und Self-Hosting-Fähigkeiten.',
+    },
+    website: 'https://www.iobroker.net',
+    logo: '/logos/iobroker.svg',
+    country: 'de',
+    category: 'smart-home',
+    replacesUS: ['Google Home', 'Amazon Alexa', 'Apple HomeKit', 'Samsung SmartThings'],
+    isOpenSource: true,
+    openSourceLevel: 'full',
+    sourceCodeUrl: 'https://github.com/ioBroker/ioBroker',
+    pricing: 'free',
+    selfHostable: true,
+    tags: ['smart-home', 'home-automation', 'iot', 'open-source', 'self-hosted', 'local-control'],
+    foundedYear: 2014,
+    headquartersCity: 'Altleiningen',
+    license: 'MIT',
+  },
+  {
     id: 'stratum',
     name: 'Stratum',
     description:
