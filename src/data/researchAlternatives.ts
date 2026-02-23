@@ -103,6 +103,37 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0 / AGPL-3.0"
   },
   {
+    "id": "brave",
+    "name": "Brave",
+    "category": "browser",
+    "country": "us",
+    "replacesUS": [
+      "Google Chrome",
+      "Safari",
+      "Edge"
+    ],
+    "pricing": "free",
+    "website": "https://brave.com",
+    "description": "Privacy-focused web browser built on Chromium, developed by Brave Software Inc. in San Francisco. Blocks ads and trackers by default, offers built-in VPN, and includes Brave Search. Client code is open source under MPL-2.0.",
+    "localizedDescriptions": {
+      "de": "Datenschutzorientierter Webbrowser, basierend auf Chromium, entwickelt von Brave Software Inc. in San Francisco. Blockiert standardmäßig Werbung und Tracker, bietet integrierte VPN-Suche und Brave Search. Client-Code ist quelloffen unter MPL-2.0."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/brave/brave-browser",
+    "tags": [
+      "browser",
+      "free",
+      "open-source",
+      "privacy",
+      "google-chrome",
+      "safari"
+    ],
+    "foundedYear": 2015,
+    "headquartersCity": "San Francisco",
+    "license": "MPL-2.0"
+  },
+  {
     "id": "black-forest-labs",
     "name": "Black Forest Labs",
     "category": "ai-ml",
