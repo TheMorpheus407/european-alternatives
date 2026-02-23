@@ -2010,6 +2010,36 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0 (clients); proprietary server"
   },
   {
+    "id": "teleguard",
+    "name": "TeleGuard",
+    "category": "messaging",
+    "country": "ch",
+    "replacesUS": [
+      "WhatsApp"
+    ],
+    "pricing": "free",
+    "website": "https://teleguard.com",
+    "description": "Swiss end-to-end encrypted messenger operated by Swisscows AG, featuring no phone-number or email requirement for registration. Uses Salsa20 encryption for all messages and calls, with servers located in Swiss data centers. Messages are deleted immediately after delivery, with no metadata or IP addresses stored.",
+    "localizedDescriptions": {
+      "de": "Schweizer Ende-zu-Ende-verschlüsselter Messenger von Swisscows AG, ohne Telefonnummer oder E-Mail bei der Registrierung. Nutzt Salsa20-Verschlüsselung für alle Nachrichten und Anrufe, Server in Schweizer Rechenzentren. Nachrichten werden sofort nach Zustellung gelöscht, keine Metadaten oder IP-Adressen gespeichert."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "messaging",
+      "free",
+      "encryption",
+      "privacy",
+      "gdpr",
+      "swiss",
+      "whatsapp",
+      "no-phone-number"
+    ],
+    "foundedYear": 2021,
+    "headquartersCity": "Egnach",
+    "license": "Proprietary (free, donation-funded)"
+  },
+  {
     "id": "tor-browser",
     "name": "Tor Browser",
     "category": "browser",
