@@ -177,6 +177,13 @@ export const categories: Category[] = [
     usGiants: ['GitHub', 'GitLab'],
   },
   {
+    id: 'music-streaming',
+    name: 'Music Streaming',
+    description: 'Music streaming platforms and services',
+    emoji: '🎵',
+    usGiants: ['Apple Music', 'YouTube Music'],
+  },
+  {
     id: 'other',
     name: 'Other',
     description: 'Other tools and services',

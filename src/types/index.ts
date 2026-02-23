@@ -100,6 +100,7 @@ export type CategoryId =
   | 'smart-home'
   | 'ecommerce'
   | 'version-control'
+  | 'music-streaming'
   | 'other';
 
 export interface Category {

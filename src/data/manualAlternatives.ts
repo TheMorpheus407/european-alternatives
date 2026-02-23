@@ -91,6 +91,27 @@ export const manualAlternatives: Alternative[] = [
     headquartersCity: 'Paris',
   },
   {
+    id: 'qobuz',
+    name: 'Qobuz',
+    description:
+      'French high-fidelity music streaming and download service offering lossless CD-quality and Hi-Res audio (up to 24-bit/192kHz). Founded in 2007, operated by Xandrie SA in Pantin, France. Artists receive significantly higher per-stream royalties than competitors, with transparent payout reporting.',
+    localizedDescriptions: {
+      de: 'Französischer Hi-Fi-Musik-Streaming- und Download-Dienst mit verlustfreier CD-Qualität und Hi-Res-Audio (bis zu 24-Bit/192kHz). Gegründet 2007, betrieben von Xandrie SA in Pantin, Frankreich. Künstler erhalten deutlich höhere Tantiemen pro Stream als Wettbewerber mit transparenter Auszahlungsberichterstattung.',
+    },
+    website: 'https://www.qobuz.com',
+    logo: '/logos/qobuz.svg',
+    country: 'fr',
+    category: 'music-streaming',
+    replacesUS: ['Apple Music', 'YouTube Music'],
+    isOpenSource: false,
+    openSourceLevel: 'none',
+    pricing: 'paid',
+    tags: ['music-streaming', 'hi-res-audio', 'lossless', 'french', 'artist-royalties'],
+    foundedYear: 2007,
+    headquartersCity: 'Pantin',
+    trustScoreStatus: 'pending',
+  },
+  {
     id: 'lumo',
     name: 'Lumo by Proton',
     description:
