@@ -1310,5 +1310,29 @@ export const manualAlternatives: Alternative[] = [
     headquartersCity: 'London',
     license: 'AGPL-3.0',
   },
+  {
+    id: 'zammad',
+    name: 'Zammad',
+    description:
+      'German open-source helpdesk and customer support system with multi-channel communication (email, chat, phone, WhatsApp, Telegram). Developed by Zammad GmbH in Berlin, with source code owned by the Zammad Foundation. Offers both SaaS and self-hosted deployment options.',
+    localizedDescriptions: {
+      de: 'Deutsches quelloffenes Helpdesk- und Kundensupport-System mit Multi-Channel-Kommunikation (E-Mail, Chat, Telefon, WhatsApp, Telegram). Entwickelt von Zammad GmbH in Berlin, mit Quellcode im Besitz der Zammad Foundation. Bietet sowohl SaaS als auch Self-Hosting-Optionen.',
+    },
+    website: 'https://zammad.com',
+    logo: '/logos/zammad.svg',
+    country: 'de',
+    category: 'project-management',
+    replacesUS: ['Zendesk', 'Freshdesk', 'Jira'],
+    isOpenSource: true,
+    openSourceLevel: 'full',
+    sourceCodeUrl: 'https://github.com/zammad/zammad',
+    pricing: 'free',
+    selfHostable: true,
+    tags: ['helpdesk', 'support', 'ticketing', 'gdpr', 'self-hosted', 'open-source', 'collaboration'],
+    foundedYear: 2016,
+    headquartersCity: 'Berlin',
+    license: 'AGPL-3.0',
+    trustScoreStatus: 'pending',
+  },
 ];
  
