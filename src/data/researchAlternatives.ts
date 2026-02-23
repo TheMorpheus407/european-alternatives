@@ -134,6 +134,39 @@ export const researchAlternatives: Alternative[] = [
     "license": "MPL-2.0"
   },
   {
+    "id": "borgbackup",
+    "name": "BorgBackup",
+    "category": "cloud-storage",
+    "country": "eu",
+    "logo": "/logos/borgbackup.svg",
+    "replacesUS": [
+      "Time Machine",
+      "iCloud Backup",
+      "Backblaze"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://www.borgbackup.org",
+    "description": "Open-source deduplicating backup archiver with compression and authenticated encryption. Provides efficient space-efficient storage through content-defined chunking, supports client-side AES-256 encryption (AES-OCB or chacha20-poly1305), and runs on Linux, macOS, BSD, and WSL. Self-hostable with no vendor lock-in.",
+    "localizedDescriptions": {
+      "de": "Open-Source-Backup-Archivierer mit Deduplizierung, Komprimierung und authentifizierter Verschlüsselung. Bietet platzsparende Speicherung durch Content-defined Chunking, unterstützt clientseitige AES-256-Verschlüsselung (AES-OCB oder chacha20-poly1305) und läuft auf Linux, macOS, BSD und WSL. Self-Hosting ohne Anbieterbindung möglich."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/borgbackup/borg",
+    "tags": [
+      "backup",
+      "encryption",
+      "deduplication",
+      "open-source",
+      "self-hosted",
+      "cli"
+    ],
+    "foundedYear": 2015,
+    "headquartersCity": "International",
+    "license": "BSD-3-Clause"
+  },
+  {
     "id": "black-forest-labs",
     "name": "Black Forest Labs",
     "category": "ai-ml",
