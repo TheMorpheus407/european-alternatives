@@ -54,7 +54,7 @@ This is not about nationalism. It's about choice, transparency, and building a h
 
 ### Prerequisites
 
-- Node.js 20+
+- Node.js 20.19.0+
 - npm
 
 ### Local Development
