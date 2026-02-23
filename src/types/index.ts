@@ -89,6 +89,7 @@ export type CategoryId =
   | 'desktop-os'
   | 'mobile-os'
   | 'vpn'
+  | 'dns'
   | 'analytics'
   | 'project-management'
   | 'password-manager'

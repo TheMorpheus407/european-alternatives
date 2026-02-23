@@ -100,6 +100,13 @@ export const categories: Category[] = [
     usGiants: ['ExpressVPN'],
   },
   {
+    id: 'dns',
+    name: 'DNS Services',
+    description: 'Privacy-focused DNS resolvers',
+    emoji: '🌍',
+    usGiants: ['Google DNS', 'Cloudflare DNS', 'OpenDNS'],
+  },
+  {
     id: 'analytics',
     name: 'Analytics',
     description: 'Web and product analytics',

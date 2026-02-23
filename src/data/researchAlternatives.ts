@@ -231,6 +231,35 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0"
   },
   {
+    "id": "dns4eu",
+    "name": "DNS4EU",
+    "category": "dns",
+    "country": "cz",
+    "replacesUS": [
+      "Google DNS",
+      "Cloudflare DNS",
+      "OpenDNS"
+    ],
+    "pricing": "free",
+    "website": "https://joindns4.eu",
+    "description": "EU-funded DNS resolver service led by Czech cybersecurity company Whalebone, providing privacy-compliant and secure DNS resolution to strengthen European digital sovereignty. The public service offers multiple configuration options including basic protection, child protection, and ad blocking. Operated from Brno, Czech Republic with data processing entirely within the EU.",
+    "localizedDescriptions": {
+      "de": "EU-finanzierter DNS-Resolver-Dienst unter der Führung des tschechischen Cybersicherheitsunternehmens Whalebone, der datenschutzkonforme und sichere DNS-Auflösung für europäische digitale Souveränität bietet. Der öffentliche Dienst bietet mehrere Konfigurationsoptionen einschließlich grundlegendem Schutz, Kinderschutz und Werbeblocker. Betrieben von Brno, Tschechische Republik, mit Datenverarbeitung vollständig innerhalb der EU."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "dns",
+      "free",
+      "privacy",
+      "gdpr",
+      "digital-sovereignty",
+      "eu-funded"
+    ],
+    "foundedYear": 2023,
+    "headquartersCity": "Brno"
+  },
+  {
     "id": "datalix",
     "name": "Datalix",
     "category": "hosting",
