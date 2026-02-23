@@ -702,6 +702,37 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0"
   },
   {
+    "id": "gitea",
+    "name": "Gitea",
+    "category": "version-control",
+    "country": "us",
+    "replacesUS": [
+      "GitHub",
+      "GitLab"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://about.gitea.com",
+    "description": "Open-source self-hosted Git service forked from Gogs in 2016. Provides Git hosting, code review, team collaboration, package registry, and CI/CD. Fully open source under MIT license with active development (53.8k GitHub stars). Can be self-hosted on any infrastructure or used via Gitea Cloud/Enterprise.",
+    "localizedDescriptions": {
+      "de": "Open-Source selbst gehosteter Git-Dienst, geforkt von Gogs im Jahr 2016. Bietet Git-Hosting, Code-Review, Team-Zusammenarbeit, Paket-Registry und CI/CD. Vollständig quelloffen unter MIT-Lizenz mit aktiver Entwicklung (53.8k GitHub-Sterne). Kann selbst gehostet oder über Gitea Cloud/Enterprise genutzt werden."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/go-gitea/gitea",
+    "tags": [
+      "version-control",
+      "devops",
+      "git",
+      "ci-cd",
+      "self-hosted",
+      "open-source"
+    ],
+    "foundedYear": 2016,
+    "headquartersCity": "US (CommitGo, Inc.)",
+    "license": "MIT"
+  },
+  {
     "id": "hetzner",
     "name": "Hetzner",
     "category": "hosting",
