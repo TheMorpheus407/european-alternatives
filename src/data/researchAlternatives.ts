@@ -443,6 +443,40 @@ export const researchAlternatives: Alternative[] = [
     "sourceCodeUrl": "https://github.com/Quad9DNS"
   },
   {
+    "id": "restic",
+    "name": "Restic",
+    "category": "cloud-storage",
+    "country": "de",
+    "logo": "/logos/restic.svg",
+    "replacesUS": [
+      "Time Machine",
+      "iCloud Backup",
+      "Backblaze",
+      "Carbonite"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://restic.net",
+    "description": "Fast, secure, and efficient open-source backup program with client-side encryption and deduplication. Supports Linux, macOS, Windows, BSD, and stores backups locally, via SFTP, REST servers, or S3-compatible cloud storage. Designed with a strong threat model assuming untrusted storage backends.",
+    "localizedDescriptions": {
+      "de": "Schnelles, sicheres und effizientes Open-Source-Backup-Programm mit clientseitiger Verschlüsselung und Deduplizierung. Unterstützt Linux, macOS, Windows, BSD und speichert Backups lokal, über SFTP, REST-Server oder S3-kompatible Cloud-Speicher. Entworfen mit einem starken Bedrohungsmodell für nicht vertrauenswürdige Speicher-Backends."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/restic/restic",
+    "tags": [
+      "backup",
+      "encryption",
+      "deduplication",
+      "open-source",
+      "self-hosted",
+      "cli"
+    ],
+    "foundedYear": 2014,
+    "headquartersCity": "Aachen",
+    "license": "BSD-2-Clause"
+  },
+  {
     "id": "element",
     "name": "Element",
     "category": "messaging",
