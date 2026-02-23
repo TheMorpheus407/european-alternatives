@@ -2200,6 +2200,44 @@ export const researchAlternatives: Alternative[] = [
     "sourceCodeUrl": "https://github.com/stalwartlabs/stalwart",
     "license": "AGPL-3.0 / Enterprise License"
   },{
+    "id": "super-productivity",
+    "name": "Super Productivity",
+    "category": "project-management",
+    "country": "de",
+    "replacesUS": [
+      "Todoist",
+      "Microsoft ToDo"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://super-productivity.com",
+    "description": "Open-source todo list and time tracking app with Pomodoro timer, task scheduling, and GitHub/Jira integration. Developed by a German individual developer, local-first with no data collection. Supports cross-platform sync via WebDAV and Dropbox.",
+    "localizedDescriptions": {
+      "de": "Open-Source Todo-Liste und Zeiterfassungs-App mit Pomodoro-Timer, Aufgabenplanung und GitHub/Jira-Integration. Entwickelt von einem deutschen Einzelentwickler, lokal zuerst ohne Datensammlung. Plattformübergreifende Synchronisierung via WebDAV und Dropbox."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "openSourceAuditUrl": "https://github.com/super-productivity/super-productivity",
+    "tags": [
+      "project-management",
+      "todo",
+      "time-tracking",
+      "pomodoro",
+      "open-source",
+      "free",
+      "privacy",
+      "self-hosted",
+      "linux",
+      "windows",
+      "macos",
+      "android",
+      "ios"
+    ],
+    "foundedYear": 2017,
+    "headquartersCity": "Berlin",
+    "sourceCodeUrl": "https://github.com/super-productivity/super-productivity",
+    "license": "MIT"
+  },{
     "id": "vivaldi",
     "name": "Vivaldi",
     "category": "browser",
