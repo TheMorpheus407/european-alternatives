@@ -385,6 +385,38 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0 (clients/SDKs); proprietary backend"
   },
   {
+    "id": "firefox",
+    "name": "Firefox",
+    "category": "browser",
+    "country": "us",
+    "replacesUS": [
+      "Google Chrome",
+      "Safari",
+      "Edge"
+    ],
+    "pricing": "free",
+    "website": "https://www.firefox.com",
+    "description": "Open-source web browser developed by the Mozilla Foundation, a US-based non-profit organization. Firefox prioritizes privacy with built-in tracker blocking, fingerprinting protection, and regular security updates. Available for desktop and mobile platforms.",
+    "localizedDescriptions": {
+      "de": "Open-Source-Webbrowser, entwickelt von der Mozilla Foundation, einer US-basierten Non-Profit-Organisation. Firefox legt Wert auf Datenschutz mit integriertem Tracker-Blocker, Fingerprinting-Schutz und regelmäßigen Sicherheitsupdates. Verfügbar für Desktop und Mobile."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "tags": [
+      "browser",
+      "free",
+      "open-source",
+      "privacy",
+      "non-profit",
+      "google-chrome",
+      "safari"
+    ],
+    "foundedYear": 2004,
+    "headquartersCity": "San Francisco",
+    "sourceCodeUrl": "https://hg.mozilla.org/mozilla-central",
+    "license": "MPL-2.0"
+  },
+  {
     "id": "gajim",
     "name": "Gajim",
     "category": "messaging",
@@ -1675,6 +1707,34 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Wroclaw",
     "sourceCodeUrl": "https://github.com/saleor/saleor",
     "license": "BSD-3-Clause"
+  },
+  {
+    "id": "sailfish-os",
+    "name": "Sailfish OS",
+    "category": "mobile-os",
+    "country": "fi",
+    "replacesUS": [
+      "Android",
+      "iOS"
+    ],
+    "pricing": "paid",
+    "website": "https://sailfishos.org",
+    "description": "Linux-based European mobile operating system developed by Finnish company Jolla. Features a custom gesture-based UI and proprietary Android compatibility layer (AppSupport). Partially open-source with core components available on GitHub.",
+    "localizedDescriptions": {
+      "de": "Linux-basiertes europäisches mobiles Betriebssystem, entwickelt von der finnischen Firma Jolla. Verfügt über eine benutzerdefinierte gestenbasierte UI und eine proprietäre Android-Kompatibilitätsschicht (AppSupport). Teilweise Open-Source mit Kernkomponenten auf GitHub."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "partial",
+    "sourceCodeUrl": "https://github.com/sailfishos",
+    "tags": [
+      "mobile-os",
+      "paid",
+      "linux",
+      "privacy",
+      "european"
+    ],
+    "foundedYear": 2013,
+    "headquartersCity": "Tampere"
   },
   {
     "id": "scaleway",
