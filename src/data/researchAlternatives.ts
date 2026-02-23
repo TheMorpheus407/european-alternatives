@@ -1983,6 +1983,37 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0 (clients); proprietary server"
   },
   {
+    "id": "tor-browser",
+    "name": "Tor Browser",
+    "category": "browser",
+    "country": "us",
+    "replacesUS": [
+      "Google Chrome",
+      "Microsoft Edge"
+    ],
+    "pricing": "free",
+    "website": "https://www.torproject.org",
+    "description": "Free and open-source browser focused on anonymity, developed by the US-based Tor Project. Uses the Tor network to route traffic through volunteer-run relays, protecting user identity and circumventing censorship. Ships with built-in privacy protections including tracker blocking, fingerprinting resistance, and multi-layer encryption.",
+    "localizedDescriptions": {
+      "de": "Kostenloser, quelloffener Browser mit Fokus auf Anonymität, entwickelt vom US-amerikanischen Tor Project. Nutzt das Tor-Netzwerk, um den Datenverkehr über von Freiwilligen betriebene Relays zu leiten, die Identität der Nutzer zu schützen und Zensur zu umgehen. Wird mit integrierten Datenschutzfunktionen ausgeliefert, darunter Tracker-Blockierung, Fingerprinting-Resistenz und Mehrfachverschlüsselung."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "tags": [
+      "browser",
+      "free",
+      "open-source",
+      "privacy",
+      "anonymity",
+      "censorship-circumvention",
+      "tor",
+      "encryption"
+    ],
+    "foundedYear": 2006,
+    "sourceCodeUrl": "https://gitlab.torproject.org/tpo/applications/tor-browser",
+    "license": "BSD-3-Clause (based on Mozilla Firefox)"
+  },
+  {
     "id": "vikunja",
     "name": "Vikunja",
     "category": "project-management",
