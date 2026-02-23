@@ -36,6 +36,40 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0 (Eddie client); proprietary server infrastructure"
   },
   {
+    "id": "aliasvault",
+    "name": "AliasVault",
+    "category": "password-manager",
+    "country": "nl",
+    "replacesUS": [
+      "1Password",
+      "Dashlane",
+      "LastPass"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://aliasvault.net",
+    "description": "Privacy-first password manager with built-in email aliasing. End-to-end encrypted with zero-knowledge architecture. Self-hostable via Docker. Founded by Dutch developer with 15 years privacy tool experience.",
+    "localizedDescriptions": {
+      "de": "Datenschutzorientierter Passwortmanager mit integrierter E-Mail-Alias-Funktion. Ende-zu-Ende-verschlüsselt mit Zero-Knowledge-Architektur. Self-Hosting via Docker möglich. Gegründet von einem niederländischen Entwickler mit 15 Jahren Erfahrung im Datenschutzbereich."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "openSourceAuditUrl": "https://github.com/aliasvault/aliasvault",
+    "tags": [
+      "password-manager",
+      "free",
+      "open-source",
+      "encryption",
+      "self-hosted",
+      "email-alias",
+      "privacy"
+    ],
+    "foundedYear": 2024,
+    "headquartersCity": "Netherlands",
+    "sourceCodeUrl": "https://github.com/aliasvault/aliasvault",
+    "license": "AGPL-3.0"
+  },
+  {
     "id": "bitwarden",
     "name": "Bitwarden",
     "category": "password-manager",
@@ -164,6 +198,38 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Paris",
     "sourceCodeUrl": "https://github.com/cryptpad/cryptpad",
     "license": "AGPL-3.0"
+  },
+  {
+    "id": "datalix",
+    "name": "Datalix",
+    "category": "hosting",
+    "country": "de",
+    "replacesUS": [
+      "AWS",
+      "Google Cloud",
+      "Azure",
+      "Cloudflare"
+    ],
+    "pricing": "paid",
+    "website": "https://datalix.de",
+    "description": "German hosting provider offering KVM servers (Xeon, Ryzen, Epyc), dedicated servers, gameservers (Minecraft, Factorio, Valheim, Rust), webhosting, Nextcloud hosting, colocation, and reseller options. Based in Estenfeld, Germany with servers in Equinix data centers (FR5, FR7, FR8) in Frankfurt. Operates on 100% renewable energy with Tier III certified infrastructure.",
+    "localizedDescriptions": {
+      "de": "Deutscher Hosting-Anbieter mit KVM-Servern (Xeon, Ryzen, Epyc), Dedicated Servern, Gameservern (Minecraft, Factorio, Valheim, Rust), Webhosting, Nextcloud-Hosting, Colocation und Reseller-Optionen. Sitz in Estenfeld, Deutschland, mit Servern in Equinix-Rechenzentren (FR5, FR7, FR8) in Frankfurt. Betrieb zu 100 % mit erneuerbarer Energie und Tier-III-zertifizierter Infrastruktur."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "hosting",
+      "paid",
+      "kvm",
+      "dedicated-server",
+      "webhosting",
+      "gameserver",
+      "nextcloud",
+      "gdpr"
+    ],
+    "foundedYear": 2022,
+    "headquartersCity": "Estenfeld"
   },
   {
     "id": "deepl",
@@ -317,6 +383,40 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Recklinghausen",
     "sourceCodeUrl": "https://github.com/FilenCloudDienste",
     "license": "AGPL-3.0 (clients/SDKs); proprietary backend"
+  },
+  {
+    "id": "gajim",
+    "name": "Gajim",
+    "category": "messaging",
+    "country": "eu",
+    "replacesUS": [
+      "WhatsApp",
+      "iMessage",
+      "Discord",
+      "Signal"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://gajim.org",
+    "description": "Free and fully featured desktop XMPP client for decentralized messaging. Gajim supports end-to-end encryption with OMEMO and OpenPGP, voice messages, file transfers, and group chats. Available for Windows, macOS, and Linux.",
+    "localizedDescriptions": {
+      "de": "Kostenloser, voll ausgestatteter Desktop-XMPP-Client für dezentrales Messaging. Gajim unterstützt Ende-zu-Ende-Verschlüsselung mit OMEMO und OpenPGP, Sprachnachrichten, Dateiübertragungen und Gruppenchats. Verfügbar für Windows, macOS und Linux."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "tags": [
+      "messaging",
+      "free",
+      "open-source",
+      "federated",
+      "xmpp",
+      "jabber",
+      "e2ee",
+      "desktop"
+    ],
+    "foundedYear": 2004,
+    "sourceCodeUrl": "https://dev.gajim.org/gajim/gajim",
+    "license": "GPL-3.0"
   },
   {
     "id": "friendica",
@@ -976,6 +1076,34 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Amsterdam (HQ); Vilnius (operations)",
     "sourceCodeUrl": "https://github.com/NordSecurity/nordvpn-linux",
     "license": "GPL-3.0 (Linux client); proprietary backend and infrastructure"
+  },
+  {
+    "id": "otto",
+    "name": "Otto",
+    "category": "ecommerce",
+    "country": "de",
+    "replacesUS": [
+      "Amazon",
+      "eBay"
+    ],
+    "pricing": "free",
+    "website": "https://otto.de",
+    "description": "German e-commerce company and online marketplace based in Hamburg, operating across Europe. Founded in 1949, Otto is one of the largest online retailers in Germany, offering fashion, furniture, electronics, and consumer goods. A genuine European alternative to Amazon and eBay for German-speaking markets.",
+    "localizedDescriptions": {
+      "de": "Deutsches E-Commerce-Unternehmen und Online-Marktplatz mit Sitz in Hamburg, operierend in ganz Europa. Gegründet 1949, ist Otto einer der größten Online-Händler Deutschlands und bietet Mode, Möbel, Elektronik und Gebrauchswaren. Eine echte europäische Alternative zu Amazon und eBay für den deutschsprachigen Raum."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "ecommerce",
+      "marketplace",
+      "retail",
+      "germany",
+      "amazon",
+      "ebay"
+    ],
+    "foundedYear": 1949,
+    "headquartersCity": "Hamburg"
   },
   {
     "id": "ollama",
@@ -1794,7 +1922,44 @@ export const researchAlternatives: Alternative[] = [
     "sourceCodeUrl": "https://github.com/go-vikunja/vikunja",
     "license": "AGPL-3.0"
   },
-  {
+    {
+    "id": "stalwart-mail-server",
+    "name": "Stalwart Mail Server",
+    "category": "email",
+    "country": "gb",
+    "replacesUS": [
+      "Gmail",
+      "Outlook",
+      "Yahoo Mail"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://stalw.art",
+    "description": "All-in-one open-source mail and collaboration server written in Rust. Supports IMAP, JMAP, SMTP, CalDAV, CardDAV and WebDAV protocols. Features built-in DMARC, DKIM, SPF, and ARC support, spam filtering, encryption at rest, and clustering support. Community edition is AGPL-3.0 licensed, with optional enterprise license for additional features.",
+    "localizedDescriptions": {
+      "de": "All-in-One Open-Source-Mail- und Kollaborationsserver in Rust. Unterstützt IMAP, JMAP, SMTP, CalDAV, CardDAV und WebDAV-Protokolle. Integrierte DMARC-, DKIM-, SPF- und ARC-Unterstützung, Spam-Filterung, Verschlüsselung im Ruhezustand und Cluster-Unterstützung. Community-Edition unter AGPL-3.0 lizenziert, mit optionaler Enterprise-Lizenz für zusätzliche Funktionen."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "tags": [
+      "email",
+      "mail-server",
+      "open-source",
+      "self-hosted",
+      "encryption",
+      "spam-filter",
+      "rust",
+      "imap",
+      "smtp",
+      "caldav",
+      "carddav",
+      "jmap"
+    ],
+    "foundedYear": 2020,
+    "headquartersCity": "London",
+    "sourceCodeUrl": "https://github.com/stalwartlabs/stalwart",
+    "license": "AGPL-3.0 / Enterprise License"
+  },{
     "id": "vivaldi",
     "name": "Vivaldi",
     "category": "browser",
