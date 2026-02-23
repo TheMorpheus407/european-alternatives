@@ -2137,9 +2137,12 @@ export const researchAlternatives: Alternative[] = [
     "category": "project-management",
     "country": "de",
     "replacesUS": [
+      "Todoist",
+      "Microsoft To-Do",
       "Trello",
       "Asana",
-      "Monday.com"
+      "Monday.com",
+      "ClickUp"
     ],
     "pricing": "free",
     "selfHostable": true,
