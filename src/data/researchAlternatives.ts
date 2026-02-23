@@ -411,6 +411,40 @@ export const researchAlternatives: Alternative[] = [
     "license": "uses FOSS"
   },
   {
+    "id": "duplicati",
+    "name": "Duplicati",
+    "category": "cloud-storage",
+    "country": "us",
+    "replacesUS": [
+      "Acronis",
+      "Backblaze",
+      "Carbonite",
+      "Time Machine",
+      "iCloud Backup"
+    ],
+    "pricing": "freemium",
+    "selfHostable": true,
+    "website": "https://www.duplicati.com",
+    "description": "Open-source, free backup client that stores securely encrypted, incremental, and compressed backups on cloud storage services and remote file servers. Supports AES-256 encryption, runs on Windows, macOS, and Linux, and integrates with 60+ storage backends including S3, Dropbox, Google Drive, and WebDAV. Founded by Danish developer Kenneth Skovhede, now operated by Duplicati Inc (San Francisco).",
+    "localizedDescriptions": {
+      "de": "Open-Source, kostenloser Backup-Client der sicher verschlüsselte, inkrementelle und komprimierte Backups auf Cloud-Speicherdiensten und Remote-Dateiservern speichert. Unterstützt AES-256-Verschlüsselung, läuft auf Windows, macOS und Linux und integriert sich mit über 60 Speicher-Backends einschliesslich S3, Dropbox, Google Drive und WebDAV. Gegründet vom dänischen Entwickler Kenneth Skovhede, jetzt betrieben von Duplicati Inc (San Francisco)."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/duplicati/duplicati",
+    "tags": [
+      "backup",
+      "encryption",
+      "deduplication",
+      "open-source",
+      "self-hosted",
+      "cloud-storage"
+    ],
+    "foundedYear": 2008,
+    "headquartersCity": "San Francisco",
+    "license": "MIT"
+  },
+  {
     "id": "quad9",
     "name": "Quad9",
     "category": "dns",
