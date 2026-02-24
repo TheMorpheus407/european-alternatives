@@ -474,6 +474,49 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Estenfeld"
   },
   {
+    "id": "dashserv",
+    "name": "dashserv",
+    "category": "hosting",
+    "country": "de",
+    "replacesUS": [
+      "AWS",
+      "Google Cloud",
+      "Azure",
+      "Cloudflare"
+    ],
+    "pricing": "paid",
+    "logo": "/logos/dashserv.svg",
+    "website": "https://dashserv.io",
+    "description": "German hosting provider offering KVM vServers (AMD Ryzen, Xeon Gold), dedicated servers, webhosting, domains, gameservers, and colocation. Operated by Realtox Media (Felix Gassan) with data centers in Düsseldorf (myLoc) and Frankfurt (NTT). All services include premium DDoS protection.",
+    "localizedDescriptions": {
+      "de": "Deutscher Hosting-Anbieter mit KVM vServern (AMD Ryzen, Xeon Gold), Dedicated Servern, Webhosting, Domains, Gameservern und Colocation. Betrieben von Realtox Media (Felix Gassan) mit Rechenzentren in Düsseldorf (myLoc) und Frankfurt (NTT). Alle Dienste inklusive Premium DDoS-Schutz."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "hosting",
+      "paid",
+      "kvm",
+      "vps",
+      "dedicated-server",
+      "webhosting",
+      "gameserver",
+      "ddos-protection",
+      "gdpr"
+    ],
+    "foundedYear": 2018,
+    "headquartersCity": "Hamburg",
+    "reservations": [
+      {
+        "id": "transaction-logging-issues",
+        "text": "The customer portal has reported transaction logging issues - transactions may not display correctly in the web interface. This is an operational/UX concern rather than a trust issue.",
+        "textDe": "Das Kunden-Portal hat Probleme mit der Transaktionsprotokollierung - Transaktionen werden möglicherweise nicht korrekt in der Weboberfläche angezeigt. Dies ist ein operatives/UX-Problem, kein Vertrauensproblem.",
+        "severity": "minor",
+        "sourceUrl": "https://github.com/TheMorpheus407/european-alternatives/issues/44"
+      }
+    ]
+  },
+  {
     "id": "deepl",
     "name": "DeepL",
     "category": "ai-ml",
