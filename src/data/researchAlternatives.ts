@@ -2646,6 +2646,36 @@ export const researchAlternatives: Alternative[] = [
     "license": "Apache-2.0"
   },
   {
+    "id": "co-maps",
+    "name": "CoMaps",
+    "category": "maps",
+    "country": "gb",
+    "replacesUS": [
+      "Google Maps",
+      "Apple Maps"
+    ],
+    "pricing": "free",
+    "website": "https://www.comaps.app",
+    "description": "Community-driven privacy-focused offline maps app forked from Organic Maps. Built by former Organic Maps contributors following governance concerns. Works completely offline with no tracking, no data collection, and no ads. Open source under Apache 2.0, funded by community donations.",
+    "localizedDescriptions": {
+      "de": "Community-getriebene, datenschutzfreundliche Offline-Karten-App, geforkt von Organic Maps. Entwickelt von ehemaligen Organic-Maps-Contributern nach Governance-Problemen. Funktioniert vollständig offline ohne Tracking, Datensammlung oder Werbung. Open Source unter Apache 2.0, finanziert durch Community-Spenden."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "tags": [
+      "maps",
+      "free",
+      "open-source",
+      "privacy",
+      "google-maps",
+      "apple-maps",
+      "offline"
+    ],
+    "foundedYear": 2025,
+    "sourceCodeUrl": "https://codeberg.org/comaps/comaps",
+    "license": "Apache-2.0"
+  },
+  {
     "id": "osmand",
     "name": "OsmAnd",
     "category": "maps",
