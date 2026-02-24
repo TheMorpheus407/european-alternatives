@@ -1438,6 +1438,41 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0"
   },
   {
+    "id": "conversations",
+    "name": "Conversations",
+    "category": "messaging",
+    "country": "de",
+    "replacesUS": [
+      "WhatsApp",
+      "iMessage",
+      "Discord",
+      "Signal"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://conversations.im",
+    "description": "Free and open-source Jabber/XMPP client for Android smartphones. Supports end-to-end encryption with OMEMO and OpenPGP, voice and video calls, file transfers, group chats, and location sharing. Available on Google Play and F-Droid. Developed by German freelance developer Daniel Gultsch.",
+    "localizedDescriptions": {
+      "de": "Kostenloser und quelloffener Jabber/XMPP-Client für Android-Smartphones. Unterstützt Ende-zu-Ende-Verschlüsselung mit OMEMO und OpenPGP, Sprach- und Videoanrufe, Dateiübertragungen, Gruppenchats und Standortfreigabe. Verfügbar auf Google Play und F-Droid. Entwickelt von deutschem Freelance-Entwickler Daniel Gultsch."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "tags": [
+      "messaging",
+      "free",
+      "open-source",
+      "federated",
+      "xmpp",
+      "jabber",
+      "e2ee",
+      "mobile",
+      "android"
+    ],
+    "foundedYear": 2014,
+    "sourceCodeUrl": "https://codeberg.org/iNPUTmice/Conversations",
+    "license": "GPL-3.0"
+  },
+  {
     "id": "ghostfolio",
     "name": "Ghostfolio",
     "category": "other",
