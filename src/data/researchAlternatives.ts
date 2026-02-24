@@ -828,6 +828,38 @@ export const researchAlternatives: Alternative[] = [
     "license": "MIT"
   },
   {
+    "id": "zapstore",
+    "name": "Zapstore",
+    "category": "mobile-os",
+    "country": "eu",
+    "replacesUS": [
+      "Google Play Store",
+      "App Store"
+    ],
+    "pricing": "free",
+    "website": "https://zapstore.dev",
+    "description": "Open-source decentralized app store powered by Nostr protocol. The social permissionless app store allows developers to publish apps directly to users without centralized approval. Features include developer signatures, Lightning Network payments (Zaps), user communities, and no review process. Built with Flutter for cross-platform support. MIT licensed.",
+    "localizedDescriptions": {
+      "de": "Open-Source dezentraler App-Store, betrieben durch das Nostr-Protokoll. Der soziale permissionless App-Store ermöglicht Entwicklern, Apps direkt ohne zentrale Genehmigung zu veröffentlichen. Funktionen umfassen Entwickler-Signaturen, Lightning-Network-Zahlungen (Zaps), Benutzer-Communities und keinen Prüfprozess. Entwickelt mit Flutter für plattformübergreifende Unterstützung. MIT-lizenziert."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/zapstore/zapstore",
+    "tags": [
+      "app-store",
+      "android",
+      "ios",
+      "foss",
+      "nostr",
+      "decentralized",
+      "lightning-network",
+      "permissionless"
+    ],
+    "foundedYear": 2023,
+    "headquartersCity": "Global community",
+    "license": "MIT"
+  },
+  {
     "id": "zulip",
     "name": "Zulip",
     "category": "messaging",
