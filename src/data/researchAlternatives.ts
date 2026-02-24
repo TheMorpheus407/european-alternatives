@@ -2067,6 +2067,39 @@ export const researchAlternatives: Alternative[] = [
     "license": "MIT (Team Edition); AGPL-3.0 (server)"
   },
   {
+    "id": "datawrapper",
+    "name": "Datawrapper",
+    "category": "analytics",
+    "country": "de",
+    "replacesUS": [
+      "Tableau",
+      "Microsoft Power BI",
+      "Looker",
+      "Google Data Studio"
+    ],
+    "pricing": "freemium",
+    "website": "https://www.datawrapper.de",
+    "description": "German web-based tool for creating charts, maps, and tables. Used by major news organizations including The New York Times, Washington Post, Reuters, and Die Zeit. Offers free tier with basic features and paid plans for teams with custom branding and self-hosting options.",
+    "localizedDescriptions": {
+      "de": "Deutsches webbasiertes Tool zur Erstellung von Diagrammen, Karten und Tabellen. Genutzt von großen Nachrichtenorganisationen wie The New York Times, Washington Post, Reuters und Die Zeit. Bietet kostenlose Basisversion und kostenpflichtige Tarife für Teams mit individueller Markenbindung und Self-Hosting-Optionen."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "partial",
+    "tags": [
+      "analytics",
+      "visualization",
+      "charts",
+      "maps",
+      "tables",
+      "data-visualization",
+      "journalism",
+      "german"
+    ],
+    "foundedYear": 2012,
+    "headquartersCity": "Berlin",
+    "sourceCodeUrl": "https://github.com/datawrapper"
+  },
+  {
     "id": "deltamaster",
     "name": "DeltaMaster",
     "category": "analytics",
