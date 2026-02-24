@@ -1321,6 +1321,36 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0"
   },
   {
+    "id": "liberapay",
+    "name": "Liberapay",
+    "logo": "/logos/liberapay.svg",
+    "category": "payments",
+    "country": "fr",
+    "replacesUS": [
+      "PayPal"
+    ],
+    "pricing": "free",
+    "website": "https://en.liberapay.com",
+    "description": "European recurrent donations platform helping creators and projects receive sustained funding. Founded as a French non-profit in 2015, Liberapay enables weekly/monthly/yearly donations without taking a cut. Full source code available under CC0 license.",
+    "localizedDescriptions": {
+      "de": "Europäische Plattform für wiederkehrende Spenden, die Ersteller und Projekte bei nachhaltiger Finanzierung unterstützt. 2015 als französische Non-Profit-Organisation gegründet, ermöglicht Liberapay wöchentliche/monatliche/jährliche Spenden ohne Provision. Vollständiger Quellcode unter CC0-Lizenz verfügbar."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/liberapay/liberapay.com",
+    "tags": [
+      "payments",
+      "donations",
+      "crowdfunding",
+      "open-source",
+      "non-profit",
+      "paypal"
+    ],
+    "foundedYear": 2015,
+    "headquartersCity": "Querrien",
+    "license": "CC0-1.0"
+  },
+  {
     "id": "discourse",
     "name": "Discourse",
     "category": "social-media",
