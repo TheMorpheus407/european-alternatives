@@ -2148,6 +2148,38 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0"
   },
   {
+    "id": "org-roam",
+    "name": "Org-roam",
+    "category": "other",
+    "country": "eu",
+    "replacesUS": [
+      "Obsidian",
+      "Roam Research",
+      "Logseq"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://www.orgroam.com",
+    "description": "Plain-text personal knowledge management system that brings Roam-like features to Emacs and Org-mode. Provides networked thought with backlinks, graph visualization, and full offline control. Data stored locally in plain org files with optional GPG encryption. Fully open source under GPL-3.0.",
+    "localizedDescriptions": {
+      "de": "Plain-Text Persönliches Wissensmanagementsystem, das Roam-ähnliche Funktionen in Emacs und Org-mode bringt. Bietet vernetztes Denken mit Backlinks, Graph-Visualisierung und volle Offline-Kontrolle. Daten werden lokal in Plain-Text-Org-Dateien mit optionaler GPG-Verschlüsselung gespeichert. Vollständig Open Source unter GPL-3.0."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "tags": [
+      "notes",
+      "knowledge-base",
+      "open-source",
+      "emacs",
+      "pkm",
+      "zettelkasten",
+      "offline"
+    ],
+    "foundedYear": 2020,
+    "sourceCodeUrl": "https://github.com/org-roam/org-roam",
+    "license": "GPL-3.0"
+  },
+  {
     "id": "organic-maps",
     "name": "Organic Maps",
     "category": "maps",
