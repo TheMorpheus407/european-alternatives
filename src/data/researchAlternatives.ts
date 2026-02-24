@@ -1822,6 +1822,36 @@ export const researchAlternatives: Alternative[] = [
     "license": "Apache-2.0"
   },
   {
+    "id": "readyou",
+    "name": "Read You",
+    "category": "other",
+    "country": "cn",
+    "replacesUS": [
+      "Google Reader",
+      "Feedly"
+    ],
+    "pricing": "free",
+    "selfHostable": false,
+    "website": "https://github.com/ReadYouApp/ReadYou",
+    "description": "An Android RSS reader presented in Material You style. Read You is a free and open-source feed reader that supports multiple account types including Fever, Google Reader API, FreshRSS, Miniflux, Tiny Tiny RSS, Inoreader, Feedly, and Feedbin. Features include article sync, notifications, OPML import/export, and full content parsing.",
+    "localizedDescriptions": {
+      "de": "Ein Android RSS-Reader im Material You Design. Read You ist ein kostenloser und quelloffener Feed-Reader, der mehrere Kontotypen unterstützt, darunter Fever, Google Reader API, FreshRSS, Miniflux, Tiny Tiny RSS, Inoreader, Feedly und Feedbin. Funktionen umfassen Artikel-Sync, Benachrichtigungen, OPML-Import/Export und Volltext-Parsing."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/ReadYouApp/ReadYou",
+    "tags": [
+      "rss",
+      "feed-reader",
+      "android",
+      "open-source",
+      "material-design",
+      "gpl-3"
+    ],
+    "foundedYear": 2022,
+    "license": "GPL-3.0"
+  },
+  {
     "id": "trilium",
     "name": "Trilium",
     "category": "other",

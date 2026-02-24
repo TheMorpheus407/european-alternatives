@@ -70,7 +70,7 @@ export type CountryCode =
   // Tier 1 — European non-EU
   | 'ch' | 'no' | 'gb' | 'is'
   // Tier 2 — Non-Tier-1 jurisdictions (extend as needed)
-  | 'ca' | 'us' | 'in' | 'sa' | 'mx'
+  | 'ca' | 'us' | 'in' | 'sa' | 'mx' | 'cn'
   // Meta
   | 'eu';
 
