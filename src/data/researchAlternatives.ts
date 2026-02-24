@@ -1260,6 +1260,39 @@ export const researchAlternatives: Alternative[] = [
     "license": "MIT (Vault, SDKs); proprietary core service"
   },
   {
+    "id": "kdenlive",
+    "name": "Kdenlive",
+    "category": "other",
+    "country": "de",
+    "replacesUS": [
+      "Adobe Premiere Pro",
+      "DaVinci Resolve",
+      "Final Cut Pro"
+    ],
+    "pricing": "free",
+    "website": "https://kdenlive.org",
+    "logo": "/logos/kdenlive.svg",
+    "description": "Free and open-source video editing software developed by KDE, a German non-profit organization. Based on MLT Framework and KDE Frameworks, it offers professional-grade features including multi-track editing, keyframe animation, proxy editing, and support for a wide range of formats via FFmpeg. Available on Linux, Windows, macOS, and FreeBSD.",
+    "localizedDescriptions": {
+      "de": "Freie und quelloffene Videoschnittsoftware, entwickelt von KDE, einer deutschen Non-Profit-Organisation. Basiert auf MLT Framework und KDE Frameworks, bietet professionelle Funktionen wie Multi-Track-Editing, Keyframe-Animation, Proxy-Editing und Unterstützung für zahlreiche Formate via FFmpeg. Verfügbar für Linux, Windows, macOS und FreeBSD."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://invent.kde.org/multimedia/kdenlive",
+    "tags": [
+      "video-editing",
+      "free",
+      "open-source",
+      "foss",
+      "kde",
+      "premiere-pro",
+      "davinci-resolve"
+    ],
+    "foundedYear": 2002,
+    "headquartersCity": "Berlin",
+    "license": "GPL-3.0-or-later"
+  },
+  {
     "id": "ionos",
     "name": "IONOS",
     "category": "hosting",
