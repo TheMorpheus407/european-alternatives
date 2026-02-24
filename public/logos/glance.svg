@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#4a90d9;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#7b68ee;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <text x="100" y="42" font-family="system-ui, -apple-system, sans-serif" font-size="38" font-weight="700" fill="url(#grad)" text-anchor="middle">glance</text>
-</svg>

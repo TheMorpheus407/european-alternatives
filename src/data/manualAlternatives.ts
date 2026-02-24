@@ -94,9 +94,9 @@ export const manualAlternatives: Alternative[] = [
     id: 'qobuz',
     name: 'Qobuz',
     description:
-      'French high-fidelity music streaming and download service offering lossless CD-quality and Hi-Res audio (up to 24-bit/192kHz). Founded in 2007, operated by Xandrie SA in Pantin, France. Artists receive significantly higher per-stream royalties than competitors, with transparent payout reporting.',
+      'French high-fidelity music streaming and download service offering lossless CD-quality and Hi-Res audio (up to 24-bit/192kHz). Founded in 2007 and operated by Xandrie SA in Pantin, France.',
     localizedDescriptions: {
-      de: 'Französischer Hi-Fi-Musik-Streaming- und Download-Dienst mit verlustfreier CD-Qualität und Hi-Res-Audio (bis zu 24-Bit/192kHz). Gegründet 2007, betrieben von Xandrie SA in Pantin, Frankreich. Künstler erhalten deutlich höhere Tantiemen pro Stream als Wettbewerber mit transparenter Auszahlungsberichterstattung.',
+      de: 'Französischer Hi-Fi-Musik-Streaming- und Download-Dienst mit verlustfreier CD-Qualität und Hi-Res-Audio (bis zu 24-Bit/192kHz). Gegründet 2007 und betrieben von Xandrie SA in Pantin, Frankreich.',
     },
     website: 'https://www.qobuz.com',
     logo: '/logos/qobuz.svg',
@@ -124,7 +124,7 @@ export const manualAlternatives: Alternative[] = [
     category: 'ai-ml',
     replacesUS: ['Grammarly', 'Ginger'],
     isOpenSource: true,
-    openSourceLevel: 'full',
+    openSourceLevel: 'partial',
     openSourceAuditUrl: 'https://github.com/languagetool-org/languagetool',
     sourceCodeUrl: 'https://github.com/languagetool-org/languagetool',
     pricing: 'freemium',
@@ -1283,9 +1283,9 @@ export const manualAlternatives: Alternative[] = [
     id: 'goneo',
     name: 'goneo',
     description:
-      'German web hosting provider offering affordable email hosting with custom domains, web hosting, Matrix chat servers, and domain registration. Servers located in Germany with GDPR compliance. Offers competitive pricing starting at €3.99/month for web hosting with unlimited email accounts.',
+      'German hosting provider offering email inboxes, domains, and web hosting from data centers in Germany. The company also markets Matrix-based collaboration services for teams. Focuses on GDPR-governed hosting for individuals and SMEs.',
     localizedDescriptions: {
-      de: 'Deutscher Webhosting-Anbieter mit günstigem E-Mail-Hosting mit eigener Domain, Webhosting, Matrix-Chat-Servern und Domainregistrierung. Server in Deutschland mit DSGVO-Konformität. Wettbewerbsfähige Preise ab 3,99 €/Monat für Webhosting mit unbegrenzten E-Mail-Konten.',
+      de: 'Deutscher Hosting-Anbieter mit E-Mail-Postfaechern, Domains und Webhosting aus Rechenzentren in Deutschland. Das Unternehmen bietet zudem Matrix-basierte Kollaborationsdienste fuer Teams an. Fokus auf DSGVO-konformes Hosting fuer Privatnutzer und KMU.',
     },
     website: 'https://www.goneo.de',
     logo: '/logos/goneo.svg',
@@ -1296,7 +1296,7 @@ export const manualAlternatives: Alternative[] = [
     openSourceLevel: 'none',
     pricing: 'paid',
     tags: ['hosting', 'email', 'domain', 'matrix', 'gdpr', 'german-hosted', 'affordable'],
-    foundedYear: 2004,
+    foundedYear: 2006,
     headquartersCity: 'Minden',
   },
   {
@@ -1530,9 +1530,9 @@ export const manualAlternatives: Alternative[] = [
     id: 'fairphone',
     name: 'Fairphone',
     description:
-      'Sustainable, modular smartphones from the Netherlands with repairable design, 5-year warranty, and 7 years of Android updates. Supports custom ROMs like /e/, CalyxOS, DivestOS, and LineageOS. Founded as a social enterprise with focus on ethical supply chain and fair labor conditions.',
+      'Sustainable, modular smartphones from the Netherlands with repairable design, a 5-year warranty, and long-term software support. Supports custom ROM ecosystems such as /e/OS and LineageOS. Founded as a social enterprise focused on ethical supply chains and fair labor conditions.',
     localizedDescriptions: {
-      de: 'Nachhaltige, modulare Smartphones aus den Niederlanden mit reparierbarem Design, 5 Jahren Garantie und 7 Jahren Android-Updates. Unterstützt Custom-ROMs wie /e/, CalyxOS, DivestOS und LineageOS. Gegründet als Sozialunternehmen mit Fokus auf ethische Lieferkette und faire Arbeitsbedingungen.',
+      de: 'Nachhaltige, modulare Smartphones aus den Niederlanden mit reparierbarem Design, 5 Jahren Garantie und langfristigem Software-Support. Unterstuetzt Custom-ROM-Oekosysteme wie /e/OS und LineageOS. Gegruendet als Sozialunternehmen mit Fokus auf ethische Lieferketten und faire Arbeitsbedingungen.',
     },
     website: 'https://www.fairphone.com',
     country: 'nl',
@@ -1550,9 +1550,9 @@ export const manualAlternatives: Alternative[] = [
     id: 'jolla-phone',
     name: 'Jolla Phone',
     description:
-      'Privacy-focused Linux smartphone from Finland running Sailfish OS. Features user-replaceable battery, physical Privacy Switch, and no tracking/analytics. Community-driven development with 5+ years of OS support guaranteed. Currently in pre-order (Batch #3), estimated delivery 1H/2026.',
+      'Finnish Linux smartphone project centered on Sailfish OS, with community involvement through the Sailfish X program and pre-order availability via Jolla Commerce. Targets users seeking a non-Android, non-iOS mobile stack.',
     localizedDescriptions: {
-      de: 'Datenschutzorientiertes Linux-Smartphone aus Finnland mit Sailfish OS. Mit austauschbarem Akku, physischem Privacy Switch und ohne Tracking/Analysen. Community-getriebene Entwicklung mit garantiertem 5+ Jahren OS-Support. Aktuell in Vorbestellung (Batch #3), voraussichtliche Lieferung 1H/2026.',
+      de: 'Finnisches Linux-Smartphone-Projekt rund um Sailfish OS, mit Community-Einbindung ueber das Sailfish-X-Programm und Vorbestellung ueber Jolla Commerce. Richtet sich an Nutzer, die einen nicht-Android- und nicht-iOS-Stack suchen.',
     },
     website: 'https://commerce.jolla.com/products/jolla-phone-preorder',
     country: 'fi',
@@ -1583,26 +1583,26 @@ export const manualAlternatives: Alternative[] = [
     pricing: 'paid',
     tags: ['smartphone', 'sustainability', 'repairable', 'modular', 'right-to-repair', 'custom-rom', 'germany'],
     foundedYear: 2014,
-    headquartersCity: 'Wabern',
+    headquartersCity: 'Falkenberg',
     trustScoreStatus: 'pending',
   },
   {
     id: 'volla-phone',
     name: 'Volla Phone',
     description:
-      'Privacy-focused smartphones from Germany running Volla OS (based on open-source Android without Google Apps/Services). Features long-term updates (5+ years), no mandatory Google account, optional Ubuntu Touch, and Volla Cloud (decentralized storage via Holochain). Founded as a German startup with focus on digital sovereignty and privacy.',
+      'German smartphone vendor focused on privacy-oriented Android alternatives with Volla OS and optional Ubuntu Touch on supported devices. Marketed around digital sovereignty and reduced dependence on Google services.',
     localizedDescriptions: {
-      de: 'Datenschutzorientierte Smartphones aus Deutschland mit Volla OS (basierend auf Open-Source Android ohne Google Apps/Services). Mit langfristigen Updates (5+ Jahre), kein obligatorisches Google-Konto, optional Ubuntu Touch und Volla Cloud (dezentraler Speicher via Holochain). Gegründet als deutsches Startup mit Fokus auf digitale Souveränität und Datenschutz.',
+      de: 'Deutscher Smartphone-Anbieter mit datenschutzorientierten Android-Alternativen ueber Volla OS und optional Ubuntu Touch auf unterstuetzten Geraeten. Positionierung auf digitale Souveraenitaet und geringere Abhaengigkeit von Google-Diensten.',
     },
     website: 'https://volla.online',
     country: 'de',
     category: 'other',
     replacesUS: ['Apple iPhone', 'Google Pixel'],
-    isOpenSource: false,
+    isOpenSource: true,
     openSourceLevel: 'partial',
     pricing: 'paid',
     tags: ['smartphone', 'privacy', 'germany', 'no-google', 'sustainability', 'ubuntu-touch', 'decentralized'],
-    foundedYear: 2019,
+    foundedYear: 2017,
     headquartersCity: 'Remscheid',
     trustScoreStatus: 'pending',
   },

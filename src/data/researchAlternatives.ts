@@ -179,12 +179,12 @@ export const researchAlternatives: Alternative[] = [
     "selfHostable": true,
     "website": "https://goauthentik.io",
     "logo": "/logos/authentik.svg",
-    "description": "Open-source Identity Provider (IdP) and SSO platform supporting SAML, OAuth2/OIDC, LDAP, RADIUS, and more. Designed for self-hosting from small labs to large production clusters. Offers both a forever-free open source version and a source-available Enterprise version with additional features.",
+    "description": "Identity Provider (IdP) and SSO platform supporting SAML, OAuth2/OIDC, LDAP, RADIUS, and more. Designed for self-hosting from small labs to large production clusters. Offers a free open-source core plus an enterprise tier with additional features under separate commercial terms.",
     "localizedDescriptions": {
       "de": "Open-Source Identity Provider (IdP) und SSO-Plattform mit Unterstützung für SAML, OAuth2/OIDC, LDAP, RADIUS und mehr. Entworfen für Selbsthosting von kleinen Labs bis zu grossen Produktionsclustern. Bietet sowohl eine kostenlose Open-Source-Version als auch eine quelloffene Enterprise-Version mit zusätzlichen Funktionen."
     },
     "isOpenSource": true,
-    "openSourceLevel": "full",
+    "openSourceLevel": "partial",
     "sourceCodeUrl": "https://github.com/goauthentik/authentik",
     "tags": [
       "iam",
@@ -199,14 +199,14 @@ export const researchAlternatives: Alternative[] = [
       "enterprise"
     ],
     "foundedYear": 2019,
-    "headquartersCity": "Philadelphia",
-    "license": "MIT"
+    "headquartersCity": "Pennsylvania",
+    "license": "MIT (core) + enterprise modules under separate commercial terms"
   },
   {
     "id": "authelia",
     "name": "Authelia",
     "category": "iam",
-    "country": "us",
+    "country": "eu",
     "replacesUS": [
       "Okta",
       "Azure AD",
@@ -218,9 +218,9 @@ export const researchAlternatives: Alternative[] = [
     "selfHostable": true,
     "website": "https://www.authelia.com",
     "logo": "/logos/authelia.svg",
-    "description": "Open-source authentication and authorization server providing two-factor authentication (2FA) and single sign-on (SSO) for web applications via a web portal. OpenID Connect 1.0 Certified, supports SAML, OAuth2, TOTP, WebAuthn/Passkeys, and push notifications. Lightweight (under 30MB RAM) and designed as a companion for reverse proxies like nginx, Traefik, and Caddy.",
+    "description": "Open-source authentication and authorization server providing two-factor authentication (2FA) and single sign-on (SSO) for web applications via a web portal. OpenID Connect 1.0 Certified with support for OAuth2/OIDC, LDAP integrations, TOTP, WebAuthn/Passkeys, and push notifications. Designed as a companion for reverse proxies like nginx, Traefik, and Caddy.",
     "localizedDescriptions": {
-      "de": "Open-Source-Authentifizierungs- und Autorisierungsserver, der Zwei-Faktor-Authentifizierung (2FA) und Single Sign-On (SSO) für Webanwendungen über ein Web-Portal bietet. OpenID Connect 1.0 zertifiziert, unterstützt SAML, OAuth2, TOTP, WebAuthn/Passkeys und Push-Benachrichtigungen. Leichtgewichtig (unter 30MB RAM) und als Begleiter für Reverse Proxies wie nginx, Traefik und Caddy konzipiert."
+      "de": "Open-Source-Authentifizierungs- und Autorisierungsserver, der Zwei-Faktor-Authentifizierung (2FA) und Single Sign-On (SSO) für Webanwendungen über ein Web-Portal bietet. OpenID Connect 1.0 zertifiziert mit Unterstützung für OAuth2/OIDC, LDAP-Integrationen, TOTP, WebAuthn/Passkeys und Push-Benachrichtigungen. Als Begleiter für Reverse Proxies wie nginx, Traefik und Caddy konzipiert."
     },
     "isOpenSource": true,
     "openSourceLevel": "full",
@@ -303,7 +303,7 @@ export const researchAlternatives: Alternative[] = [
       "privacy",
       "open-source"
     ],
-    "foundedYear": 2020,
+    "foundedYear": 2019,
     "headquartersCity": "France",
     "license": "BSD-3-Clause"
   },
@@ -471,6 +471,7 @@ export const researchAlternatives: Alternative[] = [
     "name": "Bielik AI",
     "category": "ai-ml",
     "country": "pl",
+    "logo": "/logos/bielik-ai.png",
     "replacesUS": [
       "ChatGPT",
       "Claude",
@@ -479,9 +480,9 @@ export const researchAlternatives: Alternative[] = [
     "pricing": "free",
     "selfHostable": true,
     "website": "https://bielik.ai",
-    "description": "Polish open-source LLM family developed by SpeakLeash Foundation. Trained primarily on Polish and other European language data, fully open-source under Apache 2.0 license, can be run locally on consumer hardware.",
+    "description": "Polish open-model LLM initiative by Fundacja SpeakLeash. Bielik models are published for local use via Hugging Face, with Apache-2.0 licensing for the Bielik 3.0 model line.",
     "localizedDescriptions": {
-      "de": "Polnische Open-Source LLM-Familie, entwickelt von der SpeakLeash Foundation.hauptsächlich auf Polnisch und anderen europäischen Sprachdaten trainiert, vollständig Open-Source unter Apache 2.0 Lizenz, kann lokal auf Consumer-Hardware betrieben werden."
+      "de": "Polnische Open-Model-LLM-Initiative der Fundacja SpeakLeash. Bielik-Modelle werden fuer lokale Nutzung ueber Hugging Face veroeffentlicht; fuer die Bielik-3.0-Modelllinie wird Apache-2.0 genutzt."
     },
     "isOpenSource": true,
     "openSourceLevel": "full",
@@ -496,9 +497,9 @@ export const researchAlternatives: Alternative[] = [
       "claude"
     ],
     "foundedYear": 2024,
-    "headquartersCity": "Krakow",
+    "headquartersCity": "Wroclaw",
     "sourceCodeUrl": "https://github.com/speakleash",
-    "license": "Apache-2.0"
+    "license": "Apache-2.0 (Bielik 3.0 model line)"
   },
   {
     "id": "collabora-online",
@@ -860,12 +861,12 @@ export const researchAlternatives: Alternative[] = [
     "pricing": "freemium",
     "selfHostable": true,
     "website": "https://www.duplicati.com",
-    "description": "Open-source, free backup client that stores securely encrypted, incremental, and compressed backups on cloud storage services and remote file servers. Supports AES-256 encryption, runs on Windows, macOS, and Linux, and integrates with 60+ storage backends including S3, Dropbox, Google Drive, and WebDAV. Founded by Danish developer Kenneth Skovhede, now operated by Duplicati Inc (San Francisco).",
+    "description": "Backup client with open-source and proprietary components that stores encrypted, incremental, and compressed backups on cloud storage services and remote file servers. Supports AES-256 encryption, runs on Windows, macOS, and Linux, and integrates with many storage backends including S3, Dropbox, Google Drive, and WebDAV.",
     "localizedDescriptions": {
-      "de": "Open-Source, kostenloser Backup-Client der sicher verschlüsselte, inkrementelle und komprimierte Backups auf Cloud-Speicherdiensten und Remote-Dateiservern speichert. Unterstützt AES-256-Verschlüsselung, läuft auf Windows, macOS und Linux und integriert sich mit über 60 Speicher-Backends einschliesslich S3, Dropbox, Google Drive und WebDAV. Gegründet vom dänischen Entwickler Kenneth Skovhede, jetzt betrieben von Duplicati Inc (San Francisco)."
+      "de": "Backup-Client mit Open-Source- und proprietären Komponenten, der verschlüsselte, inkrementelle und komprimierte Backups auf Cloud-Speicherdiensten und Remote-Dateiservern speichert. Unterstützt AES-256-Verschlüsselung, läuft auf Windows, macOS und Linux und integriert sich mit vielen Speicher-Backends einschliesslich S3, Dropbox, Google Drive und WebDAV."
     },
     "isOpenSource": true,
-    "openSourceLevel": "full",
+    "openSourceLevel": "partial",
     "sourceCodeUrl": "https://github.com/duplicati/duplicati",
     "tags": [
       "backup",
@@ -875,9 +876,9 @@ export const researchAlternatives: Alternative[] = [
       "self-hosted",
       "cloud-storage"
     ],
-    "foundedYear": 2008,
-    "headquartersCity": "San Francisco",
-    "license": "MIT"
+    "foundedYear": 2014,
+    "headquartersCity": "United States",
+    "license": "MIT (OSS components) + Duplicati Inc Software License (proprietary components)"
   },
   {
     "id": "quad9",
@@ -989,12 +990,12 @@ export const researchAlternatives: Alternative[] = [
     "pricing": "freemium",
     "selfHostable": true,
     "website": "https://rocket.chat",
-    "description": "Open-source secure communications platform for mission-critical operations. Developed in TypeScript/Node.js with MongoDB, offering team chat, video conferencing, and omnichannel engagement. MIT-licensed with 44.7k GitHub stars, self-hostable or cloud-hosted. Used by governments and enterprises worldwide including Deutsche Bahn and US Navy.",
+    "description": "Open-core communications platform for team chat, voice/video, and omnichannel engagement. The core codebase is MIT-licensed, while Enterprise Edition components use Rocket.Chat's commercial EE license. Available as self-hosted or cloud-hosted.",
     "localizedDescriptions": {
-      "de": "Open-Source sichere Kommunikationsplattform für kritische Operationen. Entwickelt in TypeScript/Node.js mit MongoDB, bietet Team-Chat, Videokonferenzen und Omnichannel-Engagement. MIT-lizenziert mit 44.7k GitHub-Sternen, self-hostbar oder Cloud-gehostet. Genutzt von Regierungen und Unternehmen weltweit, darunter Deutsche Bahn und US Navy."
+      "de": "Open-Core-Kommunikationsplattform für Team-Chat, Audio/Video und Omnichannel-Engagement. Die Kern-Codebasis ist unter MIT lizenziert, während Enterprise-Edition-Komponenten unter der kommerziellen Rocket.Chat-EE-Lizenz stehen. Als Self-Hosted- oder Cloud-Variante verfügbar."
     },
     "isOpenSource": true,
-    "openSourceLevel": "full",
+    "openSourceLevel": "partial",
     "sourceCodeUrl": "https://github.com/RocketChat/Rocket.Chat",
     "tags": [
       "messaging",
@@ -1005,8 +1006,8 @@ export const researchAlternatives: Alternative[] = [
       "microsoft-teams"
     ],
     "foundedYear": 2015,
-    "headquartersCity": "Delaware",
-    "license": "MIT"
+    "headquartersCity": "United States",
+    "license": "MIT (core) + Rocket.Chat Enterprise Edition License"
   },
   {
     "id": "zapstore",
@@ -1014,14 +1015,13 @@ export const researchAlternatives: Alternative[] = [
     "category": "mobile-os",
     "country": "eu",
     "replacesUS": [
-      "Google Play Store",
-      "App Store"
+      "Google Play Store"
     ],
     "pricing": "free",
     "website": "https://zapstore.dev",
-    "description": "Open-source decentralized app store powered by Nostr protocol. The social permissionless app store allows developers to publish apps directly to users without centralized approval. Features include developer signatures, Lightning Network payments (Zaps), user communities, and no review process. Built with Flutter for cross-platform support. MIT licensed.",
+    "description": "Open-source app distribution platform powered by Nostr. Developers can publish signed releases directly to users, and users can support developers with Lightning Network payments (zaps). The project is MIT-licensed and built with Flutter.",
     "localizedDescriptions": {
-      "de": "Open-Source dezentraler App-Store, betrieben durch das Nostr-Protokoll. Der soziale permissionless App-Store ermöglicht Entwicklern, Apps direkt ohne zentrale Genehmigung zu veröffentlichen. Funktionen umfassen Entwickler-Signaturen, Lightning-Network-Zahlungen (Zaps), Benutzer-Communities und keinen Prüfprozess. Entwickelt mit Flutter für plattformübergreifende Unterstützung. MIT-lizenziert."
+      "de": "Open-Source-App-Distributionsplattform auf Basis von Nostr. Entwickler koennen signierte Releases direkt veroeffentlichen, und Nutzer koennen Entwickler mit Lightning-Zahlungen (Zaps) unterstuetzen. Das Projekt ist MIT-lizenziert und mit Flutter umgesetzt."
     },
     "isOpenSource": true,
     "openSourceLevel": "full",
@@ -1029,7 +1029,6 @@ export const researchAlternatives: Alternative[] = [
     "tags": [
       "app-store",
       "android",
-      "ios",
       "foss",
       "nostr",
       "decentralized",
@@ -1159,7 +1158,7 @@ export const researchAlternatives: Alternative[] = [
     ],
     "foundedYear": 2015,
     "headquartersCity": "Riyadh",
-    "license": "GPL-3.0"
+    "license": "GPL-3.0-only"
   },
   {
     "id": "filen",
@@ -1266,17 +1265,17 @@ export const researchAlternatives: Alternative[] = [
       "iCloud",
       "OneDrive"
     ],
-    "pricing": "freemium",
+    "pricing": "paid",
     "website": "https://www.strato.de/cloud-speicher/",
     "description": "German cloud storage service from STRATO GmbH, hosted in TÜV-certified data centers in Germany with DSGVO compliance. Offers encrypted storage, optional end-to-end zero-knowledge encryption, two-factor authentication, and various protocol access (SFTP, WebDAV, SMB). Founded in 1997, part of IONOS Group SE.",
     "localizedDescriptions": {
-      "de": "Deutscher Cloud-Speicherdienst von STRATO GmbH, gehostet in TÜV-zertifizierten Rechenzentren in Deutschland mit DSGVO-Konformität. Bietet verschlüsselten Speicher, optionale Ende-zu-Ende Zero-Knowledge-Verschlüsselung, Zwei-Faktor-Authentifizierung und various Protokollzugänge (SFTP, WebDAV, SMB). Gegründet 1997, Teil der IONOS Group SE."
+      "de": "Deutscher Cloud-Speicherdienst von STRATO GmbH, gehostet in TÜV-zertifizierten Rechenzentren in Deutschland mit DSGVO-Konformität. Bietet verschlüsselten Speicher, optionale Ende-zu-Ende Zero-Knowledge-Verschlüsselung, Zwei-Faktor-Authentifizierung und verschiedene Protokollzugänge (SFTP, WebDAV, SMB). Gegründet 1997, Teil der IONOS Group SE."
     },
     "isOpenSource": false,
     "openSourceLevel": "none",
     "tags": [
       "cloud-storage",
-      "freemium",
+      "paid",
       "encrypted",
       "gdpr",
       "german-hosted",
@@ -1360,9 +1359,9 @@ export const researchAlternatives: Alternative[] = [
     ],
     "pricing": "free",
     "website": "https://f-droid.org",
-    "description": "Community-run free and open-source Android app repository. Founded in 2010, originally by UK-based F-Droid Limited (now shut down). Offers reproducible builds, anti-feature tracking for apps with tracking/ads, and no account required. Provides an alternative to Google Play Store with focus on privacy and user freedom.",
+    "description": "Community-run free and open-source Android app repository founded in 2010 by Ciaran Gultnieks. Offers reproducible builds, anti-feature labels for apps with ads or tracking, and no account requirement.",
     "localizedDescriptions": {
-      "de": "Community-betriebener freier und quelloffener Android-App-Store. Gegründet 2010, ursprünglich von der britischen F-Droid Limited (mittlerweile eingestellt). Bietet reproduzierbare Builds, Anti-Feature-Tracking für Apps mit Tracking/Werbung und kein Konto erforderlich. Bietet eine Alternative zum Google Play Store mit Fokus auf Datenschutz und Benutzerfreiheit."
+      "de": "Community-betriebener freier und quelloffener Android-App-Store, 2010 von Ciaran Gultnieks gegründet. Bietet reproduzierbare Builds, Anti-Feature-Kennzeichnungen für Apps mit Werbung oder Tracking und keine Konto-Pflicht."
     },
     "isOpenSource": true,
     "openSourceLevel": "full",
@@ -1377,7 +1376,7 @@ export const researchAlternatives: Alternative[] = [
     ],
     "foundedYear": 2010,
     "headquartersCity": "Global upstream community",
-    "license": "AGPL-3.0"
+    "license": "GPL-3.0-or-later (client); AGPL-3.0-or-later (server tools)"
   },
   {
     "id": "firefox",
@@ -1446,7 +1445,7 @@ export const researchAlternatives: Alternative[] = [
     "id": "librewolf",
     "name": "LibreWolf",
     "category": "browser",
-    "country": "de",
+    "country": "eu",
     "replacesUS": [
       "Google Chrome",
       "Safari",
@@ -1468,7 +1467,7 @@ export const researchAlternatives: Alternative[] = [
       "firefox-fork"
     ],
     "foundedYear": 2020,
-    "headquartersCity": "Community project",
+    "headquartersCity": "Global upstream community",
     "sourceCodeUrl": "https://codeberg.org/librewolf",
     "license": "MPL-2.0"
   },
@@ -1560,7 +1559,6 @@ export const researchAlternatives: Alternative[] = [
       "gpl-3"
     ],
     "foundedYear": 2014,
-    "headquartersCity": "Sweden",
     "license": "GPL-3.0"
   },
   {
@@ -1609,7 +1607,6 @@ export const researchAlternatives: Alternative[] = [
       "Signal"
     ],
     "pricing": "free",
-    "selfHostable": true,
     "website": "https://conversations.im",
     "description": "Free and open-source Jabber/XMPP client for Android smartphones. Supports end-to-end encryption with OMEMO and OpenPGP, voice and video calls, file transfers, group chats, and location sharing. Available on Google Play and F-Droid. Developed by German freelance developer Daniel Gultsch.",
     "localizedDescriptions": {
@@ -1669,7 +1666,8 @@ export const researchAlternatives: Alternative[] = [
     "id": "glance",
     "name": "Glance",
     "category": "other",
-    "country": "fr",
+    "country": "eu",
+    "logo": "/logos/glance.png",
     "replacesUS": [
       "Netvibes",
       "Feedly"
@@ -1677,7 +1675,7 @@ export const researchAlternatives: Alternative[] = [
     "pricing": "free",
     "selfHostable": true,
     "website": "https://github.com/glanceapp/glance",
-    "description": "A lightweight, highly customizable self-hosted dashboard that displays feeds (RSS, Reddit, Hacker News, YouTube) and system information in a beautiful, streamlined interface. Written in Go with a focus on minimal dependencies and mobile optimization. Data stays on user's server.",
+    "description": "Lightweight self-hosted dashboard written in Go for aggregating feeds and widgets in one page. Designed for local control with Docker-friendly deployment and no required external SaaS backend.",
     "localizedDescriptions": {
       "de": "Ein leichtgewichtiges, hochgradig anpassbares selbstgehostetes Dashboard, das Feeds (RSS, Reddit, Hacker News, YouTube) und Systeminformationen in einer schönen, optimierten Oberfläche anzeigt. Geschrieben in Go mit Fokus auf minimale Abhängigkeiten und mobile Optimierung. Daten bleiben auf dem Server des Nutzers."
     },
@@ -1694,8 +1692,6 @@ export const researchAlternatives: Alternative[] = [
       "go",
       "docker"
     ],
-    "foundedYear": 2020,
-    "headquartersCity": "France",
     "license": "AGPL-3.0"
   },
   {
@@ -1707,7 +1703,6 @@ export const researchAlternatives: Alternative[] = [
       "Adobe Photoshop"
     ],
     "pricing": "free",
-    "selfHostable": true,
     "website": "https://www.gimp.org",
     "description": "GNU Image Manipulation Program - a free and open-source raster graphics editor used for image retouching, editing, free-hand drawing, and converting between image formats. Cross-platform (Linux, macOS, Windows, FreeBSD, OpenBSD). Part of the GNU Project, actively maintained with regular releases.",
     "localizedDescriptions": {
@@ -1886,7 +1881,7 @@ export const researchAlternatives: Alternative[] = [
     ],
     "foundedYear": 2018,
     "headquartersCity": "Zug",
-    "license": "Apache-2.0"
+    "license": "MIT / Apache-2.0"
   },
   {
     "id": "readyou",
@@ -1935,7 +1930,7 @@ export const researchAlternatives: Alternative[] = [
     "logo": "/logos/trilium.svg",
     "description": "Open-source hierarchical note-taking application for building personal knowledge bases. Features include rich WYSIWYG editing, code notes with syntax highlighting, note encryption, powerful search, note versioning, and synchronization with self-hosted server. Cross-platform (Windows, Mac, Linux) with mobile web interface. Developed by community with main maintainer Elian Doran based in Romania.",
     "localizedDescriptions": {
-      "de": "Open-Source hierarchische Notizanwendung zumlicher Wissensdatenbanken. Funktion Aufbau persönen umfassen Rich-WYSIWYG-Bearbeitung, Code-Notizen mit Syntax-Highlighting, Notizenverschlüsselung, leistungsstarke Suche, Notizen-Versionierung und Synchronisation mit selbst gehostetem Server. Plattformübergreifend (Windows, Mac, Linux) mit mobiler Web-Oberfläche. Entwickelt von der Community mit Hauptmaintainer Elian Doran in Rumänien."
+      "de": "Open-Source-Notizanwendung mit hierarchischer Struktur für persönliche Wissensdatenbanken. Funktionen umfassen WYSIWYG-Bearbeitung, Code-Notizen mit Syntax-Highlighting, Notizenverschlüsselung, leistungsstarke Suche, Versionsverlauf und Synchronisation mit selbst gehostetem Server. Plattformübergreifend (Windows, macOS, Linux) mit mobiler Web-Oberfläche. Wird als Community-Projekt mit Hauptmaintainer Elian Doran (Rumänien) entwickelt."
     },
     "isOpenSource": true,
     "openSourceLevel": "full",
@@ -2343,7 +2338,6 @@ export const researchAlternatives: Alternative[] = [
       "Dashlane"
     ],
     "pricing": "free",
-    "selfHostable": true,
     "website": "https://keepass.info",
     "description": "The original free, open source password manager. Stores all passwords in one encrypted database locked with a master key. Uses AES-256, ChaCha20 and Twofish encryption. Windows-focused but with cross-platform ports.",
     "localizedDescriptions": {
@@ -2359,9 +2353,8 @@ export const researchAlternatives: Alternative[] = [
       "encryption"
     ],
     "foundedYear": 2003,
-    "headquartersCity": "Metzingen",
     "sourceCodeUrl": "https://sourceforge.net/projects/keepass/",
-    "license": "GPL-2.0"
+    "license": "GPL-2.0-or-later"
   },
   {
     "id": "keepassxc",
@@ -2470,7 +2463,6 @@ export const researchAlternatives: Alternative[] = [
       "Quick Share"
     ],
     "pricing": "free",
-    "selfHostable": true,
     "website": "https://localsend.org",
     "description": "Open-source cross-platform file sharing app that allows secure transfer between nearby devices over local network without internet. End-to-end encrypted, no account required. Developed by German individual developer Tien Do Nam.",
     "localizedDescriptions": {
@@ -2533,9 +2525,9 @@ export const researchAlternatives: Alternative[] = [
     "pricing": "freemium",
     "selfHostable": true,
     "website": "https://www.discourse.org",
-    "description": "US-based fully open-source community discussion platform. Powers 22,000+ communities worldwide with features for forums, knowledge bases, and real-time chat. Available as managed hosting or self-hosted. Full source code available on GitHub under GPL-2.0.",
+    "description": "US-based fully open-source community discussion platform with features for forums, knowledge bases, and real-time chat. Available as managed hosting or self-hosted, with full source code on GitHub under GPL-2.0.",
     "localizedDescriptions": {
-      "de": " Vollständig quelloffene Community-Diskussionsplattform aus den USA. Betreibt über 22.000 Communities weltweit mit Funktionen für Foren, Wissensdatenbanken und Echtzeit-Chat. Verfügbar als verwalteter Hosting-Service oder self-hosted. Vollständiger Quellcode auf GitHub unter GPL-2.0 verfügbar."
+      "de": "Vollständig quelloffene Community-Diskussionsplattform aus den USA mit Funktionen für Foren, Wissensdatenbanken und Echtzeit-Chat. Verfügbar als verwalteter Hosting-Service oder self-hosted. Vollständiger Quellcode auf GitHub unter GPL-2.0 verfügbar."
     },
     "isOpenSource": true,
     "openSourceLevel": "full",
@@ -2715,12 +2707,12 @@ export const researchAlternatives: Alternative[] = [
     "pricing": "freemium",
     "selfHostable": true,
     "website": "https://mattermost.com",
-    "description": "Open-source secure collaboration platform for mission-critical work. Developed in Go/React, MIT-licensed Team Edition with AGPLv3 server source. Features channel-based messaging, file sharing, video calling, and workflow automation. Self-hostable or cloud-hosted. Used by US Department of Defense, NASA, and enterprises worldwide.",
+    "description": "Open-core collaboration platform for team messaging, file sharing, calls, and workflow automation. The codebase uses a mix of Apache-2.0 components and AGPL/commercially licensed server code. Available as self-hosted or cloud-hosted.",
     "localizedDescriptions": {
-      "de": "Open-Source sichere Kollaborationsplattform für kritische Arbeiten. Entwickelt in Go/React, MIT-lizenzierte Team Edition mit AGPLv3 Server-Quellcode. Funktionen umfassen Kanal-basiertes Messaging, Dateifreigabe, Videoanrufe und Workflow-Automatisierung. Self-hostbar oder Cloud-gehostet. Genutzt vom US-Verteidigungsministerium, NASA und Unternehmen weltweit."
+      "de": "Open-Core-Kollaborationsplattform für Team-Messaging, Dateifreigabe, Anrufe und Workflow-Automatisierung. Die Codebasis nutzt eine Mischung aus Apache-2.0-Komponenten sowie AGPL- und kommerziell lizenziertem Servercode. Als Self-Hosted- oder Cloud-Variante verfügbar."
     },
     "isOpenSource": true,
-    "openSourceLevel": "full",
+    "openSourceLevel": "partial",
     "sourceCodeUrl": "https://github.com/mattermost/mattermost",
     "tags": [
       "messaging",
@@ -2733,7 +2725,7 @@ export const researchAlternatives: Alternative[] = [
     ],
     "foundedYear": 2015,
     "headquartersCity": "Palo Alto",
-    "license": "MIT (Team Edition); AGPL-3.0 (server)"
+    "license": "Apache-2.0 + AGPL-3.0 (source); commercial enterprise license"
   },
   {
     "id": "datawrapper",
@@ -2972,9 +2964,9 @@ export const researchAlternatives: Alternative[] = [
     ],
     "pricing": "free",
     "website": "https://github.com/NeoApplications/Neo-Store",
-    "description": "Modern F-Droid client with a feature-rich UI. Fork of Foxy-Droid, offering fast repository sync, built-in repositories, and extensive filtering options. Developed by a community of contributors with maintainers in Germany and El Salvador.",
+    "description": "Modern F-Droid client with a feature-rich UI. Fork of Foxy-Droid, offering fast repository sync, built-in repositories, and extensive filtering options.",
     "localizedDescriptions": {
-      "de": "Moderner F-Droid-Client mit funktionsreicher UI. Fork von Foxy-Droid mit schneller Repository-Synchronisation, integrierten Repositories und umfangreichen Filteroptionen. Entwickelt von einer Community mit Maintainern aus Deutschland und El Salvador."
+      "de": "Moderner F-Droid-Client mit funktionsreicher UI. Fork von Foxy-Droid mit schneller Repository-Synchronisation, integrierten Repositories und umfangreichen Filteroptionen."
     },
     "isOpenSource": true,
     "openSourceLevel": "full",
@@ -2989,7 +2981,7 @@ export const researchAlternatives: Alternative[] = [
       "google-play"
     ],
     "foundedYear": 2021,
-    "headquartersCity": "Community project (maintainers in DE/SV)",
+    "headquartersCity": "Berlin",
     "license": "GPL-3.0"
   },
   {
@@ -3004,7 +2996,6 @@ export const researchAlternatives: Alternative[] = [
       "Apple Notes"
     ],
     "pricing": "free",
-    "selfHostable": true,
     "website": "https://github.com/nvim-neorg/neorg",
     "description": "Modern organization tool for Neovim, designed as a reimagined alternative to Emacs Org-mode. Features include structured note-taking, task management, time tracking, and documentation writing, all built on a single extensible file format (.norg). Fully open-source with active development and international contributors.",
     "localizedDescriptions": {
@@ -3017,13 +3008,11 @@ export const researchAlternatives: Alternative[] = [
       "notes",
       "knowledge-base",
       "open-source",
-      "self-hosted",
       "neovim",
       "organization",
       "emacs-alternative"
     ],
     "foundedYear": 2020,
-    "headquartersCity": "Community project (contributors in FR, CH)",
     "license": "GPL-3.0"
   },
   {
@@ -3294,12 +3283,12 @@ export const researchAlternatives: Alternative[] = [
     "pricing": "freemium",
     "selfHostable": true,
     "website": "https://www.overleaf.com",
-    "description": "UK-based online collaborative LaTeX editor founded in 2011, acquired by Digital Science (London) in 2014. Offers both cloud-hosted service and self-hostable Community Edition. Full source code available under AGPL-3.0. Used by millions of researchers and academic institutions worldwide including CERN.",
+    "description": "UK-based online collaborative LaTeX editor founded in 2011 and acquired by Digital Science in 2014. Offers both cloud-hosted service and a self-hostable Community Edition; additional enterprise features are available in Overleaf Server Pro.",
     "localizedDescriptions": {
-      "de": "UK-basierter kollaborativer Online-LaTeX-Editor, gegründet 2011, von Digital Science (London) 2014 übernommen. Bietet sowohl Cloud-Hosting als auch selbst-hostbare Community Edition. Vollständiger Quellcode unter AGPL-3.0 verfügbar. Wird von Millionen von Forschern und akademischen Institutionen weltweit genutzt, einschließlich CERN."
+      "de": "UK-basierter kollaborativer Online-LaTeX-Editor, 2011 gegründet und 2014 von Digital Science übernommen. Bietet sowohl Cloud-Hosting als auch eine selbst hostbare Community Edition; zusätzliche Enterprise-Funktionen sind in Overleaf Server Pro verfügbar."
     },
     "isOpenSource": true,
-    "openSourceLevel": "full",
+    "openSourceLevel": "partial",
     "openSourceAuditUrl": "https://github.com/overleaf/overleaf",
     "tags": [
       "office-suite",
@@ -3313,7 +3302,7 @@ export const researchAlternatives: Alternative[] = [
     "foundedYear": 2011,
     "headquartersCity": "London",
     "sourceCodeUrl": "https://github.com/overleaf/overleaf",
-    "license": "AGPL-3.0"
+    "license": "AGPL-3.0 (Community Edition); proprietary Server Pro features"
   },
   {
     "id": "opencloud",
@@ -3426,7 +3415,6 @@ export const researchAlternatives: Alternative[] = [
       "Logseq"
     ],
     "pricing": "free",
-    "selfHostable": true,
     "website": "https://www.orgroam.com",
     "description": "Plain-text personal knowledge management system that brings Roam-like features to Emacs and Org-mode. Provides networked thought with backlinks, graph visualization, and full offline control. Data stored locally in plain org files with optional GPG encryption. Fully open source under GPL-3.0.",
     "localizedDescriptions": {
@@ -3481,7 +3469,7 @@ export const researchAlternatives: Alternative[] = [
     "id": "co-maps",
     "name": "CoMaps",
     "category": "maps",
-    "country": "gb",
+    "country": "eu",
     "replacesUS": [
       "Google Maps",
       "Apple Maps"
@@ -3733,7 +3721,7 @@ export const researchAlternatives: Alternative[] = [
     "id": "piwik-pro",
     "name": "Piwik PRO",
     "category": "analytics",
-    "country": "de",
+    "country": "pl",
     "replacesUS": [
       "Google Analytics",
       "Mixpanel",
@@ -3741,9 +3729,9 @@ export const researchAlternatives: Alternative[] = [
     ],
     "pricing": "paid",
     "website": "https://piwik.pro",
-    "description": "Privacy-focused analytics suite developed in Germany, offering web and mobile analytics, tag management, customer data platform, and consent management. Piwik PRO is a commercial fork of Matomo (formerly Piwik) — provides ISO 27001 and SOC 2 certified cloud hosting in EU data centers with full data ownership.",
+    "description": "Privacy-focused analytics suite from the Piwik PRO group, with the primary legal entity Piwik PRO SA in Wrocław, Poland, and additional offices including Berlin. Offers web and mobile analytics, tag management, customer data platform, and consent management. Piwik PRO is a commercial fork of Matomo (formerly Piwik) and provides ISO 27001 and SOC 2 certified cloud hosting in EU data centers with full data ownership.",
     "localizedDescriptions": {
-      "de": "Datenschutzorientierte Analytics-Suite aus Deutschland, bietet Web- und Mobile-Analytics, Tag-Management, Customer Data Platform und Consent-Management. Piwik PRO ist ein kommerzieller Fork von Matomo — bietet ISO 27001 und SOC 2 zertifiziertes Cloud-Hosting in EU-Rechenzentren mit vollständiger Datenhoheit."
+      "de": "Datenschutzorientierte Analytics-Suite der Piwik PRO Gruppe mit primärer Gesellschaft Piwik PRO SA in Wrocław, Polen, und weiteren Standorten wie Berlin. Bietet Web- und Mobile-Analytics, Tag-Management, Customer Data Platform und Consent-Management. Piwik PRO ist ein kommerzieller Fork von Matomo und bietet ISO-27001- sowie SOC-2-zertifiziertes Cloud-Hosting in EU-Rechenzentren mit vollständiger Datenhoheit."
     },
     "isOpenSource": false,
     "openSourceLevel": "none",
@@ -3759,7 +3747,7 @@ export const researchAlternatives: Alternative[] = [
       "mixpanel"
     ],
     "foundedYear": 2014,
-    "headquartersCity": "Berlin",
+    "headquartersCity": "Wroclaw",
     "sourceCodeUrl": "https://github.com/PiwikPRO"
   },
   {
@@ -4017,6 +4005,7 @@ export const researchAlternatives: Alternative[] = [
     ],
     "foundedYear": 2017,
     "headquartersCity": "Geneva",
+    "sourceCodeUrl": "https://github.com/ProtonVPN",
     "license": "GPL-3.0 (clients); proprietary backend"
   },
   {
@@ -4043,7 +4032,7 @@ export const researchAlternatives: Alternative[] = [
       "authenticator",
       "otp",
       "totp",
-      "freemium",
+      "free",
       "open-source",
       "privacy",
       "encryption",
@@ -4066,7 +4055,6 @@ export const researchAlternatives: Alternative[] = [
       "Authy"
     ],
     "pricing": "free",
-    "selfHostable": true,
     "website": "https://ente.io/auth",
     "logo": "/logos/ente-auth.svg",
     "description": "Open source 2FA authenticator with end-to-end encrypted cloud backups, developed by Ente Technologies Inc. (USA). Available on Android, iOS, F-Droid, Web, Desktop, MacOS and Linux. Free and open source under AGPL-3.0 license with external security audits.",
@@ -4109,7 +4097,7 @@ export const researchAlternatives: Alternative[] = [
     "website": "https://pubky.app",
     "description": "Decentralized P2P social media protocol and application where users own their data through public-key cryptography. Built on PKARR (Public Key Addressable Resource Records) using BitTorrent's Mainline DHT for censorship-resistant storage, with self-sovereign homeservers and no central authority.",
     "localizedDescriptions": {
-      "de": "Dezentrales P2P-Social-Media-Protokoll und -Anwendung, bei dem Nutzende ihre Daten durch Public-Key-Kryptografie besitzen. Erstellt auf PKARR (Public Key Addressable Resource Records) unter Nutzung von BitTorents Mainline DHT für zensurresistente Speicherung, mit selbstsouveränen Homesern und ohne zentrale Autorität."
+      "de": "Dezentrales P2P-Social-Media-Protokoll und -Anwendung, bei dem Nutzende ihre Daten durch Public-Key-Kryptografie besitzen. Erstellt auf PKARR (Public Key Addressable Resource Records) unter Nutzung von BitTorrents Mainline DHT für zensurresistente Speicherung, mit selbstsouveränen Homeservern und ohne zentrale Autorität."
     },
     "isOpenSource": true,
     "openSourceLevel": "full",
@@ -4404,7 +4392,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "stackit",
     "name": "STACKIT",
-    "category": "cloud-storage",
+    "category": "hosting",
     "country": "de",
     "replacesUS": [
       "Amazon Web Services",
@@ -4472,7 +4460,7 @@ export const researchAlternatives: Alternative[] = [
       "Outlook",
       "Yahoo Mail"
     ],
-    "pricing": "freemium",
+    "pricing": "paid",
     "website": "https://www.strato.de/mail/",
     "description": "German email service from STRATO GmbH, hosted in TÜV-certified data centers in Germany with DSGVO compliance. Offers IMAP/POP3 access, ActiveSync for mobile sync, calendar and tasks (Business tier), and optional email archiving. Founded in 1997, part of IONOS Group SE.",
     "localizedDescriptions": {
@@ -4482,7 +4470,7 @@ export const researchAlternatives: Alternative[] = [
     "openSourceLevel": "none",
     "tags": [
       "email",
-      "freemium",
+      "paid",
       "gdpr",
       "german-hosted",
       "gmail",
@@ -4623,6 +4611,36 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0 (clients); proprietary server"
   },
   {
+    "id": "teleguard",
+    "name": "TeleGuard",
+    "category": "messaging",
+    "country": "ch",
+    "replacesUS": [
+      "WhatsApp"
+    ],
+    "pricing": "free",
+    "website": "https://teleguard.com",
+    "description": "Swiss end-to-end encrypted messenger operated by Swisscows AG, featuring no phone-number or email requirement for registration. Uses Salsa20 encryption for all messages and calls, with servers located in Swiss data centers. Messages are deleted immediately after delivery, with no metadata or IP addresses stored.",
+    "localizedDescriptions": {
+      "de": "Schweizer Ende-zu-Ende-verschlüsselter Messenger von Swisscows AG, ohne Telefonnummer oder E-Mail bei der Registrierung. Nutzt Salsa20-Verschlüsselung für alle Nachrichten und Anrufe, Server in Schweizer Rechenzentren. Nachrichten werden sofort nach Zustellung gelöscht, keine Metadaten oder IP-Adressen gespeichert."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "messaging",
+      "free",
+      "encryption",
+      "privacy",
+      "gdpr",
+      "swiss",
+      "whatsapp",
+      "no-phone-number"
+    ],
+    "foundedYear": 2021,
+    "headquartersCity": "Egnach",
+    "license": "Proprietary (free, donation-funded)"
+  },
+  {
     "id": "timescribe",
     "name": "TimeScribe",
     "category": "project-management",
@@ -4685,7 +4703,7 @@ export const researchAlternatives: Alternative[] = [
     ],
     "foundedYear": 2006,
     "sourceCodeUrl": "https://gitlab.torproject.org/tpo/applications/tor-browser",
-    "license": "BSD-3-Clause (based on Mozilla Firefox)"
+    "license": "MPL-2.0 and additional OSS licenses"
   },
   {
     "id": "vikunja",
@@ -4792,8 +4810,8 @@ export const researchAlternatives: Alternative[] = [
       "android",
       "ios"
     ],
-    "foundedYear": 2017,
-    "headquartersCity": "Berlin",
+    "foundedYear": 2016,
+    "headquartersCity": "Germany",
     "sourceCodeUrl": "https://github.com/super-productivity/super-productivity",
     "license": "MIT"
   },
