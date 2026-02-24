@@ -279,7 +279,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "aves-gallery",
     "name": "Aves Gallery",
-    "category": "mobile-os",
+    "category": "photo-management",
     "country": "fr",
     "replacesUS": [
       "Google Photos"
@@ -1098,6 +1098,39 @@ export const researchAlternatives: Alternative[] = [
     ],
     "foundedYear": 2018,
     "headquartersCity": "Paris"
+  },
+  {
+    "id": "lineageos",
+    "name": "LineageOS",
+    "category": "mobile-os",
+    "country": "us",
+    "replacesUS": [
+      "Android",
+      "iOS"
+    ],
+    "pricing": "free",
+    "website": "https://lineageos.org",
+    "logo": "/logos/lineageos.svg",
+    "description": "Community-driven aftermarket Android distribution focused on privacy, security updates, and device longevity. LineageOS ships monthly security patches for supported devices and supports hardware from more than 20 manufacturers through an open-source contributor ecosystem.",
+    "localizedDescriptions": {
+      "de": "Community-getriebene Android-Distribution mit Fokus auf Privatsphaere, Sicherheitsupdates und laengere Geraetelebensdauer. LineageOS liefert monatliche Sicherheitspatches fuer unterstuetzte Geraete und unterstuetzt Hardware von mehr als 20 Herstellern ueber ein Open-Source-Beitragsmodell."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "openSourceAuditUrl": "https://github.com/LineageOS",
+    "sourceCodeUrl": "https://github.com/LineageOS",
+    "tags": [
+      "mobile-os",
+      "android",
+      "custom-rom",
+      "privacy",
+      "security-updates",
+      "device-longevity",
+      "open-source"
+    ],
+    "foundedYear": 2016,
+    "headquartersCity": "No public headquarters (LineageOS community project)",
+    "license": "Apache-2.0 and additional OSS licenses"
   },
   {
     "id": "etar",

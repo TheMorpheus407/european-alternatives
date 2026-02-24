@@ -40,6 +40,7 @@
     "gis": { "name": "GIS & Geospatial", "description": "Geographic information systems and spatial data analysis" },
     "privacy-tools": { "name": "Privacy Tools", "description": "Firewalls, tracker blockers, and privacy-enhancing utilities" },
     "podcasts": { "name": "Podcasts", "description": "Podcast players and hosting platforms" },
+    "photo-management": { "name": "Photo Management", "description": "Photo gallery, backup, and management apps" },
     "other": { "name": "Other", "description": "Other tools and services" }
   },
   "countries": {

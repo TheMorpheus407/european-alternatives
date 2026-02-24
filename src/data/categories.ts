@@ -282,6 +282,13 @@ export const categories: Category[] = [
     usGiants: ['Apple Podcasts', 'Spotify'],
   },
   {
+    id: 'photo-management',
+    name: 'Photo Management',
+    description: 'Photo gallery, backup, and management apps',
+    emoji: '📷',
+    usGiants: ['Google Photos', 'Apple Photos', 'Amazon Photos'],
+  },
+  {
     id: 'other',
     name: 'Other',
     description: 'Other tools and services',

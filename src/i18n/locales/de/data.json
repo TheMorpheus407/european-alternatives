@@ -160,6 +160,10 @@
       "name": "Podcasts",
       "description": "Podcast-Player und Hosting-Plattformen"
     },
+    "photo-management": {
+      "name": "Fotoverwaltung",
+      "description": "Fotogalerie-, Backup- und Verwaltungs-Apps"
+    },
     "other": {
       "name": "Sonstiges",
       "description": "Weitere Tools und Dienste"

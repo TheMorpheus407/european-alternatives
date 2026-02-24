@@ -115,6 +115,7 @@ export type CategoryId =
   | 'gis'
   | 'privacy-tools'
   | 'podcasts'
+  | 'photo-management'
   | 'other';
 
 export interface Category {
