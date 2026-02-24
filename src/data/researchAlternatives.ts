@@ -995,6 +995,37 @@ export const researchAlternatives: Alternative[] = [
     "license": "Proprietary (free version)"
   },
   {
+    "id": "freebsd",
+    "name": "FreeBSD",
+    "category": "desktop-os",
+    "country": "us",
+    "replacesUS": [
+      "Windows Server"
+    ],
+    "pricing": "free",
+    "website": "https://www.freebsd.org",
+    "description": "Free and open-source Unix-like operating system descended from Berkeley Software Distribution (BSD). Developed since 1993, FreeBSD offers advanced networking, security, and storage features making it popular for servers, embedded systems, and network appliances. Used by major companies including Netflix, WhatsApp, and FlightAware. Cross-platform support includes x86-64, ARM64, RISC-V, and PowerPC.",
+    "localizedDescriptions": {
+      "de": "Freies und quelloffenes Unix-ähnliches Betriebssystem, abgeleitet von der Berkeley Software Distribution (BSD). Seit 1993 entwickelt, bietet FreeBSD fortschrittliche Netzwerk-, Sicherheits- und Speicherfunktionen, was es beliebt für Server, eingebettete Systeme und Netzwerkgeräte macht. Genutzt von großen Unternehmen wie Netflix, WhatsApp und FlightAware. Plattformübergreifende Unterstützung für x86-64, ARM64, RISC-V und PowerPC."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/freebsd",
+    "tags": [
+      "operating-system",
+      "server",
+      "open-source",
+      "bsd",
+      "unix",
+      "self-hosting",
+      "security",
+      "networking"
+    ],
+    "foundedYear": 1993,
+    "headquartersCity": "Community project (originated from University of California, Berkeley)",
+    "license": "BSD-2-Clause"
+  },
+  {
     "id": "gajim",
     "name": "Gajim",
     "category": "messaging",
