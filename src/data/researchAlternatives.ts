@@ -1082,6 +1082,35 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0"
   },
   {
+    "id": "fountain",
+    "name": "Fountain",
+    "category": "other",
+    "country": "gb",
+    "replacesUS": [
+      "Apple Podcasts",
+      "Spotify"
+    ],
+    "pricing": "free",
+    "website": "https://fountain.fm",
+    "description": "UK-based podcast player app with social features and Bitcoin/Lightning payment integration for supporting creators. Available on iOS and Android with features including offline downloads, clip sharing, and community engagement through comments and followers.",
+    "localizedDescriptions": {
+      "de": "Britischer Podcast-Player mit sozialen Funktionen und Bitcoin/Lightning-Integration zur Unterstützung von Erstellern. Verfügbar für iOS und Android mit Offline-Downloads, Clip-Sharing und Community-Engagement durch Kommentare und Follower."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "podcast-player",
+      "social",
+      "bitcoin",
+      "lightning",
+      "podcasting",
+      "mobile"
+    ],
+    "foundedYear": 2021,
+    "headquartersCity": "London",
+    "trustScoreStatus": "pending"
+  },
+  {
     "id": "f-droid",
     "name": "F-Droid",
     "category": "mobile-os",
