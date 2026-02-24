@@ -1497,6 +1497,39 @@ export const researchAlternatives: Alternative[] = [
     "license": "BSD-2-Clause"
   },
   {
+    "id": "feeder",
+    "name": "Feeder",
+    "category": "other",
+    "country": "se",
+    "replacesUS": [
+      "Feedly",
+      "Google Reader"
+    ],
+    "pricing": "free",
+    "selfHostable": false,
+    "website": "https://github.com/spacecowboy/Feeder",
+    "description": "Open source Android feed reader (RSS/Atom/JSONFeed) created in 2014. Feeder does NOT sync with remote backends so no account registration is necessary. Data stays 100% private on the device. Supports offline reading, notifications, OPML import/export, and Material Design.",
+    "localizedDescriptions": {
+      "de": "Quelloffener Android Feed-Reader (RSS/Atom/JSONFeed) erstellt 2014. Feeder synchronisiert NICHT mit Remote-Backends, daher ist keine Registrierung erforderlich. Daten bleiben zu 100% privat auf dem Gerät. Unterstützt Offline-Lesen, Benachrichtigungen, OPML-Import/Export und Material Design."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/spacecowboy/Feeder",
+    "tags": [
+      "rss",
+      "feed-reader",
+      "android",
+      "open-source",
+      "privacy",
+      "offline",
+      "material-design",
+      "gpl-3"
+    ],
+    "foundedYear": 2014,
+    "headquartersCity": "Sweden",
+    "license": "GPL-3.0"
+  },
+  {
     "id": "gajim",
     "name": "Gajim",
     "category": "messaging",
