@@ -1011,6 +1011,26 @@ export const manualAlternatives: Alternative[] = [
     license: 'AGPL-3.0',
   },
   {
+    id: 'plankton',
+    name: 'Plankton',
+    description:
+      'German community platform for independent publishers and content creators that enables cross-blog networking through automatic teaser previews. Connects bloggers, websites, and newsletters in an algorithm-free ecosystem focused on mutual visibility rather than platform competition.',
+    localizedDescriptions: {
+      de: 'Deutsche Community-Plattform für unabhängige Verleger und Content-Ersteller, die Vernetzung durch automatische Teaser-Vorschauen ermöglicht. Verbindet Blogs, Websites und Newsletter in einem algorithmusfreien Ökosystem, das auf gegenseitige Sichtbarkeit statt auf Plattform-Konkurrenz setzt.',
+    },
+    website: 'https://plankton.social',
+    country: 'de',
+    category: 'social-media',
+    replacesUS: ['Facebook', 'Instagram', 'X/Twitter', 'Reddit', 'Medium'],
+    isOpenSource: false,
+    openSourceLevel: 'none',
+    pricing: 'free',
+    tags: ['social-media', 'blogging', 'independent-publishers', 'network', 'visibility', 'community'],
+    foundedYear: 2021,
+    headquartersCity: 'Berlin',
+    trustScoreStatus: 'pending',
+  },
+  {
     id: 'contabo',
     name: 'Contabo',
     description:
