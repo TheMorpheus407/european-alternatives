@@ -877,6 +877,41 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Berlin"
   },
   {
+    "id": "fairemail",
+    "name": "FairEmail",
+    "category": "mail-client",
+    "country": "nl",
+    "replacesUS": [
+      "Gmail",
+      "Outlook",
+      "Yahoo Mail"
+    ],
+    "pricing": "freemium",
+    "website": "https://email.faircode.eu",
+    "description": "Fully featured, open source, privacy friendly email app for Android. Developed by Dutch company FairCode B.V., FairEmail works with any email provider via IMAP/POP3/SMTP and supports OpenPGP and S/MIME encryption. No tracking, no ads, no data collection.",
+    "localizedDescriptions": {
+      "de": "Vollständig ausgestatteter, quelloffener, datenschutzfreundlicher E-Mail-Client für Android. Entwickelt vom niederländischen Unternehmen FairCode B.V., FairEmail funktioniert mit jedem E-Mail-Anbieter über IMAP/POP3/SMTP und unterstützt OpenPGP- und S/MIME-Verschlüsselung. Kein Tracking, keine Werbung, keine Datensammlung."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/M66B/FairEmail",
+    "tags": [
+      "mail-client",
+      "android",
+      "open-source",
+      "privacy",
+      "encryption",
+      "imap",
+      "smtp",
+      "pgp",
+      "gmail",
+      "outlook"
+    ],
+    "foundedYear": 2018,
+    "headquartersCity": "Dordrecht",
+    "license": "GPL-3.0"
+  },
+  {
     "id": "f-droid",
     "name": "F-Droid",
     "category": "mobile-os",
