@@ -2628,6 +2628,37 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0 (Linux client); proprietary backend and infrastructure"
   },
   {
+    "id": "nostr",
+    "name": "Nostr",
+    "category": "social-media",
+    "country": "eu",
+    "replacesUS": [
+      "X/Twitter"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://nostr.com",
+    "description": "Decentralized social media protocol using cryptographic keys for identity and relays for message distribution. Founded by pseudonymous developer fiatjaf in 2020, Nostr is open-source (public domain) and censorship-resistant. Multiple independent clients exist (Damus, Amethyst, Coracle).",
+    "localizedDescriptions": {
+      "de": "Dezentrales Social-Media-Protokoll, das kryptografische Schlüssel für Identität und Relays für Nachrichtenverteilung verwendet. Gegründet vom pseudonymen Entwickler fiatjaf im Jahr 2020, ist Nostr Open-Source (Public Domain) und zensurresistent. Mehrere unabhängige Clients existieren (Damus, Amethyst, Coracle)."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "tags": [
+      "social-media",
+      "free",
+      "open-source",
+      "decentralized",
+      "censorship-resistant",
+      "x-twitter",
+      "protocol"
+    ],
+    "foundedYear": 2020,
+    "headquartersCity": "open",
+    "sourceCodeUrl": "https://github.com/nostr-protocol/nostr",
+    "license": "Public Domain"
+  },
+  {
     "id": "otto",
     "name": "Otto",
     "category": "ecommerce",
