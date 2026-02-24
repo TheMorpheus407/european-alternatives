@@ -112,6 +112,28 @@ export const manualAlternatives: Alternative[] = [
     trustScoreStatus: 'pending',
   },
   {
+    id: 'languagetool',
+    name: 'LanguageTool',
+    description:
+      'German AI-powered grammar and spell checker supporting 30+ languages. Originally launched as an open-source project in 2003, LanguageTool offers browser extensions, desktop apps, and API for writing assistance. The core technology is open-source under LGPL 2.1, with 14.1k GitHub stars and self-hosting capability. Used by millions daily, including major organizations like BMW Group and European Union institutions.',
+    localizedDescriptions: {
+      de: 'Deutscher KI-gestützter Grammatik- und Rechtschreibprüfer mit Unterstützung für über 30 Sprachen. Ursprünglich 2003 als Open-Source-Projekt gestartet, bietet LanguageTool Browser-Erweiterungen, Desktop-Apps und API für Schreibunterstützung. Die Kerntechnologie ist unter LGPL 2.1 quelloffen, mit 14.1k GitHub-Sternen und Self-Hosting-Möglichkeit. Täglich von Millionen genutzt, einschließlich großer Organisationen wie BMW Group und europäische Institutionen.',
+    },
+    website: 'https://languagetool.org',
+    country: 'de',
+    category: 'ai-ml',
+    replacesUS: ['Grammarly', 'Ginger'],
+    isOpenSource: true,
+    openSourceLevel: 'full',
+    openSourceAuditUrl: 'https://github.com/languagetool-org/languagetool',
+    sourceCodeUrl: 'https://github.com/languagetool-org/languagetool',
+    pricing: 'freemium',
+    tags: ['grammar', 'spell-check', 'ai', 'writing-assistant', 'open-source', 'german', 'self-hostable'],
+    foundedYear: 2003,
+    headquartersCity: 'Potsdam',
+    license: 'LGPL-2.1',
+  },
+  {
     id: 'lumo',
     name: 'Lumo by Proton',
     description:
