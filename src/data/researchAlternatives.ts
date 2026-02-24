@@ -1850,6 +1850,39 @@ export const researchAlternatives: Alternative[] = [
     "license": "MIT"
   },
   {
+    "id": "overleaf",
+    "name": "Overleaf",
+    "category": "office-suite",
+    "country": "gb",
+    "replacesUS": [
+      "Google Docs",
+      "Microsoft Word"
+    ],
+    "pricing": "freemium",
+    "selfHostable": true,
+    "website": "https://www.overleaf.com",
+    "description": "UK-based online collaborative LaTeX editor founded in 2011, acquired by Digital Science (London) in 2014. Offers both cloud-hosted service and self-hostable Community Edition. Full source code available under AGPL-3.0. Used by millions of researchers and academic institutions worldwide including CERN.",
+    "localizedDescriptions": {
+      "de": "UK-basierter kollaborativer Online-LaTeX-Editor, gegründet 2011, von Digital Science (London) 2014 übernommen. Bietet sowohl Cloud-Hosting als auch selbst-hostbare Community Edition. Vollständiger Quellcode unter AGPL-3.0 verfügbar. Wird von Millionen von Forschern und akademischen Institutionen weltweit genutzt, einschließlich CERN."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "openSourceAuditUrl": "https://github.com/overleaf/overleaf",
+    "tags": [
+      "office-suite",
+      "freemium",
+      "open-source",
+      "latex",
+      "collaboration",
+      "self-hosted",
+      "academic"
+    ],
+    "foundedYear": 2011,
+    "headquartersCity": "London",
+    "sourceCodeUrl": "https://github.com/overleaf/overleaf",
+    "license": "AGPL-3.0"
+  },
+  {
     "id": "opencloud",
     "name": "OpenCloud",
     "category": "cloud-storage",
