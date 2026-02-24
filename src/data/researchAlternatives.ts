@@ -70,6 +70,35 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0"
   },
   {
+    "id": "aurora-store",
+    "name": "Aurora Store",
+    "category": "mobile-os",
+    "country": "in",
+    "replacesUS": [
+      "Google Play Store"
+    ],
+    "pricing": "free",
+    "website": "https://auroraoss.com",
+    "description": "Open-source Google Play Store client for Android. Allows downloading, updating, and searching apps from Google Play without requiring Google Play Services. Features include anonymous login, device/locale spoofing, Exodus Privacy integration for tracker detection, and update blacklisting. Developed by independent developer Rahul Kumar Patel.",
+    "localizedDescriptions": {
+      "de": "Open-Source Google Play Store Client für Android. Ermöglicht das Herunterladen, Aktualisieren und Suchen von Apps aus dem Google Play Store ohne Google Play Services. Funktionen beinhalten anonymes Login, Geräts-/Locale-Spoofing, Exodus Privacy Integration zur Tracker-Erkennung und Update-Blacklisting. Entwickelt von unabhängigem Entwickler Rahul Kumar Patel."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://gitlab.com/AuroraOSS/AuroraStore",
+    "tags": [
+      "app-store",
+      "android",
+      "foss",
+      "privacy",
+      "open-source",
+      "google-play"
+    ],
+    "foundedYear": 2018,
+    "headquartersCity": "India",
+    "license": "GPL-3.0"
+  },
+  {
     "id": "bitwarden",
     "name": "Bitwarden",
     "category": "password-manager",
