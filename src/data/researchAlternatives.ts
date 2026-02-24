@@ -549,6 +549,36 @@ export const researchAlternatives: Alternative[] = [
     ]
   },
   {
+    "id": "ph24",
+    "name": "ph24",
+    "category": "hosting",
+    "country": "de",
+    "replacesUS": [
+      "AWS",
+      "Google Cloud",
+      "Azure",
+      "Cloudflare"
+    ],
+    "pricing": "paid",
+    "website": "https://ph24.io",
+    "description": "German hosting provider offering cloud hosting, Kubernetes clusters, and web hosting services. Based in Frankfurt am Main, Germany with infrastructure at maincubes and NTT data centers (ISO 27001, 9001, DIN EN 50600 Tier II/III). Operated by Nicolas Janzen with a focus on quality and customer support.",
+    "localizedDescriptions": {
+      "de": "Deutscher Hosting-Anbieter mit Cloud-Hosting, Kubernetes-Clustern und Webhosting. Sitz in Frankfurt am Main mit Infrastruktur bei maincubes und NTT Rechenzentren (ISO 27001, 9001, DIN EN 50600 Tier II/III). Betrieben von Nicolas Janzen mit Fokus auf Qualität und Kundenbetreuung."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "hosting",
+      "paid",
+      "cloud",
+      "kubernetes",
+      "webhosting",
+      "gdpr"
+    ],
+    "foundedYear": 2018,
+    "headquartersCity": "Frankfurt"
+  },
+  {
     "id": "deepl",
     "name": "DeepL",
     "category": "ai-ml",
