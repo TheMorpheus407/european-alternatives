@@ -1259,6 +1259,38 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0"
   },
   {
+    "id": "mattermost",
+    "name": "Mattermost",
+    "category": "messaging",
+    "country": "us",
+    "replacesUS": [
+      "Slack",
+      "Microsoft Teams"
+    ],
+    "pricing": "freemium",
+    "selfHostable": true,
+    "website": "https://mattermost.com",
+    "description": "Open-source secure collaboration platform for mission-critical work. Developed in Go/React, MIT-licensed Team Edition with AGPLv3 server source. Features channel-based messaging, file sharing, video calling, and workflow automation. Self-hostable or cloud-hosted. Used by US Department of Defense, NASA, and enterprises worldwide.",
+    "localizedDescriptions": {
+      "de": "Open-Source sichere Kollaborationsplattform für kritische Arbeiten. Entwickelt in Go/React, MIT-lizenzierte Team Edition mit AGPLv3 Server-Quellcode. Funktionen umfassen Kanal-basiertes Messaging, Dateifreigabe, Videoanrufe und Workflow-Automatisierung. Self-hostbar oder Cloud-gehostet. Genutzt vom US-Verteidigungsministerium, NASA und Unternehmen weltweit."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/mattermost/mattermost",
+    "tags": [
+      "messaging",
+      "freemium",
+      "open-source",
+      "team-communication",
+      "slack",
+      "microsoft-teams",
+      "devsecops"
+    ],
+    "foundedYear": 2015,
+    "headquartersCity": "Palo Alto",
+    "license": "MIT (Team Edition); AGPL-3.0 (server)"
+  },
+  {
     "id": "matomo",
     "name": "Matomo",
     "category": "analytics",
