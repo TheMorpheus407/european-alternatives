@@ -537,6 +537,37 @@ export const researchAlternatives: Alternative[] = [
     "sourceCodeUrl": "https://github.com/Quad9DNS"
   },
   {
+    "id": "qgis",
+    "name": "QGIS",
+    "category": "other",
+    "country": "ch",
+    "logo": "/logos/qgis.svg",
+    "replacesUS": [
+      "ArcGIS"
+    ],
+    "pricing": "free",
+    "website": "https://www.qgis.org/",
+    "description": "Free and open source Geographic Information System (GIS) that runs on Unix platforms, Windows, and macOS. Provides capabilities for viewing, editing, and analyzing spatial data with support for raster, vector, mesh, and point cloud formats. Developed since 2002, maintained by active international community and part of OSGeo foundation.",
+    "localizedDescriptions": {
+      "de": "Freies und quelloffenes Geografisches Informationssystem (GIS) für Unix-Plattformen, Windows und macOS. Bietet Funktionen zum Anzeigen, Bearbeiten und Analysieren räumlicher Daten mit Unterstützung für Raster-, Vektor-, Mesh- und Point-Cloud-Formate. Seit 2002 entwickelt, gepflegt von aktiver internationaler Gemeinschaft und Teil der OSGeo-Foundation."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/qgis/QGIS",
+    "tags": [
+      "gis",
+      "mapping",
+      "geospatial",
+      "open-source",
+      "free",
+      "osgeo",
+      "arcgis"
+    ],
+    "foundedYear": 2002,
+    "headquartersCity": "Laax",
+    "license": "GPL-2.0+"
+  },
+  {
     "id": "restic",
     "name": "Restic",
     "category": "cloud-storage",
@@ -664,6 +695,34 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "London",
     "sourceCodeUrl": "https://github.com/element-hq",
     "license": "Apache-2.0 (Element clients); AGPL-3.0 (Matrix Synapse server)"
+  },
+  {
+    "id": "e-os",
+    "name": "e/OS",
+    "category": "mobile-os",
+    "country": "fr",
+    "replacesUS": [
+      "Android",
+      "iOS"
+    ],
+    "pricing": "free",
+    "website": "https://e.foundation",
+    "description": "Privacy-focused de-googled mobile operating system based on LineageOS/AOSP, developed by French non-profit e Foundation. Offers open-source OS with MicroG as Google services replacement, built-in tracker blocking, and optional Murena cloud services. Available for 200+ smartphone models.",
+    "localizedDescriptions": {
+      "de": "Datenschutzorientiertes de-googledes mobiles Betriebssystem basierend auf LineageOS/AOSP, entwickelt von der französischen Non-Profit-Organisation e Foundation. Bietet Open-Source-OS mit MicroG als Google-Dienste-Ersatz, integrierte Tracker-Blockierung und optionale Murena-Cloud-Dienste. Verfügbar für über 200 Smartphone-Modelle."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "partial",
+    "sourceCodeUrl": "https://gitlab.e.foundation",
+    "tags": [
+      "mobile-os",
+      "privacy",
+      "degoogled",
+      "android",
+      "open-source"
+    ],
+    "foundedYear": 2018,
+    "headquartersCity": "Paris"
   },
   {
     "id": "filen",
