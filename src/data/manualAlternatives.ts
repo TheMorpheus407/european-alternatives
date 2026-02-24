@@ -1527,6 +1527,26 @@ export const manualAlternatives: Alternative[] = [
     trustScoreStatus: 'pending',
   },
   {
+    id: 'jolla-phone',
+    name: 'Jolla Phone',
+    description:
+      'Privacy-focused Linux smartphone from Finland running Sailfish OS. Features user-replaceable battery, physical Privacy Switch, and no tracking/analytics. Community-driven development with 5+ years of OS support guaranteed. Currently in pre-order (Batch #3), estimated delivery 1H/2026.',
+    localizedDescriptions: {
+      de: 'Datenschutzorientiertes Linux-Smartphone aus Finnland mit Sailfish OS. Mit austauschbarem Akku, physischem Privacy Switch und ohne Tracking/Analysen. Community-getriebene Entwicklung mit garantiertem 5+ Jahren OS-Support. Aktuell in Vorbestellung (Batch #3), voraussichtliche Lieferung 1H/2026.',
+    },
+    website: 'https://commerce.jolla.com/products/jolla-phone-preorder',
+    country: 'fi',
+    category: 'other',
+    replacesUS: ['Apple iPhone', 'Google Pixel'],
+    isOpenSource: false,
+    openSourceLevel: 'none',
+    pricing: 'paid',
+    tags: ['smartphone', 'linux', 'privacy', 'sailfish-os', 'european', 'replaceable-battery', 'community'],
+    foundedYear: 2011,
+    headquartersCity: 'Tampere',
+    trustScoreStatus: 'pending',
+  },
+  {
     id: 'shift-phone',
     name: 'SHIFT Phone',
     description:
