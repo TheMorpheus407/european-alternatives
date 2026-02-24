@@ -2613,6 +2613,39 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0 (core engine/SDKs); proprietary SaaS dashboard"
   },
   {
+    "id": "piwik-pro",
+    "name": "Piwik PRO",
+    "category": "analytics",
+    "country": "de",
+    "replacesUS": [
+      "Google Analytics",
+      "Mixpanel",
+      "Amplitude"
+    ],
+    "pricing": "paid",
+    "website": "https://piwik.pro",
+    "description": "Privacy-focused analytics suite developed in Germany, offering web and mobile analytics, tag management, customer data platform, and consent management. Piwik PRO is a commercial fork of Matomo (formerly Piwik) — provides ISO 27001 and SOC 2 certified cloud hosting in EU data centers with full data ownership.",
+    "localizedDescriptions": {
+      "de": "Datenschutzorientierte Analytics-Suite aus Deutschland, bietet Web- und Mobile-Analytics, Tag-Management, Customer Data Platform und Consent-Management. Piwik PRO ist ein kommerzieller Fork von Matomo — bietet ISO 27001 und SOC 2 zertifiziertes Cloud-Hosting in EU-Rechenzentren mit vollständiger Datenhoheit."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "analytics",
+      "paid",
+      "privacy",
+      "gdpr",
+      "tag-manager",
+      "cdp",
+      "consent-management",
+      "google-analytics",
+      "mixpanel"
+    ],
+    "foundedYear": 2014,
+    "headquartersCity": "Berlin",
+    "sourceCodeUrl": "https://github.com/PiwikPRO"
+  },
+  {
     "id": "pixelfed",
     "name": "Pixelfed",
     "category": "social-media",
