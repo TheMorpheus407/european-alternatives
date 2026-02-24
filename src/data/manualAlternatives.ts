@@ -1567,6 +1567,26 @@ export const manualAlternatives: Alternative[] = [
     trustScoreStatus: 'pending',
   },
   {
+    id: 'volla-phone',
+    name: 'Volla Phone',
+    description:
+      'Privacy-focused smartphones from Germany running Volla OS (based on open-source Android without Google Apps/Services). Features long-term updates (5+ years), no mandatory Google account, optional Ubuntu Touch, and Volla Cloud (decentralized storage via Holochain). Founded as a German startup with focus on digital sovereignty and privacy.',
+    localizedDescriptions: {
+      de: 'Datenschutzorientierte Smartphones aus Deutschland mit Volla OS (basierend auf Open-Source Android ohne Google Apps/Services). Mit langfristigen Updates (5+ Jahre), kein obligatorisches Google-Konto, optional Ubuntu Touch und Volla Cloud (dezentraler Speicher via Holochain). Gegründet als deutsches Startup mit Fokus auf digitale Souveränität und Datenschutz.',
+    },
+    website: 'https://volla.online',
+    country: 'de',
+    category: 'other',
+    replacesUS: ['Apple iPhone', 'Google Pixel'],
+    isOpenSource: false,
+    openSourceLevel: 'partial',
+    pricing: 'paid',
+    tags: ['smartphone', 'privacy', 'germany', 'no-google', 'sustainability', 'ubuntu-touch', 'decentralized'],
+    foundedYear: 2019,
+    headquartersCity: 'Remscheid',
+    trustScoreStatus: 'pending',
+  },
+  {
     id: 'zammad',
     name: 'Zammad',
     description:
