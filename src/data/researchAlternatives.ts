@@ -1435,6 +1435,38 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Geneva"
   },
   {
+    "id": "jellyfin",
+    "name": "Jellyfin",
+    "category": "other",
+    "country": "eu",
+    "replacesUS": [
+      "Plex",
+      "Emby"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://jellyfin.org",
+    "description": "Volunteer-built free software media server for self-hosted media streaming. Fork of Emby created in 2018 after Emby went proprietary. No central servers, no tracking, no phone-home. Full open-source under GPL-2.0 with client and server code available on GitHub.",
+    "localizedDescriptions": {
+      "de": "Von Freiwilligen entwickelte freie Software für selbstgehostete Media-Streaming-Server. Abspaltung von Emby, die 2018 entstand, als Emby proprietär wurde. Keine zentralen Server, kein Tracking, keine Telefon-nach-Hause-Funktion. Vollständig quelloffen unter GPL-2.0 mit Client- und Server-Code auf GitHub."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/jellyfin/jellyfin",
+    "tags": [
+      "media-server",
+      "streaming",
+      "free",
+      "open-source",
+      "self-hosted",
+      "privacy",
+      "plex",
+      "emby"
+    ],
+    "foundedYear": 2018,
+    "license": "GPL-2.0"
+  },
+  {
     "id": "kdrive",
     "name": "Infomaniak kDrive",
     "category": "cloud-storage",
