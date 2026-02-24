@@ -1292,7 +1292,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "fountain",
     "name": "Fountain",
-    "category": "other",
+    "category": "podcasts",
     "country": "gb",
     "replacesUS": [
       "Apple Podcasts",

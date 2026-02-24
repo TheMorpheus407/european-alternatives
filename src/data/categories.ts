@@ -275,6 +275,13 @@ export const categories: Category[] = [
     usGiants: ['GlassWire'],
   },
   {
+    id: 'podcasts',
+    name: 'Podcasts',
+    description: 'Podcast players and hosting platforms',
+    emoji: '🎙️',
+    usGiants: ['Apple Podcasts', 'Spotify'],
+  },
+  {
     id: 'other',
     name: 'Other',
     description: 'Other tools and services',

@@ -156,6 +156,10 @@
       "name": "Datenschutz-Tools",
       "description": "Firewalls, Tracker-Blocker und datenschutzfördernde Werkzeuge"
     },
+    "podcasts": {
+      "name": "Podcasts",
+      "description": "Podcast-Player und Hosting-Plattformen"
+    },
     "other": {
       "name": "Sonstiges",
       "description": "Weitere Tools und Dienste"
