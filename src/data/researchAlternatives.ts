@@ -1222,6 +1222,40 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0 (client apps); proprietary server infrastructure"
   },
   {
+    "id": "ipv64",
+    "name": "IPv64.net",
+    "category": "dns",
+    "country": "de",
+    "logo": "/logos/ipv64.svg",
+    "replacesUS": [
+      "Google DNS",
+      "Cloudflare DNS",
+      "OpenDNS",
+      "Cloudflare"
+    ],
+    "pricing": "free",
+    "website": "https://ipv64.net",
+    "description": "German DNS and networking services provider offering DynDNS2, DNS64 with ad-blocking and malware protection, healthcheck services, WireGuard VPN gateway, and CDN. Operated by Prox IT UG based in Mülheim an der Ruhr, Germany. All services hosted on Hetzner cloud infrastructure in Germany. Privacy policy explicitly states no third-country data transfers.",
+    "localizedDescriptions": {
+      "de": "Deutscher DNS- und Netzwerkdienstanbieter mit DynDNS2, DNS64 mit Werbeblocker und Malware-Schutz, Healthcheck-Diensten, WireGuard-VPN-Gateway und CDN. Betrieben von Prox IT UG mit Sitz in Mülheim an der Ruhr, Deutschland. Alle Dienste auf Hetzner-Cloud-Infrastruktur in Deutschland gehostet. Datenschutzerklärung erklärt explizit keine Drittländer-Datentransfers."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "dns",
+      "dyndns",
+      "free",
+      "privacy",
+      "gdpr",
+      "vpn",
+      "wireguard",
+      "cdn",
+      "german"
+    ],
+    "foundedYear": 2022,
+    "headquartersCity": "Mülheim an der Ruhr"
+  },
+  {
     "id": "keepassxc",
     "name": "KeePassXC",
     "category": "password-manager",
