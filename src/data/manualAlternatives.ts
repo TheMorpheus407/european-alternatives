@@ -946,6 +946,29 @@ export const manualAlternatives: Alternative[] = [
     license: 'MIT',
   },
   {
+    id: 'bigbluebutton',
+    name: 'BigBlueButton',
+    logo: '/logos/bigbluebutton.svg',
+    description:
+      'Open-source web conferencing system designed for virtual classrooms with features like screen sharing, breakout rooms, polling, whiteboards, and recording. Originally developed at Carleton University in Ottawa, Canada, BigBlueButton is fully self-hostable under LGPL-3.0 license and can be deployed on European infrastructure for GDPR compliance.',
+    localizedDescriptions: {
+      de: 'Open-Source-Webkonferenzsystem, das für virtuelle Klassenzimmer entwickelt wurde und Funktionen wie Bildschirmfreigabe, Breakout-Räume, Umfragen, Whiteboards und Aufzeichnung bietet. BigBlueButton wurde ursprünglich an der Carleton University in Ottawa, Kanada, entwickelt und ist unter LGPL-3.0-Lizenz vollständig selbst-hostbar und kann auf europäischer Infrastruktur für DSGVO-Konformität bereitgestellt werden.',
+    },
+    website: 'https://bigbluebutton.org',
+    country: 'ca',
+    category: 'meeting-software',
+    replacesUS: ['Zoom', 'Google Meet', 'Microsoft Teams'],
+    isOpenSource: true,
+    openSourceLevel: 'full',
+    sourceCodeUrl: 'https://github.com/bigbluebutton/bigbluebutton',
+    pricing: 'free',
+    selfHostable: true,
+    tags: ['meeting-software', 'videoconferencing', 'webrtc', 'open-source', 'self-hosting', 'education', 'virtual-classroom'],
+    foundedYear: 2007,
+    headquartersCity: 'Ottawa',
+    license: 'LGPL-3.0',
+  },
+  {
     id: 'black-com',
     name: 'black.com',
     description:
