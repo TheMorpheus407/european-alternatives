@@ -163,6 +163,36 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0 / AGPL-3.0"
   },
   {
+    "id": "bbbserver",
+    "name": "bbbserver",
+    "category": "meeting-software",
+    "country": "de",
+    "replacesUS": [
+      "Zoom",
+      "Google Meet",
+      "Microsoft Teams"
+    ],
+    "pricing": "paid",
+    "website": "https://bbbserver.com",
+    "description": "German SaaS video conferencing platform based on BigBlueButton, offering GDPR-compliant hosted meetings with features like screen sharing, breakout rooms, whiteboards, and recording. Operated by invokable GmbH from Remscheid, Germany, with servers in ISO 27001-certified European data centers. Provides dedicated instances for businesses, educational institutions, and public authorities.",
+    "localizedDescriptions": {
+      "de": "Deutsche SaaS-Videokonferenzplattform basierend auf BigBlueButton, die GDPR-konforme gehostete Meetings mit Funktionen wie Bildschirmfreigabe, Breakout-Räumen, Whiteboards und Aufzeichnung bietet. Betrieben von invokable GmbH aus Remscheid, Deutschland, mit Servern in ISO 27001-zertifizierten europäischen Rechenzentren. Bietet dedizierte Instanzen für Unternehmen, Bildungseinrichtungen und öffentliche Behörden."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "partial",
+    "sourceCodeUrl": "https://github.com/bigbluebutton/bigbluebutton",
+    "tags": [
+      "meeting-software",
+      "videoconferencing",
+      "saas",
+      "gdpr",
+      "privacy",
+      "european-hosting",
+      "bigbluebutton"
+    ],
+    "headquartersCity": "Remscheid"
+  },
+  {
     "id": "brave",
     "name": "Brave",
     "category": "browser",
