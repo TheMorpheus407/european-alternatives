@@ -1073,6 +1073,7 @@ export const manualAlternatives: Alternative[] = [
     tags: ['hosting', 'cloud', 'vps', 'dedicated-servers', 'gdpr', 'object-storage'],
     foundedYear: 2003,
     headquartersCity: 'Munich',
+    trustScoreStatus: 'pending',
     reservations: [
       {
         id: 'kkr-majority-ownership',
