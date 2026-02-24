@@ -2067,6 +2067,37 @@ export const researchAlternatives: Alternative[] = [
     "license": "MIT (Team Edition); AGPL-3.0 (server)"
   },
   {
+    "id": "deltamaster",
+    "name": "DeltaMaster",
+    "category": "analytics",
+    "country": "de",
+    "replacesUS": [
+      "Microsoft Power BI",
+      "Tableau",
+      "Qlik",
+      "Looker"
+    ],
+    "pricing": "paid",
+    "website": "https://bissantz.de/en/applications/deltamaster/",
+    "description": "German business intelligence software for controlling and data-based management. DeltaMaster offers integrated analysis, planning, and reporting in one interface with AI-powered automation, standardized report generation, and patented visualization technology. Used by major German and European enterprises including Leica, Bosch, MediaMarkt, Würth, and Porsche.",
+    "localizedDescriptions": {
+      "de": "Deutsche Business-Intelligence-Software für Controlling und datenbasierte Unternehmenssteuerung. DeltaMaster bietet integrierte Analyse, Planung und Reporting in einer Oberfläche mit KI-gestützter Automatisierung, standardisierter Berichterstellung und patentierter Visualisierungstechnologie. Nutzung durch große deutsche und europäische Unternehmen wie Leica, Bosch, MediaMarkt, Würth und Porsche."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "analytics",
+      "business-intelligence",
+      "bi",
+      "reporting",
+      "enterprise",
+      "german",
+      "controlling"
+    ],
+    "foundedYear": 2003,
+    "headquartersCity": "Nuremberg"
+  },
+  {
     "id": "matomo",
     "name": "Matomo",
     "category": "analytics",
