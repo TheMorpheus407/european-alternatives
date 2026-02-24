@@ -3235,6 +3235,35 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "The Hague"
   },
   {
+    "id": "strato-mail",
+    "name": "STRATO Mail",
+    "category": "email",
+    "country": "de",
+    "replacesUS": [
+      "Gmail",
+      "Outlook",
+      "Yahoo Mail"
+    ],
+    "pricing": "freemium",
+    "website": "https://www.strato.de/mail/",
+    "description": "German email service from STRATO GmbH, hosted in TÜV-certified data centers in Germany with DSGVO compliance. Offers IMAP/POP3 access, ActiveSync for mobile sync, calendar and tasks (Business tier), and optional email archiving. Founded in 1997, part of IONOS Group SE.",
+    "localizedDescriptions": {
+      "de": "Deutscher E-Mail-Dienst von STRATO GmbH, gehostet in TÜV-zertifizierten Rechenzentren in Deutschland mit DSGVO-Konformität. Bietet IMAP/POP3-Zugriff, ActiveSync für mobile Synchronisation, Kalender und Aufgaben (Business-Tarif) und optionale E-Mail-Archivierung. Gegründet 1997, Teil der IONOS Group SE."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "email",
+      "freemium",
+      "gdpr",
+      "german-hosted",
+      "gmail",
+      "outlook"
+    ],
+    "foundedYear": 1997,
+    "headquartersCity": "Berlin"
+  },
+  {
     "id": "taiga",
     "name": "Taiga",
     "category": "project-management",
