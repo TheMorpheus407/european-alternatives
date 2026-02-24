@@ -907,6 +907,36 @@ export const researchAlternatives: Alternative[] = [
     "license": "MPL-2.0"
   },
   {
+    "id": "librewolf",
+    "name": "LibreWolf",
+    "category": "browser",
+    "country": "de",
+    "replacesUS": [
+      "Google Chrome",
+      "Safari",
+      "Edge"
+    ],
+    "pricing": "free",
+    "website": "https://librewolf.net",
+    "description": "Privacy-focused Firefox fork developed by the LibreWolf community. Removes all telemetry, disables DRM, and includes hardened privacy settings such as Resist Fingerprinting (RFP), enhanced tracking protection, and uBlock Origin. Updated regularly following upstream Firefox releases.",
+    "localizedDescriptions": {
+      "de": "Datenschutzorientierter Firefox-Fork der LibreWolf-Community. Entfernt alle Telemetrie, deaktiviert DRM und enthält gehärtete Datenschutzeinstellungen wie Resist Fingerprinting (RFP), erweiterten Tracking-Schutz und uBlock Origin. Regelmäßige Updates nach Firefox-Upstream-Releases."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "tags": [
+      "browser",
+      "free",
+      "open-source",
+      "privacy",
+      "firefox-fork"
+    ],
+    "foundedYear": 2020,
+    "headquartersCity": "Community project",
+    "sourceCodeUrl": "https://codeberg.org/librewolf",
+    "license": "MPL-2.0"
+  },
+  {
     "id": "freeoffice",
     "name": "FreeOffice",
     "category": "office-suite",
