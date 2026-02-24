@@ -1280,6 +1280,26 @@ export const manualAlternatives: Alternative[] = [
     license: 'MIT, Apache-2.0',
   },
   {
+    id: 'goneo',
+    name: 'goneo',
+    description:
+      'German web hosting provider offering affordable email hosting with custom domains, web hosting, Matrix chat servers, and domain registration. Servers located in Germany with GDPR compliance. Offers competitive pricing starting at €3.99/month for web hosting with unlimited email accounts.',
+    localizedDescriptions: {
+      de: 'Deutscher Webhosting-Anbieter mit günstigem E-Mail-Hosting mit eigener Domain, Webhosting, Matrix-Chat-Servern und Domainregistrierung. Server in Deutschland mit DSGVO-Konformität. Wettbewerbsfähige Preise ab 3,99 €/Monat für Webhosting mit unbegrenzten E-Mail-Konten.',
+    },
+    website: 'https://www.goneo.de',
+    logo: '/logos/goneo.svg',
+    country: 'de',
+    category: 'hosting',
+    replacesUS: ['Gmail', 'Outlook', 'AWS', 'Google Cloud'],
+    isOpenSource: false,
+    openSourceLevel: 'none',
+    pricing: 'paid',
+    tags: ['hosting', 'email', 'domain', 'matrix', 'gdpr', 'german-hosted', 'affordable'],
+    foundedYear: 2004,
+    headquartersCity: 'Minden',
+  },
+  {
     id: 'heylogin',
     name: 'heylogin',
     description:
