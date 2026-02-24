@@ -641,6 +641,35 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0 (clients/SDKs); proprietary backend"
   },
   {
+    "id": "f-droid",
+    "name": "F-Droid",
+    "category": "mobile-os",
+    "country": "gb",
+    "replacesUS": [
+      "Google Play Store"
+    ],
+    "pricing": "free",
+    "website": "https://f-droid.org",
+    "description": "Community-run free and open-source Android app repository. Founded in 2010, originally by UK-based F-Droid Limited (now shut down). Offers reproducible builds, anti-feature tracking for apps with tracking/ads, and no account required. Provides an alternative to Google Play Store with focus on privacy and user freedom.",
+    "localizedDescriptions": {
+      "de": "Community-betriebener freier und quelloffener Android-App-Store. Gegründet 2010, ursprünglich von der britischen F-Droid Limited (mittlerweile eingestellt). Bietet reproduzierbare Builds, Anti-Feature-Tracking für Apps mit Tracking/Werbung und kein Konto erforderlich. Bietet eine Alternative zum Google Play Store mit Fokus auf Datenschutz und Benutzerfreiheit."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://gitlab.com/fdroid",
+    "tags": [
+      "app-store",
+      "android",
+      "foss",
+      "privacy",
+      "open-source",
+      "google-play"
+    ],
+    "foundedYear": 2010,
+    "headquartersCity": "Global upstream community",
+    "license": "AGPL-3.0"
+  },
+  {
     "id": "firefox",
     "name": "Firefox",
     "category": "browser",
