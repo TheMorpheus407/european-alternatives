@@ -1109,6 +1109,37 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0"
   },
   {
+    "id": "discourse",
+    "name": "Discourse",
+    "category": "social-media",
+    "country": "us",
+    "replacesUS": [
+      "Reddit"
+    ],
+    "pricing": "freemium",
+    "selfHostable": true,
+    "website": "https://www.discourse.org",
+    "description": "US-based fully open-source community discussion platform. Powers 22,000+ communities worldwide with features for forums, knowledge bases, and real-time chat. Available as managed hosting or self-hosted. Full source code available on GitHub under GPL-2.0.",
+    "localizedDescriptions": {
+      "de": " Vollständig quelloffene Community-Diskussionsplattform aus den USA. Betreibt über 22.000 Communities weltweit mit Funktionen für Foren, Wissensdatenbanken und Echtzeit-Chat. Verfügbar als verwalteter Hosting-Service oder self-hosted. Vollständiger Quellcode auf GitHub unter GPL-2.0 verfügbar."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "tags": [
+      "social-media",
+      "forum",
+      "freemium",
+      "open-source",
+      "reddit",
+      "community",
+      "self-hosted"
+    ],
+    "foundedYear": 2013,
+    "headquartersCity": "United States",
+    "sourceCodeUrl": "https://github.com/discourse/discourse",
+    "license": "GPL-2.0"
+  },
+  {
     "id": "libreoffice",
     "name": "LibreOffice",
     "category": "office-suite",
