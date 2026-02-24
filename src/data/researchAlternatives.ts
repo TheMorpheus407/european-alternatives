@@ -3945,6 +3945,41 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Berlin"
   },
   {
+    "id": "mailcow",
+    "name": "mailcow",
+    "category": "email",
+    "country": "de",
+    "replacesUS": [
+      "Gmail",
+      "Outlook",
+      "Yahoo Mail"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://mailcow.email",
+    "description": "Open-source mail server suite based on Docker, combining Postfix, Dovecot, Rspamd, SOGo, ClamAV and more. Provides web UI for mail management, calendar, contacts, spam filtering, DKIM/SPF/DMARC support, and optional managed hosting. Community edition released under GPL-3.0.",
+    "localizedDescriptions": {
+      "de": "Open-Source-Mail-Server-Suite auf Docker-Basis, die Postfix, Dovecot, Rspamd, SOGo, ClamAV und mehr kombiniert. Bietet Web-UI für Mail-Verwaltung, Kalender, Kontakte, Spam-Filterung, DKIM/SPF/DMARC-Support und optional Managed Hosting. Community-Edition unter GPL-3.0 lizenziert."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "tags": [
+      "email",
+      "mail-server",
+      "open-source",
+      "self-hosted",
+      "spam-filter",
+      "docker",
+      "groupware",
+      "imap",
+      "smtp"
+    ],
+    "foundedYear": 2016,
+    "headquartersCity": "Willich",
+    "sourceCodeUrl": "https://github.com/mailcow/mailcow-dockerized",
+    "license": "GPL-3.0"
+  },
+  {
     "id": "taiga",
     "name": "Taiga",
     "category": "project-management",
