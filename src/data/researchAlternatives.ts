@@ -324,6 +324,32 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0"
   },
   {
+    "id": "cyberghost-vpn",
+    "name": "CyberGhost VPN",
+    "category": "vpn",
+    "country": "ro",
+    "replacesUS": [
+      "ExpressVPN"
+    ],
+    "pricing": "paid",
+    "website": "https://www.cyberghostvpn.com",
+    "description": "Romanian VPN service founded in 2011 in Bucharest, now owned by UK-based Kape Technologies (also owns ExpressVPN, PIA, ZenMate). Operates under CyberGhost S.R.L. as the legal entity and data controller. Offers no-logs VPN with global server network.",
+    "localizedDescriptions": {
+      "de": "Rumänischer VPN-Dienst, 2011 in Bukarest gegründet, jetzt im Besitz der britischen Kape Technologies (betreibt auch ExpressVPN, PIA, ZenMate). Rechtlich operiert unter CyberGhost S.R.L. als Datenschutzverantwortlicher. Bietet No-Logs-VPN mit globalem Servernetz."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "vpn",
+      "paid",
+      "privacy",
+      "no-logs",
+      "expressvpn"
+    ],
+    "foundedYear": 2011,
+    "headquartersCity": "Bucharest"
+  },
+  {
     "id": "dns4eu",
     "name": "DNS4EU",
     "category": "dns",
