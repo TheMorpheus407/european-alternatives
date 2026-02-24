@@ -2898,6 +2898,42 @@ export const researchAlternatives: Alternative[] = [
     "license": "MIT"
   },
   {
+    "id": "xmpp",
+    "name": "XMPP",
+    "category": "messaging",
+    "country": "eu",
+    "replacesUS": [
+      "WhatsApp",
+      "iMessage",
+      "Discord",
+      "Signal"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://xmpp.org",
+    "description": "Open decentralized messaging protocol (formerly Jabber) maintained by the XMPP Standards Foundation. Federated architecture allows anyone to run their own server, enabling true data sovereignty. Supports end-to-end encryption via OMEMO, OTR, and OpenPGP. Multiple clients available across all platforms.",
+    "localizedDescriptions": {
+      "de": "Offenes dezentrales Messaging-Protokoll (ehemals Jabber), gepflegt von der XMPP Standards Foundation. Die föderierte Architektur ermöglicht jedem, seinen eigenen Server zu betreiben und echte Datenhoheit zu erreichen. Unterstützt Ende-zu-Ende-Verschlüsselung via OMEMO, OTR und OpenPGP. Mehrere Clients für alle Plattformen verfügbar."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "tags": [
+      "messaging",
+      "free",
+      "open-source",
+      "federated",
+      "decentralized",
+      "xmpp",
+      "jabber",
+      "e2ee",
+      "protocol"
+    ],
+    "foundedYear": 1999,
+    "headquartersCity": "open",
+    "sourceCodeUrl": "https://xmpp.org/extensions/",
+    "license": "Open standard (RFC 6120, 6121, 7622)"
+  },
+  {
     "id": "otto",
     "name": "Otto",
     "category": "ecommerce",
