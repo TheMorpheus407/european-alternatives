@@ -1632,6 +1632,39 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0"
   },
   {
+    "id": "glance",
+    "name": "Glance",
+    "category": "other",
+    "country": "fr",
+    "replacesUS": [
+      "Netvibes",
+      "Feedly"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://github.com/glanceapp/glance",
+    "description": "A lightweight, highly customizable self-hosted dashboard that displays feeds (RSS, Reddit, Hacker News, YouTube) and system information in a beautiful, streamlined interface. Written in Go with a focus on minimal dependencies and mobile optimization. Data stays on user's server.",
+    "localizedDescriptions": {
+      "de": "Ein leichtgewichtiges, hochgradig anpassbares selbstgehostetes Dashboard, das Feeds (RSS, Reddit, Hacker News, YouTube) und Systeminformationen in einer schönen, optimierten Oberfläche anzeigt. Geschrieben in Go mit Fokus auf minimale Abhängigkeiten und mobile Optimierung. Daten bleiben auf dem Server des Nutzers."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/glanceapp/glance",
+    "tags": [
+      "dashboard",
+      "rss",
+      "startpage",
+      "self-hosted",
+      "homepage",
+      "aggregator",
+      "go",
+      "docker"
+    ],
+    "foundedYear": 2020,
+    "headquartersCity": "France",
+    "license": "AGPL-3.0"
+  },
+  {
     "id": "gimp",
     "name": "GIMP",
     "category": "other",
