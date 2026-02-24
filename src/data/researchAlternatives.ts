@@ -467,6 +467,40 @@ export const researchAlternatives: Alternative[] = [
     "license": "Apache-2.0 (FLUX.1 [schnell]); non-commercial (FLUX.1 [dev]); proprietary API (FLUX.1 [pro])"
   },
   {
+    "id": "bielik-ai",
+    "name": "Bielik AI",
+    "category": "ai-ml",
+    "country": "pl",
+    "replacesUS": [
+      "ChatGPT",
+      "Claude",
+      "Gemini"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://bielik.ai",
+    "description": "Polish open-source LLM family developed by SpeakLeash Foundation. Trained primarily on Polish and other European language data, fully open-source under Apache 2.0 license, can be run locally on consumer hardware.",
+    "localizedDescriptions": {
+      "de": "Polnische Open-Source LLM-Familie, entwickelt von der SpeakLeash Foundation.hauptsächlich auf Polnisch und anderen europäischen Sprachdaten trainiert, vollständig Open-Source unter Apache 2.0 Lizenz, kann lokal auf Consumer-Hardware betrieben werden."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "openSourceAuditUrl": "https://huggingface.co/speakleash",
+    "tags": [
+      "ai-ml",
+      "llm",
+      "open-source",
+      "polish",
+      "local-ai",
+      "chatgpt",
+      "claude"
+    ],
+    "foundedYear": 2024,
+    "headquartersCity": "Krakow",
+    "sourceCodeUrl": "https://github.com/speakleash",
+    "license": "Apache-2.0"
+  },
+  {
     "id": "collabora-online",
     "name": "Collabora Online",
     "category": "office-suite",
