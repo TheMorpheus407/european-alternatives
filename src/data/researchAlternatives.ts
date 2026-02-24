@@ -3542,6 +3542,39 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Paris"
   },
   {
+    "id": "searxng",
+    "name": "SearXNG",
+    "category": "search-engine",
+    "country": "eu",
+    "replacesUS": [
+      "Google Search",
+      "Bing"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://searxng.org",
+    "description": "Free and open-source metasearch engine forked from searx in 2021. Aggregates results from up to 244 search services without tracking or profiling users. Self-hostable via Docker or manual installation with ~70 public instances available. Developed by an international community with European roots (fork of searx, originally created by Hungarian developer Adam Tauber).",
+    "localizedDescriptions": {
+      "de": "Freie und quelloffene Meta-Suchmaschine, geforkt von searx im Jahr 2021. Aggregiert Ergebnisse von bis zu 244 Suchdiensten ohne Benutzerverfolgung oder Profiling. Self-Hosting via Docker oder manueller Installation mit etwa 70 öffentlichen Instanzen. Entwickelt von einer internationalen Community mit europäischen Wurzeln (Fork von searx, ursprünglich erstellt vom ungarischen Entwickler Adam Tauber)."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "openSourceAuditUrl": "https://github.com/searxng/searxng",
+    "sourceCodeUrl": "https://github.com/searxng/searxng",
+    "tags": [
+      "search-engine",
+      "free",
+      "open-source",
+      "privacy",
+      "metasearch",
+      "self-hosted",
+      "no-tracking"
+    ],
+    "foundedYear": 2021,
+    "headquartersCity": "Community project (fork of searx, originated in Hungary/EU)",
+    "license": "AGPL-3.0"
+  },
+  {
     "id": "shopware",
     "name": "Shopware",
     "category": "ecommerce",
