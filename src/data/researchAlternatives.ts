@@ -3648,6 +3648,39 @@ export const researchAlternatives: Alternative[] = [
     "license": "MPL-2.0 / AGPL-3.0"
   },
   {
+    "id": "talos-linux",
+    "name": "Talos Linux",
+    "category": "hosting",
+    "country": "us",
+    "replacesUS": [
+      "Azure Kubernetes Service",
+      "Amazon EKS",
+      "Google Kubernetes Engine"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://www.talos.dev/",
+    "description": "Secure, immutable, and minimal Linux distribution designed specifically for Kubernetes. All system management is done via API - no SSH or interactive console. Production-ready and supported by Sidero Labs. A Certified Kubernetes distribution.",
+    "localizedDescriptions": {
+      "de": "Sichere, unveränderliche und minimalistische Linux-Distribution, speziell für Kubernetes entwickelt. Die gesamte Systemverwaltung erfolgt über API - kein SSH oder interaktive Konsole. Produktionsreif und unterstützt von Sidero Labs. Eine Certified Kubernetes Distribution."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/siderolabs/talos",
+    "tags": [
+      "kubernetes",
+      "linux-distribution",
+      "operating-system",
+      "cloud-native",
+      "infrastructure",
+      "self-hostable",
+      "certified-kubernetes"
+    ],
+    "foundedYear": 2019,
+    "headquartersCity": "Goleta",
+    "license": "MPL-2.0"
+  },
+  {
     "id": "threema",
     "name": "Threema",
     "category": "messaging",
