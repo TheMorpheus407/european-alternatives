@@ -912,6 +912,37 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0"
   },
   {
+    "id": "gimp",
+    "name": "GIMP",
+    "category": "other",
+    "country": "eu",
+    "replacesUS": [
+      "Adobe Photoshop"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://www.gimp.org",
+    "description": "GNU Image Manipulation Program - a free and open-source raster graphics editor used for image retouching, editing, free-hand drawing, and converting between image formats. Cross-platform (Linux, macOS, Windows, FreeBSD, OpenBSD). Part of the GNU Project, actively maintained with regular releases.",
+    "localizedDescriptions": {
+      "de": "GNU Image Manipulation Program - ein freies und quelloffenes Rastergrafik-Programm zur Bildretusche, Bearbeitung, freien Zeichnung und Konvertierung zwischen Bildformaten. Plattformübergreifend (Linux, macOS, Windows, FreeBSD, OpenBSD). Teil des GNU-Projekts, aktiv gewartet mit regelmäßigen Veröffentlichungen."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://gitlab.gnome.org/GNOME/gimp",
+    "tags": [
+      "graphics-editor",
+      "photo-editing",
+      "free",
+      "open-source",
+      "foss",
+      "gnu",
+      "cross-platform",
+      "adobe-photoshop"
+    ],
+    "foundedYear": 1995,
+    "license": "GPL-3.0-or-later"
+  },
+  {
     "id": "friendica",
     "name": "Friendica",
     "category": "social-media",
