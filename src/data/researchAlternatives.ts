@@ -1251,6 +1251,36 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Gunzenhausen"
   },
   {
+    "id": "all-inkl",
+    "name": "All-inkl",
+    "category": "hosting",
+    "country": "de",
+    "replacesUS": [
+      "AWS",
+      "Google Cloud",
+      "Azure",
+      "Cloudflare"
+    ],
+    "pricing": "paid",
+    "website": "https://all-inkl.com",
+    "description": "German web hosting provider offering shared hosting, managed servers, domains, and reseller options. Based in Friedersdorf, Germany with over 25 years of experience, 2+ million domains, and 5+ million email addresses. Operates on 100% renewable energy with servers in German data centers.",
+    "localizedDescriptions": {
+      "de": "Deutscher Webhosting-Anbieter mit Shared Hosting, Managed Servern, Domains und Reseller-Optionen. Sitz in Friedersdorf, Deutschland mit über 25 Jahren Erfahrung, 2+ Millionen Domains und 5+ Millionen E-Mail-Adressen. Betrieb zu 100 % mit erneuerbarer Energie und Servern in deutschen Rechenzentren."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "hosting",
+      "paid",
+      "webhosting",
+      "managed-server",
+      "domains",
+      "gdpr"
+    ],
+    "foundedYear": 2000,
+    "headquartersCity": "Friedersdorf"
+  },
+  {
     "id": "hostinger",
     "name": "Hostinger",
     "category": "hosting",
