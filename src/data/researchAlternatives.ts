@@ -3497,6 +3497,36 @@ export const researchAlternatives: Alternative[] = [
     "license": "Community License (<= USD 1M revenue) / Enterprise License"
   },
   {
+    "id": "stoat",
+    "name": "Stoat",
+    "category": "messaging",
+    "country": "gb",
+    "replacesUS": [
+      "Discord"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://stoat.chat",
+    "description": "Open-source chat platform (formerly Revolt) founded in 2021, developed by a team of friends who wanted to create a user-first chat app. Fully open-source under AGPL-3.0 with clients for web, desktop, Android, and iOS. Backend written in Rust, frontend in TypeScript/Solid.js. 600k+ users, 150k+ lines of code. Headquartered in London, UK.",
+    "localizedDescriptions": {
+      "de": "Open-Source-Chat-Plattform (früher Revolt), gegründet 2021 von einem Team, das einen nutzerzentrierten Chat-Dienst erschaffen wollte. Vollständig quelloffen unter AGPL-3.0 mit Clients für Web, Desktop, Android und iOS. Backend in Rust, Frontend in TypeScript/Solid.js. 600k+ Nutzer, 150k+ Codezeilen. Hauptsitz in London, UK."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/stoatchat",
+    "tags": [
+      "messaging",
+      "free",
+      "open-source",
+      "discord-alternative",
+      "self-hostable",
+      "agpl-3.0"
+    ],
+    "foundedYear": 2021,
+    "headquartersCity": "London",
+    "license": "AGPL-3.0"
+  },
+  {
     "id": "stackit",
     "name": "STACKIT",
     "category": "cloud-storage",
