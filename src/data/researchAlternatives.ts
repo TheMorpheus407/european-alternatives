@@ -137,7 +137,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "aurora-store",
     "name": "Aurora Store",
-    "category": "mobile-os",
+    "category": "app-stores",
     "country": "in",
     "replacesUS": [
       "Google Play Store"
@@ -371,37 +371,6 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Remscheid"
   },
   {
-    "id": "brave",
-    "name": "Brave",
-    "category": "browser",
-    "country": "us",
-    "replacesUS": [
-      "Google Chrome",
-      "Safari",
-      "Edge"
-    ],
-    "pricing": "free",
-    "website": "https://brave.com",
-    "description": "Privacy-focused web browser built on Chromium, developed by Brave Software Inc. in San Francisco. Blocks ads and trackers by default, offers built-in VPN, and includes Brave Search. Client code is open source under MPL-2.0.",
-    "localizedDescriptions": {
-      "de": "Datenschutzorientierter Webbrowser, basierend auf Chromium, entwickelt von Brave Software Inc. in San Francisco. Blockiert standardmäßig Werbung und Tracker, bietet integrierte VPN-Suche und Brave Search. Client-Code ist quelloffen unter MPL-2.0."
-    },
-    "isOpenSource": true,
-    "openSourceLevel": "full",
-    "sourceCodeUrl": "https://github.com/brave/brave-browser",
-    "tags": [
-      "browser",
-      "free",
-      "open-source",
-      "privacy",
-      "google-chrome",
-      "safari"
-    ],
-    "foundedYear": 2015,
-    "headquartersCity": "San Francisco",
-    "license": "MPL-2.0"
-  },
-  {
     "id": "borgbackup",
     "name": "BorgBackup",
     "category": "cloud-storage",
@@ -604,15 +573,15 @@ export const researchAlternatives: Alternative[] = [
     "id": "cyberghost-vpn",
     "name": "CyberGhost VPN",
     "category": "vpn",
-    "country": "ro",
+    "country": "gb",
     "replacesUS": [
       "ExpressVPN"
     ],
     "pricing": "paid",
     "website": "https://www.cyberghostvpn.com",
-    "description": "Romanian VPN service founded in 2011 in Bucharest, now owned by UK-based Kape Technologies (also owns ExpressVPN, PIA, ZenMate). Operates under CyberGhost S.R.L. as the legal entity and data controller. Offers no-logs VPN with global server network.",
+    "description": "VPN service originally founded in Bucharest in 2011, acquired by Kape Technologies (London, UK) in 2017. Kape also owns ExpressVPN, PIA, and ZenMate. Operates under CyberGhost S.R.L. in Romania as the legal entity and data controller. Kape itself is privately held by Unikmind Holdings (Teddy Sagi, Cyprus) since 2023. Offers no-logs VPN with global server network.",
     "localizedDescriptions": {
-      "de": "Rumänischer VPN-Dienst, 2011 in Bukarest gegründet, jetzt im Besitz der britischen Kape Technologies (betreibt auch ExpressVPN, PIA, ZenMate). Rechtlich operiert unter CyberGhost S.R.L. als Datenschutzverantwortlicher. Bietet No-Logs-VPN mit globalem Servernetz."
+      "de": "VPN-Dienst, 2011 in Bukarest gegründet, 2017 von Kape Technologies (London, UK) übernommen. Kape betreibt auch ExpressVPN, PIA und ZenMate. Operiert rechtlich unter CyberGhost S.R.L. in Rumänien als Datenschutzverantwortlicher. Kape selbst gehört seit 2023 privat der Unikmind Holdings (Teddy Sagi, Zypern). Bietet No-Logs-VPN mit globalem Servernetz."
     },
     "isOpenSource": false,
     "openSourceLevel": "none",
@@ -624,7 +593,7 @@ export const researchAlternatives: Alternative[] = [
       "expressvpn"
     ],
     "foundedYear": 2011,
-    "headquartersCity": "Bucharest"
+    "headquartersCity": "London"
   },
   {
     "id": "dns4eu",
@@ -915,7 +884,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "qgis",
     "name": "QGIS",
-    "category": "other",
+    "category": "gis",
     "country": "ch",
     "logo": "/logos/qgis.svg",
     "replacesUS": [
@@ -1012,7 +981,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "zapstore",
     "name": "Zapstore",
-    "category": "mobile-os",
+    "category": "app-stores",
     "country": "eu",
     "replacesUS": [
       "Google Play Store"
@@ -1331,6 +1300,7 @@ export const researchAlternatives: Alternative[] = [
     ],
     "pricing": "free",
     "website": "https://fountain.fm",
+    "logo": "/logos/fountain.svg?v=20260224",
     "description": "UK-based podcast player app with social features and Bitcoin/Lightning payment integration for supporting creators. Available on iOS and Android with features including offline downloads, clip sharing, and community engagement through comments and followers.",
     "localizedDescriptions": {
       "de": "Britischer Podcast-Player mit sozialen Funktionen und Bitcoin/Lightning-Integration zur Unterstützung von Erstellern. Verfügbar für iOS und Android mit Offline-Downloads, Clip-Sharing und Community-Engagement durch Kommentare und Follower."
@@ -1352,7 +1322,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "f-droid",
     "name": "F-Droid",
-    "category": "mobile-os",
+    "category": "app-stores",
     "country": "gb",
     "replacesUS": [
       "Google Play Store"
@@ -1532,7 +1502,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "feeder",
     "name": "Feeder",
-    "category": "other",
+    "category": "feed-reader",
     "country": "se",
     "replacesUS": [
       "Feedly",
@@ -1632,7 +1602,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "ghostfolio",
     "name": "Ghostfolio",
-    "category": "other",
+    "category": "personal-finance",
     "country": "ch",
     "replacesUS": [
       "Mint",
@@ -1665,7 +1635,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "glance",
     "name": "Glance",
-    "category": "other",
+    "category": "feed-reader",
     "country": "eu",
     "logo": "/logos/glance.png",
     "replacesUS": [
@@ -1697,7 +1667,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "gimp",
     "name": "GIMP",
-    "category": "other",
+    "category": "design",
     "country": "eu",
     "replacesUS": [
       "Adobe Photoshop"
@@ -1820,7 +1790,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "hedgedoc",
     "name": "HedgeDoc",
-    "category": "other",
+    "category": "note-taking",
     "country": "eu",
     "replacesUS": [
       "Google Keep",
@@ -1831,6 +1801,7 @@ export const researchAlternatives: Alternative[] = [
     "pricing": "free",
     "selfHostable": true,
     "website": "https://hedgedoc.org",
+    "logo": "/logos/hedgedoc.svg",
     "description": "Open-source, web-based, self-hosted, collaborative markdown editor formerly known as CodiMD (fork of HackMD). Real-time collaboration on notes, graphs and presentations. Low system requirements, runs on Raspberry Pi. Supports revisions, permissions, and various authentication methods.",
     "localizedDescriptions": {
       "de": "Open-Source, webbasiert, selbst gehosteter, kollaborativer Markdown-Editor, ehemals bekannt als CodiMD (Fork von HackMD). Echtzeit-Zusammenarbeit an Notizen, Graphen und Präsentationen. Niedrige Systemanforderungen, läuft auch auf Raspberry Pi. Unterstützt Revisionen, Berechtigungen und verschiedene Authentifizierungsmethoden."
@@ -1886,7 +1857,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "readyou",
     "name": "Read You",
-    "category": "other",
+    "category": "feed-reader",
     "country": "cn",
     "replacesUS": [
       "Google Reader",
@@ -1916,7 +1887,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "trilium",
     "name": "Trilium",
-    "category": "other",
+    "category": "note-taking",
     "country": "ro",
     "replacesUS": [
       "Obsidian",
@@ -2101,7 +2072,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "jellyfin",
     "name": "Jellyfin",
-    "category": "other",
+    "category": "media-server",
     "country": "eu",
     "replacesUS": [
       "Plex",
@@ -2202,7 +2173,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "kdenlive",
     "name": "Kdenlive",
-    "category": "other",
+    "category": "video-editing",
     "country": "de",
     "replacesUS": [
       "Adobe Premiere Pro",
@@ -2957,7 +2928,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "neo-store",
     "name": "Neo Store",
-    "category": "mobile-os",
+    "category": "app-stores",
     "country": "de",
     "replacesUS": [
       "Google Play Store"
@@ -2987,7 +2958,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "neorg",
     "name": "Neorg",
-    "category": "other",
+    "category": "note-taking",
     "country": "eu",
     "replacesUS": [
       "Obsidian",
@@ -2997,6 +2968,7 @@ export const researchAlternatives: Alternative[] = [
     ],
     "pricing": "free",
     "website": "https://github.com/nvim-neorg/neorg",
+    "logo": "/logos/neorg.svg",
     "description": "Modern organization tool for Neovim, designed as a reimagined alternative to Emacs Org-mode. Features include structured note-taking, task management, time tracking, and documentation writing, all built on a single extensible file format (.norg). Fully open-source with active development and international contributors.",
     "localizedDescriptions": {
       "de": "Modernes Organisationstool für Neovim, als neu konzipierte Alternative zu Emacs Org-mode. Funktionen umfassen strukturiertes Notieren, Aufgabenverwaltung, Zeiterfassung und Dokumentationserstellung, alles auf einem einzigen erweiterbaren Dateiformat (.norg) aufgebaut. Vollständig Open-Source mit aktiver Entwicklung und internationalen Mitwirkenden."
@@ -3243,7 +3215,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "opencal",
     "name": "OpenCal",
-    "category": "other",
+    "category": "scheduling",
     "country": "de",
     "replacesUS": [
       "Calendly"
@@ -3407,7 +3379,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "org-roam",
     "name": "Org-roam",
-    "category": "other",
+    "category": "note-taking",
     "country": "eu",
     "replacesUS": [
       "Obsidian",
@@ -3416,6 +3388,7 @@ export const researchAlternatives: Alternative[] = [
     ],
     "pricing": "free",
     "website": "https://www.orgroam.com",
+    "logo": "/logos/org-roam.svg",
     "description": "Plain-text personal knowledge management system that brings Roam-like features to Emacs and Org-mode. Provides networked thought with backlinks, graph visualization, and full offline control. Data stored locally in plain org files with optional GPG encryption. Fully open source under GPL-3.0.",
     "localizedDescriptions": {
       "de": "Plain-Text Persönliches Wissensmanagementsystem, das Roam-ähnliche Funktionen in Emacs und Org-mode bringt. Bietet vernetztes Denken mit Backlinks, Graph-Visualisierung und volle Offline-Kontrolle. Daten werden lokal in Plain-Text-Org-Dateien mit optionaler GPG-Verschlüsselung gespeichert. Vollständig Open Source unter GPL-3.0."
@@ -3654,7 +3627,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "penpot",
     "name": "Penpot",
-    "category": "other",
+    "category": "design",
     "country": "es",
     "replacesUS": [
       "Figma",

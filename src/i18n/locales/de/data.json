@@ -108,6 +108,54 @@
       "name": "Musik-Streaming",
       "description": "Musik-Streaming-Plattformen und -Dienste"
     },
+    "app-stores": {
+      "name": "App-Stores",
+      "description": "App-Stores und Software-Distributionsplattformen"
+    },
+    "smartphones": {
+      "name": "Smartphones",
+      "description": "Smartphone-Hersteller und Mobilgeräte"
+    },
+    "note-taking": {
+      "name": "Notizen",
+      "description": "Notiz-Apps und persönliches Wissensmanagement"
+    },
+    "media-server": {
+      "name": "Medienserver",
+      "description": "Selbstgehostete Medienserver und Streaming-Plattformen"
+    },
+    "feed-reader": {
+      "name": "Feed-Reader",
+      "description": "RSS-, Atom- und Nachrichten-Feed-Reader"
+    },
+    "scheduling": {
+      "name": "Terminplanung",
+      "description": "Terminplanungs- und Buchungstools"
+    },
+    "personal-finance": {
+      "name": "Persönliche Finanzen",
+      "description": "Portfolio-Tracking, Budgetierung und Vermögensverwaltungstools"
+    },
+    "virtualization": {
+      "name": "Virtualisierung",
+      "description": "Server-Virtualisierung und Hypervisor-Plattformen"
+    },
+    "design": {
+      "name": "Design & Grafik",
+      "description": "Design-, Prototyping- und Bildbearbeitungstools"
+    },
+    "video-editing": {
+      "name": "Videoschnitt",
+      "description": "Videobearbeitungs- und Postproduktionssoftware"
+    },
+    "gis": {
+      "name": "GIS & Geodaten",
+      "description": "Geoinformationssysteme und räumliche Datenanalyse"
+    },
+    "privacy-tools": {
+      "name": "Datenschutz-Tools",
+      "description": "Firewalls, Tracker-Blocker und datenschutzfördernde Werkzeuge"
+    },
     "other": {
       "name": "Sonstiges",
       "description": "Weitere Tools und Dienste"

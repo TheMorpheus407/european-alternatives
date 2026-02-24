@@ -120,3 +120,25 @@ A legal entity that cannot independently resist compulsion from its US parent is
 Hubitat Elevation is a US-based, fully proprietary smart home hub. Under the [Decision Matrix](DECISION_MATRIX.md) two-tier system (criterion G6), non-European entries require full open-source status — client and server code publicly available under an OSI-approved license. Hubitat is closed-source and does not meet this requirement.
 
 European users seeking a local-first smart home hub should consider **Home Assistant** (already listed, fully open-source, Apache-2.0) or **openHAB** (already listed, fully open-source, EPL-2.0).
+
+---
+
+## Brave Browser (Browser)
+
+**Previously listed, removed in:** Manual policy enforcement (2026-02-24)
+**Origin:** United States (Brave Software, Inc., California)
+**Category:** Browser
+
+### Reason for Removal
+
+Brave is a Tier 2 (non-European) entry. Under the [Decision Matrix](DECISION_MATRIX.md) two-tier gateway rules (criterion G6), non-European alternatives are only eligible when they are fully open-source.
+
+Brave publishes major browser code under open-source licenses, but Brave's own documentation confirms DRM video playback depends on **Google Widevine**, which is proprietary and cannot be reviewed by Brave. Brave's Terms also state source code may be available for "certain" software, not all components. Because closed proprietary components are required for this feature path, Brave is not fully open-source end-to-end and therefore fails G6.
+
+### Sources
+
+- [Brave Browser Privacy Policy (Brave Software, Inc., California)](https://brave.com/privacy/browser/)
+- [Brave GitHub repository](https://github.com/brave/brave-browser)
+- [Brave Support: DRM-protected content (Widevine)](https://support.brave.com/hc/en-us/articles/360023851591-How-do-I-view-DRM-protected-content)
+- [Brave Blog: DRM support and Widevine licensing constraints](https://brave.com/blog/drm-support/)
+- [Brave Terms of Use](https://brave.com/terms-of-use/)

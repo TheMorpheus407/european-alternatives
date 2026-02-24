@@ -27,6 +27,18 @@
     "version-control": { "name": "Version Control Services", "description": "Version control services and platforms" },
     "iam": { "name": "Identity & Access Management", "description": "Identity providers, SSO, authentication, and access management" },
     "music-streaming": { "name": "Music Streaming", "description": "Music streaming platforms and services" },
+    "app-stores": { "name": "App Stores", "description": "Application stores and software distribution platforms" },
+    "smartphones": { "name": "Smartphones", "description": "Smartphone manufacturers and mobile devices" },
+    "note-taking": { "name": "Note-Taking", "description": "Note-taking apps and personal knowledge management" },
+    "media-server": { "name": "Media Server", "description": "Self-hosted media servers and streaming platforms" },
+    "feed-reader": { "name": "Feed Readers", "description": "RSS, Atom, and news feed readers" },
+    "scheduling": { "name": "Scheduling", "description": "Appointment scheduling and booking tools" },
+    "personal-finance": { "name": "Personal Finance", "description": "Portfolio tracking, budgeting, and wealth management tools" },
+    "virtualization": { "name": "Virtualization", "description": "Server virtualization and hypervisor platforms" },
+    "design": { "name": "Design & Graphics", "description": "Design, prototyping, and image editing tools" },
+    "video-editing": { "name": "Video Editing", "description": "Video editing and post-production software" },
+    "gis": { "name": "GIS & Geospatial", "description": "Geographic information systems and spatial data analysis" },
+    "privacy-tools": { "name": "Privacy Tools", "description": "Firewalls, tracker blockers, and privacy-enhancing utilities" },
     "other": { "name": "Other", "description": "Other tools and services" }
   },
   "countries": {

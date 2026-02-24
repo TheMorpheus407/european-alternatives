@@ -102,6 +102,18 @@ export type CategoryId =
   | 'version-control'
   | 'music-streaming'
   | 'iam'
+  | 'note-taking'
+  | 'app-stores'
+  | 'smartphones'
+  | 'media-server'
+  | 'feed-reader'
+  | 'scheduling'
+  | 'personal-finance'
+  | 'virtualization'
+  | 'design'
+  | 'video-editing'
+  | 'gis'
+  | 'privacy-tools'
   | 'other';
 
 export interface Category {
