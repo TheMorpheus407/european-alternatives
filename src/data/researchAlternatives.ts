@@ -846,6 +846,37 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0 (clients/SDKs); proprietary backend"
   },
   {
+    "id": "hidrive",
+    "name": "HiDrive",
+    "category": "cloud-storage",
+    "country": "de",
+    "replacesUS": [
+      "Google Drive",
+      "Dropbox",
+      "iCloud",
+      "OneDrive"
+    ],
+    "pricing": "freemium",
+    "website": "https://www.strato.de/cloud-speicher/",
+    "description": "German cloud storage service from STRATO GmbH, hosted in TÜV-certified data centers in Germany with DSGVO compliance. Offers encrypted storage, optional end-to-end zero-knowledge encryption, two-factor authentication, and various protocol access (SFTP, WebDAV, SMB). Founded in 1997, part of IONOS Group SE.",
+    "localizedDescriptions": {
+      "de": "Deutscher Cloud-Speicherdienst von STRATO GmbH, gehostet in TÜV-zertifizierten Rechenzentren in Deutschland mit DSGVO-Konformität. Bietet verschlüsselten Speicher, optionale Ende-zu-Ende Zero-Knowledge-Verschlüsselung, Zwei-Faktor-Authentifizierung und various Protokollzugänge (SFTP, WebDAV, SMB). Gegründet 1997, Teil der IONOS Group SE."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "cloud-storage",
+      "freemium",
+      "encrypted",
+      "gdpr",
+      "german-hosted",
+      "zero-knowledge",
+      "google-drive"
+    ],
+    "foundedYear": 1997,
+    "headquartersCity": "Berlin"
+  },
+  {
     "id": "f-droid",
     "name": "F-Droid",
     "category": "mobile-os",
