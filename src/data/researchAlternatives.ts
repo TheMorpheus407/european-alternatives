@@ -1453,6 +1453,38 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0"
   },
   {
+    "id": "localsend",
+    "name": "LocalSend",
+    "category": "cloud-storage",
+    "country": "de",
+    "replacesUS": [
+      "AirDrop",
+      "Quick Share"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://localsend.org",
+    "description": "Open-source cross-platform file sharing app that allows secure transfer between nearby devices over local network without internet. End-to-end encrypted, no account required. Developed by German individual developer Tien Do Nam.",
+    "localizedDescriptions": {
+      "de": "Open-Source plattformübergreifende App für Dateiübertragung zwischen Geräten im lokalen Netzwerk ohne Internet. Ende-zu-Ende-verschlüsselt, kein Konto erforderlich. Entwickelt von einem deutschen Individualentwickler."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/localsend/localsend",
+    "tags": [
+      "file-sharing",
+      "airdrop-alternative",
+      "free",
+      "open-source",
+      "encryption",
+      "cross-platform",
+      "local-network"
+    ],
+    "foundedYear": 2022,
+    "headquartersCity": "Berlin",
+    "license": "Apache-2.0"
+  },
+  {
     "id": "liberapay",
     "name": "Liberapay",
     "logo": "/logos/liberapay.svg",
