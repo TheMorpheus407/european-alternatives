@@ -56,6 +56,10 @@
       "name": "VPN",
       "description": "VPN-Dienste"
     },
+    "dns": {
+      "name": "DNS-Dienste",
+      "description": "Datenschutzorientierte DNS-Resolver"
+    },
     "analytics": {
       "name": "Analyse",
       "description": "Web- und Produktanalyse"
@@ -95,6 +99,10 @@
     "version-control": {
       "name": "Versionsverwaltung",
       "description": "Versionsverwaltungs-Dienste und -Plattformen"
+    },
+    "iam": {
+      "name": "Identitäts- und Zugriffsverwaltung",
+      "description": "Identity-Provider, SSO, Authentifizierung und Zugriffsverwaltung"
     },
     "music-streaming": {
       "name": "Musik-Streaming",

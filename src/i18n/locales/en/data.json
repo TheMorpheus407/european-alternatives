@@ -14,6 +14,7 @@
     "desktop-os": { "name": "Desktop Operating Systems", "description": "Desktop operating systems and kernels" },
     "mobile-os": { "name": "Mobile Operating Systems", "description": "Mobile operating systems" },
     "vpn": { "name": "VPN", "description": "Virtual private network services" },
+    "dns": { "name": "DNS Services", "description": "Privacy-focused DNS resolvers" },
     "analytics": { "name": "Analytics", "description": "Web and product analytics" },
     "project-management": { "name": "Project Management", "description": "Task and project management tools" },
     "password-manager": { "name": "Password Manager", "description": "Password management and security" },
@@ -24,6 +25,7 @@
     "smart-home": { "name": "Smart Home", "description": "Smart home hubs and home automation platforms" },
     "ecommerce": { "name": "E-Commerce", "description": "Online store platforms" },
     "version-control": { "name": "Version Control Services", "description": "Version control services and platforms" },
+    "iam": { "name": "Identity & Access Management", "description": "Identity providers, SSO, authentication, and access management" },
     "music-streaming": { "name": "Music Streaming", "description": "Music streaming platforms and services" },
     "other": { "name": "Other", "description": "Other tools and services" }
   },
