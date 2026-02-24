@@ -511,6 +511,38 @@ export const researchAlternatives: Alternative[] = [
     "license": "BSD-2-Clause"
   },
   {
+    "id": "rocket-chat",
+    "name": "Rocket.Chat",
+    "category": "messaging",
+    "country": "us",
+    "replacesUS": [
+      "Slack",
+      "Microsoft Teams",
+      "Skype for Business"
+    ],
+    "pricing": "freemium",
+    "selfHostable": true,
+    "website": "https://rocket.chat",
+    "description": "Open-source secure communications platform for mission-critical operations. Developed in TypeScript/Node.js with MongoDB, offering team chat, video conferencing, and omnichannel engagement. MIT-licensed with 44.7k GitHub stars, self-hostable or cloud-hosted. Used by governments and enterprises worldwide including Deutsche Bahn and US Navy.",
+    "localizedDescriptions": {
+      "de": "Open-Source sichere Kommunikationsplattform für kritische Operationen. Entwickelt in TypeScript/Node.js mit MongoDB, bietet Team-Chat, Videokonferenzen und Omnichannel-Engagement. MIT-lizenziert mit 44.7k GitHub-Sternen, self-hostbar oder Cloud-gehostet. Genutzt von Regierungen und Unternehmen weltweit, darunter Deutsche Bahn und US Navy."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/RocketChat/Rocket.Chat",
+    "tags": [
+      "messaging",
+      "freemium",
+      "open-source",
+      "team-communication",
+      "slack",
+      "microsoft-teams"
+    ],
+    "foundedYear": 2015,
+    "headquartersCity": "Delaware",
+    "license": "MIT"
+  },
+  {
     "id": "element",
     "name": "Element",
     "category": "messaging",
