@@ -36,6 +36,38 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0 (Eddie client); proprietary server infrastructure"
   },
   {
+    "id": "aitch-systems",
+    "name": "aitch.systems",
+    "category": "hosting",
+    "country": "de",
+    "replacesUS": [
+      "AWS",
+      "Google Cloud",
+      "Azure",
+      "DigitalOcean"
+    ],
+    "pricing": "paid",
+    "website": "https://aitch.systems",
+    "description": "German hosting provider offering KVM servers (AMD EPYC, Ryzen), webspaces with Plesk, domains, and game servers. Based in Schwabmünchen, Germany with servers in NorthC Datacenters Nuremberg. Operates with premium DDoS protection via Inter.link.",
+    "localizedDescriptions": {
+      "de": "Deutscher Hosting-Anbieter mit KVM-Servern (AMD EPYC, Ryzen), Webspaces mit Plesk, Domains und Gameservern. Sitz in Schwabmünchen, Deutschland mit Servern im NorthC Datacenter Nürnberg. Betrieb mit Premium DDoS-Schutz via Inter.link."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "hosting",
+      "paid",
+      "kvm",
+      "vps",
+      "webhosting",
+      "gameserver",
+      "ddos-protection",
+      "gdpr"
+    ],
+    "foundedYear": 2023,
+    "headquartersCity": "Schwabmünchen"
+  },
+  {
     "id": "aliasvault",
     "name": "AliasVault",
     "category": "password-manager",
