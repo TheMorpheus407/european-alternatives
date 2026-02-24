@@ -1422,6 +1422,37 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Mülheim an der Ruhr"
   },
   {
+    "id": "keepass",
+    "name": "KeePass",
+    "category": "password-manager",
+    "country": "de",
+    "replacesUS": [
+      "LastPass",
+      "1Password",
+      "Dashlane"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://keepass.info",
+    "description": "The original free, open source password manager. Stores all passwords in one encrypted database locked with a master key. Uses AES-256, ChaCha20 and Twofish encryption. Windows-focused but with cross-platform ports.",
+    "localizedDescriptions": {
+      "de": "Der originale freie Open-Source-Passwort-Manager. Speichert alle Passwörter in einer verschlüsselten Datenbank, die mit einem Master-Schlüssel gesperrt wird. Verschlüsselung mit AES-256, ChaCha20 und Twofish. Windows-fokussiert, aber mit plattformübergreifenden Ports."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "tags": [
+      "password-manager",
+      "free",
+      "open-source",
+      "privacy",
+      "encryption"
+    ],
+    "foundedYear": 2003,
+    "headquartersCity": "Metzingen",
+    "sourceCodeUrl": "https://sourceforge.net/projects/keepass/",
+    "license": "GPL-2.0"
+  },
+  {
     "id": "keepassxc",
     "name": "KeePassXC",
     "category": "password-manager",
