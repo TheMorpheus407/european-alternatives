@@ -543,6 +543,37 @@ export const researchAlternatives: Alternative[] = [
     "license": "MIT"
   },
   {
+    "id": "zulip",
+    "name": "Zulip",
+    "category": "messaging",
+    "country": "us",
+    "replacesUS": [
+      "Slack",
+      "Microsoft Teams"
+    ],
+    "pricing": "freemium",
+    "selfHostable": true,
+    "website": "https://zulip.com",
+    "description": "Open-source team chat with unique topic-based threading that combines the best of email and chat. 100% Apache 2.0 licensed open source with server, web, and mobile apps. Features include real-time messaging, file uploads, integrations, and video calls. Used by thousands of organizations including universities and open-source projects. Self-hostable or cloud-hosted.",
+    "localizedDescriptions": {
+      "de": "Open-Source Team-Chat mit einzigartigem Topic-basiertem Threading, das das Beste aus E-Mail und Chat kombiniert. 100% Apache 2.0 lizenziert mit Server, Web- und Mobile-Apps. Funktionen umfassen Echtzeit-Messaging, Datei-Upload, Integrationen und Videoanrufe. Tausende Organisationen nutzen es, darunter Universitäten und Open-Source-Projekte. Self-hostbar oder Cloud-gehostet."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/zulip/zulip",
+    "tags": [
+      "messaging",
+      "freemium",
+      "open-source",
+      "team-communication",
+      "slack",
+      "threading"
+    ],
+    "foundedYear": 2012,
+    "headquartersCity": "San Francisco",
+    "license": "Apache-2.0"
+  },
+  {
     "id": "element",
     "name": "Element",
     "category": "messaging",
