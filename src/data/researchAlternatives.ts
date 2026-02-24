@@ -2360,6 +2360,39 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0 (client app); relay server code not published"
   },
   {
+    "id": "netbird",
+    "name": "NetBird",
+    "category": "vpn",
+    "country": "de",
+    "replacesUS": [
+      "Tailscale"
+    ],
+    "pricing": "freemium",
+    "selfHostable": true,
+    "website": "https://netbird.io",
+    "description": "Open source Zero Trust Network Access (ZTNA) platform combining WireGuard-based overlay networks with centralized access control. Provides SSO, MFA, and granular policies with self-hosting option. Developed by NetBird GmbH in Berlin with operations in the Netherlands.",
+    "localizedDescriptions": {
+      "de": "Open-Source Zero Trust Network Access (ZTNA)-Plattform, die WireGuard-basierte Overlay-Netzwerke mit zentralisierter Zugriffskontrolle kombiniert. Bietet SSO, MFA und granulare Richtlinien mit Self-Hosting-Option. Entwickelt von NetBird GmbH in Berlin mit Niederlassungen in den Niederlanden."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "openSourceAuditUrl": "https://github.com/netbirdio/netbird",
+    "tags": [
+      "vpn",
+      "ztna",
+      "wireguard",
+      "open-source",
+      "self-hosted",
+      "security",
+      "sso",
+      "mfa"
+    ],
+    "foundedYear": 2021,
+    "headquartersCity": "Berlin",
+    "sourceCodeUrl": "https://github.com/netbirdio/netbird",
+    "license": "BSD-3-Clause (client); AGPL-3.0 (management, signal, relay)"
+  },
+  {
     "id": "neo-store",
     "name": "Neo Store",
     "category": "mobile-os",
