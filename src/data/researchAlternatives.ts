@@ -3121,8 +3121,42 @@ export const researchAlternatives: Alternative[] = [
     ],
     "foundedYear": 2017,
     "headquartersCity": "Geneva",
-    "sourceCodeUrl": "https://github.com/ProtonVPN",
     "license": "GPL-3.0 (clients); proprietary backend"
+  },
+  {
+    "id": "pubky",
+    "name": "Pubky",
+    "category": "social-media",
+    "country": "mx",
+    "replacesUS": [
+      "Facebook",
+      "X/Twitter",
+      "Instagram"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://pubky.app",
+    "description": "Decentralized P2P social media protocol and application where users own their data through public-key cryptography. Built on PKARR (Public Key Addressable Resource Records) using BitTorrent's Mainline DHT for censorship-resistant storage, with self-sovereign homeservers and no central authority.",
+    "localizedDescriptions": {
+      "de": "Dezentrales P2P-Social-Media-Protokoll und -Anwendung, bei dem Nutzende ihre Daten durch Public-Key-Kryptografie besitzen. Erstellt auf PKARR (Public Key Addressable Resource Records) unter Nutzung von BitTorents Mainline DHT für zensurresistente Speicherung, mit selbstsouveränen Homesern und ohne zentrale Autorität."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "tags": [
+      "social-media",
+      "free",
+      "open-source",
+      "p2p",
+      "decentralized",
+      "self-sovereign",
+      "facebook",
+      "twitter",
+      "instagram"
+    ],
+    "foundedYear": 2020,
+    "headquartersCity": "Mexico City",
+    "sourceCodeUrl": "https://github.com/pubky",
+    "license": "MIT"
   },
   {
     "id": "saleor",
