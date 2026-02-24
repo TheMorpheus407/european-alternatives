@@ -2867,6 +2867,34 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Tampere"
   },
   {
+    "id": "surfshark-vpn",
+    "name": "Surfshark VPN",
+    "category": "vpn",
+    "country": "nl",
+    "replacesUS": [
+      "ExpressVPN"
+    ],
+    "pricing": "paid",
+    "website": "https://surfshark.com",
+    "description": "European VPN founded in Lithuania in 2018, headquartered in Amsterdam with operations in Lithuania, Poland, and Germany. Merged with Nord Security in 2022. RAM-only servers, WireGuard protocol, no-logs policy verified by Deloitte (2022, 2025). Proprietary client software with multiple security audits (Cure53 2018/2021, MASA 2023). Note: Parent company Nord Security received $100M investment from US PE firm Warburg Pincus in 2023.",
+    "localizedDescriptions": {
+      "de": "Europäischer VPN-Dienst, 2018 in Litauen gegründet, mit Sitz in Amsterdam und Niederlassungen in Litauen, Polen und Deutschland. Fusion mit Nord Security 2022. RAM-only-Server, WireGuard-Protokoll, No-Logs-Policy von Deloitte verifiziert (2022, 2025). Proprietäre Client-Software mit mehreren Sicherheitsaudits (Cure53 2018/2021, MASA 2023). Hinweis: Muttergesellschaft Nord Security erhielt 2023 $100M Investition vom US-PE-Unternehmen Warburg Pincus."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "openSourceAuditUrl": "https://cure53.de/pentest-report_surfshark.pdf",
+    "tags": [
+      "vpn",
+      "paid",
+      "privacy",
+      "no-logs",
+      "wireguard",
+      "expressvpn"
+    ],
+    "foundedYear": 2018,
+    "headquartersCity": "Amsterdam"
+  },
+  {
     "id": "scaleway",
     "name": "Scaleway",
     "category": "hosting",
