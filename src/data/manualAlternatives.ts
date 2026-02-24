@@ -1226,6 +1226,25 @@ export const manualAlternatives: Alternative[] = [
     headquartersCity: 'Karlsruhe',
   },
   {
+    id: 'open-telekom-cloud',
+    name: 'Open Telekom Cloud',
+    description:
+      'German public cloud platform (now also branded as T Cloud Public) offering IaaS and PaaS services including compute, storage, networking, databases, AI/ML, and containers. Operated by T-Systems International GmbH with data centers in Germany, Netherlands, and Switzerland. ISO 27001, BSI C5, and TISAX certified with emphasis on data sovereignty and GDPR compliance. A credible European alternative to AWS, Azure, and Google Cloud.',
+    localizedDescriptions: {
+      de: 'Deutsche Public-Cloud-Plattform (jetzt auch als T Cloud Public vermarktet) mit IaaS- und PaaS-Diensten wie Compute, Storage, Netzwerk, Datenbanken, KI/ML und Container. Betrieben von T-Systems International GmbH mit Rechenzentren in Deutschland, den Niederlanden und der Schweiz. ISO 27001, BSI C5 und TISAX zertifiziert mit Fokus auf Datensouveränität und DSGVO-Konformität. Eine glaubwürdige europäische Alternative zu AWS, Azure und Google Cloud.',
+    },
+    website: 'https://public.t-cloud.com/',
+    country: 'de',
+    category: 'hosting',
+    replacesUS: ['AWS', 'Google Cloud', 'Azure'],
+    isOpenSource: false,
+    openSourceLevel: 'none',
+    pricing: 'paid',
+    tags: ['hosting', 'cloud', 'iaas', 'paas', 'data-sovereignty', 'gdpr', 'german-cloud'],
+    foundedYear: 2017,
+    headquartersCity: 'Frankfurt',
+  },
+  {
     id: 'safing-portmaster',
     name: 'Safing Portmaster',
     description:
