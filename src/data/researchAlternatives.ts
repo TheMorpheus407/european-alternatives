@@ -1070,6 +1070,40 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Global upstream community"
   },
   {
+    "id": "trilium",
+    "name": "Trilium",
+    "category": "other",
+    "country": "ro",
+    "replacesUS": [
+      "Obsidian",
+      "Evernote",
+      "Microsoft OneNote",
+      "Apple Notes"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://triliumnotes.org",
+    "logo": "/logos/trilium.svg",
+    "description": "Open-source hierarchical note-taking application for building personal knowledge bases. Features include rich WYSIWYG editing, code notes with syntax highlighting, note encryption, powerful search, note versioning, and synchronization with self-hosted server. Cross-platform (Windows, Mac, Linux) with mobile web interface. Developed by community with main maintainer Elian Doran based in Romania.",
+    "localizedDescriptions": {
+      "de": "Open-Source hierarchische Notizanwendung zumlicher Wissensdatenbanken. Funktion Aufbau persönen umfassen Rich-WYSIWYG-Bearbeitung, Code-Notizen mit Syntax-Highlighting, Notizenverschlüsselung, leistungsstarke Suche, Notizen-Versionierung und Synchronisation mit selbst gehostetem Server. Plattformübergreifend (Windows, Mac, Linux) mit mobiler Web-Oberfläche. Entwickelt von der Community mit Hauptmaintainer Elian Doran in Rumänien."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/TriliumNext/Trilium",
+    "license": "AGPL-3.0",
+    "tags": [
+      "notes",
+      "knowledge-base",
+      "open-source",
+      "self-hosted",
+      "encryption",
+      "cross-platform"
+    ],
+    "foundedYear": 2017,
+    "headquartersCity": "Sibiu"
+  },
+  {
     "id": "hetzner",
     "name": "Hetzner",
     "category": "hosting",
