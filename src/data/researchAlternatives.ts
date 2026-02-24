@@ -1070,6 +1070,38 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Global upstream community"
   },
   {
+    "id": "radicle",
+    "name": "Radicle",
+    "category": "version-control",
+    "country": "ch",
+    "replacesUS": [
+      "GitHub",
+      "GitLab"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://radicle.xyz",
+    "description": "Open-source peer-to-peer code collaboration stack built on Git. Unlike centralized platforms, there is no single entity controlling the network — repositories are replicated across peers in a decentralized manner, giving users full control of their data. Features include cryptographic identities, local-first design, and a modular stack with CLI, TUI, and web interface. Operated by Better Internet Foundation, a Swiss non-profit.",
+    "localizedDescriptions": {
+      "de": "Open-Source Peer-to-Peer Code-Collaboration-Stack auf Git-Basis. Im Gegensatz zu zentralisierten Plattformen gibt es keine einzelne Entität, die das Netzwerk kontrolliert — Repositories werden dezentral über Peers repliziert, sodass Benutzer die volle Kontrolle über ihre Daten haben. Funktionen umfassen kryptografische Identitäten, Local-First-Design und einen modularen Stack mit CLI, TUI und Web-Interface. Betrieben von Better Internet Foundation, einer schweizerischen Non-Profit-Organisation."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/radicle-dev/heartwood",
+    "tags": [
+      "version-control",
+      "devops",
+      "git",
+      "p2p",
+      "decentralized",
+      "open-source",
+      "self-hosted"
+    ],
+    "foundedYear": 2018,
+    "headquartersCity": "Zug",
+    "license": "Apache-2.0"
+  },
+  {
     "id": "trilium",
     "name": "Trilium",
     "category": "other",
