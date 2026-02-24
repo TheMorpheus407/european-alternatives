@@ -1487,7 +1487,7 @@ export const reservationsById: Record<string, Reservation[]> = {
       severity: 'major',
       penalty: { tier: 'security', amount: 4 },
       date: '2018-03-01',
-      sourceUrl: 'https://www.bbc.com/news/technology-50150981',
+      sourceUrl: 'https://techcrunch.com/2019/10/21/nordvpn-confirms-it-was-hacked/',
     },
     {
       id: 'linux-client-open-source-only-partial-transparency',
