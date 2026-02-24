@@ -3226,6 +3226,40 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0"
   },
   {
+    "id": "penpot",
+    "name": "Penpot",
+    "category": "other",
+    "country": "es",
+    "replacesUS": [
+      "Figma",
+      "Adobe XD",
+      "Sketch"
+    ],
+    "pricing": "freemium",
+    "selfHostable": true,
+    "website": "https://penpot.app",
+    "description": "Open-source design and prototyping platform for design and code collaboration. Developed by Kaleidos in Madrid, Spain, Penpot is the first open-source design tool that bridges the gap between designers and developers. Uses open standards (SVG, CSS, HTML) and can be self-hosted via Docker or Kubernetes.",
+    "localizedDescriptions": {
+      "de": "Open-Source-Design- und Prototyping-Plattform für Design- und Code-Zusammenarbeit. Entwickelt von Kaleidos in Madrid, Spanien, ist Penpot das erste Open-Source-Design-Tool, das die Lücke zwischen Designern und Entwicklern überbrückt. Nutzt offene Standards (SVG, CSS, HTML) und kann via Docker oder Kubernetes selbst gehostet werden."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/penpot/penpot",
+    "tags": [
+      "design",
+      "prototyping",
+      "ui-design",
+      "open-source",
+      "freemium",
+      "self-hosted",
+      "figma",
+      "adobe-xd"
+    ],
+    "foundedYear": 2019,
+    "headquartersCity": "Madrid",
+    "license": "MPL-2.0"
+  },
+  {
     "id": "pirsch",
     "name": "Pirsch Analytics",
     "category": "analytics",
