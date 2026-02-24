@@ -1606,6 +1606,38 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0"
   },
   {
+    "id": "loops",
+    "name": "Loops",
+    "category": "social-media",
+    "country": "ca",
+    "replacesUS": [
+      "TikTok"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://joinloops.org",
+    "description": "Federated short-form video platform designed as an ethical alternative to TikTok. Loops is open-source, ad-free, and built on ActivityPub for federation across the fediverse. Part of the Pixelfed ecosystem.",
+    "localizedDescriptions": {
+      "de": "Föderierte Kurzvideo-Plattform als ethische Alternative zu TikTok. Loops ist Open-Source, werbefrei und basiert auf ActivityPub für Föderation im Fediverse. Teil des Pixelfed-Ökosystems."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "tags": [
+      "social-media",
+      "short-video",
+      "tiktok",
+      "free",
+      "open-source",
+      "federated",
+      "activitypub",
+      "fediverse"
+    ],
+    "foundedYear": 2024,
+    "headquartersCity": "open",
+    "sourceCodeUrl": "https://github.com/joinloops/loops-server",
+    "license": "AGPL-3.0"
+  },
+  {
     "id": "localsend",
     "name": "LocalSend",
     "category": "cloud-storage",
