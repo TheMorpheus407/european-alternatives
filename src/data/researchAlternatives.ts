@@ -3062,5 +3062,37 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Oslo",
     "sourceCodeUrl": "https://vivaldi.com/source/",
     "license": "proprietary UI, Chromium engine"
+  },
+  {
+    "id": "waveterm",
+    "name": "Wave Terminal",
+    "category": "other",
+    "country": "us",
+    "replacesUS": [
+      "Windows Terminal",
+      "Hyper"
+    ],
+    "pricing": "free",
+    "website": "https://www.waveterm.dev",
+    "description": "Open-source, AI-native terminal for macOS, Linux, and Windows. Built by Command Line Inc in San Francisco. Features include durable SSH sessions, file previews, inline web browser, and AI integration with support for OpenAI, Claude, Gemini, and local models via Ollama.",
+    "localizedDescriptions": {
+      "de": "Open-Source, KI-nativer Terminal-Emulator für macOS, Linux und Windows. Entwickelt von Command Line Inc in San Francisco. Funktionen umfassen persistente SSH-Sessions, Datei-Vorschauen, integrierten Webbrowser und KI-Integration mit Unterstützung für OpenAI, Claude, Gemini und lokale Modelle via Ollama."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "openSourceAuditUrl": "https://github.com/wavetermdev/waveterm",
+    "sourceCodeUrl": "https://github.com/wavetermdev/waveterm",
+    "tags": [
+      "terminal",
+      "developer-tools",
+      "open-source",
+      "ai",
+      "ssh",
+      "windows-terminal",
+      "hyper"
+    ],
+    "foundedYear": 2022,
+    "headquartersCity": "San Francisco",
+    "license": "Apache-2.0"
   }
 ];
