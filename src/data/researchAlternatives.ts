@@ -3695,6 +3695,42 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0 (clients); proprietary backend"
   },
   {
+    "id": "proton-authenticator",
+    "name": "Proton Authenticator",
+    "category": "2fa-authenticator",
+    "country": "ch",
+    "replacesUS": [
+      "Google Authenticator",
+      "Microsoft Authenticator",
+      "Authy"
+    ],
+    "pricing": "free",
+    "website": "https://proton.me/authenticator",
+    "description": "Swiss 2FA authenticator by Proton AG with open-source clients, end-to-end encryption, and secure sync across devices. Available on Android, iOS, Windows, Mac, and Linux. Can be used without a Proton account or with optional encrypted sync for cross-device backup.",
+    "localizedDescriptions": {
+      "de": "Schweizer 2FA-Authenticator von Proton AG mit quelloffenen Clients, Ende-zu-Ende-Verschlüsselung und sicherer Synchronisation über Geräte. Verfügbar für Android, iOS, Windows, Mac und Linux. Kann ohne Proton-Konto oder mit optionaler verschlüsselter Synchronisation für geräteübergreifende Sicherung verwendet werden."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://proton.me/community/open-source",
+    "tags": [
+      "2fa",
+      "authenticator",
+      "otp",
+      "totp",
+      "freemium",
+      "open-source",
+      "privacy",
+      "encryption",
+      "google-authenticator",
+      "microsoft-authenticator"
+    ],
+    "foundedYear": 2014,
+    "headquartersCity": "Geneva",
+    "sourceCodeUrl": "https://github.com/protonpass",
+    "license": "GPL-3.0 (clients); proprietary backend"
+  },
+  {
     "id": "pubky",
     "name": "Pubky",
     "category": "social-media",
