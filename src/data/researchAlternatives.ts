@@ -2753,6 +2753,38 @@ export const researchAlternatives: Alternative[] = [
     "license": "Public Domain"
   },
   {
+    "id": "primal",
+    "name": "Primal",
+    "category": "social-media",
+    "country": "ca",
+    "replacesUS": [
+      "X/Twitter"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://primal.net",
+    "description": "Nostr client developed by Primal Systems Inc. (Toronto, Canada) with mobile apps for Android/iOS and a web application. Features include easy onboarding, smooth feeds, built-in bitcoin Lightning wallet, content discovery, and remote signing. Full open-source under MIT license.",
+    "localizedDescriptions": {
+      "de": "Nostr-Client entwickelt von Primal Systems Inc. (Toronto, Kanada) mit mobilen Apps für Android/iOS und einer Web-Anwendung. Funktionen umfassen einfache Einarbeitung, flüssige Feeds, integrierte Bitcoin Lightning Wallet, Content-Discovery und Remote-Signing. Vollständig Open-Source unter MIT-Lizenz."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "tags": [
+      "social-media",
+      "nostr",
+      "x-twitter",
+      "free",
+      "open-source",
+      "bitcoin",
+      "lightning",
+      "decentralized"
+    ],
+    "foundedYear": 2022,
+    "headquartersCity": "Toronto",
+    "sourceCodeUrl": "https://github.com/PrimalHQ",
+    "license": "MIT"
+  },
+  {
     "id": "otto",
     "name": "Otto",
     "category": "ecommerce",
