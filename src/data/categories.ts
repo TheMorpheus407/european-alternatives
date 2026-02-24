@@ -177,6 +177,13 @@ export const categories: Category[] = [
     usGiants: ['GitHub', 'GitLab'],
   },
   {
+    id: 'iam',
+    name: 'Identity & Access Management',
+    description: 'Identity providers, SSO, authentication, and access management',
+    emoji: '🔑',
+    usGiants: ['Okta', 'Azure AD', 'Entra ID', 'Ping Identity', 'Auth0'],
+  },
+  {
     id: 'music-streaming',
     name: 'Music Streaming',
     description: 'Music streaming platforms and services',

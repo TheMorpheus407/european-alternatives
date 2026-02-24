@@ -101,6 +101,7 @@ export type CategoryId =
   | 'ecommerce'
   | 'version-control'
   | 'music-streaming'
+  | 'iam'
   | 'other';
 
 export interface Category {

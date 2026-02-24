@@ -164,6 +164,45 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0"
   },
   {
+    "id": "authentik",
+    "name": "Authentik",
+    "category": "iam",
+    "country": "us",
+    "replacesUS": [
+      "Okta",
+      "Azure AD",
+      "Entra ID",
+      "Ping Identity",
+      "Auth0"
+    ],
+    "pricing": "freemium",
+    "selfHostable": true,
+    "website": "https://goauthentik.io",
+    "logo": "/logos/authentik.svg",
+    "description": "Open-source Identity Provider (IdP) and SSO platform supporting SAML, OAuth2/OIDC, LDAP, RADIUS, and more. Designed for self-hosting from small labs to large production clusters. Offers both a forever-free open source version and a source-available Enterprise version with additional features.",
+    "localizedDescriptions": {
+      "de": "Open-Source Identity Provider (IdP) und SSO-Plattform mit Unterstützung für SAML, OAuth2/OIDC, LDAP, RADIUS und mehr. Entworfen für Selbsthosting von kleinen Labs bis zu grossen Produktionsclustern. Bietet sowohl eine kostenlose Open-Source-Version als auch eine quelloffene Enterprise-Version mit zusätzlichen Funktionen."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/goauthentik/authentik",
+    "tags": [
+      "iam",
+      "sso",
+      "saml",
+      "oauth2",
+      "oidc",
+      "ldap",
+      "authentication",
+      "open-source",
+      "self-hosted",
+      "enterprise"
+    ],
+    "foundedYear": 2019,
+    "headquartersCity": "Philadelphia",
+    "license": "MIT"
+  },
+  {
     "id": "aves-gallery",
     "name": "Aves Gallery",
     "category": "mobile-os",

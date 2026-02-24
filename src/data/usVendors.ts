@@ -443,6 +443,11 @@ const US_VENDOR_RECORDS: USVendorRecord[] = [
     name: 'GitLab',
     aliases: ['gitlab', 'gitlab.com', 'gitlab inc'],
   },
+  {
+    id: 'authentik',
+    name: 'Authentik',
+    aliases: ['authentik'],
+  },
 ];
 
 const US_VENDOR_TRUST_PROFILES: Record<string, USVendorTrustProfile> = {
