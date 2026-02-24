@@ -4396,6 +4396,34 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Berlin",
     "sourceCodeUrl": "https://github.com/super-productivity/super-productivity",
     "license": "MIT"
+  },
+  {
+    "id": "swisstransfer",
+    "name": "SwissTransfer",
+    "category": "cloud-storage",
+    "country": "ch",
+    "replacesUS": [
+      "Dropbox",
+      "Google Drive",
+      "WeTransfer"
+    ],
+    "pricing": "free",
+    "website": "https://www.swisstransfer.com",
+    "description": "Free file transfer service from Swiss cloud provider Infomaniak. Allows sending files up to 50GB for free with no account required. Data stored in Swiss data centers under Swiss data protection laws (nFADP). Part of the Infomaniak kSuite ecosystem.",
+    "localizedDescriptions": {
+      "de": "Kostenloser Dateiübertragungsdienst vom Schweizer Cloud-Anbieter Infomaniak. Ermöglicht das Senden von Dateien bis zu 50 GB kostenlos ohne Konto. Daten werden in Schweizer Rechenzentren nach Schweizer Datenschutzgesetzen (nFADP) gespeichert. Teil des Infomaniak kSuite-Ökosystems."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "file-transfer",
+      "free",
+      "gdpr",
+      "swiss",
+      "privacy"
+    ],
+    "foundedYear": 2022,
+    "headquartersCity": "Geneva"
   },{
     "id": "vivaldi",
     "name": "Vivaldi",
@@ -4458,5 +4486,31 @@ export const researchAlternatives: Alternative[] = [
     "foundedYear": 2022,
     "headquartersCity": "San Francisco",
     "license": "Apache-2.0"
+  },
+  {
+    "id": "wetransfer",
+    "name": "WeTransfer",
+    "category": "cloud-storage",
+    "country": "nl",
+    "replacesUS": [
+      "Dropbox",
+      "Google Drive"
+    ],
+    "pricing": "freemium",
+    "website": "https://wetransfer.com",
+    "description": "Dutch file transfer service founded in Amsterdam in 2009. Acquired by Italian company Bending Spoons in 2024. Offers free file transfers up to 2GB and paid Pro plans with larger limits. Uses Amazon AWS infrastructure for storage.",
+    "localizedDescriptions": {
+      "de": "Dutch Dateiübertragungsdienst, 2009 in Amsterdam gegründet. 2024 vom italienischen Unternehmen Bending Spoons übernommen. Bietet kostenlose Dateiübertragungen bis zu 2GB und bezahlte Pro-Tarife mit größeren Limits. Nutzt Amazon AWS-Infrastruktur für die Speicherung."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "file-transfer",
+      "freemium",
+      "gdpr",
+      "ad-supported"
+    ],
+    "foundedYear": 2009,
+    "headquartersCity": "Amsterdam"
   }
 ];
