@@ -3218,6 +3218,37 @@ export const researchAlternatives: Alternative[] = [
     "license": "MIT"
   },
   {
+    "id": "opencal",
+    "name": "OpenCal",
+    "category": "other",
+    "country": "de",
+    "replacesUS": [
+      "Calendly"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://git.var-lab.com/opencal/opencal",
+    "description": "German open-source appointment scheduling platform developed by var-lab IT GmbH in Nuremberg. Licensed under AGPL-3.0, self-hostable via Docker. CalDAV compatible with API-first architecture. Focus on digital sovereignty and avoiding Big Tech lock-in.",
+    "localizedDescriptions": {
+      "de": "Deutsche Open-Source-Terminplanungsplattform entwickelt von var-lab IT GmbH in Nürnberg. Lizenziert unter AGPL-3.0, selbst-hostbar via Docker. CalDAV-kompatibel mit API-First-Architektur. Fokus auf digitaler Souveränität und Vermeidung von Big-Tech-Abhängigkeit."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://git.var-lab.com/opencal/opencal",
+    "tags": [
+      "scheduling",
+      "appointment",
+      "open-source",
+      "caldav",
+      "docker",
+      "self-hosted",
+      "calendly"
+    ],
+    "foundedYear": 2026,
+    "headquartersCity": "Nuremberg",
+    "license": "AGPL-3.0"
+  },
+  {
     "id": "overleaf",
     "name": "Overleaf",
     "category": "office-suite",
