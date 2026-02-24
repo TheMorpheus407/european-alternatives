@@ -3731,6 +3731,45 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0 (clients); proprietary backend"
   },
   {
+    "id": "ente-auth",
+    "name": "Ente Auth",
+    "category": "2fa-authenticator",
+    "country": "us",
+    "replacesUS": [
+      "Google Authenticator",
+      "Microsoft Authenticator",
+      "Authy"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://ente.io/auth",
+    "logo": "/logos/ente-auth.svg",
+    "description": "Open source 2FA authenticator with end-to-end encrypted cloud backups, developed by Ente Technologies Inc. (USA). Available on Android, iOS, F-Droid, Web, Desktop, MacOS and Linux. Free and open source under AGPL-3.0 license with external security audits.",
+    "localizedDescriptions": {
+      "de": "Open-Source 2FA-Authenticator mit Ende-zu-Ende verschlüsselten Cloud-Backups, entwickelt von Ente Technologies Inc. (USA). Verfügbar für Android, iOS, F-Droid, Web, Desktop, MacOS und Linux. Kostenlos und Open Source unter AGPL-3.0 Lizenz mit externen Sicherheitsaudits."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "openSourceAuditUrl": "https://ente.io/architecture",
+    "tags": [
+      "2fa",
+      "authenticator",
+      "otp",
+      "totp",
+      "free",
+      "open-source",
+      "encryption",
+      "e2ee",
+      "google-authenticator",
+      "microsoft-authenticator",
+      "authy"
+    ],
+    "foundedYear": 2020,
+    "headquartersCity": "Dover",
+    "sourceCodeUrl": "https://github.com/ente-io/ente",
+    "license": "AGPL-3.0"
+  },
+  {
     "id": "pubky",
     "name": "Pubky",
     "category": "social-media",
