@@ -725,6 +725,36 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Paris"
   },
   {
+    "id": "etar",
+    "name": "Etar",
+    "category": "mobile-os",
+    "country": "sa",
+    "replacesUS": [
+      "Google Calendar"
+    ],
+    "pricing": "free",
+    "website": "https://github.com/Etar-Group/Etar-Calendar",
+    "description": "Open-source material designed Android calendar app, ad-free and free of charge. Fork of AOSP Calendar with enhanced features including month/week/day/agenda views, offline calendar support, dark/light themes, and multilingual UI. Available on F-Droid and Google Play.",
+    "localizedDescriptions": {
+      "de": "Open-Source, Material-Design Android-Kalender-App, werbefrei und kostenlos. Fork des AOSP-Kalenders mit erweiterten Funktionen einschließlich Monat/Woche/Tag/Agenda-Ansichten, Offline-Kalender-Support, Dunkel/Hell-Themes und mehrsprachiger UI. Verfügbar auf F-Droid und Google Play."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/Etar-Group/Etar-Calendar",
+    "tags": [
+      "calendar",
+      "productivity",
+      "android",
+      "open-source",
+      "ad-free",
+      "free",
+      "material-design"
+    ],
+    "foundedYear": 2015,
+    "headquartersCity": "Riyadh",
+    "license": "GPL-3.0"
+  },
+  {
     "id": "filen",
     "name": "Filen",
     "category": "cloud-storage",
