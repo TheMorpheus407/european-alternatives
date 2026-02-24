@@ -11,7 +11,7 @@
      src: url('assets/fonts/montserrat-v26-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
    }
 
-   .fil3 {fill:black}
+   .fil3 {fill:#fff}
    .fil1 {fill:#0097E3}
    .fil2 {fill:#00A8FF}
    .fil0 {fill:#0B64E0}
