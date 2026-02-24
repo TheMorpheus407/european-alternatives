@@ -532,6 +532,40 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0"
   },
   {
+    "id": "cryptomator",
+    "name": "Cryptomator",
+    "category": "cloud-storage",
+    "country": "de",
+    "replacesUS": [
+      "Google Drive",
+      "Dropbox",
+      "iCloud",
+      "OneDrive"
+    ],
+    "pricing": "freemium",
+    "selfHostable": false,
+    "website": "https://cryptomator.org",
+    "description": "Free and open-source client-side encryption software for cloud storage. Cryptomator encrypts files locally before they are uploaded to any cloud service, ensuring that cloud providers cannot access plaintext data. Uses AES-256 encryption with secure key derivation, available on all major platforms. Developed by German company Skymatic GmbH, with independent security audits and the CeBIT 2016 Innovation Award.",
+    "localizedDescriptions": {
+      "de": "Kostenlose und quelloffene Client-seitige Verschlüsselungssoftware für Cloud-Speicher. Cryptomator verschlüsselt Dateien lokal, bevor sie in einen Cloud-Dienst hochgeladen werden, sodass Cloud-Anbieter nicht auf Klartextdaten zugreifen können. Verwendet AES-256-Verschlüsselung mit sicherer Schlüsselableitung, verfügbar auf allen wichtigen Plattformen. Entwickelt von der deutschen Firma Skymatic GmbH, mit unabhängigen Sicherheitsaudits und dem CeBIT Innovationspreis 2016."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "tags": [
+      "encryption",
+      "cloud-storage",
+      "client-side-encryption",
+      "open-source",
+      "gdpr",
+      "zero-knowledge",
+      "aes-256"
+    ],
+    "foundedYear": 2016,
+    "headquartersCity": "Bonn",
+    "sourceCodeUrl": "https://github.com/cryptomator/cryptomator",
+    "license": "GPL-3.0"
+  },
+  {
     "id": "cyberghost-vpn",
     "name": "CyberGhost VPN",
     "category": "vpn",
