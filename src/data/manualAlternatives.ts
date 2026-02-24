@@ -157,6 +157,26 @@ export const manualAlternatives: Alternative[] = [
     license: 'GPL-3.0 (client code); server orchestration proprietary',
   },
   {
+    id: 'mojeek',
+    name: 'Mojeek',
+    description:
+      'UK-based privacy-focused search engine that has operated independently since 2004 without tracking users or storing personal data. Uses its own crawler-based index (9+ billion pages) built from the ground up in C, with no reliance on Google or Bing results.',
+    localizedDescriptions: {
+      de: 'Datenschutzorientierte britische Suchmaschine, die seit 2004 unabhängig operiert, ohne Benutzer zu verfolgen oder persönliche Daten zu speichern. Nutzt einen eigenen Crawler-basierten Index (über 9 Milliarden Seiten), der von Grund auf in C entwickelt wurde, ohne Abhängigkeit von Google oder Bing.',
+    },
+    website: 'https://www.mojeek.com',
+    logo: '/logos/mojeek.svg',
+    country: 'gb',
+    category: 'search-engine',
+    replacesUS: ['Google Search', 'Bing'],
+    isOpenSource: false,
+    openSourceLevel: 'none',
+    pricing: 'free',
+    tags: ['privacy', 'no-tracking', 'search-engine', 'independent-index', 'uk', 'gdpr'],
+    foundedYear: 2004,
+    headquartersCity: 'Brighton',
+  },
+  {
     id: 'ecosia',
     name: 'Ecosia',
     description:
