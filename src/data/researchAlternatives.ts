@@ -99,6 +99,37 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0"
   },
   {
+    "id": "aves-gallery",
+    "name": "Aves Gallery",
+    "category": "mobile-os",
+    "country": "fr",
+    "replacesUS": [
+      "Google Photos"
+    ],
+    "pricing": "free",
+    "website": "https://github.com/deckerst/aves",
+    "logo": "/logos/aves-gallery.svg",
+    "description": "Open-source gallery and metadata explorer app for Android, built with Flutter. Aves handles various image and video formats including JPEGs, MP4s, multi-page TIFFs, SVGs, and more. Features include motion photo detection, panorama support, 360-degree video handling, and geoTIFF support. Developed by independent French developer Thibault Deckers.",
+    "localizedDescriptions": {
+      "de": "Open-Source-Galerie- und Metadaten-Explorer-App für Android, entwickelt mit Flutter. Aves verarbeitet verschiedene Bild- und Videoformate einschließlich JPEGs, MP4s, Multi-Seiten-TIFFs, SVGs und mehr. Funktionen umfassen Motion-Photo-Erkennung, Panorama-Unterstützung, 360-Grad-Video-Handhabung und GeoTIFF-Unterstützung. Entwickelt von unabhängigem französischem Entwickler Thibault Deckers."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/deckerst/aves",
+    "tags": [
+      "gallery",
+      "android",
+      "photo",
+      "metadata",
+      "foss",
+      "privacy",
+      "open-source"
+    ],
+    "foundedYear": 2020,
+    "headquartersCity": "France",
+    "license": "BSD-3-Clause"
+  },
+  {
     "id": "bitwarden",
     "name": "Bitwarden",
     "category": "password-manager",
