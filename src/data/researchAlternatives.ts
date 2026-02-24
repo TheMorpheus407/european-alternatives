@@ -2454,6 +2454,39 @@ export const researchAlternatives: Alternative[] = [
     "license": "Apache-2.0"
   },
   {
+    "id": "paperless-ngx",
+    "name": "Paperless-ngx",
+    "category": "cloud-storage",
+    "country": "eu",
+    "replacesUS": [
+      "Google Drive",
+      "Dropbox",
+      "OneDrive",
+      "iCloud"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://docs.paperless-ngx.com",
+    "description": "Open-source document management system that scans, indexes, and archives all your paper documents. OCR support via Tesseract, full-text search, multi-user permissions, and webhook integrations. Self-hostable for complete data sovereignty.",
+    "localizedDescriptions": {
+      "de": "Open-Source-Dokumentenmanagement-System zum Scannen, Indexieren und Archivieren Ihrer Papierdokumente. OCR-Unterstützung via Tesseract, Volltextsuche, Multi-User-Berechtigungen und Webhook-Integrationen. Selbst-hostbar für vollständige Datensouveränität."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/paperless-ngx/paperless-ngx",
+    "tags": [
+      "cloud-storage",
+      "document-management",
+      "free",
+      "open-source",
+      "self-hosted",
+      "ocr",
+      "archive"
+    ],
+    "foundedYear": 2016,
+    "license": "GPL-3.0"
+  },
+  {
     "id": "openproject",
     "name": "OpenProject",
     "category": "project-management",
