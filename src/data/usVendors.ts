@@ -124,11 +124,6 @@ const US_VENDOR_RECORDS: USVendorRecord[] = [
     aliases: ['amazon alexa', 'alexa', 'echo', 'echo dot', 'echo show', 'alexa plus', 'alexa+'],
   },
   {
-    id: 'amethyst',
-    name: 'Amethyst',
-    aliases: ['amethyst', 'amethyst nostr', 'amethyst android'],
-  },
-  {
     id: 'bing',
     name: 'Bing',
     aliases: ['bing', 'microsoft bing', 'bing search', 'bing chat'],
@@ -442,11 +437,6 @@ const US_VENDOR_RECORDS: USVendorRecord[] = [
     id: 'gitlab',
     name: 'GitLab',
     aliases: ['gitlab', 'gitlab.com', 'gitlab inc'],
-  },
-  {
-    id: 'authentik',
-    name: 'Authentik',
-    aliases: ['authentik'],
   },
 ];
 
