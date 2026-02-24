@@ -203,6 +203,43 @@ export const researchAlternatives: Alternative[] = [
     "license": "MIT"
   },
   {
+    "id": "authelia",
+    "name": "Authelia",
+    "category": "iam",
+    "country": "us",
+    "replacesUS": [
+      "Okta",
+      "Azure AD",
+      "Entra ID",
+      "Ping Identity",
+      "Auth0"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://www.authelia.com",
+    "logo": "/logos/authelia.svg",
+    "description": "Open-source authentication and authorization server providing two-factor authentication (2FA) and single sign-on (SSO) for web applications via a web portal. OpenID Connect 1.0 Certified, supports SAML, OAuth2, TOTP, WebAuthn/Passkeys, and push notifications. Lightweight (under 30MB RAM) and designed as a companion for reverse proxies like nginx, Traefik, and Caddy.",
+    "localizedDescriptions": {
+      "de": "Open-Source-Authentifizierungs- und Autorisierungsserver, der Zwei-Faktor-Authentifizierung (2FA) und Single Sign-On (SSO) für Webanwendungen über ein Web-Portal bietet. OpenID Connect 1.0 zertifiziert, unterstützt SAML, OAuth2, TOTP, WebAuthn/Passkeys und Push-Benachrichtigungen. Leichtgewichtig (unter 30MB RAM) und als Begleiter für Reverse Proxies wie nginx, Traefik und Caddy konzipiert."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/authelia/authelia",
+    "tags": [
+      "iam",
+      "sso",
+      "2fa",
+      "oauth2",
+      "oidc",
+      "saml",
+      "authentication",
+      "open-source",
+      "self-hosted"
+    ],
+    "foundedYear": 2016,
+    "license": "Apache-2.0"
+  },
+  {
     "id": "aves-gallery",
     "name": "Aves Gallery",
     "category": "mobile-os",
