@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="143.143mm" height="37.4456mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+     viewBox="0 0 3880.56 1015.13" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+   @font-face {
+     font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+     font-family: 'Montserrat';
+     font-style: normal;
+     font-weight: 600;
+     src: url('assets/fonts/montserrat-v26-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+   }
+
+   .fil3 {fill:black}
+   .fil1 {fill:#0097E3}
+   .fil2 {fill:#00A8FF}
+   .fil0 {fill:#0B64E0}
+   .fnt0 {font-weight:600;font-size:976.17px;font-family:'Montserrat', sans-serif}
+   ]]>
+  </style>
+ </defs>
+  <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+    <g id="_2053950214288">
+   <path class="fil0" d="M4.54 683.65l229.82 -570.39c12.95,-32.15 49.85,-47.85 82,-34.9l153.09 61.69 -301.94 301.93c-15.35,15.35 -23.04,35.58 -23.04,55.79 0,20.21 7.68,40.43 23.04,55.79l342.57 342.57 0.03 -0.03c30.45,32.79 64.6,65.38 97.36,97.53 -63.47,-25.16 -126.88,-50.47 -190.25,-75.88 -125.99,-50.5 -251.86,-101.36 -377.79,-152.1 -32.15,-12.95 -47.85,-49.85 -34.9,-82zm837.15 -393.61l45.06 18.15c32.15,12.96 47.85,49.85 34.9,82l-218.15 541.41 63.16 40.59 -70.66 26.66c-10.49,-1.4 -19.93,-6.28 -27.1,-13.45 -8.55,-8.55 -13.86,-20.33 -13.86,-33.28l0 -614.94c0,-12.95 5.31,-24.73 13.86,-33.28 8.55,-8.55 20.33,-13.86 33.28,-13.86l139.51 -0z"/>
+      <path class="fil1" d="M178.75 453.21l434.83 -434.83c24.51,-24.51 64.61,-24.51 89.12,0l239.9 239.9 -240.42 0c-21.71,0 -41.44,8.88 -55.73,23.17 -14.29,14.29 -23.17,34.02 -23.17,55.73l0 614.94c0,21.71 8.88,41.44 23.17,55.73 0.53,0.53 1.07,1.05 1.62,1.57 -3.43,-1.98 -6.66,-4.46 -9.66,-7.46 -39.03,-39.02 -78.06,-78.03 -117.09,-117.05l-342.57 -342.57c-24.51,-24.51 -24.51,-64.61 0,-89.12z"/>
+      <rect class="fil2" x="639.16" y="274.16" width="740.98" height="740.98" rx="63.02" ry="63.02"/>
+      <text x="1427.43" y="825.75"  class="fil3 fnt0">ph24</text>
+  </g>
+ </g>
+</svg>

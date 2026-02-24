@@ -97,9 +97,9 @@ export const researchAlternatives: Alternative[] = [
       "privacy"
     ],
     "foundedYear": 2024,
-    "headquartersCity": "Netherlands",
     "sourceCodeUrl": "https://github.com/aliasvault/aliasvault",
-    "license": "AGPL-3.0"
+    "license": "AGPL-3.0",
+    "headquartersCity": "Address available upon request (Netherlands registration)"
   },
   {
     "id": "alfaview",
@@ -160,8 +160,8 @@ export const researchAlternatives: Alternative[] = [
       "google-play"
     ],
     "foundedYear": 2018,
-    "headquartersCity": "India",
-    "license": "GPL-3.0"
+    "license": "GPL-3.0",
+    "headquartersCity": "No public headquarters (independent open-source project)"
   },
   {
     "id": "authentik",
@@ -199,8 +199,8 @@ export const researchAlternatives: Alternative[] = [
       "enterprise"
     ],
     "foundedYear": 2019,
-    "headquartersCity": "Pennsylvania",
-    "license": "MIT (core) + enterprise modules under separate commercial terms"
+    "license": "MIT (core) + enterprise modules under separate commercial terms",
+    "headquartersCity": "United States (city not publicly disclosed)"
   },
   {
     "id": "authelia",
@@ -304,8 +304,8 @@ export const researchAlternatives: Alternative[] = [
       "open-source"
     ],
     "foundedYear": 2019,
-    "headquartersCity": "France",
-    "license": "BSD-3-Clause"
+    "license": "BSD-3-Clause",
+    "headquartersCity": "No public headquarters (independent open-source project)"
   },
   {
     "id": "bitwarden",
@@ -431,8 +431,8 @@ export const researchAlternatives: Alternative[] = [
       "cli"
     ],
     "foundedYear": 2015,
-    "headquartersCity": "International",
-    "license": "BSD-3-Clause"
+    "license": "BSD-3-Clause",
+    "headquartersCity": "No formal headquarters (open-source community project)"
   },
   {
     "id": "black-forest-labs",
@@ -877,8 +877,8 @@ export const researchAlternatives: Alternative[] = [
       "cloud-storage"
     ],
     "foundedYear": 2014,
-    "headquartersCity": "United States",
-    "license": "MIT (OSS components) + Duplicati Inc Software License (proprietary components)"
+    "license": "MIT (OSS components) + Duplicati Inc Software License (proprietary components)",
+    "headquartersCity": "Duplicati Inc. (city not publicly disclosed)"
   },
   {
     "id": "quad9",
@@ -940,8 +940,8 @@ export const researchAlternatives: Alternative[] = [
       "arcgis"
     ],
     "foundedYear": 2002,
-    "headquartersCity": "Laax",
-    "license": "GPL-2.0+"
+    "license": "GPL-2.0+",
+    "headquartersCity": "Switzerland (association legal base)"
   },
   {
     "id": "restic",
@@ -1006,7 +1006,7 @@ export const researchAlternatives: Alternative[] = [
       "microsoft-teams"
     ],
     "foundedYear": 2015,
-    "headquartersCity": "United States",
+    "headquartersCity": "Wilmington",
     "license": "MIT (core) + Rocket.Chat Enterprise Edition License"
   },
   {
@@ -1036,8 +1036,8 @@ export const researchAlternatives: Alternative[] = [
       "permissionless"
     ],
     "foundedYear": 2023,
-    "headquartersCity": "Global community",
-    "license": "MIT"
+    "license": "MIT",
+    "headquartersCity": "No public headquarters (open-source project)"
   },
   {
     "id": "zulip",
@@ -1375,8 +1375,8 @@ export const researchAlternatives: Alternative[] = [
       "google-play"
     ],
     "foundedYear": 2010,
-    "headquartersCity": "Global upstream community",
-    "license": "GPL-3.0-or-later (client); AGPL-3.0-or-later (server tools)"
+    "license": "GPL-3.0-or-later (client); AGPL-3.0-or-later (server tools)",
+    "headquartersCity": "No formal headquarters (volunteer-led project)"
   },
   {
     "id": "firefox",
@@ -1467,9 +1467,9 @@ export const researchAlternatives: Alternative[] = [
       "firefox-fork"
     ],
     "foundedYear": 2020,
-    "headquartersCity": "Global upstream community",
     "sourceCodeUrl": "https://codeberg.org/librewolf",
-    "license": "MPL-2.0"
+    "license": "MPL-2.0",
+    "headquartersCity": "No formal headquarters (community-driven project)"
   },
   {
     "id": "freeoffice",
@@ -1526,8 +1526,8 @@ export const researchAlternatives: Alternative[] = [
       "networking"
     ],
     "foundedYear": 1993,
-    "headquartersCity": "Community project (originated from University of California, Berkeley)",
-    "license": "BSD-2-Clause"
+    "license": "BSD-2-Clause",
+    "headquartersCity": "Boulder"
   },
   {
     "id": "feeder",
@@ -1659,8 +1659,8 @@ export const researchAlternatives: Alternative[] = [
       "docker"
     ],
     "foundedYear": 2021,
-    "headquartersCity": "Switzerland",
-    "license": "AGPL-3.0"
+    "license": "AGPL-3.0",
+    "headquartersCity": "Switzerland (public org location)"
   },
   {
     "id": "glance",
@@ -1783,8 +1783,8 @@ export const researchAlternatives: Alternative[] = [
       "open-source"
     ],
     "foundedYear": 2016,
-    "headquartersCity": "US (CommitGo, Inc.)",
-    "license": "MIT"
+    "license": "MIT",
+    "headquartersCity": "CommitGo, Inc. (city not publicly disclosed)"
   },
   {
     "id": "forgejo",
@@ -2449,9 +2449,9 @@ export const researchAlternatives: Alternative[] = [
       "fediverse"
     ],
     "foundedYear": 2024,
-    "headquartersCity": "open",
     "sourceCodeUrl": "https://github.com/joinloops/loops-server",
-    "license": "AGPL-3.0"
+    "license": "AGPL-3.0",
+    "headquartersCity": "No formal headquarters (federated open-source project)"
   },
   {
     "id": "localsend",
@@ -2541,7 +2541,7 @@ export const researchAlternatives: Alternative[] = [
       "self-hosted"
     ],
     "foundedYear": 2013,
-    "headquartersCity": "United States",
+    "headquartersCity": "San Francisco",
     "sourceCodeUrl": "https://github.com/discourse/discourse",
     "license": "GPL-2.0"
   },
@@ -3108,9 +3108,9 @@ export const researchAlternatives: Alternative[] = [
       "protocol"
     ],
     "foundedYear": 2020,
-    "headquartersCity": "open",
     "sourceCodeUrl": "https://github.com/nostr-protocol/nostr",
-    "license": "Public Domain"
+    "license": "Public Domain",
+    "headquartersCity": "No formal headquarters (ownerless protocol)"
   },
   {
     "id": "primal",
@@ -3176,9 +3176,9 @@ export const researchAlternatives: Alternative[] = [
       "protocol"
     ],
     "foundedYear": 1999,
-    "headquartersCity": "open",
     "sourceCodeUrl": "https://xmpp.org/extensions/",
-    "license": "Open standard (RFC 6120, 6121, 7622)"
+    "license": "Open standard (RFC 6120, 6121, 7622)",
+    "headquartersCity": "Denver"
   },
   {
     "id": "otto",
@@ -4263,8 +4263,8 @@ export const researchAlternatives: Alternative[] = [
       "no-tracking"
     ],
     "foundedYear": 2021,
-    "headquartersCity": "Community project (fork of searx, originated in Hungary/EU)",
-    "license": "AGPL-3.0"
+    "license": "AGPL-3.0",
+    "headquartersCity": "No formal headquarters (open community project)"
   },
   {
     "id": "shopware",
@@ -4701,7 +4701,7 @@ export const researchAlternatives: Alternative[] = [
       "tor",
       "encryption"
     ],
-    "foundedYear": 2006,
+    "foundedYear": 2008,
     "sourceCodeUrl": "https://gitlab.torproject.org/tpo/applications/tor-browser",
     "license": "MPL-2.0 and additional OSS licenses"
   },
@@ -4739,7 +4739,7 @@ export const researchAlternatives: Alternative[] = [
     "sourceCodeUrl": "https://github.com/go-vikunja/vikunja",
     "license": "AGPL-3.0"
   },
-    {
+  {
     "id": "stalwart-mail-server",
     "name": "Stalwart Mail Server",
     "category": "email",
@@ -4776,7 +4776,8 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "London",
     "sourceCodeUrl": "https://github.com/stalwartlabs/stalwart",
     "license": "AGPL-3.0 / Enterprise License"
-  },{
+  },
+  {
     "id": "super-productivity",
     "name": "Super Productivity",
     "category": "project-management",
@@ -4811,7 +4812,7 @@ export const researchAlternatives: Alternative[] = [
       "ios"
     ],
     "foundedYear": 2016,
-    "headquartersCity": "Germany",
+    "headquartersCity": "Berlin",
     "sourceCodeUrl": "https://github.com/super-productivity/super-productivity",
     "license": "MIT"
   },
@@ -4842,7 +4843,8 @@ export const researchAlternatives: Alternative[] = [
     ],
     "foundedYear": 2022,
     "headquartersCity": "Geneva"
-  },{
+  },
+  {
     "id": "vivaldi",
     "name": "Vivaldi",
     "category": "browser",
