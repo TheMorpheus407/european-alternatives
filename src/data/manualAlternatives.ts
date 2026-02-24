@@ -1527,6 +1527,26 @@ export const manualAlternatives: Alternative[] = [
     trustScoreStatus: 'pending',
   },
   {
+    id: 'shift-phone',
+    name: 'SHIFT Phone',
+    description:
+      'German modular smartphones from Hesse with repairable design, user-replaceable batteries, and removable components. Supports custom ROMs including ShiftOS (with/without Google), /e/OS, CalyxOS, iodéOS, LineageOS, and postmarketOS. Founded as a purpose company without investors, GWÖ-certified, and focused on sustainability and right-to-repair.',
+    localizedDescriptions: {
+      de: 'Modulare Smartphones aus Deutschland (Hesse) mit reparierbarem Design, austauschbaren Akkus und abnehmbaren Komponenten. Unterstützt Custom-ROMs wie ShiftOS (mit/ohne Google), /e/OS, CalyxOS, iodéOS, LineageOS und postmarketOS. Gegründet als Purpose-Unternehmen ohne Investoren, GWÖ-zertifiziert, Fokus auf Nachhaltigkeit und Right-to-Repair.',
+    },
+    website: 'https://www.shift.eco',
+    country: 'de',
+    category: 'other',
+    replacesUS: ['Apple iPhone', 'Google Pixel'],
+    isOpenSource: false,
+    openSourceLevel: 'none',
+    pricing: 'paid',
+    tags: ['smartphone', 'sustainability', 'repairable', 'modular', 'right-to-repair', 'custom-rom', 'germany'],
+    foundedYear: 2014,
+    headquartersCity: 'Wabern',
+    trustScoreStatus: 'pending',
+  },
+  {
     id: 'zammad',
     name: 'Zammad',
     description:
