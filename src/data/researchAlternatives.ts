@@ -1296,6 +1296,39 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0"
   },
   {
+    "id": "ghostfolio",
+    "name": "Ghostfolio",
+    "category": "other",
+    "country": "ch",
+    "replacesUS": [
+      "Mint",
+      "Personal Capital"
+    ],
+    "pricing": "freemium",
+    "selfHostable": true,
+    "website": "https://ghostfol.io",
+    "description": "Open source wealth management software for tracking stocks, ETFs, and cryptocurrencies. Built with Angular + NestJS + Prisma, self-hostable via Docker or cloud deployment. Privacy-focused with data ownership, supports multi-account management and portfolio performance tracking.",
+    "localizedDescriptions": {
+      "de": "Open-Source-Vermögensverwaltungssoftware zur Verfolgung von Aktien, ETFs und Kryptowährungen. Entwickelt mit Angular + NestJS + Prisma, selbst hostbar via Docker oder Cloud-Deployment. Datenschutzorientiert mit Datenbesitz, unterstützt Multi-Account-Management und Portfolio-Performance-Tracking."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/ghostfolio/ghostfolio",
+    "tags": [
+      "wealth-management",
+      "portfolio-tracker",
+      "finance",
+      "stocks",
+      "cryptocurrency",
+      "self-hosted",
+      "open-source",
+      "docker"
+    ],
+    "foundedYear": 2021,
+    "headquartersCity": "Switzerland",
+    "license": "AGPL-3.0"
+  },
+  {
     "id": "gimp",
     "name": "GIMP",
     "category": "other",
