@@ -1005,6 +1005,40 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0-or-later"
   },
   {
+    "id": "hedgedoc",
+    "name": "HedgeDoc",
+    "category": "other",
+    "country": "eu",
+    "replacesUS": [
+      "Google Keep",
+      "Evernote",
+      "Notion",
+      "Microsoft OneNote"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://hedgedoc.org",
+    "description": "Open-source, web-based, self-hosted, collaborative markdown editor formerly known as CodiMD (fork of HackMD). Real-time collaboration on notes, graphs and presentations. Low system requirements, runs on Raspberry Pi. Supports revisions, permissions, and various authentication methods.",
+    "localizedDescriptions": {
+      "de": "Open-Source, webbasiert, selbst gehosteter, kollaborativer Markdown-Editor, ehemals bekannt als CodiMD (Fork von HackMD). Echtzeit-Zusammenarbeit an Notizen, Graphen und Präsentationen. Niedrige Systemanforderungen, läuft auch auf Raspberry Pi. Unterstützt Revisionen, Berechtigungen und verschiedene Authentifizierungsmethoden."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/hedgedoc/hedgedoc",
+    "license": "AGPL-3.0",
+    "tags": [
+      "markdown",
+      "editor",
+      "collaboration",
+      "notes",
+      "open-source",
+      "self-hosted",
+      "real-time"
+    ],
+    "foundedYear": 2015,
+    "headquartersCity": "Global upstream community"
+  },
+  {
     "id": "hetzner",
     "name": "Hetzner",
     "category": "hosting",
@@ -1159,6 +1193,40 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Geneva",
     "sourceCodeUrl": "https://github.com/Infomaniak",
     "license": "GPL-3.0 (clients); proprietary managed backend"
+  },
+  {
+    "id": "koofr",
+    "name": "Koofr",
+    "category": "cloud-storage",
+    "country": "si",
+    "replacesUS": [
+      "Google Drive",
+      "Dropbox",
+      "OneDrive",
+      "iCloud"
+    ],
+    "pricing": "freemium",
+    "website": "https://koofr.eu",
+    "description": "Slovenian cloud storage service offering 10 GB free with no trackers or cookies. Data stored in ISO 27001 certified German data centers. Provides client-side encrypted Vault option, multi-device sync, and integrates with other cloud storage providers. Employee-owned company founded in 2012.",
+    "localizedDescriptions": {
+      "de": "Slowenischer Cloud-Speicherdienst mit 10 GB gratis ohne Tracker oder Cookies. Daten werden in ISO 27001 zertifizierten deutschen Rechenzentren gespeichert. Bietet clientenseitig verschlüsselte Vault-Option, Multi-Geräte-Sync und Integration mit anderen Cloud-Anbietern. Mitarbeitergeführtes Unternehmen seit 2012."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://github.com/koofr",
+    "tags": [
+      "cloud-storage",
+      "freemium",
+      "open-source",
+      "gdpr",
+      "privacy",
+      "no-cookies",
+      "e2ee"
+    ],
+    "foundedYear": 2012,
+    "headquartersCity": "Ljubljana",
+    "sourceCodeUrl": "https://github.com/koofr",
+    "license": "MIT (Vault, SDKs); proprietary core service"
   },
   {
     "id": "ionos",
