@@ -1507,6 +1507,26 @@ export const manualAlternatives: Alternative[] = [
     license: 'AGPL-3.0',
   },
   {
+    id: 'fairphone',
+    name: 'Fairphone',
+    description:
+      'Sustainable, modular smartphones from the Netherlands with repairable design, 5-year warranty, and 7 years of Android updates. Supports custom ROMs like /e/, CalyxOS, DivestOS, and LineageOS. Founded as a social enterprise with focus on ethical supply chain and fair labor conditions.',
+    localizedDescriptions: {
+      de: 'Nachhaltige, modulare Smartphones aus den Niederlanden mit reparierbarem Design, 5 Jahren Garantie und 7 Jahren Android-Updates. Unterstützt Custom-ROMs wie /e/, CalyxOS, DivestOS und LineageOS. Gegründet als Sozialunternehmen mit Fokus auf ethische Lieferkette und faire Arbeitsbedingungen.',
+    },
+    website: 'https://www.fairphone.com',
+    country: 'nl',
+    category: 'other',
+    replacesUS: ['Apple iPhone', 'Google Pixel'],
+    isOpenSource: false,
+    openSourceLevel: 'none',
+    pricing: 'paid',
+    tags: ['smartphone', 'sustainability', 'repairable', 'modular', 'fair-trade', 'b-corp', 'right-to-repair'],
+    foundedYear: 2013,
+    headquartersCity: 'Amsterdam',
+    trustScoreStatus: 'pending',
+  },
+  {
     id: 'zammad',
     name: 'Zammad',
     description:
