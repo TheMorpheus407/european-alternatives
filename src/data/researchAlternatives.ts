@@ -1006,6 +1006,37 @@ export const researchAlternatives: Alternative[] = [
     "license": "MPL-2.0"
   },
   {
+    "id": "fluxer",
+    "name": "Fluxer",
+    "category": "messaging",
+    "country": "se",
+    "replacesUS": [
+      "Discord"
+    ],
+    "pricing": "freemium",
+    "selfHostable": true,
+    "website": "https://fluxer.app",
+    "description": "Free and open source instant messaging and VoIP platform built for friends, groups, and communities. Developed by Swedish company Fluxer Platform AB, with full self-hosting support. Features include messaging, voice and video calls, screen sharing, moderation tools, and custom emojis. Licensed under AGPL-3.0.",
+    "localizedDescriptions": {
+      "de": "Freie und quelloffene Instant-Messaging- und VoIP-Plattform für Freunde, Gruppen und Communities. Entwickelt von dem schwedischen Unternehmen Fluxer Platform AB mit voller Self-Hosting-Unterstützung. Funktionen umfassen Messaging, Sprach- und Videoanrufe, Bildschirmfreigabe, Moderationstools und eigene Emojis. Lizenziert unter AGPL-3.0."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/fluxerapp/fluxer",
+    "tags": [
+      "messaging",
+      "voip",
+      "freemium",
+      "open-source",
+      "discord",
+      "self-hosted",
+      "swedish"
+    ],
+    "foundedYear": 2024,
+    "headquartersCity": "Stockholm",
+    "license": "AGPL-3.0"
+  },
+  {
     "id": "librewolf",
     "name": "LibreWolf",
     "category": "browser",
