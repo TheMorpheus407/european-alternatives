@@ -2675,6 +2675,38 @@ export const researchAlternatives: Alternative[] = [
     "license": "Community License (<= USD 1M revenue) / Enterprise License"
   },
   {
+    "id": "stackit",
+    "name": "STACKIT",
+    "category": "cloud-storage",
+    "country": "de",
+    "replacesUS": [
+      "Amazon Web Services",
+      "Microsoft Azure",
+      "Google Cloud Platform"
+    ],
+    "pricing": "paid",
+    "website": "https://stackit.com",
+    "description": "German cloud provider from Schwarz Gruppe (Lidl, Kaufland) offering sovereign cloud services from European data centers. Provides compute, Kubernetes, storage, databases, AI/ML services, and colocation with focus on digital sovereignty and GDPR compliance.",
+    "localizedDescriptions": {
+      "de": "Deutscher Cloud-Anbieter der Schwarz Gruppe (Lidl, Kaufland) mit souveränen Cloud-Diensten aus europäischen Rechenzentren. Bietet Compute, Kubernetes, Storage, Datenbanken, KI/ML-Dienste und Colocation mit Fokus auf digitale Souveränität und DSGVO-Konformität."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "partial",
+    "sourceCodeUrl": "https://github.com/stackitcloud",
+    "tags": [
+      "cloud",
+      "hosting",
+      "kubernetes",
+      "storage",
+      "database",
+      "ai-ml",
+      "sovereign-cloud",
+      "gdpr"
+    ],
+    "foundedYear": 2021,
+    "headquartersCity": "Neckarsulm"
+  },
+  {
     "id": "startmail",
     "name": "StartMail",
     "category": "email",
