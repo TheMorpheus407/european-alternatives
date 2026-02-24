@@ -1922,6 +1922,40 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0"
   },
   {
+    "id": "neorg",
+    "name": "Neorg",
+    "category": "other",
+    "country": "eu",
+    "replacesUS": [
+      "Obsidian",
+      "Evernote",
+      "Microsoft OneNote",
+      "Apple Notes"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://github.com/nvim-neorg/neorg",
+    "description": "Modern organization tool for Neovim, designed as a reimagined alternative to Emacs Org-mode. Features include structured note-taking, task management, time tracking, and documentation writing, all built on a single extensible file format (.norg). Fully open-source with active development and international contributors.",
+    "localizedDescriptions": {
+      "de": "Modernes Organisationstool für Neovim, als neu konzipierte Alternative zu Emacs Org-mode. Funktionen umfassen strukturiertes Notieren, Aufgabenverwaltung, Zeiterfassung und Dokumentationserstellung, alles auf einem einzigen erweiterbaren Dateiformat (.norg) aufgebaut. Vollständig Open-Source mit aktiver Entwicklung und internationalen Mitwirkenden."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/nvim-neorg/neorg",
+    "tags": [
+      "notes",
+      "knowledge-base",
+      "open-source",
+      "self-hosted",
+      "neovim",
+      "organization",
+      "emacs-alternative"
+    ],
+    "foundedYear": 2020,
+    "headquartersCity": "Community project (contributors in FR, CH)",
+    "license": "GPL-3.0"
+  },
+  {
     "id": "nextcloud",
     "name": "Nextcloud",
     "category": "cloud-storage",
