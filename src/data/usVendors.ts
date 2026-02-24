@@ -269,6 +269,11 @@ const US_VENDOR_RECORDS: USVendorRecord[] = [
     aliases: ['jira', 'trello'],
   },
   {
+    id: 'bitwarden',
+    name: 'Bitwarden',
+    aliases: ['bitwarden'],
+  },
+  {
     id: 'salesforce',
     name: 'Salesforce',
     aliases: [],
