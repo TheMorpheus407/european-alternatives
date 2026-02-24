@@ -1076,6 +1076,30 @@ export const manualAlternatives: Alternative[] = [
     trustScoreStatus: 'pending',
   },
   {
+    id: 'proxmox',
+    name: 'Proxmox',
+    description:
+      'Austrian open-source server virtualization platform combining KVM hypervisor and LXC containers in a single solution. Developed by Proxmox Server Solutions GmbH (Vienna) since 2005, with full source code available at git.proxmox.com. Enterprise-ready with high-availability clustering, software-defined storage, and integrated backup solutions.',
+    localizedDescriptions: {
+      de: 'Österreichische Open-Source-Server-Virtualisierungsplattform, die KVM-Hypervisor und LXC-Container in einer einzigen Lösung kombiniert. Entwickelt von Proxmox Server Solutions GmbH (Wien) seit 2005, mit vollständigem Quellcode auf git.proxmox.com. Enterprise-ready mit High-Availability-Clustering, software-definiertem Speicher und integrierten Backup-Lösungen.',
+    },
+    website: 'https://www.proxmox.com',
+    logo: '/logos/proxmox.svg',
+    country: 'at',
+    category: 'other',
+    replacesUS: ['VMware', 'Microsoft Hyper-V'],
+    isOpenSource: true,
+    openSourceLevel: 'full',
+    sourceCodeUrl: 'https://git.proxmox.com/',
+    pricing: 'freemium',
+    selfHostable: true,
+    tags: ['virtualization', 'hypervisor', 'kvm', 'lxc', 'server', 'open-source', 'self-hosted', 'enterprise'],
+    foundedYear: 2005,
+    headquartersCity: 'Vienna',
+    license: 'GNU AGPLv3',
+    trustScoreStatus: 'pending',
+  },
+  {
     id: 'contabo',
     name: 'Contabo',
     description:
