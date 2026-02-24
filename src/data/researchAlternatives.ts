@@ -3619,34 +3619,38 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0 (clients); proprietary server"
   },
   {
-    "id": "teleguard",
-    "name": "TeleGuard",
-    "category": "messaging",
-    "country": "ch",
+    "id": "timescribe",
+    "name": "TimeScribe",
+    "category": "project-management",
+    "country": "de",
     "replacesUS": [
-      "WhatsApp"
+      "Clockify"
     ],
     "pricing": "free",
-    "website": "https://teleguard.com",
-    "description": "Swiss end-to-end encrypted messenger operated by Swisscows AG, featuring no phone-number or email requirement for registration. Uses Salsa20 encryption for all messages and calls, with servers located in Swiss data centers. Messages are deleted immediately after delivery, with no metadata or IP addresses stored.",
+    "website": "https://timescribe.app",
+    "description": "Modern and private time tracking application for macOS and Windows. Completely free with no paywall or freemium model, no registration required, and 100% offline operation - all data stays locally on the user's device. Developed by a German individual developer in Munich.",
     "localizedDescriptions": {
-      "de": "Schweizer Ende-zu-Ende-verschlüsselter Messenger von Swisscows AG, ohne Telefonnummer oder E-Mail bei der Registrierung. Nutzt Salsa20-Verschlüsselung für alle Nachrichten und Anrufe, Server in Schweizer Rechenzentren. Nachrichten werden sofort nach Zustellung gelöscht, keine Metadaten oder IP-Adressen gespeichert."
+      "de": "Moderne und private Zeiterfassungsanwendung für macOS und Windows. Komplett kostenlos ohne Paywall oder Freemium-Modell, keine Registrierung erforderlich und 100% Offline-Betrieb - alle Daten bleiben lokal auf dem Gerät des Benutzers. Entwickelt von einem deutschen Einzelentwickler in München."
     },
-    "isOpenSource": false,
-    "openSourceLevel": "none",
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "openSourceAuditUrl": "https://github.com/WINBIGFOX/timescribe",
     "tags": [
-      "messaging",
+      "time-tracking",
+      "project-management",
       "free",
-      "encryption",
+      "open-source",
       "privacy",
-      "gdpr",
-      "swiss",
-      "whatsapp",
-      "no-phone-number"
+      "offline",
+      "local-first",
+      "macos",
+      "windows",
+      "clockify"
     ],
-    "foundedYear": 2021,
-    "headquartersCity": "Egnach",
-    "license": "Proprietary (free, donation-funded)"
+    "foundedYear": 2023,
+    "headquartersCity": "Munich",
+    "sourceCodeUrl": "https://github.com/WINBIGFOX/timescribe",
+    "license": "GPL-3.0"
   },
   {
     "id": "tor-browser",
