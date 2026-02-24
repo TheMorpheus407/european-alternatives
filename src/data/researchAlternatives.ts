@@ -1481,6 +1481,36 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0 (client app); relay server code not published"
   },
   {
+    "id": "neo-store",
+    "name": "Neo Store",
+    "category": "mobile-os",
+    "country": "de",
+    "replacesUS": [
+      "Google Play Store"
+    ],
+    "pricing": "free",
+    "website": "https://github.com/NeoApplications/Neo-Store",
+    "description": "Modern F-Droid client with a feature-rich UI. Fork of Foxy-Droid, offering fast repository sync, built-in repositories, and extensive filtering options. Developed by a community of contributors with maintainers in Germany and El Salvador.",
+    "localizedDescriptions": {
+      "de": "Moderner F-Droid-Client mit funktionsreicher UI. Fork von Foxy-Droid mit schneller Repository-Synchronisation, integrierten Repositories und umfangreichen Filteroptionen. Entwickelt von einer Community mit Maintainern aus Deutschland und El Salvador."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/NeoApplications/Neo-Store",
+    "tags": [
+      "app-store",
+      "android",
+      "foss",
+      "f-droid",
+      "privacy",
+      "open-source",
+      "google-play"
+    ],
+    "foundedYear": 2021,
+    "headquartersCity": "Community project (maintainers in DE/SV)",
+    "license": "GPL-3.0"
+  },
+  {
     "id": "nextcloud",
     "name": "Nextcloud",
     "category": "cloud-storage",
