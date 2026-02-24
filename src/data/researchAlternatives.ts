@@ -1163,6 +1163,65 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0 (clients/SDKs); proprietary backend"
   },
   {
+    "id": "hetzner-storage-share",
+    "name": "Hetzner Storage Share",
+    "category": "cloud-storage",
+    "country": "de",
+    "replacesUS": [
+      "Google Drive",
+      "Dropbox",
+      "iCloud",
+      "OneDrive"
+    ],
+    "pricing": "paid",
+    "website": "https://www.hetzner.com/storage/storage-share/",
+    "description": "Managed Nextcloud-powered cloud storage from Hetzner, hosted in German data centers. Storage Share provides an easy-to-use interface for file sync, sharing, and collaboration with built-in apps like Contacts, Calendar, and Tasks. Ideal for users wanting a ready-to-use Nextcloud instance without self-hosting maintenance.",
+    "localizedDescriptions": {
+      "de": "Verwalteter Nextcloud-basierter Cloud-Speicher von Hetzner, gehostet in deutschen Rechenzentren. Storage Share bietet eine benutzerfreundliche Oberfläche für Dateisynchronisierung, Sharing und Zusammenarbeit mit integrierten Apps wie Kontakte, Kalender und Aufgaben. Ideal für Nutzer, die eine fertige Nextcloud-Instanz ohne Selbsthosting-Wartung wünschen."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "cloud-storage",
+      "managed-nextcloud",
+      "gdpr",
+      "german-hosted",
+      "nextcloud",
+      "file-sharing"
+    ],
+    "headquartersCity": "Gunzenhausen"
+  },
+  {
+    "id": "hetzner-storage-box",
+    "name": "Hetzner Storage Box",
+    "category": "cloud-storage",
+    "country": "de",
+    "replacesUS": [
+      "Backblaze",
+      "Carbonite",
+      "CrashPlan",
+      "SpiderOak",
+      "IDrive"
+    ],
+    "pricing": "paid",
+    "website": "https://www.hetzner.com/storage/storage-box/",
+    "description": "Self-managed online backup storage from Hetzner, hosted in German or Finnish data centers. Supports multiple access protocols including FTP, SFTP, WebDAV, and backup-specific tools like BorgBackup and Restic. Features snapshots, automated backups, and sub-accounts. Ideal for backing up home servers with encrypted, incremental backups.",
+    "localizedDescriptions": {
+      "de": "Selbstverwalteter Online-Backup-Speicher von Hetzner, gehostet in deutschen oder finnischen Rechenzentren. Unterstützt verschiedene Zugriffsprotokolle including FTP, SFTP, WebDAV und Backup-Tools wie BorgBackup und Restic. Bietet Snapshots, automatisierte Backups und Sub-Accounts. Ideal für das Backup von Home-Servern mit verschlüsselten, inkrementellen Backups."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "cloud-storage",
+      "backup",
+      "gdpr",
+      "german-hosted",
+      "borgbackup",
+      "encrypted-backup"
+    ],
+    "headquartersCity": "Gunzenhausen"
+  },
+  {
     "id": "hidrive",
     "name": "HiDrive",
     "category": "cloud-storage",
