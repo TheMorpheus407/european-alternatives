@@ -240,6 +240,43 @@ export const researchAlternatives: Alternative[] = [
     "license": "Apache-2.0"
   },
   {
+    "id": "keycloak",
+    "name": "Keycloak",
+    "category": "iam",
+    "country": "us",
+    "replacesUS": [
+      "Okta",
+      "Azure AD",
+      "Entra ID",
+      "Ping Identity",
+      "Auth0"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://www.keycloak.org",
+    "logo": "/logos/keycloak.svg",
+    "description": "Open-source Identity and Access Management solution providing single sign-on, user federation, and fine-grained authorization. As a CNCF incubating project, Keycloak offers SAML, OAuth 2.0, and OpenID Connect support with a focus on cloud-native deployments. Originally created by Red Hat, now community-maintained under CNCF governance.",
+    "localizedDescriptions": {
+      "de": "Open-Source-Identitäts- und Zugriffsmanagement-Lösung mit Single Sign-On, Benutzerverwaltung und fein granulierter Autorisierung. Als CNCF-Inkubator-Projekt bietet Keycloak SAML, OAuth 2.0 und OpenID Connect mit Fokus auf Cloud-native Deployments. Ursprünglich von Red Hat erstellt, jetzt Community-gepflegt unter CNCF-Governance."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/keycloak/keycloak",
+    "tags": [
+      "iam",
+      "sso",
+      "saml",
+      "oauth2",
+      "oidc",
+      "authentication",
+      "open-source",
+      "self-hosted",
+      "cncf"
+    ],
+    "foundedYear": 2014,
+    "license": "Apache-2.0"
+  },
+  {
     "id": "aves-gallery",
     "name": "Aves Gallery",
     "category": "mobile-os",
