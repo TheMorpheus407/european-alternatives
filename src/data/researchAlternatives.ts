@@ -70,6 +70,39 @@ export const researchAlternatives: Alternative[] = [
     "license": "AGPL-3.0"
   },
   {
+    "id": "alfaview",
+    "name": "alfaview",
+    "category": "meeting-software",
+    "country": "de",
+    "replacesUS": [
+      "Zoom",
+      "Microsoft Teams",
+      "Google Meet"
+    ],
+    "pricing": "freemium",
+    "website": "https://alfaview.com",
+    "logo": "/logos/alfaview.svg",
+    "description": "German video conferencing software for professional meetings, webinars, and virtual events. 100% GDPR compliant and ISO 27001 certified with all data centers located in Germany. Developed and operated by alfaview GmbH in Karlsruhe.",
+    "localizedDescriptions": {
+      "de": "Deutsche Videokonferenzsoftware für professionelle Meetings, Webinare und virtuelle Events. 100% DSGVO-konform und ISO 27001-zertifiziert mit allen Rechenzentren in Deutschland. Entwickelt und betrieben von alfaview GmbH in Karlsruhe."
+    },
+    "isOpenSource": false,
+    "openSourceLevel": "none",
+    "tags": [
+      "meeting-software",
+      "videoconferencing",
+      "gdpr",
+      "iso-27001",
+      "german",
+      "saas",
+      "webinar",
+      "privacy"
+    ],
+    "foundedYear": 2018,
+    "headquartersCity": "Karlsruhe",
+    "license": "proprietary"
+  },
+  {
     "id": "aurora-store",
     "name": "Aurora Store",
     "category": "mobile-os",
