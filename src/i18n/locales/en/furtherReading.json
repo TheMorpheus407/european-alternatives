@@ -1,0 +1,63 @@
+{
+  "title": "Further Reading",
+  "subtitle": "A curated set of related projects and catalogues we use for discovery, context, and migration research.",
+  "governance": {
+    "title": "How this section is used",
+    "line1": "Links on this page are references, not endorsements or automatic imports.",
+    "line2": "Every alternative still has to pass our Decision Matrix gateway checks and trust-scoring workflow."
+  },
+  "sections": {
+    "directories": {
+      "title": "Directories and Comparison Hubs",
+      "description": "Broader recommendation sites and directories with overlapping scope."
+    },
+    "publicCatalogues": {
+      "title": "EU Public-Sector Catalogues",
+      "description": "Open-source catalogues maintained for European public administration reuse."
+    },
+    "migrationGuides": {
+      "title": "Migration Campaigns and Guides",
+      "description": "Practical guides focused on helping people switch away from Big Tech."
+    }
+  },
+  "labels": {
+    "visit": "Visit Resource",
+    "relatedIssues": "Related issues",
+    "lastReviewed": "Last reviewed",
+    "focus": "Focus",
+    "howToUse": "How we use it",
+    "caveat": "Caveat",
+    "focusValues": {
+      "eu": "European scope",
+      "global": "Global scope",
+      "public-sector-eu": "EU public-sector open-source scope"
+    }
+  },
+  "resources": {
+    "european-alternatives-eu": {
+      "summary": "A European alternatives directory with explicit listing rules, labels, and community suggestions.",
+      "howToUse": "Use it to discover missing vendors or categories and to compare listing criteria.",
+      "caveat": "Its methodology differs from this repo, so entries must be re-evaluated under our matrix."
+    },
+    "privacy-guides-tools": {
+      "summary": "A global privacy recommendations hub with broad category coverage and documented criteria.",
+      "howToUse": "Use it as a non-EU benchmark for security and privacy tooling discovery.",
+      "caveat": "It is not EU-focused, so jurisdiction requirements still need full local evaluation."
+    },
+    "prism-break": {
+      "summary": "A long-running FOSS-first recommendation project using prefer/avoid mappings.",
+      "howToUse": "Use it for candidate discovery and historical context on privacy-first alternatives.",
+      "caveat": "Its inclusion model differs from our gateway and trust-scoring process."
+    },
+    "eu-oss-catalogue": {
+      "summary": "An EU-level federated catalogue of open-source solutions from public-sector catalogues.",
+      "howToUse": "Use it to find public-sector OSS candidates and metadata signals like source catalogues.",
+      "caveat": "Catalogue presence is only a discovery signal, not proof of fit for our categories."
+    },
+    "digital-independence-day": {
+      "summary": "A recurring migration campaign with concrete switch recipes and additional alternatives.",
+      "howToUse": "Use it to identify practical migration journeys and user-facing switch narratives.",
+      "caveat": "Guides prioritize practical switching steps and do not replace our evidentiary vetting."
+    }
+  }
+}

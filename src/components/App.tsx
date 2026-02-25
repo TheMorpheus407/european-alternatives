@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Layout from './Layout';
 import LandingPage from './LandingPage';
 import BrowsePage from './BrowsePage';
+import FurtherReadingPage from './FurtherReadingPage';
 import { supportedLanguages, defaultLanguage, localeMap, detectBrowserLanguage, type SupportedLanguage } from '../i18n';
 
 function LocaleLayout() {
@@ -95,6 +96,14 @@ function BrowseRedirect() {
   return <Navigate to={`/${lang}/browse${search ? `?${search}` : ''}`} replace />;
 }
 
+function FurtherReadingRedirect() {
+  const [searchParams] = useSearchParams();
+  const lang = detectBrowserLanguage();
+  const search = searchParams.toString();
+
+  return <Navigate to={`/${lang}/further-reading${search ? `?${search}` : ''}`} replace />;
+}
+
 function CatchAllRedirect() {
   const lang = detectBrowserLanguage();
   return <Navigate to={`/${lang}`} replace />;
@@ -106,9 +115,11 @@ export default function App() {
       <Route path="/:lang" element={<LocaleLayout />}>
         <Route index element={<LandingPage />} />
         <Route path="browse" element={<BrowsePage />} />
+        <Route path="further-reading" element={<FurtherReadingPage />} />
       </Route>
       <Route path="/" element={<LanguageRedirect />} />
       <Route path="/browse" element={<BrowseRedirect />} />
+      <Route path="/further-reading" element={<FurtherReadingRedirect />} />
       <Route path="*" element={<CatchAllRedirect />} />
     </Routes>
   );

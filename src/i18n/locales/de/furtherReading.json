@@ -1,0 +1,63 @@
+{
+  "title": "Weiterlesen",
+  "subtitle": "Eine kuratierte Auswahl verwandter Projekte und Kataloge für Discovery, Kontext und Migrationsrecherche.",
+  "governance": {
+    "title": "Wie dieser Bereich genutzt wird",
+    "line1": "Links auf dieser Seite sind Referenzen, keine Empfehlungen und keine automatischen Übernahmen.",
+    "line2": "Jede Alternative muss weiterhin unsere Gateway-Kriterien und den Trust-Score-Prozess durchlaufen."
+  },
+  "sections": {
+    "directories": {
+      "title": "Verzeichnisse und Vergleichs-Hubs",
+      "description": "Breitere Empfehlungsseiten und Verzeichnisse mit überschneidender Reichweite."
+    },
+    "publicCatalogues": {
+      "title": "EU-Kataloge für den öffentlichen Sektor",
+      "description": "Open-Source-Kataloge für Wiederverwendung in europäischen Verwaltungen."
+    },
+    "migrationGuides": {
+      "title": "Migrationskampagnen und Leitfäden",
+      "description": "Praktische Leitfaeden, die beim Wechsel weg von Big Tech helfen."
+    }
+  },
+  "labels": {
+    "visit": "Ressource besuchen",
+    "relatedIssues": "Zugehörige Issues",
+    "lastReviewed": "Zuletzt geprüft",
+    "focus": "Fokus",
+    "howToUse": "So nutzen wir es",
+    "caveat": "Einschränkung",
+    "focusValues": {
+      "eu": "Europa-Fokus",
+      "global": "Globaler Fokus",
+      "public-sector-eu": "EU Open Source im öffentlichen Sektor"
+    }
+  },
+  "resources": {
+    "european-alternatives-eu": {
+      "summary": "Ein europäisches Alternativen-Verzeichnis mit expliziten Aufnahmeregeln, Labels und Community-Vorschlägen.",
+      "howToUse": "Wir nutzen es zur Discovery fehlender Anbieter oder Kategorien und zum Kriterienvergleich.",
+      "caveat": "Die Methodik unterscheidet sich von diesem Repo, daher müssen Einträge neu geprüft werden."
+    },
+    "privacy-guides-tools": {
+      "summary": "Ein globaler Privacy-Empfehlungshub mit breiter Kategorienabdeckung und dokumentierten Kriterien.",
+      "howToUse": "Wir nutzen es als nicht-europäischen Benchmark für Security- und Privacy-Tooling.",
+      "caveat": "Kein EU-Fokus, deshalb müssen Jurisdiktionsanforderungen lokal voll bewertet werden."
+    },
+    "prism-break": {
+      "summary": "Ein langjähriges FOSS-first-Projekt mit Prefer/Avoid-Zuordnungen.",
+      "howToUse": "Wir nutzen es für Kandidaten-Discovery und historischen Kontext bei Privacy-Alternativen.",
+      "caveat": "Das Inklusionsmodell unterscheidet sich von unserem Gateway- und Trust-Score-Prozess."
+    },
+    "eu-oss-catalogue": {
+      "summary": "Ein EU-weit föderierter Katalog für Open-Source-Lösungen aus öffentlichen Katalogen.",
+      "howToUse": "Wir nutzen ihn für Public-Sector-OSS-Kandidaten und Metadaten wie Source-Kataloge.",
+      "caveat": "Ein Katalogeintrag ist nur ein Discovery-Signal und kein Nachweis für unsere Eignungskriterien."
+    },
+    "digital-independence-day": {
+      "summary": "Eine wiederkehrende Migrationskampagne mit konkreten Wechselrezepten und weiteren Alternativen.",
+      "howToUse": "Wir nutzen sie für praxisnahe Migrationspfade und nutzernahe Wechselgeschichten.",
+      "caveat": "Die Leitfäden priorisieren pragmatische Schritte und ersetzen keine evidenzbasierte Vetting-Prüfung."
+    }
+  }
+}

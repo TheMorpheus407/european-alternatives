@@ -43,6 +43,7 @@ export default function Layout({ children }: LayoutProps) {
         </MotionLink>
         <nav className="header-nav">
           <Link to={`/${lang}/browse`} className="nav-link">{t('nav.browse')}</Link>
+          <Link to={`/${lang}/further-reading`} className="nav-link">{t('nav.furtherReading')}</Link>
           <LanguageSwitcher />
         </nav>
       </header>

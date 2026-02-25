@@ -5,7 +5,8 @@
   "logoAlt": "Morpheus Logo",
   "logoSuffix": "{{name}} logo",
   "nav": {
-    "browse": "Browse"
+    "browse": "Browse",
+    "furtherReading": "Further Reading"
   },
   "footer": {
     "createdBy": "Created by Morpheus",

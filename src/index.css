@@ -934,6 +934,198 @@ button:disabled {
 }
 
 /* ==========================================
+   Further Reading Page
+   ========================================== */
+
+.reading-page {
+  flex: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .reading-page {
+    padding: var(--spacing-lg);
+    gap: var(--spacing-xl);
+  }
+}
+
+.reading-header {
+  text-align: center;
+}
+
+.reading-title {
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (min-width: 768px) {
+  .reading-title {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+.reading-subtitle {
+  max-width: 820px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+}
+
+.reading-governance {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.reading-governance h2 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.reading-governance p {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.reading-governance p + p {
+  margin-top: var(--spacing-sm);
+}
+
+.reading-sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.reading-section-title {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-xs);
+}
+
+.reading-section-description {
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-md);
+}
+
+.reading-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 1024px) {
+  .reading-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.reading-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.reading-card-title {
+  font-size: var(--font-size-lg);
+}
+
+.reading-card-summary {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.reading-card-list {
+  margin: 0;
+  padding-left: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.reading-card-list li {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.reading-card-list strong {
+  color: var(--text-primary);
+}
+
+.reading-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.reading-card-meta span {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.reading-card-issues {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+.reading-card-issue-links {
+  display: inline-flex;
+  gap: var(--spacing-xs);
+}
+
+.reading-issue-link {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.reading-visit-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin-top: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  background: var(--bg-input);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.reading-visit-link:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent-primary);
+}
+
+/* ==========================================
    Filters Component
    ========================================== */
 

@@ -126,6 +126,19 @@ export interface Category {
   emoji: string;
 }
 
+export type FurtherReadingSectionId = 'directories' | 'publicCatalogues' | 'migrationGuides';
+export type FurtherReadingFocus = 'eu' | 'global' | 'public-sector-eu';
+
+export interface FurtherReadingResource {
+  id: string;
+  name: string;
+  website: string;
+  section: FurtherReadingSectionId;
+  focus: FurtherReadingFocus;
+  relatedIssues: number[];
+  lastReviewed: string;
+}
+
 export type OpenSourceLevel = 'full' | 'partial' | 'none';
 export type ReservationSeverity = 'minor' | 'moderate' | 'major';
 export type TrustScoreStatus = 'pending' | 'ready';
