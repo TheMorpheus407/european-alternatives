@@ -76,6 +76,10 @@
       "name": "2FA-Authenticator",
       "description": "Apps für Einmalpasswörter und Push-Authentifizierung"
     },
+    "writing-assistant": {
+      "name": "Schreibassistenz",
+      "description": "Tools für Grammatik-, Rechtschreib- und Stilunterstützung"
+    },
     "translation": {
       "name": "Übersetzung",
       "description": "Sprachübersetzungs-Apps und -Dienste"

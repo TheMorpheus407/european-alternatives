@@ -135,6 +135,13 @@ export const categories: Category[] = [
     usGiants: ['Google Authenticator', 'Microsoft Authenticator', 'Authy'],
   },
   {
+    id: 'writing-assistant',
+    name: 'Writing Assistant',
+    description: 'Grammar, spelling, and style assistance tools',
+    emoji: '✍️',
+    usGiants: ['Grammarly', 'Microsoft Editor', 'QuillBot'],
+  },
+  {
     id: 'translation',
     name: 'Translation',
     description: 'Language translation apps and services',

@@ -121,7 +121,7 @@ export const manualAlternatives: Alternative[] = [
     },
     website: 'https://languagetool.org',
     country: 'de',
-    category: 'ai-ml',
+    category: 'writing-assistant',
     replacesUS: ['Grammarly', 'Ginger'],
     isOpenSource: true,
     openSourceLevel: 'partial',

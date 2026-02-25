@@ -95,6 +95,7 @@ export type CategoryId =
   | 'project-management'
   | 'password-manager'
   | '2fa-authenticator'
+  | 'writing-assistant'
   | 'translation'
   | 'image-generation'
   | 'ai-ml'

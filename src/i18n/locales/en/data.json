@@ -19,6 +19,7 @@
     "project-management": { "name": "Project Management", "description": "Task and project management tools" },
     "password-manager": { "name": "Password Manager", "description": "Password management and security" },
     "2fa-authenticator": { "name": "2FA Authenticators", "description": "One-time password and push authenticator apps" },
+    "writing-assistant": { "name": "Writing Assistant", "description": "Grammar, spelling, and style assistance tools" },
     "translation": { "name": "Translation", "description": "Language translation apps and services" },
     "image-generation": { "name": "Image Generation", "description": "AI image generation models and tools" },
     "ai-ml": { "name": "Large Language Models", "description": "Text and multimodal language model platforms" },
