@@ -1635,11 +1635,11 @@ export const manualAlternatives: Alternative[] = [
     id: 'awork',
     name: 'awork',
     description:
-      'Project management for agencies as a SaaS solution from awork GmbH in Hamburg. awork enables time tracking, document management for projects, direct collaboration with clients, and offers numerous connectors for automation or billing, for example.',
+      'German project management and work management platform tailored for agencies and creative teams. Features time tracking, document management, client collaboration, and connectors for automation, billing, and other integrations.',
     localizedDescriptions: {
-      de: 'Projektmanagement für Agenturen als SaaS Lösung von der awork GmbH aus Hamburg. awork ermöglicht Zeiterfassung, Dokumentenmanagement für Projekte, direkte Zusammenarbeit mit dem Kunden und bietet zahlreiche Konnektoren für z.B. Automationen oder Abrechnungen.',
+      de: 'Deutsche Projektmanagement- und Work-Management-Plattform fuer Agenturen und Kreativteams. Bietet Zeiterfassung, Dokumentenmanagement, Kundenzusammenarbeit und Konnektoren fuer Automatisierung, Abrechnung und weitere Integrationen.',
     },
-    website: 'https://www.awork.com/',
+    website: 'https://www.awork.com',
     logo: '/logos/awork.svg',
     country: 'de',
     category: 'project-management',
@@ -1647,7 +1647,7 @@ export const manualAlternatives: Alternative[] = [
     isOpenSource: false,
     openSourceLevel: 'none',
     pricing: 'paid',
-    tags: ['project-management', 'jira', 'asana', 'agency'],
+    tags: ['project-management', 'time-tracking', 'collaboration', 'agency', 'saas', 'automation'],
     foundedYear: 2019,
     headquartersCity: 'Hamburg',
   },
