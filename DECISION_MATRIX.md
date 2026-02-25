@@ -237,6 +237,34 @@ If neither condition applies:
 - This trigger targets the **primary hosting infrastructure** where user data is stored and processed. Incidental US dependencies (a CDN edge node, a single third-party API call) do not trigger it.
 - This trigger applies to **Tier 1 entries only**. Tier 2 entries already require full open-source and face stricter scoring constraints.
 
+### Ad-Tech Tracking and Ad-SDKs (Reservation Trigger)
+
+Advertising implementation quality materially affects privacy and sovereignty outcomes. This trigger defines how to score ad-supported products without changing gateway eligibility logic.
+
+This trigger does **not** replace the scoring model with a custom multiplier formula. The project keeps the existing **base class + dimensional penalties/signals + caps** architecture.
+
+**Rule:** Classify ad implementation into one of these patterns:
+
+| Ad pattern | Typical evidence | Default action |
+|---|---|---|
+| **First-party static/contextual ads** | Ads served by the provider itself, no third-party tracking SDK/pixel, no cross-site or cross-app profile IDs | No reservation by default, or `minor` reservation if telemetry still exists |
+| **Privacy-preserving ad path** | Contextual/non-profiled ad delivery with documented limits (no persistent ad IDs, no behavioral profiling) | `moderate` reservation with governance penalty |
+| **Third-party tracking ad SDK/network** | AdMob/Unity-like SDKs, persistent identifiers (AAID/IDFA), cross-context profiling, retargeting signals | `major` reservation with governance penalty; add security penalty if intrusive SDK permissions/data access are documented |
+
+**Ad-surveillance cap rule:** If ad-based tracking/profiling is part of the service's core monetization model, set `isAdSurveillance: true` in scoring metadata so the ad-surveillance cap applies.
+
+### Ad Data-Path Sovereignty (How To Judge Jurisdiction)
+
+For ad-tech flows, evaluate **where data is processed in practice**, not only where the ad vendor is legally registered.
+
+| Condition | Action |
+|---|---|
+| Primary ad-data path stays in EU/EEA with no non-EU transfer in normal operation | No extra jurisdiction reservation from this trigger |
+| Primary ad-data path routes through US-owned infrastructure or US processors | Add at least `moderate` governance reservation unless strong technical mitigation applies |
+| Non-EU routing is only incidental (edge cache, failover, optional feature) and not part of primary profiling path | Document context; no automatic major penalty |
+
+**Evidence standard:** Prefer primary evidence (privacy policy + DPA + SDK docs + reproducible traffic traces). WHOIS or single-shot GeoIP checks alone are insufficient for major conclusions.
+
 ### Reservation Fields
 
 Each reservation includes:
