@@ -1855,6 +1855,42 @@ export const researchAlternatives: Alternative[] = [
     "license": "GPL-3.0-or-later"
   },
   {
+    "id": "grommunio",
+    "name": "grommunio",
+    "category": "email",
+    "country": "at",
+    "replacesUS": [
+      "Gmail",
+      "Outlook",
+      "Yahoo Mail"
+    ],
+    "pricing": "freemium",
+    "selfHostable": true,
+    "website": "https://grommunio.com",
+    "logo": "/logos/grommunio.png",
+    "description": "Austrian open-source groupware platform for email, calendar, contacts, tasks, chat, video conferencing, and file sharing. Developed by grommunio GmbH in Vienna as a Microsoft Exchange alternative, with a free Community plan (up to 5 users) and paid subscription tiers.",
+    "localizedDescriptions": {
+      "de": "Österreichische Open-Source-Groupware-Plattform für E-Mail, Kalender, Kontakte, Aufgaben, Chat, Videokonferenzen und Dateifreigabe. Entwickelt von der grommunio GmbH in Wien als Alternative zu Microsoft Exchange, mit kostenlosem Community-Tarif (bis zu 5 Nutzer) und kostenpflichtigen Subscription-Stufen."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "partial",
+    "openSourceAuditUrl": "https://github.com/grommunio",
+    "sourceCodeUrl": "https://github.com/grommunio",
+    "tags": [
+      "email",
+      "groupware",
+      "open-source",
+      "self-hosted",
+      "calendar",
+      "contacts",
+      "collaboration",
+      "exchange-alternative",
+      "linux"
+    ],
+    "headquartersCity": "Vienna",
+    "license": "AGPL-3.0-or-later and Apache-2.0 (by component)"
+  },
+  {
     "id": "hedgedoc",
     "name": "HedgeDoc",
     "category": "note-taking",
