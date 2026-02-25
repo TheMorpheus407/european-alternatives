@@ -319,6 +319,11 @@ const US_VENDOR_RECORDS: USVendorRecord[] = [
     aliases: ['twitch', 'twitch.tv'],
   },
   {
+    id: 'teamspeak',
+    name: 'TeamSpeak',
+    aliases: ['teamspeak', 'team speak', 'teamspeak 3', 'teamspeak 6', 'ts3', 'ts6'],
+  },
+  {
     id: 'youtube',
     name: 'YouTube',
     aliases: ['youtube', 'youtube.com', 'youtube premium', 'youtube music', 'youtube shorts', 'youtube tv'],

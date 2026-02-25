@@ -41,7 +41,7 @@ export const categories: Category[] = [
     name: 'Messaging',
     description: 'Instant messaging and communication',
     emoji: '💬',
-    usGiants: ['WhatsApp', 'iMessage', 'Discord', 'Slack'],
+    usGiants: ['WhatsApp', 'iMessage', 'Discord', 'TeamSpeak', 'Slack'],
   },
   {
     id: 'meeting-software',
