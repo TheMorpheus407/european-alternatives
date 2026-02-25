@@ -967,6 +967,28 @@ export const manualAlternatives: Alternative[] = [
     license: 'GPL-3.0',
   },
   {
+    id: 'ladybird',
+    name: 'Ladybird',
+    description:
+      'Independent open-source browser project maintained by the US-based Ladybird Browser Initiative (501(c)(3)). The codebase is BSD-2-Clause and under active development, with the first alpha release targeted for 2026 and current builds primarily aimed at developers.',
+    localizedDescriptions: {
+      de: 'Unabhaengiges Open-Source-Browserprojekt der US-Non-Profit-Organisation Ladybird Browser Initiative (501(c)(3)). Der Code steht unter BSD-2-Clause und wird aktiv entwickelt; die erste Alpha-Version ist fuer 2026 geplant, aktuelle Builds richten sich vor allem an Entwicklerinnen und Entwickler.',
+    },
+    website: 'https://ladybird.org',
+    logo: '/logos/ladybird.png',
+    country: 'us',
+    category: 'browser',
+    replacesUS: ['Google Chrome', 'Safari', 'Edge'],
+    isOpenSource: true,
+    openSourceLevel: 'full',
+    sourceCodeUrl: 'https://github.com/LadybirdBrowser/ladybird',
+    pricing: 'free',
+    tags: ['browser', 'independent-engine', 'web-standards', 'no-user-monetization', 'developer-preview'],
+    foundedYear: 2024,
+    headquartersCity: 'San Francisco',
+    license: 'BSD-2-Clause',
+  },
+  {
     id: 'mailu',
     name: 'Mailu',
     description:
