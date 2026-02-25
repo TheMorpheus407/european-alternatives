@@ -80,9 +80,13 @@
       "name": "Übersetzung",
       "description": "Sprachübersetzungs-Apps und -Dienste"
     },
+    "image-generation": {
+      "name": "Bildgenerierung",
+      "description": "KI-Bildgenerierungsmodelle und -Tools"
+    },
     "ai-ml": {
-      "name": "KI & Maschinelles Lernen",
-      "description": "Plattformen und Tools für künstliche Intelligenz"
+      "name": "Große Sprachmodelle",
+      "description": "Text- und multimodale Sprachmodell-Plattformen"
     },
     "hosting": {
       "name": "Cloud & Hosting",

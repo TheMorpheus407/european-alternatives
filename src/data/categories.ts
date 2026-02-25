@@ -142,11 +142,18 @@ export const categories: Category[] = [
     usGiants: ['Google Translate', 'Google Lens', 'Microsoft Translator', 'AWS Translate'],
   },
   {
+    id: 'image-generation',
+    name: 'Image Generation',
+    description: 'AI image generation models and tools',
+    emoji: '🖼️',
+    usGiants: ['OpenAI DALL-E', 'Google Imagen', 'Nano Banana Pro', 'Midjourney', 'Adobe Firefly'],
+  },
+  {
     id: 'ai-ml',
-    name: 'AI & Machine Learning',
-    description: 'Artificial intelligence platforms and tools',
+    name: 'Large Language Models',
+    description: 'Text and multimodal language model platforms',
     emoji: '🤖',
-    usGiants: ['OpenAI', 'Google AI', 'AWS AI', 'OpenAI DALL-E', 'Google Imagen', 'Nano Banana Pro', 'Midjourney', 'Anthropic API', 'OpenAI API'],
+    usGiants: ['ChatGPT', 'Claude', 'Gemini', 'OpenAI', 'Google AI', 'AWS AI', 'Anthropic API', 'OpenAI API'],
   },
   {
     id: 'hosting',

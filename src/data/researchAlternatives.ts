@@ -406,7 +406,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "black-forest-labs",
     "name": "Black Forest Labs",
-    "category": "ai-ml",
+    "category": "image-generation",
     "country": "de",
     "replacesUS": [
       "OpenAI DALL-E",
@@ -424,7 +424,7 @@ export const researchAlternatives: Alternative[] = [
     "openSourceLevel": "partial",
     "openSourceAuditUrl": "https://github.com/black-forest-labs/flux",
     "tags": [
-      "ai-ml",
+      "image-generation",
       "freemium",
       "open-source",
       "openai-dall-e",
@@ -4408,7 +4408,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "stability-ai",
     "name": "Stability AI",
-    "category": "ai-ml",
+    "category": "image-generation",
     "country": "gb",
     "replacesUS": [
       "OpenAI DALL-E",
@@ -4426,7 +4426,7 @@ export const researchAlternatives: Alternative[] = [
     "openSourceLevel": "partial",
     "openSourceAuditUrl": "https://stability.ai/license",
     "tags": [
-      "ai-ml",
+      "image-generation",
       "freemium",
       "open-source",
       "cloud",

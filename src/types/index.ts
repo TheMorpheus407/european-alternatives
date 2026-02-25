@@ -96,6 +96,7 @@ export type CategoryId =
   | 'password-manager'
   | '2fa-authenticator'
   | 'translation'
+  | 'image-generation'
   | 'ai-ml'
   | 'hosting'
   | 'databases'
