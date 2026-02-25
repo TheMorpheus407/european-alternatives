@@ -1135,7 +1135,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "etar",
     "name": "Etar",
-    "category": "mobile-os",
+    "category": "scheduling",
     "country": "sa",
     "replacesUS": [
       "Google Calendar"
