@@ -218,3 +218,36 @@ Because Obsidian is non-European and not fully open-source, it fails G6 and is n
 - [Issue #201 — "Obsidian incorrectly listed as US company"](https://github.com/TheMorpheus407/european-alternatives/issues/201)
 - [Obsidian Terms of Service (Dynalist Inc.; Ontario/Canada governing law)](https://obsidian.md/terms)
 - [Obsidian License Overview (rights reserved statement)](https://obsidian.md/license)
+
+---
+
+## Thaura (AI & Machine Learning)
+
+**Proposed in:** Issue #154 (2026-02-19)  
+**Claimed origin:** Hannover, Germany (Thaura GbR)  
+**Verification result:** Corporate identity and headquarters could not be verified consistently  
+**Category:** AI & Machine Learning
+
+### Reason for Denial
+
+Thaura fails gateway criterion **G1 (Genuine headquarters)**.
+
+Thaura's own legal pages contain conflicting and internally inconsistent corporate-identity signals:
+
+- Imprint and Terms identify the operator as **"Thaura GbR"** at *Fortunastr. 23 A, 30451 Hannover* and claim **"Commercial Register: HRB 245123 (Berlin)"**.
+- In Germany, **HRB** references the commercial register class typically used for corporations (e.g., GmbH), not a GbR legal form.
+- The same website's embedded Organization schema sets `addressCountry` to **US**, conflicting with the German legal presentation.
+- A VAT-ID check for the imprint value (**DE328752135**) returned **"Ungültige USt-Id-Nummer"** during verification on 2026-02-25.
+
+Independent company-register lookups also did not return a clearly matching entity for the claimed name/location/register combination. Under the decision matrix, the project requires a verifiable legal entity and genuine headquarters jurisdiction before inclusion. That threshold is not met here.
+
+### Sources
+
+- [Issue #154 — "New Alternative: KI"](https://github.com/TheMorpheus407/european-alternatives/issues/154)
+- [Thaura Imprint (provider/legal details)](https://thaura.ai/imprint)
+- [Thaura Terms of Service (operator and governing-law details)](https://thaura.ai/terms-of-service)
+- [Thaura homepage (embedded Organization schema)](https://thaura.ai/)
+- [North Data search — "Thaura, Hannover"](https://www.northdata.de/Thaura,%20Hannover?offset=0)
+- [North Data search — "Thaura GbR, Hannover"](https://www.northdata.de/Thaura%20GbR,%20Hannover?offset=0)
+- [North Data search — "HRB 245123, Berlin"](https://www.northdata.de/HRB%20245123,%20Berlin?offset=0)
+- [USt-IdNr checker (manual validation tool)](https://www.ust-id-prufen.de/)
