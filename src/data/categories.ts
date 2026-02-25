@@ -149,6 +149,13 @@ export const categories: Category[] = [
     usGiants: ['AWS', 'Google Cloud', 'Azure', 'Cloudflare'],
   },
   {
+    id: 'databases',
+    name: 'Databases',
+    description: 'Relational, analytical, and self-hostable database platforms',
+    emoji: '🗄️',
+    usGiants: ['Oracle Database', 'Microsoft SQL Server', 'Amazon RDS', 'Google Cloud SQL', 'Azure SQL Database'],
+  },
+  {
     id: 'payments',
     name: 'Payments',
     description: 'Payment processing and fintech',

@@ -84,6 +84,10 @@
       "name": "Cloud & Hosting",
       "description": "Webhosting und Cloud-Infrastruktur"
     },
+    "databases": {
+      "name": "Datenbanken",
+      "description": "Relationale, analytische und selbst-hostbare Datenbankplattformen"
+    },
     "payments": {
       "name": "Zahlungen",
       "description": "Zahlungsabwicklung und Fintech"

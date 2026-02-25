@@ -97,6 +97,7 @@ export type CategoryId =
   | '2fa-authenticator'
   | 'ai-ml'
   | 'hosting'
+  | 'databases'
   | 'payments'
   | 'smart-home'
   | 'ecommerce'
