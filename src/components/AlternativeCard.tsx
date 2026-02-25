@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { categories } from '../data';
 import { getLocalizedAlternativeDescription } from '../utils/alternativeText';
 import { getAlternativeCategories } from '../utils/alternativeCategories';
-import type { Alternative, OpenSourceLevel, USVendorComparison, ViewMode } from '../types';
+import { CUMULATIVE_PENALTY_CAP, DIMENSION_BASELINE_FRACTION } from '../data/scoringConfig';
+import { getRecencyMultiplier, withEstimatedPenalties } from '../utils/trustScore';
+import type { Alternative, OpenSourceLevel, PenaltyTier, Reservation, USVendorComparison, ViewMode } from '../types';
 
 interface AlternativeCardProps {
   alternative: Alternative;
@@ -15,6 +17,27 @@ function getTrustBadgeClass(score: number): string {
   if (score < 5) return 'alt-card-badge-trust-low';
   if (score <= 7) return 'alt-card-badge-trust-medium';
   return 'alt-card-badge-trust-high';
+}
+
+function formatScore(value: number): string {
+  return (Math.round(value * 10) / 10).toFixed(1);
+}
+
+function toTenScale(value: number): number {
+  return value / 10;
+}
+
+const PENALTY_TIERS: PenaltyTier[] = ['security', 'governance', 'reliability', 'contract'];
+
+type ReservationWithPenalty = Reservation & {
+  penalty: {
+    tier: PenaltyTier;
+    amount: number;
+  };
+};
+
+function hasPenalty(reservation: Reservation): reservation is ReservationWithPenalty {
+  return Boolean(reservation.penalty);
 }
 
 const opennessTagKeys = new Set([
@@ -62,6 +85,7 @@ function getOpenSourceBadgeConfig(openSourceLevel: OpenSourceLevel): { className
 export default function AlternativeCard({ alternative, viewMode }: AlternativeCardProps) {
   const [expanded, setExpanded] = useState(false);
   const [usVendorDetailsExpanded, setUsVendorDetailsExpanded] = useState(false);
+  const [trustBreakdownExpanded, setTrustBreakdownExpanded] = useState(false);
   const [logoError, setLogoError] = useState(false);
   const { t, i18n } = useTranslation(['browse', 'common', 'data']);
 
@@ -83,6 +107,97 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
   const trustBadgeClass = alternative.trustScore != null
     ? getTrustBadgeClass(alternative.trustScore)
     : '';
+  const trustBreakdown = useMemo(() => {
+    if (alternative.trustScoreStatus !== 'ready' || !alternative.trustScoreBreakdown) {
+      return null;
+    }
+
+    const reservationsWithPenalties = withEstimatedPenalties(alternative.reservations ?? [])
+      .filter(hasPenalty);
+    const rawPenaltyTotal = reservationsWithPenalties.reduce(
+      (sum, reservation) => sum + reservation.penalty.amount * getRecencyMultiplier(reservation.date),
+      0,
+    );
+    const penaltyScale = rawPenaltyTotal > CUMULATIVE_PENALTY_CAP
+      ? CUMULATIVE_PENALTY_CAP / rawPenaltyTotal
+      : 1;
+
+    const reservationItems = reservationsWithPenalties
+      .map((reservation) => ({
+        id: reservation.id,
+        text: reservation.text,
+        textDe: reservation.textDe,
+        tier: reservation.penalty.tier,
+        amount: reservation.penalty.amount * getRecencyMultiplier(reservation.date) * penaltyScale,
+        sourceUrl: reservation.sourceUrl,
+      }))
+      .filter((item) => item.amount > 0)
+      .sort((a, b) => b.amount - a.amount);
+
+    const signalItems = (alternative.positiveSignals ?? [])
+      .map((signal) => ({
+        id: signal.id,
+        text: signal.text,
+        textDe: signal.textDe,
+        tier: signal.dimension,
+        amount: signal.amount,
+        sourceUrl: signal.sourceUrl,
+      }))
+      .sort((a, b) => b.amount - a.amount);
+
+    const breakdown = alternative.trustScoreBreakdown;
+    const dimensionItems = PENALTY_TIERS.map((tier) => {
+      const dimension = breakdown.dimensions[tier];
+      return {
+        tier,
+        effective: dimension.effective,
+        max: dimension.max,
+      };
+    });
+    const baselineOperational = dimensionItems.reduce(
+      (sum, dimension) => sum + dimension.max * DIMENSION_BASELINE_FRACTION,
+      0,
+    );
+
+    return {
+      baseClass: breakdown.baseClass,
+      baseScore10: toTenScale(breakdown.baseScore),
+      operationalBaseline10: toTenScale(baselineOperational),
+      signalTotal10: toTenScale(breakdown.signalTotal),
+      penaltyTotal10: toTenScale(breakdown.penaltyTotal),
+      rawScore10: toTenScale(breakdown.baseScore + breakdown.operationalTotal),
+      finalScore10: toTenScale(breakdown.finalScore100),
+      classCap10: breakdown.capApplied != null ? toTenScale(breakdown.capApplied) : null,
+      penaltyCapApplied: penaltyScale < 1,
+      dimensions: dimensionItems.map((dimension) => ({
+        ...dimension,
+        effective10: toTenScale(dimension.effective),
+        max10: toTenScale(dimension.max),
+      })),
+      reservationItems: reservationItems.map((item) => ({
+        ...item,
+        amount10: toTenScale(item.amount),
+      })),
+      signalItems: signalItems.map((item) => ({
+        ...item,
+        amount10: toTenScale(item.amount),
+      })),
+    };
+  }, [
+    alternative.trustScoreStatus,
+    alternative.trustScoreBreakdown,
+    alternative.reservations,
+    alternative.positiveSignals,
+  ]);
+  const reservationBreakdownById = useMemo(
+    () => new Map((trustBreakdown?.reservationItems ?? []).map((item) => [item.id, item])),
+    [trustBreakdown],
+  );
+  const signalBreakdownById = useMemo(
+    () => new Map((trustBreakdown?.signalItems ?? []).map((item) => [item.id, item])),
+    [trustBreakdown],
+  );
+  const trustBreakdownRegionId = `alt-trust-breakdown-${alternative.id}`;
   const hasReservations = (alternative.reservations?.length ?? 0) > 0;
   const hasPositiveSignals = (alternative.positiveSignals?.length ?? 0) > 0;
   const fallbackUSVendorComparisons: USVendorComparison[] = alternative.replacesUS.map((name) => ({
@@ -128,9 +243,29 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
               </span>
             ) : (
               trustScoreLabel && (
-                <span className={`alt-card-trust-stamp ${trustBadgeClass.replace('alt-card-badge', 'alt-card-trust-stamp')}`}>
-                  {t('browse:card.trustScoreLabel', { score: trustScoreLabel })}
-                </span>
+                trustBreakdown ? (
+                  <button
+                    type="button"
+                    className={`alt-card-trust-stamp alt-card-trust-stamp-button ${trustBadgeClass.replace('alt-card-badge', 'alt-card-trust-stamp')}`}
+                    onClick={() => setTrustBreakdownExpanded(!trustBreakdownExpanded)}
+                    aria-expanded={trustBreakdownExpanded}
+                    aria-controls={trustBreakdownRegionId}
+                  >
+                    <span>{t('browse:card.trustScoreLabel', { score: trustScoreLabel })}</span>
+                    <svg
+                      className={`alt-card-trust-stamp-icon ${trustBreakdownExpanded ? 'rotated' : ''}`}
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    </svg>
+                  </button>
+                ) : (
+                  <span className={`alt-card-trust-stamp ${trustBadgeClass.replace('alt-card-badge', 'alt-card-trust-stamp')}`}>
+                    {t('browse:card.trustScoreLabel', { score: trustScoreLabel })}
+                  </span>
+                )
               )
             )}
           </div>
@@ -138,6 +273,78 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
             <span className="alt-card-category">
               {categoryLabel}
             </span>
+          )}
+          {trustBreakdown && trustBreakdownExpanded && (
+            <div
+              id={trustBreakdownRegionId}
+              className="alt-card-trust-breakdown"
+              role="region"
+              aria-label={t('browse:card.trustScoreBreakdownTitle')}
+            >
+              <h4 className="alt-card-trust-breakdown-title">
+                {t('browse:card.trustScoreBreakdownTitle')}
+              </h4>
+              <p className="alt-card-trust-breakdown-equation">
+                {t('browse:card.trustScoreBreakdownEquation', {
+                  base: formatScore(trustBreakdown.baseScore10),
+                  baseline: formatScore(trustBreakdown.operationalBaseline10),
+                  signals: formatScore(trustBreakdown.signalTotal10),
+                  penalties: formatScore(trustBreakdown.penaltyTotal10),
+                  final: formatScore(trustBreakdown.finalScore10),
+                })}
+              </p>
+              <div className="alt-card-trust-breakdown-summary">
+                <div className="alt-card-trust-breakdown-row">
+                  <span>
+                    {t('browse:card.trustScoreBreakdownBase', {
+                      baseClass: t(`browse:card.baseClass.${trustBreakdown.baseClass}`),
+                    })}
+                  </span>
+                  <strong>+{formatScore(trustBreakdown.baseScore10)}</strong>
+                </div>
+                <div className="alt-card-trust-breakdown-row">
+                  <span>{t('browse:card.trustScoreBreakdownOperationalBaseline')}</span>
+                  <strong>+{formatScore(trustBreakdown.operationalBaseline10)}</strong>
+                </div>
+                <div className="alt-card-trust-breakdown-row">
+                  <span>{t('browse:card.trustScoreBreakdownSignals')}</span>
+                  <strong>+{formatScore(trustBreakdown.signalTotal10)}</strong>
+                </div>
+                <div className="alt-card-trust-breakdown-row">
+                  <span>{t('browse:card.trustScoreBreakdownReservations')}</span>
+                  <strong>-{formatScore(trustBreakdown.penaltyTotal10)}</strong>
+                </div>
+                <div className="alt-card-trust-breakdown-row">
+                  <span>{t('browse:card.trustScoreBreakdownRaw')}</span>
+                  <strong>{formatScore(trustBreakdown.rawScore10)}</strong>
+                </div>
+                {trustBreakdown.classCap10 != null && (
+                  <div className="alt-card-trust-breakdown-row">
+                    <span>{t('browse:card.trustScoreBreakdownClassCap')}</span>
+                    <strong>{formatScore(trustBreakdown.classCap10)}</strong>
+                  </div>
+                )}
+                <div className="alt-card-trust-breakdown-row alt-card-trust-breakdown-row-final">
+                  <span>{t('browse:card.trustScoreBreakdownFinal')}</span>
+                  <strong>{formatScore(trustBreakdown.finalScore10)}/10</strong>
+                </div>
+              </div>
+              {trustBreakdown.penaltyCapApplied && (
+                <p className="alt-card-trust-breakdown-cap-note">
+                  {t('browse:card.trustScoreBreakdownPenaltyCap', {
+                    cap: formatScore(toTenScale(CUMULATIVE_PENALTY_CAP)),
+                  })}
+                </p>
+              )}
+              <div className="alt-card-trust-breakdown-dimensions">
+                {trustBreakdown.dimensions.map((dimension) => (
+                  <div key={dimension.tier} className="alt-card-trust-breakdown-dimension">
+                    <span>{t(`browse:card.penaltyTier.${dimension.tier}`)}</span>
+                    <strong>{formatScore(dimension.effective10)}/{formatScore(dimension.max10)}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
           )}
         </div>
       </div>
@@ -310,8 +517,20 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
                 <div className="alt-detail-section">
                   <h4 className="alt-detail-title">{t('browse:card.reservations')}</h4>
                   <ul className="alt-detail-reservations">
-                    {alternative.reservations?.map((reservation) => (
+                    {alternative.reservations?.map((reservation) => {
+                      const reservationScore = reservationBreakdownById.get(reservation.id);
+                      return (
                       <li key={reservation.id} className="alt-detail-reservation-item">
+                        {reservationScore && (
+                          <div className="alt-detail-score-meta">
+                            <span className="alt-detail-score-delta alt-detail-score-delta-negative">
+                              -{formatScore(reservationScore.amount10)}
+                            </span>
+                            <span className="alt-detail-score-tier">
+                              {t(`browse:card.penaltyTier.${reservationScore.tier}`)}
+                            </span>
+                          </div>
+                        )}
                         <p className="alt-detail-text">
                           {i18n.language.startsWith('de') && reservation.textDe
                             ? reservation.textDe
@@ -328,7 +547,7 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
                           </a>
                         )}
                       </li>
-                    ))}
+                    )})}
                   </ul>
                 </div>
               )}
@@ -337,8 +556,20 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
                 <div className="alt-detail-section">
                   <h4 className="alt-detail-title">{t('browse:card.positiveSignals')}</h4>
                   <ul className="alt-detail-signals">
-                    {alternative.positiveSignals?.map((signal) => (
+                    {alternative.positiveSignals?.map((signal) => {
+                      const signalScore = signalBreakdownById.get(signal.id);
+                      return (
                       <li key={signal.id} className="alt-detail-signal-item">
+                        {signalScore && (
+                          <div className="alt-detail-score-meta">
+                            <span className="alt-detail-score-delta alt-detail-score-delta-positive">
+                              +{formatScore(signalScore.amount10)}
+                            </span>
+                            <span className="alt-detail-score-tier">
+                              {t(`browse:card.penaltyTier.${signalScore.tier}`)}
+                            </span>
+                          </div>
+                        )}
                         <p className="alt-detail-text">
                           {i18n.language.startsWith('de') && signal.textDe
                             ? signal.textDe
@@ -355,7 +586,7 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
                           </a>
                         )}
                       </li>
-                    ))}
+                    )})}
                   </ul>
                 </div>
               )}
