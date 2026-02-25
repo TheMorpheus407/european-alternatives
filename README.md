@@ -38,17 +38,17 @@ This is not about nationalism. It's about choice, transparency, and building a h
 
 ## Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| Framework | React 19 + TypeScript |
-| Build Tool | Vite 7 |
-| Routing | React Router v7 |
-| Animations | Framer Motion |
-| Styling | Custom CSS design system (dark theme) |
-| Fonts | Oswald (headings) + Roboto (body) via Google Fonts |
-| Flags | [flag-icons](https://github.com/lipis/flag-icons) v7.5.0 via CDN |
-| Hosting | Hostinger (primary) + GitHub Pages (secondary) |
-| CI/CD | GitHub Actions |
+| Layer      | Technology                                                       |
+|------------|------------------------------------------------------------------|
+| Framework  | React 19 + TypeScript                                            |
+| Build Tool | Vite 7                                                           |
+| Routing    | React Router v7                                                  |
+| Animations | Framer Motion                                                    |
+| Styling    | Custom CSS design system (dark theme)                            |
+| Fonts      | Oswald (headings) + Roboto (body) via Google Fonts               |
+| Flags      | [flag-icons](https://github.com/lipis/flag-icons) v7.5.0 via CDN |
+| Hosting    | Hostinger (primary) + GitHub Pages (secondary)                   |
+| CI/CD      | GitHub Actions                                                   |
 
 ## Getting Started
 
