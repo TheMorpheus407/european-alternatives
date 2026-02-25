@@ -765,7 +765,7 @@ export const manualAlternatives: Alternative[] = [
   {
     id: 'jitsi',
     name: 'Jitsi',
-    logo: '/logos/jitsi.svg',
+    logo: '/logos/jitsi.png',
     description:
       'Open-source video conferencing platform for browser-based meetings with chat, screen sharing, and collaborative notes. Jitsi offers a free public instance at meet.jit.si, no account required, and supports self-hosting for teams that want EU-friendly data and infrastructure control.',
     localizedDescriptions: {
