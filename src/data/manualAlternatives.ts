@@ -1523,6 +1523,25 @@ export const manualAlternatives: Alternative[] = [
     license: 'GPL-3.0-or-later',
   },
   {
+    id: 'gitlab-stackhero',
+    name: 'GitLab by Stackhero',
+    logo: '/logos/stackhero.jpg',
+    description:
+      'French managed GitLab service from Stackhero that provides production-ready GitLab instances without self-managing infrastructure. Targets teams needing Git repositories, merge requests, and CI/CD workflows under European jurisdiction.',
+    localizedDescriptions: {
+      de: 'Französischer Managed-GitLab-Dienst von Stackhero, der produktionsreife GitLab-Instanzen ohne eigenes Infrastruktur-Management bereitstellt. Geeignet für Teams mit Bedarf an Git-Repositories, Merge Requests und CI/CD-Workflows unter europäischer Gerichtsbarkeit.',
+    },
+    website: 'https://www.stackhero.io/en/services/GitLab/benefits',
+    country: 'fr',
+    category: 'version-control',
+    replacesUS: ['GitHub', 'GitLab'],
+    isOpenSource: false,
+    openSourceLevel: 'none',
+    pricing: 'paid',
+    tags: ['version-control', 'git', 'ci-cd', 'managed-gitlab', 'devops'],
+    headquartersCity: 'Paris',
+  },
+  {
     id: 'opentalk',
     name: 'OpenTalk',
     logo: '/logos/opentalk.svg',
