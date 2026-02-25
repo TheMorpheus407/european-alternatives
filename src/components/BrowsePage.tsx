@@ -6,6 +6,7 @@ import { alternatives, categories } from '../data';
 import AlternativeCard from './AlternativeCard';
 import Filters from './Filters';
 import { getLocalizedAlternativeDescription } from '../utils/alternativeText';
+import { getAlternativeCategories } from '../utils/alternativeCategories';
 import { getEffectiveTrustScore } from '../utils/trustScore';
 import type { CategoryId, CountryCode, SelectedFilters, SortBy, ViewMode } from '../types';
 
@@ -116,7 +117,10 @@ export default function BrowsePage() {
     }
 
     if (selectedFilters.category.length > 0) {
-      result = result.filter((alternative) => selectedFilters.category.includes(alternative.category as CategoryId));
+      result = result.filter((alternative) => {
+        const alternativeCategories = getAlternativeCategories(alternative);
+        return selectedFilters.category.some((selectedCategory) => alternativeCategories.includes(selectedCategory));
+      });
     }
 
     if (selectedFilters.country.length > 0) {

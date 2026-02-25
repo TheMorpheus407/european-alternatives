@@ -14,6 +14,7 @@ export interface Alternative {
   logo?: string;
   country: CountryCode;
   category: CategoryId;
+  secondaryCategories?: CategoryId[];
   replacesUS: string[];
   usVendorComparisons?: USVendorComparison[];
   isOpenSource: boolean;

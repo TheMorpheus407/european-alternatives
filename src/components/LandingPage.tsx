@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { alternatives, categories } from '../data';
+import { getAlternativeCategories } from '../utils/alternativeCategories';
 
 const stagger = {
   initial: {},
@@ -23,7 +24,7 @@ export default function LandingPage() {
 
   const totalAlternatives = alternatives.length;
   const totalCategories = categories.filter(
-    (c) => alternatives.some((a) => a.category === c.id)
+    (c) => alternatives.some((a) => getAlternativeCategories(a).includes(c.id))
   ).length;
   const totalCountries = new Set(alternatives.map((a) => a.country)).size;
   const openSourceCount = alternatives.filter((a) => a.isOpenSource).length;
@@ -85,7 +86,7 @@ export default function LandingPage() {
             {categories
               .filter((c) => c.id !== 'other')
               .map((cat) => {
-                const count = alternatives.filter((a) => a.category === cat.id).length;
+                const count = alternatives.filter((a) => getAlternativeCategories(a).includes(cat.id)).length;
                 const catName = t(`data:categories.${cat.id}.name`);
                 return (
                   <Link

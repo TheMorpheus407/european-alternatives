@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { categories } from '../data';
 import { getLocalizedAlternativeDescription } from '../utils/alternativeText';
+import { getAlternativeCategories } from '../utils/alternativeCategories';
 import type { Alternative, OpenSourceLevel, USVendorComparison, ViewMode } from '../types';
 
 interface AlternativeCardProps {
@@ -64,7 +65,11 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
   const [logoError, setLogoError] = useState(false);
   const { t, i18n } = useTranslation(['browse', 'common', 'data']);
 
-  const category = categories.find((entry) => entry.id === alternative.category);
+  const categoryLabel = getAlternativeCategories(alternative)
+    .map((categoryId) => categories.find((entry) => entry.id === categoryId))
+    .filter((category): category is (typeof categories)[number] => Boolean(category))
+    .map((category) => `${category.emoji} ${t(`data:categories.${category.id}.name`)}`)
+    .join(' · ');
   const translatedDescription = getLocalizedAlternativeDescription(alternative, i18n.language);
   const description = (() => {
     if (viewMode !== 'grid' || translatedDescription.length <= 120) return translatedDescription;
@@ -129,10 +134,9 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
               )
             )}
           </div>
-          {category && (
+          {categoryLabel && (
             <span className="alt-card-category">
-              <span className="alt-card-category-emoji">{category.emoji}</span>
-              {t(`data:categories.${category.id}.name`)}
+              {categoryLabel}
             </span>
           )}
         </div>

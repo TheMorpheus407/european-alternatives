@@ -2434,6 +2434,9 @@ export const researchAlternatives: Alternative[] = [
     "id": "keepassxc",
     "name": "KeePassXC",
     "category": "password-manager",
+    "secondaryCategories": [
+      "2fa-authenticator"
+    ],
     "country": "de",
     "replacesUS": [
       "LastPass",
