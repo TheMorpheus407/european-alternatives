@@ -1450,6 +1450,25 @@ export const manualAlternatives: Alternative[] = [
     headquartersCity: 'Eindhoven',
   },
   {
+    id: 'mapy-com',
+    name: 'Mapy.com',
+    description:
+      'Czech mapping and navigation service operated by Seznam.cz, a.s. (Prague), formerly known as Mapy.cz. It offers worldwide maps, route planning, and hiking/cycling layers. Free mobile use includes offline maps for one country, while Premium unlocks unlimited offline downloads and additional features.',
+    localizedDescriptions: {
+      de: 'Tschechischer Karten- und Navigationsdienst von Seznam.cz, a.s. (Prag), frueher als Mapy.cz bekannt. Der Dienst bietet weltweite Karten, Routenplanung sowie Wander- und Fahrrad-Layer. In der kostenlosen Mobilversion ist Offline-Nutzung fuer ein Land enthalten, Premium schaltet unbegrenzte Offline-Downloads und zusaetzliche Funktionen frei.',
+    },
+    website: 'https://mapy.com',
+    logo: '/logos/mapy-com.svg',
+    country: 'cz',
+    category: 'maps',
+    replacesUS: ['Google Maps', 'Apple Maps', 'Waze'],
+    isOpenSource: false,
+    openSourceLevel: 'none',
+    pricing: 'freemium',
+    tags: ['maps', 'navigation', 'offline-maps', 'route-planning', 'hiking', 'cycling', 'freemium'],
+    headquartersCity: 'Prague',
+  },
+  {
     id: 'session',
     name: 'Session',
     logo: '/logos/session.svg',
