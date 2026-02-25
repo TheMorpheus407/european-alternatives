@@ -3,6 +3,7 @@
   <defs id="defs3921" />
   <sodipodi:namedview id="namedview3919" pagecolor="#000000" bordercolor="#666666" borderopacity="1.0" inkscape:showpageshadow="2" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#202020" showgrid="false" inkscape:zoom="3.3359375" inkscape:cx="128" inkscape:cy="128" inkscape:window-width="1874" inkscape:window-height="1056" inkscape:window-x="46" inkscape:window-y="24" inkscape:window-maximized="1" inkscape:current-layer="svg3917" />
   <title id="title3817">Vaultwarden Icon - White</title>
+  <circle cx="128" cy="128" r="126" fill="none" stroke="#D7DEE7" stroke-width="2" />
   <g id="logo" transform="matrix(2.4381018,0,0,2.4381018,128,128)">
     <g id="gear" mask="url(#holes)" stroke="#fff">
       <path d="m-31.1718-33.813208 26.496029 74.188883h9.3515399l26.49603-74.188883h-9.767164l-16.728866 47.588948q-1.662496 4.571864-2.805462 8.624198-1.142966 3.948427-1.870308 7.585137-.72734199-3.63671-1.8703079-7.689043-1.142966-4.052334-2.805462-8.728104l-16.624959-47.381136z" fill="#fff" stroke-width="4.51171" id="path3819" />
