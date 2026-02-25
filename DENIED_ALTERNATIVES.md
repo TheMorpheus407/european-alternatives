@@ -165,3 +165,32 @@ Because Kagi is non-European and not fully open-source, it fails G6 and is not e
 - [Kagi Docs — About (founded in Palo Alto; San Francisco contact address)](https://help.kagi.com/kagi/company/)
 - [Kagi Docs — Commitment to Open-source](https://help.kagi.com/kagi/support-and-community/open-source.html)
 - [Kagi Terms (Proprietary Rights; Delaware, U.S.A. governing law)](https://kagi.com/privacy)
+
+---
+
+## GitLab (Version Control)
+
+**Proposed in:** Issue #141 (2026-02-18)
+**Origin:** United States (GitLab, Inc., San Francisco)
+**Category:** Version Control
+
+### Reason for Denial
+
+GitLab is a Tier 2 (non-European) proposal. Under the [Decision Matrix](DECISION_MATRIX.md), criterion G6 requires Tier 2 entries to be fully open-source (client and server under OSI-approved licenses).
+
+GitLab's own licensing documentation states that:
+
+- **GitLab Community Edition (CE)** is MIT-licensed
+- **GitLab Enterprise Edition (EE)** is licensed under the GitLab EE license with additional restrictions
+
+GitLab's installation and upgrade docs also separate `gitlab-ce` ("stripped down" community-only package) from `gitlab-ee` (full package with community + enterprise features), and GitLab's upgrade page states that Enterprise features require an EE license.
+
+Because the proposed entry is **GitLab** (not a CE-only listing), the offering is open-core rather than fully open-source end-to-end. It therefore fails **G6** and is not eligible for inclusion.
+
+### Sources
+
+- [Issue #141 — "entry request: gitlab"](https://github.com/TheMorpheus407/european-alternatives/issues/141)
+- [GitLab Docs — Licensing and Compatibility (CE MIT, EE restrictive license)](https://docs.gitlab.com/development/licensing/)
+- [GitLab Docs — Upgrade Linux package instances (`gitlab-ce` vs `gitlab-ee`)](https://docs.gitlab.com/update/package/)
+- [GitLab — Upgrade to Enterprise Edition (Enterprise features not in CE; license required)](https://about.gitlab.com/upgrade/)
+- [GitLab Legal Notice (GitLab, Inc. San Francisco address)](https://about.gitlab.com/fr-fr/mentions-legales/)
