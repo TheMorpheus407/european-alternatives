@@ -19,6 +19,7 @@
     "project-management": { "name": "Project Management", "description": "Task and project management tools" },
     "password-manager": { "name": "Password Manager", "description": "Password management and security" },
     "2fa-authenticator": { "name": "2FA Authenticators", "description": "One-time password and push authenticator apps" },
+    "translation": { "name": "Translation", "description": "Language translation apps and services" },
     "ai-ml": { "name": "AI & Machine Learning", "description": "Artificial intelligence platforms and tools" },
     "hosting": { "name": "Cloud & Hosting", "description": "Web hosting and cloud infrastructure" },
     "databases": { "name": "Databases", "description": "Relational, analytical, and self-hostable database platforms" },

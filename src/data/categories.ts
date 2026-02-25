@@ -135,11 +135,18 @@ export const categories: Category[] = [
     usGiants: ['Google Authenticator', 'Microsoft Authenticator', 'Authy'],
   },
   {
+    id: 'translation',
+    name: 'Translation',
+    description: 'Language translation apps and services',
+    emoji: '🗣️',
+    usGiants: ['Google Translate', 'Google Lens', 'Microsoft Translator', 'AWS Translate'],
+  },
+  {
     id: 'ai-ml',
     name: 'AI & Machine Learning',
     description: 'Artificial intelligence platforms and tools',
     emoji: '🤖',
-    usGiants: ['OpenAI', 'Google AI', 'AWS AI', 'Google Translate', 'AWS Translate', 'OpenAI DALL-E', 'Google Imagen', 'Nano Banana Pro', 'Midjourney', 'Anthropic API', 'OpenAI API'],
+    usGiants: ['OpenAI', 'Google AI', 'AWS AI', 'OpenAI DALL-E', 'Google Imagen', 'Nano Banana Pro', 'Midjourney', 'Anthropic API', 'OpenAI API'],
   },
   {
     id: 'hosting',

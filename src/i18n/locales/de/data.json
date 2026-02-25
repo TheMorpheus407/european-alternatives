@@ -76,6 +76,10 @@
       "name": "2FA-Authenticator",
       "description": "Apps für Einmalpasswörter und Push-Authentifizierung"
     },
+    "translation": {
+      "name": "Übersetzung",
+      "description": "Sprachübersetzungs-Apps und -Dienste"
+    },
     "ai-ml": {
       "name": "KI & Maschinelles Lernen",
       "description": "Plattformen und Tools für künstliche Intelligenz"

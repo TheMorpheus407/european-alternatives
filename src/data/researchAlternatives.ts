@@ -732,7 +732,7 @@ export const researchAlternatives: Alternative[] = [
   {
     "id": "deepl",
     "name": "DeepL",
-    "category": "ai-ml",
+    "category": "translation",
     "country": "de",
     "replacesUS": [
       "Google Translate",
@@ -747,7 +747,7 @@ export const researchAlternatives: Alternative[] = [
     "isOpenSource": false,
     "openSourceLevel": "none",
     "tags": [
-      "ai-ml",
+      "translation",
       "freemium",
       "google-translate",
       "aws-translate"
