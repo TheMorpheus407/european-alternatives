@@ -1072,6 +1072,40 @@ export const researchAlternatives: Alternative[] = [
     "license": "Apache-2.0 (Element clients); AGPL-3.0 (Matrix Synapse server)"
   },
   {
+    "id": "delta-chat",
+    "name": "Delta Chat",
+    "category": "messaging",
+    "country": "de",
+    "replacesUS": [
+      "WhatsApp",
+      "Signal",
+      "iMessage"
+    ],
+    "pricing": "free",
+    "selfHostable": true,
+    "website": "https://delta.chat",
+    "description": "German decentralized messenger by merlinux GmbH (Freiburg) that runs over existing e-mail providers instead of centralized app servers. Supports end-to-end encryption via Autocrypt and verified groups, with clients for Android, iOS, and desktop.",
+    "localizedDescriptions": {
+      "de": "Dezentraler Messenger aus Deutschland von der merlinux GmbH (Freiburg), der ueber bestehende E-Mail-Anbieter statt ueber zentrale App-Server arbeitet. Unterstuetzt Ende-zu-Ende-Verschluesselung via Autocrypt und verifizierte Gruppen, mit Clients fuer Android, iOS und Desktop."
+    },
+    "isOpenSource": true,
+    "openSourceLevel": "full",
+    "sourceCodeUrl": "https://github.com/deltachat",
+    "tags": [
+      "messaging",
+      "free",
+      "open-source",
+      "decentralized",
+      "email",
+      "e2ee",
+      "whatsapp",
+      "signal",
+      "imessage"
+    ],
+    "headquartersCity": "Freiburg",
+    "license": "GPL-3.0 (Android and Desktop apps)"
+  },
+  {
     "id": "e-os",
     "name": "e/OS",
     "category": "mobile-os",
