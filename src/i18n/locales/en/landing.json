@@ -10,6 +10,45 @@
     "openSource": "Open Source"
   },
   "browseByCategory": "Browse by Category",
+  "categoryGroupsNavLabel": "Jump to category group",
+  "categoryGroups": {
+    "communication-work": {
+      "name": "Communication & Work",
+      "description": "Email, messaging, meetings, office apps, and planning tools."
+    },
+    "web-discovery": {
+      "name": "Web & Discovery",
+      "description": "Search, browsers, maps, storage, translation, and writing tools."
+    },
+    "privacy-security": {
+      "name": "Privacy & Security",
+      "description": "Password managers, authenticators, VPN, DNS, and identity protection."
+    },
+    "social-entertainment": {
+      "name": "Social & Entertainment",
+      "description": "Social platforms, video, music, podcasts, feeds, and media libraries."
+    },
+    "money-commerce": {
+      "name": "Money & Commerce",
+      "description": "Payments, online selling, and personal finance tools."
+    },
+    "devices-platforms": {
+      "name": "Devices & Platforms",
+      "description": "Operating systems, app stores, phones, and smart-home ecosystems."
+    },
+    "ai-creative": {
+      "name": "AI & Creative",
+      "description": "Language models, image generation, design, and video editing."
+    },
+    "builders-infrastructure": {
+      "name": "Builders & Infrastructure",
+      "description": "Hosting, databases, dev tools, analytics, and infrastructure software."
+    },
+    "uncategorized": {
+      "name": "Other Categories",
+      "description": "Categories that are not yet assigned to a thematic group."
+    }
+  },
   "alternative_one": "{{count}} alternative",
   "alternative_other": "{{count}} alternatives",
   "replacesLabel": "Alternatives to:",

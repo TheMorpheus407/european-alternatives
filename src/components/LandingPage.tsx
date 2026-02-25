@@ -2,7 +2,9 @@ import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { alternatives, categories } from '../data';
+import { landingCategoryGroups } from '../data/landingCategoryGroups';
 import { getAlternativeCategories } from '../utils/alternativeCategories';
+import type { CategoryId } from '../types';
 
 const stagger = {
   initial: {},
@@ -21,6 +23,7 @@ const fadeUp = {
 export default function LandingPage() {
   const { lang } = useParams<{ lang: string }>();
   const { t } = useTranslation(['landing', 'common', 'data']);
+  const langPrefix = lang ?? 'en';
 
   const totalAlternatives = alternatives.length;
   const totalCategories = categories.filter(
@@ -28,6 +31,43 @@ export default function LandingPage() {
   ).length;
   const totalCountries = new Set(alternatives.map((a) => a.country)).size;
   const openSourceCount = alternatives.filter((a) => a.isOpenSource).length;
+
+  const visibleCategories = categories.filter((category) => category.id !== 'other');
+  const categoriesById = new Map(visibleCategories.map((category) => [category.id, category]));
+  const alternativeCountsByCategory = new Map<CategoryId, number>();
+  for (const category of visibleCategories) {
+    alternativeCountsByCategory.set(category.id, 0);
+  }
+  for (const alternative of alternatives) {
+    for (const categoryId of getAlternativeCategories(alternative)) {
+      if (alternativeCountsByCategory.has(categoryId)) {
+        alternativeCountsByCategory.set(categoryId, (alternativeCountsByCategory.get(categoryId) ?? 0) + 1);
+      }
+    }
+  }
+  const assignedCategoryIds = new Set<CategoryId>();
+  const groupedCategorySections = landingCategoryGroups.map((group) => {
+    const groupCategories = group.categories
+      .map((categoryId) => categoriesById.get(categoryId))
+      .filter((category): category is (typeof categories)[number] => Boolean(category));
+
+    for (const category of groupCategories) {
+      assignedCategoryIds.add(category.id);
+    }
+
+    return {
+      ...group,
+      categories: groupCategories,
+    };
+  });
+
+  const ungroupedCategories = visibleCategories.filter((category) => !assignedCategoryIds.has(category.id));
+  if (ungroupedCategories.length > 0) {
+    groupedCategorySections.push({
+      id: 'uncategorized',
+      categories: ungroupedCategories,
+    });
+  }
 
   return (
     <div className="landing-page">
@@ -82,40 +122,61 @@ export default function LandingPage() {
         {/* Category Grid */}
         <motion.div className="landing-categories" variants={fadeUp}>
           <h2 className="landing-section-title">{t('landing:browseByCategory')}</h2>
-          <div className="landing-categories-grid">
-            {categories
-              .filter((c) => c.id !== 'other')
-              .map((cat) => {
-                const count = alternatives.filter((a) => getAlternativeCategories(a).includes(cat.id)).length;
-                const catName = t(`data:categories.${cat.id}.name`);
-                return (
-                  <Link
-                    key={cat.id}
-                    to={`/${lang}/browse?category=${cat.id}`}
-                    className="landing-category-card"
-                  >
-                    <span className="landing-category-emoji" aria-hidden="true">
-                      {cat.emoji}
-                    </span>
-                    <span className="landing-category-name">{catName}</span>
-                    <span className="landing-category-count">
-                      {t('landing:alternative', { count })}
-                    </span>
-                    {cat.usGiants.length > 0 && (
-                      <div className="landing-category-replaces">
-                        <span className="landing-category-replaces-label">
-                          {t('landing:replacesLabel')}
+          <div className="landing-category-group-nav" role="navigation" aria-label={t('landing:categoryGroupsNavLabel')}>
+            {groupedCategorySections.map((group) => (
+              <a key={group.id} href={`#group-${group.id}`} className="landing-category-group-nav-item">
+                {t(`landing:categoryGroups.${group.id}.name`)}
+              </a>
+            ))}
+          </div>
+
+          <div className="landing-category-groups">
+            {groupedCategorySections.map((group) => (
+              <section key={group.id} id={`group-${group.id}`} className="landing-category-group">
+                <div className="landing-category-group-header">
+                  <h3 className="landing-category-group-title">
+                    {t(`landing:categoryGroups.${group.id}.name`)}
+                  </h3>
+                  <p className="landing-category-group-description">
+                    {t(`landing:categoryGroups.${group.id}.description`)}
+                  </p>
+                </div>
+
+                <div className="landing-categories-grid">
+                  {group.categories.map((cat) => {
+                    const count = alternativeCountsByCategory.get(cat.id) ?? 0;
+                    const catName = t(`data:categories.${cat.id}.name`);
+                    return (
+                      <Link
+                        key={cat.id}
+                        to={`/${langPrefix}/browse?category=${cat.id}`}
+                        className="landing-category-card"
+                      >
+                        <span className="landing-category-emoji" aria-hidden="true">
+                          {cat.emoji}
                         </span>
-                        <ul className="landing-category-giants-list">
-                          {cat.usGiants.map((giant) => (
-                            <li key={giant}>{giant}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </Link>
-                );
-              })}
+                        <span className="landing-category-name">{catName}</span>
+                        <span className="landing-category-count">
+                          {t('landing:alternative', { count })}
+                        </span>
+                        {cat.usGiants.length > 0 && (
+                          <div className="landing-category-replaces">
+                            <span className="landing-category-replaces-label">
+                              {t('landing:replacesLabel')}
+                            </span>
+                            <ul className="landing-category-giants-list">
+                              {cat.usGiants.map((giant) => (
+                                <li key={giant}>{giant}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </section>
+            ))}
           </div>
         </motion.div>
 
@@ -205,7 +266,7 @@ export default function LandingPage() {
         {/* CTA */}
         <motion.div className="landing-buttons" variants={fadeUp}>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link to={`/${lang}/browse`} className="cta-button">
+            <Link to={`/${langPrefix}/browse`} className="cta-button">
               {t('landing:browseAlternatives')}
               <svg className="cta-arrow" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
