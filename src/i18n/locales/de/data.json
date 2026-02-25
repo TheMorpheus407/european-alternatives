@@ -226,6 +226,9 @@
     },
     "jitsi": {
       "description": "Open-Source-Video-Konferenzplattform für browserbasierte Meetings mit Chat, Bildschirmfreigabe und kollaborativen Notizen. Jitsi bietet eine kostenlose öffentliche Instanz unter meet.jit.si ohne Konto und unterstützt Self-Hosting für Teams, die EU-konforme Daten- und Infrastrukturkontrolle wünschen."
+    },
+    "anytype": {
+      "description": "Dezentrales, local-first, Peer-to-Peer-Wissensmanagement- und Projekttool, entwickelt von Anylab in Berlin, mit Rechten bei der Any Association in Zug, Schweiz. Ende-zu-Ende-verschlüsselt, selbst-hostbare Backup-Knoten und quelloffen unter MIT (Protokoll) und ASAL (Clients). Keine OSI-anerkannte Open-Source-Lizenz."
     }
   }
 }
