@@ -142,3 +142,26 @@ Brave publishes major browser code under open-source licenses, but Brave's own d
 - [Brave Support: DRM-protected content (Widevine)](https://support.brave.com/hc/en-us/articles/360023851591-How-do-I-view-DRM-protected-content)
 - [Brave Blog: DRM support and Widevine licensing constraints](https://brave.com/blog/drm-support/)
 - [Brave Terms of Use](https://brave.com/terms-of-use/)
+
+---
+
+## Kagi (Search Engine)
+
+**Proposed in:** Issue #134 (2026-02-18)
+**Origin:** United States (Kagi Inc.; founded in Palo Alto, California)
+**Category:** Search Engine
+
+### Reason for Denial
+
+Kagi is a Tier 2 (non-European) proposal. Under the [Decision Matrix](DECISION_MATRIX.md) gateway rules (criterion G6), Tier 2 entries are only eligible when they are fully open-source (client and server under OSI-approved licenses).
+
+Kagi's own company documentation identifies the company as US-based (Palo Alto founding and San Francisco address), and its terms state proprietary rights over the service. Kagi's open-source page describes the company as "increasingly open-source" and lists selected OSS projects, but this does not establish full open-source status for the core search/assistant stack end-to-end.
+
+Because Kagi is non-European and not fully open-source, it fails G6 and is not eligible for catalogue inclusion.
+
+### Sources
+
+- [Issue #134 — "Please add Kagi"](https://github.com/TheMorpheus407/european-alternatives/issues/134)
+- [Kagi Docs — About (founded in Palo Alto; San Francisco contact address)](https://help.kagi.com/kagi/company/)
+- [Kagi Docs — Commitment to Open-source](https://help.kagi.com/kagi/support-and-community/open-source.html)
+- [Kagi Terms (Proprietary Rights; Delaware, U.S.A. governing law)](https://kagi.com/privacy)
