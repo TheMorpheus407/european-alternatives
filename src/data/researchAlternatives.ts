@@ -3527,7 +3527,7 @@ export const researchAlternatives: Alternative[] = [
       "de": "Schnelle, datenschutzfreundliche Offline-Karten-App für Wanderer, Radfahrer und Reisende — von den ursprünglichen Entwicklern als Fork von Maps.me erstellt. Nutzt OpenStreetMap-Daten ganz ohne Werbung, Tracking oder Datensammlung und funktioniert vollständig ohne Internetverbindung."
     },
     "isOpenSource": true,
-    "openSourceLevel": "full",
+    "openSourceLevel": "partial",
     "tags": [
       "maps",
       "free",
@@ -3588,7 +3588,7 @@ export const researchAlternatives: Alternative[] = [
       "de": "Leistungsstarke Offline-Karten- und Navigations-App basierend auf OpenStreetMap-Daten, entwickelt von einem niederländischen Unternehmen. Bietet detaillierte topografische Karten, Wander- und Radrouten, Schritt-für-Schritt-Navigation, ÖPNV und Seekarten — alles vollständig offline verfügbar mit monatlichen Kartenaktualisierungen."
     },
     "isOpenSource": true,
-    "openSourceLevel": "full",
+    "openSourceLevel": "partial",
     "tags": [
       "maps",
       "freemium",

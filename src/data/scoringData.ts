@@ -15,7 +15,6 @@ export const scoringMetadata: Record<string, ScoringMetadata> = {
   'nextcloud-docs': { baseClassOverride: 'foss' },
   'ollama': { baseClassOverride: 'foss' },
   'openstreetmap': { baseClassOverride: 'foss' },
-  'organic-maps': { baseClassOverride: 'foss' },
   'peertube': { baseClassOverride: 'foss' },
   'pixelfed': { baseClassOverride: 'foss' },
   'prestashop': { baseClassOverride: 'foss' },
@@ -24,4 +23,3 @@ export const scoringMetadata: Record<string, ScoringMetadata> = {
   'ungoogled-chromium': { baseClassOverride: 'foss' },
   'vikunja': { baseClassOverride: 'foss' },
 };
-
