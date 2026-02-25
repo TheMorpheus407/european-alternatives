@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { categories } from '../data';
 import { getLocalizedAlternativeDescription } from '../utils/alternativeText';
 import { getAlternativeCategories } from '../utils/alternativeCategories';
-import { CUMULATIVE_PENALTY_CAP, DIMENSION_BASELINE_FRACTION } from '../data/scoringConfig';
+import { CUMULATIVE_PENALTY_CAP } from '../data/scoringConfig';
 import { getRecencyMultiplier, withEstimatedPenalties } from '../utils/trustScore';
 import type { Alternative, OpenSourceLevel, PenaltyTier, Reservation, USVendorComparison, ViewMode } from '../types';
 
@@ -154,15 +154,11 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
         max: dimension.max,
       };
     });
-    const baselineOperational = dimensionItems.reduce(
-      (sum, dimension) => sum + dimension.max * DIMENSION_BASELINE_FRACTION,
-      0,
-    );
 
     return {
       baseClass: breakdown.baseClass,
       baseScore10: toTenScale(breakdown.baseScore),
-      operationalBaseline10: toTenScale(baselineOperational),
+      operationalTotal10: toTenScale(breakdown.operationalTotal),
       signalTotal10: toTenScale(breakdown.signalTotal),
       penaltyTotal10: toTenScale(breakdown.penaltyTotal),
       rawScore10: toTenScale(breakdown.baseScore + breakdown.operationalTotal),
@@ -285,13 +281,17 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
                 {t('browse:card.trustScoreBreakdownTitle')}
               </h4>
               <p className="alt-card-trust-breakdown-equation">
-                {t('browse:card.trustScoreBreakdownEquation', {
-                  base: formatScore(trustBreakdown.baseScore10),
-                  baseline: formatScore(trustBreakdown.operationalBaseline10),
-                  signals: formatScore(trustBreakdown.signalTotal10),
-                  penalties: formatScore(trustBreakdown.penaltyTotal10),
-                  final: formatScore(trustBreakdown.finalScore10),
-                })}
+                {t(
+                  trustBreakdown.classCap10 != null
+                    ? 'browse:card.trustScoreBreakdownEquationCapped'
+                    : 'browse:card.trustScoreBreakdownEquation',
+                  {
+                    base: formatScore(trustBreakdown.baseScore10),
+                    operational: formatScore(trustBreakdown.operationalTotal10),
+                    cap: trustBreakdown.classCap10 != null ? formatScore(trustBreakdown.classCap10) : undefined,
+                    final: formatScore(trustBreakdown.finalScore10),
+                  },
+                )}
               </p>
               <div className="alt-card-trust-breakdown-summary">
                 <div className="alt-card-trust-breakdown-row">
@@ -303,16 +303,8 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
                   <strong>+{formatScore(trustBreakdown.baseScore10)}</strong>
                 </div>
                 <div className="alt-card-trust-breakdown-row">
-                  <span>{t('browse:card.trustScoreBreakdownOperationalBaseline')}</span>
-                  <strong>+{formatScore(trustBreakdown.operationalBaseline10)}</strong>
-                </div>
-                <div className="alt-card-trust-breakdown-row">
-                  <span>{t('browse:card.trustScoreBreakdownSignals')}</span>
-                  <strong>+{formatScore(trustBreakdown.signalTotal10)}</strong>
-                </div>
-                <div className="alt-card-trust-breakdown-row">
-                  <span>{t('browse:card.trustScoreBreakdownReservations')}</span>
-                  <strong>-{formatScore(trustBreakdown.penaltyTotal10)}</strong>
+                  <span>{t('browse:card.trustScoreBreakdownOperational')}</span>
+                  <strong>+{formatScore(trustBreakdown.operationalTotal10)}</strong>
                 </div>
                 <div className="alt-card-trust-breakdown-row">
                   <span>{t('browse:card.trustScoreBreakdownRaw')}</span>
