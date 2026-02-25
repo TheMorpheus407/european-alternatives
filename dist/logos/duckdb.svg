@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="DuckDB">
+  <title>DuckDB</title>
+  <circle cx="12" cy="12" r="12" fill="#F9B000"/>
+  <circle cx="9.5" cy="12" r="4.9" fill="#111111"/>
+  <rect x="15.7" y="10.2" width="4.6" height="3.6" rx="1.8" fill="#111111"/>
+</svg>
