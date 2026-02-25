@@ -1648,7 +1648,7 @@ export const manualAlternatives: Alternative[] = [
     openSourceLevel: 'none',
     pricing: 'paid',
     tags: ['project-management', 'jira', 'asana', 'agency'],
-    foundedYear: 2021,
+    foundedYear: 2019,
     headquartersCity: 'Hamburg',
   },
 ];
