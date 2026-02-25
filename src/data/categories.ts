@@ -237,7 +237,7 @@ export const categories: Category[] = [
     name: 'Note-Taking',
     description: 'Note-taking apps and personal knowledge management',
     emoji: '📝',
-    usGiants: ['Evernote', 'Microsoft OneNote', 'Apple Notes', 'Obsidian', 'Notion', 'Google Keep', 'Roam Research'],
+    usGiants: ['Evernote', 'Microsoft OneNote', 'Apple Notes', 'Notion', 'Google Keep', 'Roam Research'],
   },
   {
     id: 'media-server',

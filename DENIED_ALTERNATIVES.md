@@ -194,3 +194,27 @@ Because the proposed entry is **GitLab** (not a CE-only listing), the offering i
 - [GitLab Docs — Upgrade Linux package instances (`gitlab-ce` vs `gitlab-ee`)](https://docs.gitlab.com/update/package/)
 - [GitLab — Upgrade to Enterprise Edition (Enterprise features not in CE; license required)](https://about.gitlab.com/upgrade/)
 - [GitLab Legal Notice (GitLab, Inc. San Francisco address)](https://about.gitlab.com/fr-fr/mentions-legales/)
+
+---
+
+## Obsidian (Note-Taking)
+
+**Raised in:** Issue #201 (2026-02-25)
+**Origin:** Canada (Dynalist Inc.)
+**Category:** Note-Taking
+
+### Reason for Denial
+
+Obsidian is **not US-based**. Obsidian's terms identify the legal entity as Dynalist Inc., set Ontario/Canada governing law, and state the services are controlled and operated from offices within Canada.
+
+However, Obsidian is a Tier 2 (non-European) candidate. Under the [Decision Matrix](DECISION_MATRIX.md), gateway criterion G6 requires Tier 2 entries to be fully open-source (client and server under OSI-approved licenses).
+
+Obsidian's terms state the software is "licensed and not sold," with rights reserved to the company, and note that software may include third-party open-source components. Obsidian's license overview also states the company owns and reserves rights to code in the app. This supports an interpretation of a proprietary offering with some open-source components, not a fully open-source stack.
+
+Because Obsidian is non-European and not fully open-source, it fails G6 and is not eligible for catalogue inclusion.
+
+### Sources
+
+- [Issue #201 — "Obsidian incorrectly listed as US company"](https://github.com/TheMorpheus407/european-alternatives/issues/201)
+- [Obsidian Terms of Service (Dynalist Inc.; Ontario/Canada governing law)](https://obsidian.md/terms)
+- [Obsidian License Overview (rights reserved statement)](https://obsidian.md/license)

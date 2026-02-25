@@ -1993,7 +1993,6 @@ export const researchAlternatives: Alternative[] = [
     "category": "note-taking",
     "country": "ro",
     "replacesUS": [
-      "Obsidian",
       "Evernote",
       "Microsoft OneNote",
       "Apple Notes"
@@ -3067,7 +3066,6 @@ export const researchAlternatives: Alternative[] = [
     "category": "note-taking",
     "country": "eu",
     "replacesUS": [
-      "Obsidian",
       "Evernote",
       "Microsoft OneNote",
       "Apple Notes"
@@ -3488,7 +3486,6 @@ export const researchAlternatives: Alternative[] = [
     "category": "note-taking",
     "country": "eu",
     "replacesUS": [
-      "Obsidian",
       "Roam Research",
       "Logseq"
     ],

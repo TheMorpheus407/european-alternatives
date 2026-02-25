@@ -354,11 +354,6 @@ const US_VENDOR_RECORDS: USVendorRecord[] = [
     aliases: [],
   },
   {
-    id: 'obsidian',
-    name: 'Obsidian',
-    aliases: ['obsidian', 'obsidian.md', 'dynalist'],
-  },
-  {
     id: 'notion',
     name: 'Notion',
     aliases: ['notion.so', 'notion ai', 'notion calendar'],
