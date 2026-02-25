@@ -2,6 +2,10 @@
   "headline": "European Alternatives",
   "subtext": "Discover European and open-source alternatives to US tech giants. Support digital sovereignty, data privacy, and local innovation.",
   "nudge": "This is not here to force anyone to switch, especially not immediately. It is here to show that Europe already has strong alternatives we can actually use, and that we are not behind in tech.",
+  "heroContribution": {
+    "cta": "Suggest an alternative on GitHub",
+    "hint": "Know another strong European or open-source option? Submit it as an issue."
+  },
   "stats": {
     "alternatives": "Alternatives",
     "categories": "Categories",
