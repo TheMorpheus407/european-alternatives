@@ -50,6 +50,7 @@ body:
       options:
         - "yes"
         - "no"
+        - partially
   - type: markdown
     attributes:
       value: |
