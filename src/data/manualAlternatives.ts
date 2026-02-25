@@ -1658,7 +1658,7 @@ export const manualAlternatives: Alternative[] = [
     description:
       'Decentralized, local-first, peer-to-peer knowledge management and project tool developed by Anylab in Berlin, with rights held by the Any Association in Zug, Switzerland. End-to-end encrypted, self-hostable backup nodes, and source-available under MIT (protocol) and ASAL (clients). Not OSI-approved open source.',
     localizedDescriptions: {
-      de: 'Dezentrales, local-first, Peer-to-Peer-Wissensmanagement- und Projekttool, entwickelt von Anylab in Berlin, mit Rechten bei der Any Association in Zug, Schweiz. Ende-zu-Ende-verschluesselt, selbst-hostbare Backup-Knoten und quelloffen unter MIT (Protokoll) und ASAL (Clients). Keine OSI-anerkannte Open-Source-Lizenz.',
+      de: 'Dezentrales, local-first, Peer-to-Peer-Wissensmanagement- und Projekttool, entwickelt von Anylab in Berlin, mit Rechten bei der Any Association in Zug, Schweiz. Ende-zu-Ende-verschlüsselt, selbst-hostbare Backup-Knoten und quelloffen unter MIT (Protokoll) und ASAL (Clients). Keine OSI-anerkannte Open-Source-Lizenz.',
     },
     website: 'https://anytype.io',
     logo: '/logos/anytype.svg',
