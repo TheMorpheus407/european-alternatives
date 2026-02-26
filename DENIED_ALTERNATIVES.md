@@ -251,3 +251,28 @@ Independent company-register lookups also did not return a clearly matching enti
 - [North Data search — "Thaura GbR, Hannover"](https://www.northdata.de/Thaura%20GbR,%20Hannover?offset=0)
 - [North Data search — "HRB 245123, Berlin"](https://www.northdata.de/HRB%20245123,%20Berlin?offset=0)
 - [USt-IdNr checker (manual validation tool)](https://www.ust-id-prufen.de/)
+
+---
+
+## Hugging Face (AI & Machine Learning)
+
+**Previously listed, removed in:** Issue #207 correction (2026-02-26)  
+**Claimed origin in catalog:** France (Paris)  
+**Legal service entity:** United States (Hugging Face, Inc., Delaware)  
+**Category:** AI & Machine Learning
+
+### Reason for Denial
+
+Issue #207 correctly flagged that the prior listing treated Hugging Face as a French alternative. Hugging Face's own legal terms define the binding service entity as **Hugging Face, Inc., a Delaware corporation**, with New York governing law and New York courts.
+
+The privacy policy separately names Hugging Face SAS in Paris as the **EU main establishment** for GDPR supervision, but this does not change the primary service-contract entity used in the Terms.
+
+Under the [Decision Matrix](DECISION_MATRIX.md), this places Hugging Face in **Tier 2 (non-European)** for catalog eligibility decisions. Tier 2 entries must pass gateway criterion **G6** (fully open-source, client and server). Hugging Face's core ecosystem includes major open-source libraries, but the Hub/service offering is not fully open-source end-to-end (the previous catalog record already marked `openSourceLevel: "partial"`).
+
+Because it is non-European and not fully open-source, Hugging Face fails **G6** and is not eligible for inclusion.
+
+### Sources
+
+- [Issue #207 — "Correction: Huggingface is a US company with HQ in New York City"](https://github.com/TheMorpheus407/european-alternatives/issues/207)
+- [Hugging Face Terms of Service (Hugging Face, Inc., Delaware; New York governing law)](https://huggingface.co/terms-of-service)
+- [Hugging Face Privacy Policy (EU main establishment listed as Hugging Face SAS, Paris)](https://huggingface.co/privacy)

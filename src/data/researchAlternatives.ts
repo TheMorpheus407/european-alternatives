@@ -2111,37 +2111,6 @@ export const researchAlternatives: Alternative[] = [
     "headquartersCity": "Vilnius"
   },
   {
-    "id": "hugging-face",
-    "name": "Hugging Face",
-    "category": "ai-ml",
-    "country": "fr",
-    "replacesUS": [
-      "OpenAI",
-      "Google AI",
-      "AWS AI"
-    ],
-    "pricing": "freemium",
-    "website": "https://huggingface.co",
-    "description": "The leading open-source AI platform and model hub, founded by French entrepreneurs in Paris. Hosts over 500,000 models, 100,000 datasets, and the widely-used Transformers library. Provides free community access alongside paid compute and enterprise features, championing open and collaborative AI development.",
-    "localizedDescriptions": {
-      "de": "Die führende Open-Source-KI-Plattform und Modell-Hub, gegründet von französischen Unternehmern in Paris. Beherbergt über 500.000 Modelle, 100.000 Datensätze und die weit verbreitete Transformers-Bibliothek. Bietet kostenlosen Community-Zugang neben kostenpflichtigen Rechen- und Enterprise-Funktionen und setzt sich für offene und kollaborative KI-Entwicklung ein."
-    },
-    "isOpenSource": true,
-    "openSourceLevel": "partial",
-    "openSourceAuditUrl": "https://github.com/orgs/huggingface/repositories",
-    "tags": [
-      "ai-ml",
-      "freemium",
-      "open-source",
-      "openai",
-      "google-ai"
-    ],
-    "foundedYear": 2016,
-    "headquartersCity": "Paris",
-    "sourceCodeUrl": "https://github.com/huggingface",
-    "license": "Apache-2.0 (libraries/tools); proprietary Hub platform"
-  },
-  {
     "id": "infomaniak",
     "name": "Infomaniak",
     "category": "hosting",
