@@ -6,6 +6,10 @@ RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} !^european-alternatives\.cloud$ [NC]
 RewriteRule ^ https://european-alternatives.cloud%{REQUEST_URI} [R=301,L]
 
+# Allow API requests to execute PHP files directly.
+RewriteCond %{REQUEST_URI} ^/api/ [NC]
+RewriteRule ^ - [L]
+
 # Skip requests already targeting dist/
 RewriteCond %{REQUEST_URI} ^/dist/ [NC]
 RewriteRule ^ - [L]

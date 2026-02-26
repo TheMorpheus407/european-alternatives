@@ -34,3 +34,7 @@ dist-ssr
 agents/
 CLAUDE.md
 AGENTS.md
+
+# Local runtime secrets for PHP API
+api/config/*.local.php
+api/config/db.env.php
