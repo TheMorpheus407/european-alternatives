@@ -5,23 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "generate:research": "node scripts/generate-research-catalog.mjs",
-    "generate:trust-signals": "node scripts/generate-trust-web-signals.mjs",
-    "validate:us-vendors": "node scripts/validate-us-vendor-comparisons.cjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
-    "db:export": "tsx scripts/export-to-json.mjs",
     "db:import": "php scripts/db-import.php --source tmp/export/catalog.json",
-    "db:migrate": "bash scripts/db-migrate.sh",
-    "db:test": "tsx scripts/parity-tests.mjs",
-    "db:shadow": "tsx scripts/shadow-diff.mjs",
-    "db:snapshot": "tsx scripts/snapshot-baseline.mjs",
-    "db:snapshot:compare": "tsx scripts/snapshot-compare.mjs",
     "db:backup": "bash scripts/db-backup.sh",
-    "db:restore": "bash scripts/db-restore.sh",
-    "db:export-ts": "php scripts/db-export-to-ts.php"
+    "db:restore": "bash scripts/db-restore.sh"
   },
   "dependencies": {
     "@fontsource/oswald": "^5.2.8",

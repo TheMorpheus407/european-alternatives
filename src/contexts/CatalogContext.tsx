@@ -1,19 +1,6 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
-import type { Alternative, Category, FurtherReadingResource } from '../types';
-import type { LandingCategoryGroup } from '../data/landingCategoryGroups';
+import type { Alternative, Category, FurtherReadingResource, LandingCategoryGroup } from '../types';
 import type { CatalogData } from '../data/provider';
-import { alternatives as tsAlternatives, categories as tsCategories, furtherReadingResources as tsFurtherReadingResources } from '../data';
-import { landingCategoryGroups as tsLandingCategoryGroups } from '../data/landingCategoryGroups';
-
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
-
-type DataBackend = 'ts' | 'db';
-
-interface FeatureFlags {
-  dataBackend: DataBackend;
-}
 
 // Re-export CatalogData so existing consumers can import from either location.
 export type { CatalogData };
@@ -21,15 +8,15 @@ export type { CatalogData };
 type CatalogContextValue = CatalogData;
 
 // ---------------------------------------------------------------------------
-// Defaults (TS path — immediate, synchronous)
+// Initial state (empty until the API responds)
 // ---------------------------------------------------------------------------
 
-const DEFAULT_CONTEXT_VALUE: CatalogContextValue = {
-  alternatives: tsAlternatives,
-  categories: tsCategories,
-  furtherReadingResources: tsFurtherReadingResources,
-  landingCategoryGroups: tsLandingCategoryGroups,
-  loading: false,
+const EMPTY_CONTEXT: CatalogContextValue = {
+  alternatives: [],
+  categories: [],
+  furtherReadingResources: [],
+  landingCategoryGroups: [],
+  loading: true,
   error: null,
 };
 
@@ -37,36 +24,10 @@ const DEFAULT_CONTEXT_VALUE: CatalogContextValue = {
 // Context
 // ---------------------------------------------------------------------------
 
-const CatalogContext = createContext<CatalogContextValue>(DEFAULT_CONTEXT_VALUE);
+const CatalogContext = createContext<CatalogContextValue>(EMPTY_CONTEXT);
 
 // ---------------------------------------------------------------------------
-// Feature flag loader
-// ---------------------------------------------------------------------------
-
-const FLAGS_URL = '/api/config/flags.json';
-const DEFAULT_FLAGS: FeatureFlags = { dataBackend: 'ts' };
-
-async function fetchFeatureFlags(): Promise<FeatureFlags> {
-  try {
-    const response = await fetch(FLAGS_URL);
-    if (!response.ok) return DEFAULT_FLAGS;
-    const json: unknown = await response.json();
-    if (
-      typeof json === 'object' &&
-      json !== null &&
-      'dataBackend' in json &&
-      (json as FeatureFlags).dataBackend === 'db'
-    ) {
-      return { dataBackend: 'db' };
-    }
-    return DEFAULT_FLAGS;
-  } catch {
-    return DEFAULT_FLAGS;
-  }
-}
-
-// ---------------------------------------------------------------------------
-// API client (DB path only)
+// API client
 // ---------------------------------------------------------------------------
 
 const API_BASE = '/api/catalog';
@@ -126,42 +87,29 @@ interface CatalogProviderProps {
 }
 
 export function CatalogProvider({ children }: CatalogProviderProps) {
-  const [state, setState] = useState<CatalogContextValue>(DEFAULT_CONTEXT_VALUE);
+  const [state, setState] = useState<CatalogContextValue>(EMPTY_CONTEXT);
 
   useEffect(() => {
     let cancelled = false;
 
-    fetchFeatureFlags().then((flags) => {
-      if (cancelled) return;
-
-      if (flags.dataBackend === 'ts') {
-        // TS path: data is already loaded synchronously via the default value.
-        // No state update needed — DEFAULT_CONTEXT_VALUE has everything.
-        return;
-      }
-
-      // DB path: fetch from API with loading state.
-      setState((prev) => ({ ...prev, loading: true, error: null }));
-
-      fetchCatalogFromApi()
-        .then((data) => {
-          if (cancelled) return;
-          setState({
-            ...data,
-            loading: false,
-            error: null,
-          });
-        })
-        .catch((err: unknown) => {
-          if (cancelled) return;
-          const message = err instanceof Error ? err.message : 'Data temporarily unavailable.';
-          setState((prev) => ({
-            ...prev,
-            loading: false,
-            error: message,
-          }));
+    fetchCatalogFromApi()
+      .then((data) => {
+        if (cancelled) return;
+        setState({
+          ...data,
+          loading: false,
+          error: null,
         });
-    });
+      })
+      .catch((err: unknown) => {
+        if (cancelled) return;
+        const message = err instanceof Error ? err.message : 'Data temporarily unavailable.';
+        setState((prev) => ({
+          ...prev,
+          loading: false,
+          error: message,
+        }));
+      });
 
     return () => {
       cancelled = true;

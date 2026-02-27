@@ -186,6 +186,24 @@ export interface ScoringMetadata {
   isAdSurveillance?: boolean;
 }
 
+// --- Landing page category groups ---
+
+export type LandingCategoryGroupId =
+  | 'communication-work'
+  | 'web-discovery'
+  | 'privacy-security'
+  | 'social-entertainment'
+  | 'money-commerce'
+  | 'devices-platforms'
+  | 'ai-creative'
+  | 'builders-infrastructure'
+  | 'uncategorized';
+
+export interface LandingCategoryGroup {
+  id: LandingCategoryGroupId;
+  categories: CategoryId[];
+}
+
 export type SortBy = 'trustScore' | 'name' | 'country' | 'category';
 export type ViewMode = 'grid' | 'list';
 

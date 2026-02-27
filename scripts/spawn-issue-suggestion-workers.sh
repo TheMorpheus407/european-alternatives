@@ -73,9 +73,8 @@ Mandatory workflow:
 2) Read and apply:
    - DECISION_MATRIX.md
    - DENIED_ALTERNATIVES.md
-3) Run duplicate checks in:
-   - src/data/manualAlternatives.ts
-   - src/data/researchAlternatives.ts
+3) Run duplicate checks against the MySQL database via the PHP API at /api/catalog/entries.php?status=alternative
+   (all alternatives, US vendors, and denied entries live in the database, not in TypeScript files).
 4) Do BIG web research before editing anything:
    - Use at least 4 sources.
    - Must include official website plus official docs/repo or legal/about page.
@@ -86,36 +85,31 @@ Mandatory workflow:
    - If tooling does not support separate agents, emulate this with an explicit self-review section in your report.
 6) Apply gateway checks G1-G8 and choose exactly one outcome:
    - ACCEPT_INCLUDE_PENDING:
-     - Add to src/data/researchAlternatives.ts (preferred) unless src/data/manualAlternatives.ts is clearly better.
-     - Insert at the correct place in the existing array (keep ordering by id with nearby neighbors).
-     - Use minimal targeted edit; do not rewrite large unrelated sections.
-     - Fill standard fields with evidence-backed values.
+     - All alternative data is stored in the MySQL database (table: catalog_entries, plus entry_categories, entry_tags, entry_replacements).
+     - You cannot directly insert into the database from this worker. Instead, document the full entry details in your report (all fields: id/slug, name, description, country, category, replacesUS, pricing, isOpenSource, etc.) so it can be added to the database.
      - Add logo in public/logos/<id>.svg when feasible; if not feasible, document why.
      - Keep trust score pending only.
    - DENY:
-     - Do not add the alternative to manualAlternatives/researchAlternatives.
+     - Do not add the alternative to the database.
      - Explain the exact failing gateway criteria and cite sources.
    - US_VENDOR_ONLY:
      - Use this when the suggestion is not an eligible alternative but is a US product that should appear in replacements.
-     - Add/update src/data/usVendors.ts (US_VENDOR_RECORDS only) with minimal edit at the correct place.
-     - Do not add to manualAlternatives/researchAlternatives.
+     - US vendor data is stored in the MySQL database (tables: us_vendors, us_vendor_profiles, us_vendor_profile_reservations). Document the vendor details in your report so it can be added to the database.
+     - Do not add as an alternative entry in the database.
 7) Trust-scoring constraints (hard rule):
    - Keep the result Trust Score Pending.
-   - Do NOT add scoring metadata, positive signals, trust overrides, or vetted worksheets.
-   - Do NOT edit:
-     - src/data/scoringData.ts
-     - src/data/positiveSignals.ts
-     - src/data/trustOverrides.ts
-     - tmp/vetted/*
-8) Persistence verification (mandatory):
-   - After editing, verify your change exists in the target file at exactly one insertion point.
-   - In report, include the inserted id and the previous + next id (or surrounding keys) to prove correct placement.
-   - If the edit did not persist, mark outcome as FAILED (not ADDED) and explain why.
+   - Do NOT add scoring metadata, positive signals, reservations, or vetted worksheets.
+   - Scoring metadata, positive signals, and reservations are stored in the MySQL database — do NOT attempt to insert or modify them.
+   - Do NOT create files in tmp/vetted/*.
+8) Report verification (mandatory):
+   - Verify your report contains all required fields for the proposed entry (see catalog_entries schema: slug, name, description, country_code, category, replacesUS, pricing, isOpenSource, etc.).
+   - If a logo was added to public/logos/, verify the file exists.
+   - If any required information could not be determined, mark outcome as FAILED (not ADDED) and explain why.
 9) Save report to:
    __REPORT_FILE__
 10) Commit rule:
-   - If outcome is ACCEPT_INCLUDE_PENDING or US_VENDOR_ONLY and you changed tracked project files, create exactly one commit for this suggestion only.
-   - The commit must include only files related to this single suggestion (entry/logo/us-vendor/report), nothing unrelated.
+   - If outcome is ACCEPT_INCLUDE_PENDING or US_VENDOR_ONLY and you added files (e.g. logo in public/logos/ or the report), create exactly one commit for this suggestion only.
+   - The commit must include only files related to this single suggestion (logo/report), nothing unrelated.
    - Commit message: `add pending suggestion: <id> (issue #__ISSUE_NUMBER__)`
    - If outcome is DENY or FAILED, do not commit.
 

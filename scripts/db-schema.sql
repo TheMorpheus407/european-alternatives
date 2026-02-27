@@ -6,7 +6,7 @@
 -- Engine:           MySQL 8.0+ (InnoDB)
 -- Charset:          utf8mb4 / utf8mb4_unicode_ci
 -- Tables:           20
--- Source:           DB_MIGRATION_PLAN.md Appendix D
+-- Schema for European Alternatives database
 --
 -- This schema creates the full normalized catalog database for the European
 -- Alternatives project. Tables are ordered to satisfy foreign-key dependencies
@@ -353,12 +353,14 @@ CREATE TABLE `further_reading_resources` (
 -- ---------------------------------------------------------------------------
 CREATE TABLE `landing_category_groups` (
   `id`             BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `slug`           VARCHAR(100)    NOT NULL,
   `name_en`        VARCHAR(200)    NOT NULL,
   `name_de`        VARCHAR(200)    DEFAULT NULL,
   `description_en` TEXT            DEFAULT NULL,
   `description_de` TEXT            DEFAULT NULL,
   `sort_order`     INT             NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_lcg_slug` (`slug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------------

@@ -4,7 +4,7 @@ declare(strict_types=1);
 /**
  * Database Import Script — European Alternatives
  *
- * Reads a pre-exported JSON catalog (produced by scripts/export-to-json.mjs)
+ * Reads a pre-exported JSON catalog file
  * and seeds all 20 MySQL tables in a single transaction.
  *
  * Usage:
@@ -859,9 +859,9 @@ function importLandingCategoryGroups(PDO $pdo, array $groups): array
     stderr('Importing landing_category_groups...');
     $stmt = $pdo->prepare(
         'INSERT INTO `landing_category_groups` (
-            `name_en`, `name_de`, `description_en`, `description_de`, `sort_order`
+            `slug`, `name_en`, `name_de`, `description_en`, `description_de`, `sort_order`
         ) VALUES (
-            :name_en, :name_de, :description_en, :description_de, :sort_order
+            :slug, :name_en, :name_de, :description_en, :description_de, :sort_order
         )'
     );
 
@@ -869,7 +869,9 @@ function importLandingCategoryGroups(PDO $pdo, array $groups): array
     $count = 0;
 
     foreach ($groups as $idx => $row) {
+        $sourceKey = $row['source_id'] ?? (string) $idx;
         $stmt->execute([
+            ':slug'           => $sourceKey,
             ':name_en'        => $row['name_en'],
             ':name_de'        => $row['name_de'] ?? null,
             ':description_en' => $row['description_en'] ?? null,
@@ -877,8 +879,6 @@ function importLandingCategoryGroups(PDO $pdo, array $groups): array
             ':sort_order'     => $row['sort_order'] ?? $idx,
         ]);
 
-        // Map by the group's source identifier (slug or index)
-        $sourceKey = $row['source_id'] ?? (string) $idx;
         $groupIdMap[$sourceKey] = (int) $pdo->lastInsertId();
         $count++;
     }

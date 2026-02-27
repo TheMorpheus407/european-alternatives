@@ -52,7 +52,7 @@ The most valuable contribution is **adding alternatives you personally use and t
 
 The easiest way to suggest a new alternative is to [open an issue using the "New alternative" template](https://github.com/TheMorpheus407/european-alternatives/issues/new?template=new-alternative.yaml). Fill in what you know — most fields are optional — and maintainers will take it from there.
 
-If you'd rather contribute directly via code, read on. You don't need to know React — just TypeScript data entry.
+If you'd like to contribute directly via a pull request instead of an issue, you can submit a PR that includes the alternative details listed below. A maintainer will add the entry to the database on your behalf. Alternative data is stored in a MySQL database and served via a PHP API -- there are no TypeScript data files to edit.
 
 ### Step 1: Prepare the Information
 
@@ -70,8 +70,8 @@ Gather the following about the alternative:
 | `isOpenSource`     | Yes      | `true` or `false`                                        |
 | `pricing`          | Yes      | `"free"`, `"freemium"`, or `"paid"`                      |
 | `tags`             | Yes      | `["privacy", "self-hosted", "GDPR"]` — relevant keywords |
-| `logo`             | No       | `"/logos/nextcloud.svg"` — path to logo file             |
-| `sourceCodeUrl`    | No       | `"https://github.com/nextcloud/server"`                |
+| `logo`             | No       | SVG file — see logo requirements below                   |
+| `sourceCodeUrl`    | No       | `"https://github.com/nextcloud/server"`                  |
 | `foundedYear`      | No       | `2016`                                                   |
 | `headquartersCity` | No       | `"Stuttgart"`                                            |
 | `license`          | No       | `"AGPL-3.0"`                                             |
@@ -79,31 +79,15 @@ Gather the following about the alternative:
 
 `sourceCodeUrl` can point to any public repository host (GitHub, Codeberg, GitLab, Forgejo, or self-hosted Git).
 
-**Trust scores are computed automatically.** You do not need to set `trustScore` or `trustScoreStatus`. New alternatives will show "Trust Score Pending" until they are vetted. If you know of documented concerns, you can add `reservations` -- see the [Trust Scoring](#trust-scoring) section for the format.
+**Trust scores are computed automatically.** You do not need to provide a trust score. New alternatives will show "Trust Score Pending" until they are vetted by a maintainer. If you know of documented concerns, mention them in your issue or PR -- see the [Trust Scoring](#trust-scoring) section for the reservation format.
 
-### Step 2: Add the Entry
+### Step 2: Submit the Entry
 
-Open `src/data/manualAlternatives.ts` and add your entry to the `alternatives` array:
+**Option A (recommended):** [Open an issue](https://github.com/TheMorpheus407/european-alternatives/issues/new?template=new-alternative.yaml) with the details above. A maintainer will add it to the database.
 
-```typescript
-{
-  id: 'nextcloud',
-  name: 'Nextcloud',
-  description: 'Self-hosted productivity platform providing file sync, collaboration, and communication tools with full data sovereignty.',
-  website: 'https://nextcloud.com',
-  logo: '/logos/nextcloud.svg',
-  country: 'de',
-  category: 'cloud-storage',
-  replacesUS: ['Google Drive', 'Dropbox', 'OneDrive'],
-  isOpenSource: true,
-  sourceCodeUrl: 'https://github.com/nextcloud/server',
-  pricing: 'free',
-  tags: ['self-hosted', 'file-sync', 'collaboration', 'GDPR', 'privacy'],
-  foundedYear: 2016,
-  headquartersCity: 'Stuttgart',
-  license: 'AGPL-3.0',
-},
-```
+**Option B:** Open a pull request that includes the alternative details in the PR description (using the fields above). If you have a logo, you can include it in the PR as well.
+
+You do **not** need to edit any TypeScript source files. All alternative data lives in the database.
 
 ### Step 3: Add a Logo (Optional but Recommended)
 
@@ -114,11 +98,10 @@ Open `src/data/manualAlternatives.ts` and add your entry to the `alternatives` a
 
 ### Step 4: Verify
 
-```bash
-npm run dev       # Check the site — your alternative should appear
-npm run build     # Ensure TypeScript compiles without errors
-npm run lint      # Ensure no linting issues
-```
+If you're contributing a logo file via PR, make sure:
+- The SVG is placed in `public/logos/` with the alternative's `id` as the filename (e.g., `nextcloud.svg`)
+- The file is under 50 KB
+- `npm run build` and `npm run lint` still pass
 
 ### Available Categories
 
@@ -163,42 +146,19 @@ All country codes below are valid in the type system. Note that the browse page'
 
 ## Adding a New Category
 
-If an alternative doesn't fit any existing category, you can propose a new one.
+If an alternative doesn't fit any existing category, you can propose a new one by [opening an issue](https://github.com/TheMorpheus407/european-alternatives/issues).
 
-### Step 1: Add the Category ID to TypeScript Types
+Category definitions are stored in the database and served via the API. Contributors cannot add categories directly. When proposing a new category, include:
 
-In `src/types/index.ts`, add the new ID to the `CategoryId` type:
+- **ID** — URL-safe, lowercase, kebab-case (e.g., `your-new-category`)
+- **Name** — Human-readable name (e.g., "Your Category Name")
+- **Description** — Brief description of what the category covers
+- **US Giants** — Which US services this category replaces (e.g., "US Service 1, US Service 2")
+- **Emoji** — A representative emoji for the category
 
-```typescript
-export type CategoryId =
-  | 'cloud-storage'
-  | 'email'
-  // ... existing categories ...
-  | 'your-new-category';
-```
+Maintainers will also need to add localization entries in `src/i18n/locales/{de,en}/data.json` and update the `CategoryId` type in `src/types/index.ts`.
 
-### Step 2: Add the Category Definition and localization
-
-In `src/data/categories.ts`, add an entry to the `categories` array:
-
-```typescript
-{
-  id: 'your-new-category',
-  name: 'Your Category Name',
-  description: 'Brief description of what this category covers.',
-  usGiants: ['US Service 1', 'US Service 2'],
-  emoji: '🔧',
-},
-```
-
-In `src/i18n/locales/{de,en}/data.json`, add an entry to the `catagories`
-
-`"cloud-storage": { "name": "Cloud-Speicher", "description": "Dateispeicher- und Synchronisierungsdienste" },`
-`"cloud-storage": { "name": "Cloud Storage", "description": "File storage and sync services" },`
-
-### Step 3: Update Filters (If Needed)
-
-The filter component in `src/components/Filters.tsx` dynamically reads categories from the data file, so no changes should be needed there. Verify by running the dev server.
+The filter component in `src/components/Filters.tsx` dynamically reads categories from the API, so no UI changes are needed when a new category is added.
 
 ---
 
@@ -223,7 +183,7 @@ Trust scores are built from two components:
 
    Each dimension starts at 50% of its maximum. **Reservations** (documented concerns) subtract points. **Positive signals** (verified strengths like certifications or audit results) add points back. The effective score per dimension is clamped between 0 and the dimension maximum.
 
-Scoring constants live in `src/data/scoringConfig.ts`. Positive signals live in `src/data/positiveSignals.ts`.
+Scoring constants live in `src/data/scoringConfig.ts`. Positive signals and reservations are stored in the database and served via the API.
 
 ### What Contributors Need to Know
 
@@ -258,7 +218,7 @@ The fields you should provide:
 
 - **Don't assign penalty tiers or amounts** -- the `penalty` field on reservations (which maps concerns to scoring dimensions like `security` or `governance`) is handled by maintainers and scoring agents. Just provide the reservation with a severity.
 - **Don't assign trust scores manually** -- scores are always computed by the engine.
-- **Don't add positive signals** -- these require vetted deep-research documents and are added by maintainers.
+- **Don't add positive signals** -- these require vetted deep-research documents and are managed in the database by maintainers.
 
 ### Severity Guidelines
 
@@ -302,8 +262,8 @@ Understanding the codebase will help you contribute effectively:
 | `src/components/AlternativeCard.tsx` | Individual alternative card (grid + list view) |
 | `src/components/Filters.tsx`         | Search, filter, and sort controls              |
 | `src/types/index.ts`                 | All TypeScript interfaces and types            |
-| `src/data/alternatives.ts`           | Alternative catalogue data                     |
-| `src/data/categories.ts`             | Category definitions                           |
+| `src/contexts/CatalogContext.tsx`    | Data provider — fetches all data from the API  |
+| `src/data/scoringConfig.ts`          | Scoring constants (base scores, caps, dims)    |
 
 ---
 

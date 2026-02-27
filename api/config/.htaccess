@@ -1,14 +1,4 @@
-# Allow flags.json (runtime feature flags) to be served publicly.
-<Files "flags.json">
-    <IfModule mod_authz_core.c>
-        Require all granted
-    </IfModule>
-    <IfModule !mod_authz_core.c>
-        Allow from all
-    </IfModule>
-</Files>
-
-# Deny everything else in this directory.
+# Deny all public access to config files.
 <IfModule mod_authz_core.c>
     Require all denied
 </IfModule>

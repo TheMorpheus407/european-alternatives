@@ -79,8 +79,7 @@ The site will be available at `http://localhost:5173`.
 npm run build     # Type-check and build for production
 npm run preview   # Preview the production build locally
 npm run lint      # Run ESLint
-npm run generate:research  # Regenerate research catalogue from data/research/master-research.md
-npm run generate:trust-signals  # Re-crawl vendor websites for trust signals
+npm run test      # Run tests (vitest)
 ```
 
 ## Project Structure
@@ -94,24 +93,18 @@ src/
 │   ├── BrowsePage.tsx   # Search and filter page
 │   ├── AlternativeCard.tsx  # Individual alternative display
 │   └── Filters.tsx      # Search, filter, and sort controls
+├── contexts/
+│   └── CatalogContext.tsx # Fetches all data from the PHP API on mount
 ├── data/
-│   ├── alternatives.ts         # Final merged catalogue + trust overlays
-│   ├── manualAlternatives.ts   # Hand-curated seed entries
-│   ├── researchAlternatives.ts # Generated from master research markdown
-│   ├── trustOverrides.ts       # Vetting status/reservations/score overrides
-│   ├── trustWebSignals.ts      # Generated web-derived trust signals for each vendor
-│   ├── categories.ts           # Category definitions
-│   └── index.ts                # Re-exports
+│   ├── provider.ts        # CatalogData type definition
+│   └── scoringConfig.ts   # Scoring constants (base scores, caps, dimensions)
 ├── types/
-│   └── index.ts         # TypeScript interfaces
+│   └── index.ts           # TypeScript interfaces
 ├── utils/
-│   ├── trustScore.ts    # Trust scoring engine
-│   └── alternativeText.ts  # Localized text helpers
-├── scripts/
-│   ├── generate-research-catalog.mjs # Markdown to TS dataset generator
-│   └── generate-trust-web-signals.mjs # Vendor website trust signal crawler
-├── index.css            # Full design system
-└── main.tsx             # Entry point
+│   ├── trustScore.ts      # Trust scoring engine (runs at runtime on API data)
+│   └── alternativeText.ts # Localized text helpers
+├── index.css              # Full design system
+└── main.tsx               # Entry point
 ```
 
 ## Trust Method
@@ -125,13 +118,11 @@ Each listing includes:
 
 Scoring is deterministic and evidence-weighted:
 - Rewards European jurisdiction, open-source transparency, and privacy/self-hosting signals
-- Adds web-derived trust signals crawled from each vendor site (`src/data/trustWebSignals.ts`)
 - Applies reservation penalties by severity
-- Uses vetted outcomes encoded in `src/data/trustOverrides.ts`
+- Uses vetted outcomes (reservations, positive signals, scoring metadata) stored in the database and served via the PHP API
 - Keeps non-vetted entries visible with lower confidence so coverage stays broad while certainty stays explicit
 
-Full formula is implemented in `src/utils/trustScore.ts`.
-Primary source links for manual reservations are documented in `docs/TRUST-SOURCES.md`.
+Full formula is implemented in `src/utils/trustScore.ts`. Scoring constants live in `src/data/scoringConfig.ts`.
 
 ## Contributing
 
@@ -146,7 +137,7 @@ See [**CONTRIBUTING.md**](CONTRIBUTING.md) for the full guide, including:
 
 We use a transparent [**Decision Matrix**](DECISION_MATRIX.md) to evaluate every proposed alternative. Not every entry makes it in — those that fail our vetting process are documented with full reasoning and sources in [**DENIED_ALTERNATIVES.md**](DENIED_ALTERNATIVES.md).
 
-The fastest way to contribute: add or improve an entry in `src/data/manualAlternatives` and run `npm run generate:research`.
+The fastest way to contribute: [open an issue](https://github.com/TheMorpheus407/european-alternatives/issues/new?template=new-alternative.yaml) with the alternative details. Maintainers will add it to the database.
 
 ## License
 
