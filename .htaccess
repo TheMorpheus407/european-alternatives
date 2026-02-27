@@ -7,6 +7,17 @@ RewriteCond %{HTTP_HOST} !^european-alternatives\.cloud$ [NC]
 RewriteRule ^ https://european-alternatives.cloud%{REQUEST_URI} [R=301,L]
 
 # Allow API requests to execute PHP files directly.
+# If the exact file exists (e.g. flags.json, .htaccess), serve it as-is.
+RewriteCond %{REQUEST_URI} ^/api/ [NC]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Append .php extension for extensionless API paths (e.g. /api/catalog/entries → entries.php).
+RewriteCond %{REQUEST_URI} ^/api/ [NC]
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+)$ $1.php [L]
+
+# Pass through remaining API requests (directories, 404s).
 RewriteCond %{REQUEST_URI} ^/api/ [NC]
 RewriteRule ^ - [L]
 
