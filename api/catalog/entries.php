@@ -528,8 +528,9 @@ foreach ($rows as $row) {
     }
 
     // Trust score (pre-computed, read from cached columns)
+    // DB stores 0-100 scale; frontend expects 0-10 (one decimal place).
     if ($row['trust_score_100'] !== null) {
-        $entry['trustScore'] = (int)$row['trust_score_100'];
+        $entry['trustScore'] = round((int)$row['trust_score_100'] / 10, 1);
     }
     if ($row['trust_score_status'] !== null) {
         $entry['trustScoreStatus'] = $row['trust_score_status'];
