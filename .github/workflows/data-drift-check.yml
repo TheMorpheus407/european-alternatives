@@ -42,9 +42,11 @@ jobs:
 
       - name: Check for auto-generated export marker
         id: check-marker
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
         run: |
           # Allow PRs that are auto-generated DB exports
-          PR_TITLE="${{ github.event.pull_request.title }}"
           if echo "$PR_TITLE" | grep -qi '\[db-export\]'; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
             echo "PR title contains [db-export] marker — skipping drift check."
@@ -52,7 +54,6 @@ jobs:
           fi
 
           # Also check commit messages in the PR for the marker
-          BASE_REF="${{ github.event.pull_request.base.ref }}"
           COMMITS=$(git log --format='%s' "origin/${BASE_REF}...HEAD" 2>/dev/null || true)
           if echo "$COMMITS" | grep -qi '\[db-export\]'; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
@@ -64,9 +65,10 @@ jobs:
 
       - name: Check for direct TS data file edits
         if: steps.check-marker.outputs.skip != 'true'
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
         run: |
           # Get the list of changed files in this PR compared to the base branch
-          BASE_REF="${{ github.event.pull_request.base.ref }}"
           CHANGED_FILES=$(git diff --name-only "origin/${BASE_REF}...HEAD" -- 'src/data/*.ts')
 
           if [ -z "$CHANGED_FILES" ]; then

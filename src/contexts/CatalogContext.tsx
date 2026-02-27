@@ -84,14 +84,19 @@ async function fetchCatalogFromApi(): Promise<Omit<CatalogData, 'loading' | 'err
   if (!furtherReadingRes.ok) throw new Error(`API error: further-reading returned ${furtherReadingRes.status}`);
   if (!landingGroupsRes.ok) throw new Error(`API error: landing-groups returned ${landingGroupsRes.status}`);
 
-  const [alternatives, categories, furtherReadingResources, landingCategoryGroups] = await Promise.all([
-    entriesRes.json() as Promise<Alternative[]>,
-    categoriesRes.json() as Promise<Category[]>,
-    furtherReadingRes.json() as Promise<FurtherReadingResource[]>,
-    landingGroupsRes.json() as Promise<LandingCategoryGroup[]>,
+  const [entriesJson, categoriesJson, furtherReadingJson, landingGroupsJson] = await Promise.all([
+    entriesRes.json(),
+    categoriesRes.json(),
+    furtherReadingRes.json(),
+    landingGroupsRes.json(),
   ]);
 
-  return { alternatives, categories, furtherReadingResources, landingCategoryGroups };
+  return {
+    alternatives: entriesJson.data as Alternative[],
+    categories: categoriesJson.data as Category[],
+    furtherReadingResources: furtherReadingJson.data as FurtherReadingResource[],
+    landingCategoryGroups: landingGroupsJson.data as LandingCategoryGroup[],
+  };
 }
 
 // ---------------------------------------------------------------------------
