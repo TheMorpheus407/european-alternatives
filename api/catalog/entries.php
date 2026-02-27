@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../db.php';
 require_once __DIR__ . '/helpers.php';
+require_once __DIR__ . '/scoring.php';
 
 requireHttpMethod('GET');
 
@@ -76,10 +77,7 @@ SELECT
     ce.headquarters_city,
     ce.license_text,
     ce.action_links_json,
-    ce.trust_score_100,
-    ce.trust_score_10_display,
-    ce.trust_score_status,
-    ce.trust_score_breakdown_json
+    ce.date_added
 FROM catalog_entries ce
 WHERE ce.status = :status
   AND (ce.is_active = 1 OR ce.status = 'denied')
@@ -292,138 +290,69 @@ foreach ($sigRows as $sr) {
 }
 
 // ---------------------------------------------------------------------------
-// 6. Batch-fetch US vendor comparisons (entry_replacements -> us_vendors ->
-//    us_vendor_profiles -> us_vendor_profile_reservations)
+// 6. Batch-fetch scoring_metadata
+// ---------------------------------------------------------------------------
+
+[$inSm, $smParams] = buildInPlaceholders($entryIds, 'sm');
+
+$smSql = <<<SQL
+SELECT
+    sm.entry_id,
+    sm.base_class_override,
+    sm.is_ad_surveillance
+FROM scoring_metadata sm
+WHERE sm.entry_id IN ({$inSm})
+SQL;
+
+$smStmt = $pdo->prepare($smSql);
+$smStmt->execute($smParams);
+$smRows = $smStmt->fetchAll();
+
+$scoringMetaByEntry = [];
+foreach ($smRows as $smr) {
+    $eid = (int)$smr['entry_id'];
+    $scoringMetaByEntry[$eid] = $smr;
+}
+
+// ---------------------------------------------------------------------------
+// 7. Batch-fetch entry_replacements (simplified: replaced_entry_id → slug)
 // ---------------------------------------------------------------------------
 
 [$inRep, $repParams] = buildInPlaceholders($entryIds, 'rep');
-
-$uvpDescCol = $locale === 'de'
-    ? 'COALESCE(uvp.description_de, uvp.description_en)'
-    : 'uvp.description_en';
-
-$uvprTextCol = $locale === 'de'
-    ? 'COALESCE(uvpr.text_de, uvpr.text_en)'
-    : 'uvpr.text_en';
 
 $repSql = <<<SQL
 SELECT
     er.entry_id,
     er.raw_name,
     er.sort_order       AS er_sort,
-    uv.slug             AS vendor_id,
-    uv.name             AS vendor_name,
-    {$uvpDescCol}       AS vendor_description,
-    uvp.description_en  AS vendor_description_en,
-    uvp.description_de  AS vendor_description_de,
-    uvp.trust_score_override_10,
-    uvp.trust_score_status,
-    uvpr.reservation_key,
-    {$uvprTextCol}      AS res_text,
-    uvpr.text_en        AS res_text_en,
-    uvpr.text_de        AS res_text_de,
-    uvpr.severity       AS res_severity,
-    uvpr.event_date     AS res_event_date,
-    uvpr.source_url     AS res_source_url,
-    uvpr.penalty_tier   AS res_penalty_tier,
-    uvpr.penalty_amount AS res_penalty_amount,
-    uvpr.sort_order     AS res_sort
+    er.replaced_entry_id,
+    ce2.slug            AS replaced_slug
 FROM entry_replacements er
-LEFT JOIN us_vendors uv ON uv.id = er.us_vendor_id
-LEFT JOIN us_vendor_profiles uvp ON uvp.us_vendor_id = uv.id
-LEFT JOIN us_vendor_profile_reservations uvpr ON uvpr.us_vendor_id = uv.id
+LEFT JOIN catalog_entries ce2 ON ce2.id = er.replaced_entry_id
 WHERE er.entry_id IN ({$inRep})
-ORDER BY er.entry_id, er.sort_order, uvpr.sort_order
+ORDER BY er.entry_id, er.sort_order
 SQL;
 
 $repStmt = $pdo->prepare($repSql);
 $repStmt->execute($repParams);
 $repRows = $repStmt->fetchAll();
 
-// Post-process: group by entry, dedupe by us_vendor_id (first by sort_order),
-// nest reservations inside each comparison.
-$comparisonsByEntry = [];
-$replacesUSByEntry  = [];
+$replacesUSByEntry = [];
 
 foreach ($repRows as $rr) {
     $eid = (int)$rr['entry_id'];
-
-    if (!isset($comparisonsByEntry[$eid])) {
-        $comparisonsByEntry[$eid] = [];
-        $replacesUSByEntry[$eid]  = [];
-    }
-
-    // Determine the comparison identity key. Resolved vendors use their slug;
-    // unresolved ones use a fallback "us-{slugified-raw-name}".
-    $vendorId = $rr['vendor_id'];
-    $isResolved = $vendorId !== null;
-
-    if (!$isResolved) {
-        $vendorId = 'us-' . slugifyName($rr['raw_name']);
-    }
-
-    // Track the raw replacement names for the replacesUS array.
-    // Use er_sort as the dedup key for raw names to preserve order.
     $erSort = (int)$rr['er_sort'];
-    if (!isset($replacesUSByEntry[$eid][$erSort])) {
-        $replacesUSByEntry[$eid][$erSort] = $rr['raw_name'];
+
+    if (!isset($replacesUSByEntry[$eid])) {
+        $replacesUSByEntry[$eid] = [];
     }
 
-    // Dedupe by vendor_id: keep first occurrence (lowest er_sort).
-    if (isset($comparisonsByEntry[$eid][$vendorId])) {
-        // Already seen this vendor — only add reservation if new.
-        if ($rr['reservation_key'] !== null) {
-            $existingResKeys = array_column(
-                $comparisonsByEntry[$eid][$vendorId]['_reservations'] ?? [],
-                'id'
-            );
-            if (!in_array($rr['reservation_key'], $existingResKeys, true)) {
-                $comparisonsByEntry[$eid][$vendorId]['_reservations'][] =
-                    buildUSVendorReservation($rr);
-            }
-        }
-        continue;
-    }
-
-    // First occurrence of this vendor for this entry.
-    // A profile exists when the LEFT JOIN to us_vendor_profiles produced a row
-    // (trust_score_status is NOT NULL in that table, so NULL here means no row).
-    $hasProfile = $isResolved && $rr['trust_score_status'] !== null;
-    $hasReservations = $rr['reservation_key'] !== null;
-    $hasProfileWithReservations = $hasProfile && $hasReservations;
-
-    $comparison = [
-        'id'              => $vendorId,
-        'name'            => $isResolved ? $rr['vendor_name'] : trim($rr['raw_name']),
-        'trustScoreStatus' => $hasProfileWithReservations
-            ? ($rr['trust_score_status'] ?? 'ready')
-            : 'pending',
-    ];
-
-    if ($hasProfileWithReservations && $rr['trust_score_override_10'] !== null) {
-        $comparison['trustScore'] = (float)$rr['trust_score_override_10'];
-    }
-    if ($hasProfileWithReservations && $rr['vendor_description'] !== null) {
-        $comparison['description'] = $rr['vendor_description'];
-    }
-    if ($hasProfileWithReservations && $rr['vendor_description_de'] !== null) {
-        $comparison['descriptionDe'] = $rr['vendor_description_de'];
-    }
-
-    // Track whether this comparison has a full profile with reservations.
-    $comparison['_hasProfileWithRes'] = $hasProfileWithReservations;
-
-    // Initialize reservations list.
-    $comparison['_reservations'] = [];
-    if ($rr['reservation_key'] !== null) {
-        $comparison['_reservations'][] = buildUSVendorReservation($rr);
-    }
-
-    $comparisonsByEntry[$eid][$vendorId] = $comparison;
+    // Use the catalog_entries slug if resolved, otherwise the raw_name
+    $replacesUSByEntry[$eid][$erSort] = $rr['replaced_slug'] ?? $rr['raw_name'];
 }
 
 // ---------------------------------------------------------------------------
-// 7. Assemble the final response array
+// 8. Assemble the final response array
 // ---------------------------------------------------------------------------
 
 $data = [];
@@ -442,25 +371,11 @@ foreach ($rows as $row) {
         }
     }
 
-    // replacesUS: ordered raw_name strings
+    // replacesUS: ordered slugs (or raw names for unresolved replacements)
     $replacesUS = [];
     if (isset($replacesUSByEntry[$eid])) {
         ksort($replacesUSByEntry[$eid]);
         $replacesUS = array_values($replacesUSByEntry[$eid]);
-    }
-
-    // usVendorComparisons: finalize (strip internal keys, attach reservations)
-    $usVendorComparisons = [];
-    foreach ($comparisonsByEntry[$eid] ?? [] as $comp) {
-        $resData = $comp['_reservations'] ?? [];
-        $hasProfileWithRes = $comp['_hasProfileWithRes'] ?? false;
-        unset($comp['_reservations'], $comp['_hasProfileWithRes']);
-
-        if ($hasProfileWithRes && count($resData) > 0) {
-            $comp['reservations'] = $resData;
-        }
-
-        $usVendorComparisons[] = $comp;
     }
 
     // Logo fallback
@@ -513,14 +428,13 @@ foreach ($rows as $row) {
         }
     }
 
+    if ($row['date_added'] !== null) {
+        $entry['dateAdded'] = $row['date_added'];
+    }
+
     // Localized descriptions (always include for client-side locale switching)
     if ($row['description_de'] !== null) {
         $entry['localizedDescriptions'] = ['de' => $row['description_de']];
-    }
-
-    // US vendor comparisons
-    if (count($usVendorComparisons) > 0) {
-        $entry['usVendorComparisons'] = $usVendorComparisons;
     }
 
     // Reservations and signals
@@ -534,26 +448,25 @@ foreach ($rows as $row) {
         $entry['positiveSignals'] = $entrySignals;
     }
 
-    // Trust score (pre-computed, read from cached columns)
-    // DB stores 0-100 scale; frontend expects 0-10 (one decimal place).
-    if ($row['trust_score_100'] !== null) {
-        $entry['trustScore'] = round((int)$row['trust_score_100'] / 10, 1);
-    }
-    if ($row['trust_score_status'] !== null) {
-        $entry['trustScoreStatus'] = $row['trust_score_status'];
-    }
-    if ($row['trust_score_breakdown_json'] !== null) {
-        $decoded = json_decode($row['trust_score_breakdown_json'], true);
-        if (is_array($decoded)) {
-            $entry['trustScoreBreakdown'] = $decoded;
-        }
+    // Trust score (dynamically computed from reservations + signals + scoring_metadata)
+    $trustResult = computeEntryTrustScore(
+        $row,
+        $entryReservations,
+        $entrySignals,
+        $scoringMetaByEntry[$eid] ?? null,
+        $tagsByEntry[$eid] ?? []
+    );
+    $entry['trustScore'] = $trustResult['trustScore'];
+    $entry['trustScoreStatus'] = $trustResult['trustScoreStatus'];
+    if ($trustResult['trustScoreBreakdown'] !== null) {
+        $entry['trustScoreBreakdown'] = $trustResult['trustScoreBreakdown'];
     }
 
     $data[] = $entry;
 }
 
 // ---------------------------------------------------------------------------
-// 8. Send response
+// 9. Send response
 // ---------------------------------------------------------------------------
 
 sendCachedJsonResponse([

@@ -5,7 +5,7 @@ declare(strict_types=1);
  * Database Import Script — European Alternatives
  *
  * Reads a pre-exported JSON catalog file
- * and seeds all 20 MySQL tables in a single transaction.
+ * and seeds all MySQL tables in a single transaction.
  *
  * Usage:
  *   php scripts/db-import.php --source tmp/export/catalog.json
@@ -118,7 +118,7 @@ function trackRows(string $table, int $count): void
 // ── Table definitions ───────────────────────────────────────────────────────
 
 /**
- * All 20 tables in reverse FK-dependency order for DELETE.
+ * All 15 tables in reverse FK-dependency order for DELETE.
  * Child tables first, parent tables last.
  */
 const DELETE_ORDER = [
@@ -131,10 +131,6 @@ const DELETE_ORDER = [
     'reservations',
     'entry_replacements',
     'category_us_vendors',
-    'us_vendor_profile_reservations',
-    'us_vendor_profiles',
-    'us_vendor_aliases',
-    'us_vendors',
     'entry_tags',
     'entry_categories',
     'catalog_entries',
@@ -389,180 +385,28 @@ function importEntryTags(PDO $pdo, array $entryTags, array $slugToId): void
 }
 
 /**
- * Step 6a: Import us_vendors.
- * Returns a vendor slug->id lookup map.
+ * Step 6: Import category_us_vendors.
  */
-function importUsVendors(PDO $pdo, array $vendors, array $slugToId): array
-{
-    stderr('Importing us_vendors...');
-    $stmt = $pdo->prepare(
-        'INSERT INTO `us_vendors` (`slug`, `name`, `entry_id`)
-         VALUES (:slug, :name, :entry_id)'
-    );
-
-    $vendorSlugToId = [];
-    $count = 0;
-
-    foreach ($vendors as $vendor) {
-        $entryId = $slugToId[$vendor['entry_slug']] ?? null;
-        if ($entryId === null) {
-            stderr("  WARNING: us_vendor references unknown entry slug: {$vendor['entry_slug']}");
-            continue;
-        }
-
-        $stmt->execute([
-            ':slug'     => $vendor['slug'],
-            ':name'     => $vendor['name'],
-            ':entry_id' => $entryId,
-        ]);
-
-        $vendorSlugToId[$vendor['slug']] = (int) $pdo->lastInsertId();
-        $count++;
-    }
-
-    trackRows('us_vendors', $count);
-    stderr("  us_vendors: {$count} rows");
-
-    return $vendorSlugToId;
-}
-
-/**
- * Step 6b: Import us_vendor_aliases.
- */
-function importUsVendorAliases(PDO $pdo, array $aliases, array $vendorSlugToId): void
-{
-    stderr('Importing us_vendor_aliases...');
-    $stmt = $pdo->prepare(
-        'INSERT INTO `us_vendor_aliases` (`us_vendor_id`, `alias_normalized`)
-         VALUES (:us_vendor_id, :alias_normalized)'
-    );
-
-    $count = 0;
-    foreach ($aliases as $row) {
-        $vendorId = $vendorSlugToId[$row['vendor_slug']] ?? null;
-        if ($vendorId === null) {
-            stderr("  WARNING: us_vendor_alias references unknown vendor slug: {$row['vendor_slug']}");
-            continue;
-        }
-
-        $stmt->execute([
-            ':us_vendor_id'     => $vendorId,
-            ':alias_normalized' => $row['alias_normalized'],
-        ]);
-        $count++;
-    }
-
-    trackRows('us_vendor_aliases', $count);
-    stderr("  us_vendor_aliases: {$count} rows");
-}
-
-/**
- * Step 7a: Import us_vendor_profiles.
- */
-function importUsVendorProfiles(PDO $pdo, array $profiles, array $vendorSlugToId): void
-{
-    stderr('Importing us_vendor_profiles...');
-    $stmt = $pdo->prepare(
-        'INSERT INTO `us_vendor_profiles` (
-            `us_vendor_id`, `description_en`, `description_de`,
-            `trust_score_override_10`, `trust_score_status`, `score_source`
-        ) VALUES (
-            :us_vendor_id, :description_en, :description_de,
-            :trust_score_override_10, :trust_score_status, :score_source
-        )'
-    );
-
-    $count = 0;
-    foreach ($profiles as $row) {
-        $vendorId = $vendorSlugToId[$row['vendor_slug']] ?? null;
-        if ($vendorId === null) {
-            stderr("  WARNING: us_vendor_profile references unknown vendor slug: {$row['vendor_slug']}");
-            continue;
-        }
-
-        $stmt->execute([
-            ':us_vendor_id'            => $vendorId,
-            ':description_en'          => $row['description_en'] ?? null,
-            ':description_de'          => $row['description_de'] ?? null,
-            ':trust_score_override_10' => $row['trust_score_override_10'] ?? null,
-            ':trust_score_status'      => $row['trust_score_status'] ?? 'pending',
-            ':score_source'            => $row['score_source'] ?? 'computed',
-        ]);
-        $count++;
-    }
-
-    trackRows('us_vendor_profiles', $count);
-    stderr("  us_vendor_profiles: {$count} rows");
-}
-
-/**
- * Step 7b: Import us_vendor_profile_reservations.
- */
-function importUsVendorProfileReservations(PDO $pdo, array $reservations, array $vendorSlugToId): void
-{
-    stderr('Importing us_vendor_profile_reservations...');
-    $stmt = $pdo->prepare(
-        'INSERT INTO `us_vendor_profile_reservations` (
-            `us_vendor_id`, `reservation_key`, `sort_order`,
-            `text_en`, `text_de`, `severity`, `event_date`,
-            `source_url`, `penalty_tier`, `penalty_amount`
-        ) VALUES (
-            :us_vendor_id, :reservation_key, :sort_order,
-            :text_en, :text_de, :severity, :event_date,
-            :source_url, :penalty_tier, :penalty_amount
-        )'
-    );
-
-    $count = 0;
-    foreach ($reservations as $row) {
-        $vendorId = $vendorSlugToId[$row['vendor_slug']] ?? null;
-        if ($vendorId === null) {
-            stderr("  WARNING: us_vendor_profile_reservation references unknown vendor slug: {$row['vendor_slug']}");
-            continue;
-        }
-
-        $stmt->execute([
-            ':us_vendor_id'    => $vendorId,
-            ':reservation_key' => $row['reservation_key'],
-            ':sort_order'      => $row['sort_order'],
-            ':text_en'         => $row['text_en'],
-            ':text_de'         => $row['text_de'] ?? null,
-            ':severity'        => $row['severity'],
-            ':event_date'      => $row['event_date'] ?? null,
-            ':source_url'      => $row['source_url'] ?? null,
-            ':penalty_tier'    => $row['penalty_tier'] ?? null,
-            ':penalty_amount'  => $row['penalty_amount'] ?? null,
-        ]);
-        $count++;
-    }
-
-    trackRows('us_vendor_profile_reservations', $count);
-    stderr("  us_vendor_profile_reservations: {$count} rows");
-}
-
-/**
- * Step 8: Import category_us_vendors.
- */
-function importCategoryUsVendors(PDO $pdo, array $categoryVendors, array $vendorSlugToId): void
+function importCategoryUsVendors(PDO $pdo, array $categoryVendors, array $slugToId): void
 {
     stderr('Importing category_us_vendors...');
     $stmt = $pdo->prepare(
-        'INSERT INTO `category_us_vendors` (`category_id`, `us_vendor_id`, `raw_name`, `sort_order`)
-         VALUES (:category_id, :us_vendor_id, :raw_name, :sort_order)'
+        'INSERT INTO `category_us_vendors` (`category_id`, `entry_id`, `raw_name`, `sort_order`)
+         VALUES (:category_id, :entry_id, :raw_name, :sort_order)'
     );
 
     $count = 0;
     foreach ($categoryVendors as $row) {
-        $vendorId = null;
+        $entryId = null;
         if (isset($row['vendor_slug']) && $row['vendor_slug'] !== null) {
-            $vendorId = $vendorSlugToId[$row['vendor_slug']] ?? null;
+            $entryId = $slugToId[$row['vendor_slug']] ?? null;
         }
 
         $stmt->execute([
-            ':category_id'  => $row['category_id'],
-            ':us_vendor_id' => $vendorId,
-            ':raw_name'     => $row['raw_name'],
-            ':sort_order'   => $row['sort_order'],
+            ':category_id' => $row['category_id'],
+            ':entry_id'    => $entryId,
+            ':raw_name'    => $row['raw_name'],
+            ':sort_order'  => $row['sort_order'],
         ]);
         $count++;
     }
@@ -572,14 +416,14 @@ function importCategoryUsVendors(PDO $pdo, array $categoryVendors, array $vendor
 }
 
 /**
- * Step 9: Import entry_replacements.
+ * Step 7: Import entry_replacements.
  */
-function importEntryReplacements(PDO $pdo, array $replacements, array $slugToId, array $vendorSlugToId): void
+function importEntryReplacements(PDO $pdo, array $replacements, array $slugToId): void
 {
     stderr('Importing entry_replacements...');
     $stmt = $pdo->prepare(
-        'INSERT INTO `entry_replacements` (`entry_id`, `raw_name`, `us_vendor_id`, `sort_order`)
-         VALUES (:entry_id, :raw_name, :us_vendor_id, :sort_order)'
+        'INSERT INTO `entry_replacements` (`entry_id`, `raw_name`, `replaced_entry_id`, `sort_order`)
+         VALUES (:entry_id, :raw_name, :replaced_entry_id, :sort_order)'
     );
 
     $count = 0;
@@ -590,16 +434,16 @@ function importEntryReplacements(PDO $pdo, array $replacements, array $slugToId,
             continue;
         }
 
-        $vendorId = null;
+        $replacedEntryId = null;
         if (isset($row['vendor_slug']) && $row['vendor_slug'] !== null) {
-            $vendorId = $vendorSlugToId[$row['vendor_slug']] ?? null;
+            $replacedEntryId = $slugToId[$row['vendor_slug']] ?? null;
         }
 
         $stmt->execute([
-            ':entry_id'     => $entryId,
-            ':raw_name'     => $row['raw_name'],
-            ':us_vendor_id' => $vendorId,
-            ':sort_order'   => $row['sort_order'],
+            ':entry_id'          => $entryId,
+            ':raw_name'          => $row['raw_name'],
+            ':replaced_entry_id' => $replacedEntryId,
+            ':sort_order'        => $row['sort_order'],
         ]);
         $count++;
     }
@@ -609,7 +453,7 @@ function importEntryReplacements(PDO $pdo, array $replacements, array $slugToId,
 }
 
 /**
- * Step 10: Import reservations.
+ * Step 8: Import reservations.
  */
 function importReservations(PDO $pdo, array $reservations, array $slugToId): void
 {
@@ -655,7 +499,7 @@ function importReservations(PDO $pdo, array $reservations, array $slugToId): voi
 }
 
 /**
- * Step 11: Import positive_signals.
+ * Step 9: Import positive_signals.
  */
 function importPositiveSignals(PDO $pdo, array $signals, array $slugToId): void
 {
@@ -696,7 +540,7 @@ function importPositiveSignals(PDO $pdo, array $signals, array $slugToId): void
 }
 
 /**
- * Step 12: Import scoring_metadata.
+ * Step 10: Import scoring_metadata.
  */
 function importScoringMetadata(PDO $pdo, array $metadata, array $slugToId): void
 {
@@ -734,44 +578,7 @@ function importScoringMetadata(PDO $pdo, array $metadata, array $slugToId): void
 }
 
 /**
- * Step 13: Write cached trust scores to catalog_entries.
- */
-function updateTrustScores(PDO $pdo, array $trustScores, array $slugToId): void
-{
-    stderr('Updating trust scores on catalog_entries...');
-    $stmt = $pdo->prepare(
-        'UPDATE `catalog_entries` SET
-            `trust_score_100` = :trust_score_100,
-            `trust_score_10_display` = :trust_score_10_display,
-            `trust_score_status` = :trust_score_status,
-            `trust_score_breakdown_json` = :trust_score_breakdown_json
-         WHERE `id` = :id'
-    );
-
-    $count = 0;
-    foreach ($trustScores as $row) {
-        $entryId = $slugToId[$row['entry_slug']] ?? null;
-        if ($entryId === null) {
-            stderr("  WARNING: trust_score references unknown entry slug: {$row['entry_slug']}");
-            continue;
-        }
-
-        $stmt->execute([
-            ':id'                          => $entryId,
-            ':trust_score_100'             => $row['trust_score_100'] ?? null,
-            ':trust_score_10_display'      => $row['trust_score_10_display'] ?? null,
-            ':trust_score_status'          => $row['trust_score_status'] ?? null,
-            ':trust_score_breakdown_json'  => jsonColumnValue($row['trust_score_breakdown_json'] ?? null),
-        ]);
-        $count++;
-    }
-
-    trackRows('catalog_entries (trust scores)', $count);
-    stderr("  trust scores updated: {$count} entries");
-}
-
-/**
- * Step 14: Import denied_decisions.
+ * Step 11: Import denied_decisions.
  */
 function importDeniedDecisions(PDO $pdo, array $decisions, array $slugToId): void
 {
@@ -816,7 +623,7 @@ function importDeniedDecisions(PDO $pdo, array $decisions, array $slugToId): voi
 }
 
 /**
- * Step 15: Import further_reading_resources.
+ * Step 12: Import further_reading_resources.
  */
 function importFurtherReadingResources(PDO $pdo, array $resources): void
 {
@@ -851,7 +658,7 @@ function importFurtherReadingResources(PDO $pdo, array $resources): void
 }
 
 /**
- * Step 16a: Import landing_category_groups.
+ * Step 13a: Import landing_category_groups.
  * Returns a group index->id lookup map.
  */
 function importLandingCategoryGroups(PDO $pdo, array $groups): array
@@ -890,7 +697,7 @@ function importLandingCategoryGroups(PDO $pdo, array $groups): array
 }
 
 /**
- * Step 16b: Import landing_group_categories.
+ * Step 13b: Import landing_group_categories.
  */
 function importLandingGroupCategories(PDO $pdo, array $groupCategories, array $groupIdMap): void
 {
@@ -950,39 +757,28 @@ try {
     importEntryCategories($pdo, $data['entry_categories'] ?? [], $slugToId);
     importEntryTags($pdo, $data['entry_tags'] ?? [], $slugToId);
 
-    // ── Step 6: us_vendors + us_vendor_aliases ──────────────────────────
-    $vendorSlugToId = importUsVendors($pdo, $data['us_vendors'] ?? [], $slugToId);
-    importUsVendorAliases($pdo, $data['us_vendor_aliases'] ?? [], $vendorSlugToId);
+    // ── Step 6: category_us_vendors ─────────────────────────────────────
+    importCategoryUsVendors($pdo, $data['category_us_vendors'] ?? [], $slugToId);
 
-    // ── Step 7: us_vendor_profiles + us_vendor_profile_reservations ─────
-    importUsVendorProfiles($pdo, $data['us_vendor_profiles'] ?? [], $vendorSlugToId);
-    importUsVendorProfileReservations($pdo, $data['us_vendor_profile_reservations'] ?? [], $vendorSlugToId);
+    // ── Step 7: entry_replacements ──────────────────────────────────────
+    importEntryReplacements($pdo, $data['entry_replacements'] ?? [], $slugToId);
 
-    // ── Step 8: category_us_vendors ─────────────────────────────────────
-    importCategoryUsVendors($pdo, $data['category_us_vendors'] ?? [], $vendorSlugToId);
-
-    // ── Step 9: entry_replacements ──────────────────────────────────────
-    importEntryReplacements($pdo, $data['entry_replacements'] ?? [], $slugToId, $vendorSlugToId);
-
-    // ── Step 10: reservations ───────────────────────────────────────────
+    // ── Step 8: reservations ────────────────────────────────────────────
     importReservations($pdo, $data['reservations'] ?? [], $slugToId);
 
-    // ── Step 11: positive_signals ───────────────────────────────────────
+    // ── Step 9: positive_signals ────────────────────────────────────────
     importPositiveSignals($pdo, $data['positive_signals'] ?? [], $slugToId);
 
-    // ── Step 12: scoring_metadata ───────────────────────────────────────
+    // ── Step 10: scoring_metadata ──────────────────────────────────────
     importScoringMetadata($pdo, $data['scoring_metadata'] ?? [], $slugToId);
 
-    // ── Step 13: trust scores (UPDATE catalog_entries) ──────────────────
-    updateTrustScores($pdo, $data['trust_scores'] ?? [], $slugToId);
-
-    // ── Step 14: denied_decisions ───────────────────────────────────────
+    // ── Step 11: denied_decisions ──────────────────────────────────────
     importDeniedDecisions($pdo, $data['denied_decisions'] ?? [], $slugToId);
 
-    // ── Step 15: further_reading_resources ──────────────────────────────
+    // ── Step 12: further_reading_resources ─────────────────────────────
     importFurtherReadingResources($pdo, $data['further_reading_resources'] ?? []);
 
-    // ── Step 16: landing_category_groups + landing_group_categories ─────
+    // ── Step 13: landing_category_groups + landing_group_categories ─
     $groupIdMap = importLandingCategoryGroups($pdo, $data['landing_category_groups'] ?? []);
     importLandingGroupCategories($pdo, $data['landing_group_categories'] ?? [], $groupIdMap);
 

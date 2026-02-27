@@ -94,7 +94,7 @@ Mandatory workflow:
      - Explain the exact failing gateway criteria and cite sources.
    - US_VENDOR_ONLY:
      - Use this when the suggestion is not an eligible alternative but is a US product that should appear in replacements.
-     - US vendor data is stored in the MySQL database (tables: us_vendors, us_vendor_profiles, us_vendor_profile_reservations). Document the vendor details in your report so it can be added to the database.
+     - US vendors are stored as catalog_entries with status='us' in the MySQL database (same tables: catalog_entries, reservations, positive_signals, scoring_metadata). Document the vendor details in your report so it can be added to the database.
      - Do not add as an alternative entry in the database.
 7) Trust-scoring constraints (hard rule):
    - Keep the result Trust Score Pending.

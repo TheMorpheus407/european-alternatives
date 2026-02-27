@@ -13,6 +13,9 @@ export interface CatalogData {
   /** All merged and scored alternatives (manual + research). */
   alternatives: Alternative[];
 
+  /** US vendor entries (status='us'), fetched separately for client-side comparison building. */
+  usVendors: Alternative[];
+
   /** Category definitions including emoji and US giant mappings. */
   categories: Category[];
 

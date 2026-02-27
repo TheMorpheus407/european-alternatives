@@ -5,7 +5,7 @@
 -- Date:             2026-02-27
 -- Engine:           MySQL 8.0+ (InnoDB)
 -- Charset:          utf8mb4 / utf8mb4_unicode_ci
--- Tables:           20
+-- Tables:           16
 -- Schema for European Alternatives database
 --
 -- This schema creates the full normalized catalog database for the European
@@ -19,8 +19,7 @@
 --   DROP TABLE IF EXISTS landing_group_categories, landing_category_groups,
 --     further_reading_resources, denied_decisions, scoring_metadata,
 --     positive_signals, reservations, entry_replacements, category_us_vendors,
---     us_vendor_profile_reservations, us_vendor_profiles, us_vendor_aliases,
---     us_vendors, entry_tags, entry_categories, catalog_entries, tags,
+--     entry_tags, entry_categories, catalog_entries, tags,
 --     categories, countries, schema_migrations;
 -- =============================================================================
 
@@ -101,10 +100,6 @@ CREATE TABLE `catalog_entries` (
   `headquarters_city`           VARCHAR(200)    DEFAULT NULL,
   `license_text`                TEXT            DEFAULT NULL,
   `action_links_json`           JSON            DEFAULT NULL,
-  `trust_score_100`             TINYINT UNSIGNED DEFAULT NULL,
-  `trust_score_10_display`      DECIMAL(3,1)    DEFAULT NULL,
-  `trust_score_status`          ENUM('pending','ready') DEFAULT NULL,
-  `trust_score_breakdown_json`  JSON            DEFAULT NULL,
   `created_at`                  DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at`                  DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -117,8 +112,7 @@ CREATE TABLE `catalog_entries` (
     (`is_open_source` IS NULL AND `open_source_level` IS NULL)
     OR (`is_open_source` = 0 AND `open_source_level` = 'none')
     OR (`is_open_source` = 1 AND `open_source_level` IN ('full','partial'))
-  ),
-  CONSTRAINT `chk_score_range` CHECK (`trust_score_100` IS NULL OR `trust_score_100` BETWEEN 0 AND 100)
+  )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------------
@@ -154,107 +148,40 @@ CREATE TABLE `entry_tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------------
--- 8. us_vendors — canonical US vendor identities
---    Depends on: catalog_entries
--- ---------------------------------------------------------------------------
-CREATE TABLE `us_vendors` (
-  `id`       BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `slug`     VARCHAR(100)    NOT NULL,
-  `name`     VARCHAR(255)    NOT NULL,
-  `entry_id` BIGINT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `uq_uv_slug` (`slug`),
-  UNIQUE KEY `uq_uv_entry` (`entry_id`),
-  CONSTRAINT `fk_uv_entry` FOREIGN KEY (`entry_id`) REFERENCES `catalog_entries` (`id`) ON DELETE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- ---------------------------------------------------------------------------
--- 9. us_vendor_aliases — normalized alias strings for fuzzy matching
---    Depends on: us_vendors
--- ---------------------------------------------------------------------------
-CREATE TABLE `us_vendor_aliases` (
-  `id`               BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `us_vendor_id`     BIGINT UNSIGNED NOT NULL,
-  `alias_normalized` VARCHAR(255)    NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `uq_alias` (`us_vendor_id`, `alias_normalized`),
-  KEY `ix_alias` (`alias_normalized`),
-  CONSTRAINT `fk_uva_vendor` FOREIGN KEY (`us_vendor_id`) REFERENCES `us_vendors` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- ---------------------------------------------------------------------------
--- 10. us_vendor_profiles — extended profile data for US vendors
---     Depends on: us_vendors
--- ---------------------------------------------------------------------------
-CREATE TABLE `us_vendor_profiles` (
-  `us_vendor_id`            BIGINT UNSIGNED NOT NULL,
-  `description_en`          TEXT            DEFAULT NULL,
-  `description_de`          TEXT            DEFAULT NULL,
-  `trust_score_override_10` DECIMAL(3,1)    DEFAULT NULL,
-  `trust_score_status`      ENUM('pending','ready') NOT NULL DEFAULT 'pending',
-  `score_source`            ENUM('manual_override','computed') NOT NULL DEFAULT 'computed',
-  PRIMARY KEY (`us_vendor_id`),
-  CONSTRAINT `fk_uvp_vendor` FOREIGN KEY (`us_vendor_id`) REFERENCES `us_vendors` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `chk_us_score` CHECK (`trust_score_override_10` IS NULL OR `trust_score_override_10` BETWEEN 0.0 AND 10.0)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- ---------------------------------------------------------------------------
--- 11. us_vendor_profile_reservations — trust reservations for US vendors
---     Depends on: us_vendors
--- ---------------------------------------------------------------------------
-CREATE TABLE `us_vendor_profile_reservations` (
-  `id`              BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `us_vendor_id`    BIGINT UNSIGNED NOT NULL,
-  `reservation_key` VARCHAR(100)    NOT NULL,
-  `sort_order`      INT             NOT NULL,
-  `text_en`         TEXT            NOT NULL,
-  `text_de`         TEXT            DEFAULT NULL,
-  `severity`        ENUM('minor','moderate','major') NOT NULL,
-  `event_date`      DATE            DEFAULT NULL,
-  `source_url`      TEXT            DEFAULT NULL,
-  `penalty_tier`    ENUM('security','governance','reliability','contract') DEFAULT NULL,
-  `penalty_amount`  DECIMAL(5,2)    DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `uq_uspr_key` (`us_vendor_id`, `reservation_key`),
-  UNIQUE KEY `uq_uspr_order` (`us_vendor_id`, `sort_order`),
-  CONSTRAINT `fk_uspr_vendor` FOREIGN KEY (`us_vendor_id`) REFERENCES `us_vendors` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- ---------------------------------------------------------------------------
--- 12. category_us_vendors — "Replaces X, Y, Z" per category
---     Depends on: categories, us_vendors
+-- 8. category_us_vendors — "Replaces X, Y, Z" per category
+--    Depends on: categories, catalog_entries
 -- ---------------------------------------------------------------------------
 CREATE TABLE `category_us_vendors` (
   `id`           BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   `category_id`  VARCHAR(50)     NOT NULL,
-  `us_vendor_id` BIGINT UNSIGNED DEFAULT NULL,
+  `entry_id`     BIGINT UNSIGNED DEFAULT NULL,
   `raw_name`     VARCHAR(255)    NOT NULL,
   `sort_order`   INT             NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uq_cuv_order` (`category_id`, `sort_order`),
   UNIQUE KEY `uq_cuv_name` (`category_id`, `raw_name`),
   CONSTRAINT `fk_cuv_cat` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_cuv_vendor` FOREIGN KEY (`us_vendor_id`) REFERENCES `us_vendors` (`id`) ON DELETE SET NULL
+  CONSTRAINT `fk_cuv_entry` FOREIGN KEY (`entry_id`) REFERENCES `catalog_entries` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------------
--- 13. entry_replacements — which US vendors an alternative replaces
---     Depends on: catalog_entries, us_vendors
+-- 9. entry_replacements — which US vendors an alternative replaces
+--    Depends on: catalog_entries
 -- ---------------------------------------------------------------------------
 CREATE TABLE `entry_replacements` (
-  `id`           BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `entry_id`     BIGINT UNSIGNED NOT NULL,
-  `raw_name`     VARCHAR(255)    NOT NULL,
-  `us_vendor_id` BIGINT UNSIGNED DEFAULT NULL,
-  `sort_order`   INT             NOT NULL,
+  `id`                BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `entry_id`          BIGINT UNSIGNED NOT NULL,
+  `raw_name`          VARCHAR(255)    NOT NULL,
+  `replaced_entry_id` BIGINT UNSIGNED DEFAULT NULL,
+  `sort_order`        INT             NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uq_er_order` (`entry_id`, `sort_order`),
   CONSTRAINT `fk_er_entry` FOREIGN KEY (`entry_id`) REFERENCES `catalog_entries` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk_er_vendor` FOREIGN KEY (`us_vendor_id`) REFERENCES `us_vendors` (`id`) ON DELETE SET NULL
+  CONSTRAINT `fk_er_replaced` FOREIGN KEY (`replaced_entry_id`) REFERENCES `catalog_entries` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------------
--- 14. reservations — trust reservations (penalties) for catalog entries
+-- 10. reservations — trust reservations (penalties) for catalog entries
 --     Depends on: catalog_entries
 -- ---------------------------------------------------------------------------
 CREATE TABLE `reservations` (
@@ -277,7 +204,7 @@ CREATE TABLE `reservations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------------
--- 15. positive_signals — trust-positive evidence for catalog entries
+-- 11. positive_signals — trust-positive evidence for catalog entries
 --     Depends on: catalog_entries
 -- ---------------------------------------------------------------------------
 CREATE TABLE `positive_signals` (
@@ -297,7 +224,7 @@ CREATE TABLE `positive_signals` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------------
--- 16. scoring_metadata — per-entry scoring configuration overrides
+-- 12. scoring_metadata — per-entry scoring configuration overrides
 --     Depends on: catalog_entries
 -- ---------------------------------------------------------------------------
 CREATE TABLE `scoring_metadata` (
@@ -311,7 +238,7 @@ CREATE TABLE `scoring_metadata` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------------
--- 17. denied_decisions — denial reasoning for rejected alternatives
+-- 13. denied_decisions — denial reasoning for rejected alternatives
 --     Depends on: catalog_entries (status = 'denied')
 -- ---------------------------------------------------------------------------
 CREATE TABLE `denied_decisions` (
@@ -330,7 +257,7 @@ CREATE TABLE `denied_decisions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------------
--- 18. further_reading_resources — curated external resource links
+-- 14. further_reading_resources — curated external resource links
 --     No FK dependencies
 -- ---------------------------------------------------------------------------
 CREATE TABLE `further_reading_resources` (
@@ -348,7 +275,7 @@ CREATE TABLE `further_reading_resources` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------------
--- 19. landing_category_groups — groups for landing page display
+-- 15. landing_category_groups — groups for landing page display
 --     No FK dependencies
 -- ---------------------------------------------------------------------------
 CREATE TABLE `landing_category_groups` (
@@ -364,7 +291,7 @@ CREATE TABLE `landing_category_groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------------
--- 20. landing_group_categories — many-to-many: landing groups <-> categories
+-- 16. landing_group_categories — many-to-many: landing groups <-> categories
 --     Depends on: landing_category_groups, categories
 -- ---------------------------------------------------------------------------
 CREATE TABLE `landing_group_categories` (

@@ -16,7 +16,6 @@ export interface Alternative {
   category: CategoryId;
   secondaryCategories?: CategoryId[];
   replacesUS: string[];
-  usVendorComparisons?: USVendorComparison[];
   isOpenSource: boolean;
   openSourceLevel?: OpenSourceLevel;
   openSourceAuditUrl?: string;
@@ -33,16 +32,7 @@ export interface Alternative {
   trustScore?: number;
   trustScoreStatus?: TrustScoreStatus;
   trustScoreBreakdown?: TrustScoreBreakdown;
-}
-
-export interface USVendorComparison {
-  id: string;
-  name: string;
-  trustScoreStatus: TrustScoreStatus;
-  trustScore?: number;
-  description?: string;
-  descriptionDe?: string;
-  reservations?: Reservation[];
+  dateAdded?: string;
 }
 
 export interface Reservation {
@@ -179,11 +169,6 @@ export interface PositiveSignal {
   dimension: PenaltyTier;
   amount: number;
   sourceUrl: string;
-}
-
-export interface ScoringMetadata {
-  baseClassOverride?: BaseClass;
-  isAdSurveillance?: boolean;
 }
 
 // --- Landing page category groups ---

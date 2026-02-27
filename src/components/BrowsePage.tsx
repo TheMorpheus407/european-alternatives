@@ -11,7 +11,16 @@ import { getEffectiveTrustScore } from '../utils/trustScore';
 import type { CategoryId, CountryCode, SelectedFilters, SortBy, ViewMode } from '../types';
 
 export default function BrowsePage() {
-  const { alternatives, categories, loading, error } = useCatalog();
+  const { alternatives, usVendors, categories, loading, error } = useCatalog();
+
+  const usVendorLookup = useMemo(
+    () => new Map(usVendors.map((v) => [v.id, v])),
+    [usVendors],
+  );
+  const usVendorNameBySlug = useMemo(
+    () => new Map(usVendors.map((v) => [v.id, v.name])),
+    [usVendors],
+  );
   const [searchParams, setSearchParams] = useSearchParams();
   const { t, i18n } = useTranslation('browse');
 
@@ -113,8 +122,11 @@ export default function BrowsePage() {
           alternative.name.toLowerCase().includes(term) ||
           baseDescription.includes(term) ||
           localizedDescription.includes(term) ||
-          alternative.replacesUS.some((replace) => replace.toLowerCase().includes(term)) ||
-          (alternative.usVendorComparisons ?? []).some((vendor) => vendor.name.toLowerCase().includes(term)) ||
+          alternative.replacesUS.some((slug) => {
+            const vendorName = usVendorNameBySlug.get(slug);
+            return slug.toLowerCase().includes(term) ||
+              (vendorName != null && vendorName.toLowerCase().includes(term));
+          }) ||
           alternative.tags.some((tag) => tag.toLowerCase().includes(term))
         );
       });
@@ -158,7 +170,7 @@ export default function BrowsePage() {
     });
 
     return result;
-  }, [alternatives, searchTerm, selectedFilters, sortBy, i18n.language]);
+  }, [alternatives, usVendorNameBySlug, searchTerm, selectedFilters, sortBy, i18n.language]);
 
   if (loading) {
     return (
@@ -225,7 +237,7 @@ export default function BrowsePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: Math.min(0.1 + index * 0.05, 1) }}
               >
-                <AlternativeCard alternative={alternative} viewMode={viewMode} />
+                <AlternativeCard alternative={alternative} viewMode={viewMode} usVendorLookup={usVendorLookup} />
               </motion.div>
             ))}
           </div>

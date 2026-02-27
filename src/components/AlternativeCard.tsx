@@ -7,11 +7,12 @@ import { getAlternativeCategories } from '../utils/alternativeCategories';
 import { CUMULATIVE_PENALTY_CAP } from '../data/scoringConfig';
 import { getRecencyMultiplier, withEstimatedPenalties } from '../utils/trustScore';
 import { sanitizeHref } from '../utils/sanitizeHref';
-import type { Alternative, OpenSourceLevel, PenaltyTier, Reservation, USVendorComparison, ViewMode } from '../types';
+import type { Alternative, OpenSourceLevel, PenaltyTier, Reservation, ViewMode } from '../types';
 
 interface AlternativeCardProps {
   alternative: Alternative;
   viewMode: ViewMode;
+  usVendorLookup: Map<string, Alternative>;
 }
 
 function getTrustBadgeClass(score: number): string {
@@ -83,7 +84,7 @@ function getOpenSourceBadgeConfig(openSourceLevel: OpenSourceLevel): { className
   }
 }
 
-export default function AlternativeCard({ alternative, viewMode }: AlternativeCardProps) {
+export default function AlternativeCard({ alternative, viewMode, usVendorLookup }: AlternativeCardProps) {
   const { categories } = useCatalog();
   const [expanded, setExpanded] = useState(false);
   const [usVendorDetailsExpanded, setUsVendorDetailsExpanded] = useState(false);
@@ -198,14 +199,27 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
   const trustBreakdownRegionId = `alt-trust-breakdown-${alternative.id}`;
   const hasReservations = (alternative.reservations?.length ?? 0) > 0;
   const hasPositiveSignals = (alternative.positiveSignals?.length ?? 0) > 0;
-  const fallbackUSVendorComparisons: USVendorComparison[] = alternative.replacesUS.map((name) => ({
-      id: `us-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`,
-      name,
-      trustScoreStatus: 'pending' as const,
-    }));
-  const usVendorComparisons = alternative.usVendorComparisons?.length
-    ? alternative.usVendorComparisons
-    : fallbackUSVendorComparisons;
+  const usVendorComparisons = useMemo(() => {
+    return alternative.replacesUS.map((slugOrName) => {
+      const vendor = usVendorLookup.get(slugOrName);
+      if (vendor) {
+        return {
+          id: vendor.id,
+          name: vendor.name,
+          trustScoreStatus: vendor.trustScoreStatus ?? ('pending' as const),
+          trustScore: vendor.trustScore,
+          description: vendor.description,
+          descriptionDe: vendor.localizedDescriptions?.de,
+          reservations: vendor.reservations,
+        };
+      }
+      return {
+        id: `us-${slugOrName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`,
+        name: slugOrName,
+        trustScoreStatus: 'pending' as const,
+      };
+    });
+  }, [alternative.replacesUS, usVendorLookup]);
   const openSourceLevel = getOpenSourceLevel(alternative);
   const openSourceBadge = getOpenSourceBadgeConfig(openSourceLevel);
   const visibleTags = alternative.tags.filter((tag) => !opennessTagKeys.has(normalizeTagKey(tag)));

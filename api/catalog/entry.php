@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../db.php';
 require_once __DIR__ . '/helpers.php';
+require_once __DIR__ . '/scoring.php';
 
 requireHttpMethod('GET');
 
@@ -84,10 +85,7 @@ SELECT
     ce.headquarters_city,
     ce.license_text,
     ce.action_links_json,
-    ce.trust_score_100,
-    ce.trust_score_10_display,
-    ce.trust_score_status,
-    ce.trust_score_breakdown_json
+    ce.date_added
 FROM catalog_entries ce
 WHERE ce.slug = :slug
   AND (ce.is_active = 1 OR ce.status = 'denied')
@@ -258,137 +256,51 @@ foreach ($sigRows as $sr) {
 }
 
 // ---------------------------------------------------------------------------
-// 6. Fetch US vendor comparisons
+// 6. Fetch scoring_metadata
 // ---------------------------------------------------------------------------
 
-$uvpDescCol = $locale === 'de'
-    ? 'COALESCE(uvp.description_de, uvp.description_en)'
-    : 'uvp.description_en';
+$smSql = <<<SQL
+SELECT
+    sm.base_class_override,
+    sm.is_ad_surveillance
+FROM scoring_metadata sm
+WHERE sm.entry_id = :eid
+SQL;
 
-$uvprTextCol = $locale === 'de'
-    ? 'COALESCE(uvpr.text_de, uvpr.text_en)'
-    : 'uvpr.text_en';
+$smStmt = $pdo->prepare($smSql);
+$smStmt->execute(['eid' => $eid]);
+$scoringMeta = $smStmt->fetch() ?: null;
+
+// ---------------------------------------------------------------------------
+// 7. Fetch entry_replacements (simplified: replaced_entry_id → slug)
+// ---------------------------------------------------------------------------
 
 $repSql = <<<SQL
 SELECT
     er.raw_name,
     er.sort_order       AS er_sort,
-    uv.slug             AS vendor_id,
-    uv.name             AS vendor_name,
-    {$uvpDescCol}       AS vendor_description,
-    uvp.description_en  AS vendor_description_en,
-    uvp.description_de  AS vendor_description_de,
-    uvp.trust_score_override_10,
-    uvp.trust_score_status,
-    uvpr.reservation_key,
-    {$uvprTextCol}      AS res_text,
-    uvpr.text_en        AS res_text_en,
-    uvpr.text_de        AS res_text_de,
-    uvpr.severity       AS res_severity,
-    uvpr.event_date     AS res_event_date,
-    uvpr.source_url     AS res_source_url,
-    uvpr.penalty_tier   AS res_penalty_tier,
-    uvpr.penalty_amount AS res_penalty_amount,
-    uvpr.sort_order     AS res_sort
+    er.replaced_entry_id,
+    ce2.slug            AS replaced_slug
 FROM entry_replacements er
-LEFT JOIN us_vendors uv ON uv.id = er.us_vendor_id
-LEFT JOIN us_vendor_profiles uvp ON uvp.us_vendor_id = uv.id
-LEFT JOIN us_vendor_profile_reservations uvpr ON uvpr.us_vendor_id = uv.id
+LEFT JOIN catalog_entries ce2 ON ce2.id = er.replaced_entry_id
 WHERE er.entry_id = :eid
-ORDER BY er.sort_order, uvpr.sort_order
+ORDER BY er.sort_order
 SQL;
 
 $repStmt = $pdo->prepare($repSql);
 $repStmt->execute(['eid' => $eid]);
 $repRows = $repStmt->fetchAll();
 
-// Post-process: dedupe by vendor_id, nest reservations.
-$comparisons = [];
-$replacesUS  = [];
-
+$replacesUS = [];
 foreach ($repRows as $rr) {
-    $vendorId = $rr['vendor_id'];
-    $isResolved = $vendorId !== null;
-
-    if (!$isResolved) {
-        $vendorId = 'us-' . slugifyName($rr['raw_name']);
-    }
-
-    // Track raw replacement names (dedup by er_sort).
     $erSort = (int)$rr['er_sort'];
-    if (!isset($replacesUS[$erSort])) {
-        $replacesUS[$erSort] = $rr['raw_name'];
-    }
-
-    // Dedupe by vendor_id: keep first occurrence.
-    if (isset($comparisons[$vendorId])) {
-        // Only add new reservations.
-        if ($rr['reservation_key'] !== null) {
-            $existingResKeys = array_column(
-                $comparisons[$vendorId]['_reservations'] ?? [],
-                'id'
-            );
-            if (!in_array($rr['reservation_key'], $existingResKeys, true)) {
-                $comparisons[$vendorId]['_reservations'][] =
-                    buildUSVendorReservation($rr);
-            }
-        }
-        continue;
-    }
-
-    // A profile exists when the LEFT JOIN to us_vendor_profiles produced a row
-    // (trust_score_status is NOT NULL in that table, so NULL here means no row).
-    $hasProfile = $isResolved && $rr['trust_score_status'] !== null;
-    $hasReservations = $rr['reservation_key'] !== null;
-    $hasProfileWithReservations = $hasProfile && $hasReservations;
-
-    $comparison = [
-        'id'               => $vendorId,
-        'name'             => $isResolved ? $rr['vendor_name'] : trim($rr['raw_name']),
-        'trustScoreStatus' => $hasProfileWithReservations
-            ? ($rr['trust_score_status'] ?? 'ready')
-            : 'pending',
-    ];
-
-    if ($hasProfileWithReservations && $rr['trust_score_override_10'] !== null) {
-        $comparison['trustScore'] = (float)$rr['trust_score_override_10'];
-    }
-    if ($hasProfileWithReservations && $rr['vendor_description'] !== null) {
-        $comparison['description'] = $rr['vendor_description'];
-    }
-    if ($hasProfileWithReservations && $rr['vendor_description_de'] !== null) {
-        $comparison['descriptionDe'] = $rr['vendor_description_de'];
-    }
-
-    $comparison['_hasProfileWithRes'] = $hasProfileWithReservations;
-    $comparison['_reservations'] = [];
-    if ($rr['reservation_key'] !== null) {
-        $comparison['_reservations'][] = buildUSVendorReservation($rr);
-    }
-
-    $comparisons[$vendorId] = $comparison;
+    $replacesUS[$erSort] = $rr['replaced_slug'] ?? $rr['raw_name'];
 }
-
-// Finalize comparisons.
-$usVendorComparisons = [];
-foreach ($comparisons as $comp) {
-    $resData = $comp['_reservations'] ?? [];
-    $hasProfileWithRes = $comp['_hasProfileWithRes'] ?? false;
-    unset($comp['_reservations'], $comp['_hasProfileWithRes']);
-
-    if ($hasProfileWithRes && count($resData) > 0) {
-        $comp['reservations'] = $resData;
-    }
-
-    $usVendorComparisons[] = $comp;
-}
-
-// Finalize replacesUS in sort order.
 ksort($replacesUS);
 $replacesUS = array_values($replacesUS);
 
 // ---------------------------------------------------------------------------
-// 7. Fetch denied_decisions (only for status=denied)
+// 8. Fetch denied_decisions (only for status=denied)
 // ---------------------------------------------------------------------------
 
 $deniedDecision = null;
@@ -452,7 +364,7 @@ SQL;
 }
 
 // ---------------------------------------------------------------------------
-// 8. Assemble the entry object
+// 9. Assemble the entry object
 // ---------------------------------------------------------------------------
 
 $logo = $row['logo_path'] ?? '/logos/' . $row['slug'] . '.svg';
@@ -501,11 +413,11 @@ if ($row['action_links_json'] !== null) {
         $entry['actionLinks'] = $decoded;
     }
 }
+if ($row['date_added'] !== null) {
+    $entry['dateAdded'] = $row['date_added'];
+}
 if ($row['description_de'] !== null) {
     $entry['localizedDescriptions'] = ['de' => $row['description_de']];
-}
-if (count($usVendorComparisons) > 0) {
-    $entry['usVendorComparisons'] = $usVendorComparisons;
 }
 if (count($reservations) > 0) {
     $entry['reservations'] = $reservations;
@@ -513,24 +425,25 @@ if (count($reservations) > 0) {
 if (count($signals) > 0) {
     $entry['positiveSignals'] = $signals;
 }
-if ($row['trust_score_100'] !== null) {
-    $entry['trustScore'] = round((int)$row['trust_score_100'] / 10, 1);
-}
-if ($row['trust_score_status'] !== null) {
-    $entry['trustScoreStatus'] = $row['trust_score_status'];
-}
-if ($row['trust_score_breakdown_json'] !== null) {
-    $decoded = json_decode($row['trust_score_breakdown_json'], true);
-    if (is_array($decoded)) {
-        $entry['trustScoreBreakdown'] = $decoded;
-    }
+// Trust score (dynamically computed from reservations + signals + scoring_metadata)
+$trustResult = computeEntryTrustScore(
+    $row,
+    $reservations,
+    $signals,
+    $scoringMeta,
+    $tags
+);
+$entry['trustScore'] = $trustResult['trustScore'];
+$entry['trustScoreStatus'] = $trustResult['trustScoreStatus'];
+if ($trustResult['trustScoreBreakdown'] !== null) {
+    $entry['trustScoreBreakdown'] = $trustResult['trustScoreBreakdown'];
 }
 if ($deniedDecision !== null) {
     $entry['deniedDecision'] = $deniedDecision;
 }
 
 // ---------------------------------------------------------------------------
-// 9. Send response
+// 10. Send response
 // ---------------------------------------------------------------------------
 
 sendCachedJsonResponse([

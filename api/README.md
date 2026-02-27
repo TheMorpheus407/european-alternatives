@@ -16,7 +16,7 @@ Developer reference for the PHP read API and MySQL database.
 
 | npm script | Command | Description |
 |---|---|---|
-| `db:import` | `php scripts/db-import.php --source tmp/export/catalog.json` | Seed all 20 MySQL tables from exported JSON (single transaction) |
+| `db:import` | `php scripts/db-import.php --source tmp/export/catalog.json` | Seed all 16 MySQL tables from exported JSON (single transaction) |
 | `db:backup` | `bash scripts/db-backup.sh` | Backup the database |
 | `db:restore` | `bash scripts/db-restore.sh` | Restore a database backup |
 
@@ -52,7 +52,7 @@ Locale fallback: when `locale=de` and no German translation exists for a field, 
 
 ## Database Schema
 
-20 tables on MySQL 8.0+ (InnoDB, utf8mb4_unicode_ci). Full DDL in `scripts/db-schema.sql`.
+16 tables on MySQL 8.0+ (InnoDB, utf8mb4_unicode_ci). Full DDL in `scripts/db-schema.sql`.
 
 ### Core Entities
 
@@ -72,14 +72,10 @@ Locale fallback: when `locale=de` and no German translation exists for a field, 
 | `entry_tags` | M:N entries-to-tags (ordered) |
 | `entry_replacements` | Which US vendors an alternative replaces (ordered, with optional FK resolution) |
 
-### US Vendor System
+### Display & Mapping
 
 | Table | Purpose |
 |---|---|
-| `us_vendors` | Canonical US vendor identities, linked to `catalog_entries` |
-| `us_vendor_aliases` | Normalized alias strings for fuzzy matching |
-| `us_vendor_profiles` | Extended profile: description, trust score override, score status |
-| `us_vendor_profile_reservations` | Trust reservations specific to US vendors |
 | `category_us_vendors` | Per-category "Replaces X, Y, Z" display order |
 
 ### Trust & Scoring
@@ -90,7 +86,7 @@ Locale fallback: when `locale=de` and no German translation exists for a field, 
 | `positive_signals` | Trust-positive evidence per entry (dimension, amount, i18n text) |
 | `scoring_metadata` | Per-entry scoring config (base class override, ad-surveillance flag) |
 
-Trust scores are pre-computed during import and cached on `catalog_entries` (`trust_score_100`, `trust_score_10_display`, `trust_score_status`, `trust_score_breakdown_json`).
+Trust scores are dynamically computed on every API request by `api/catalog/scoring.php` from reservations, positive signals, and scoring metadata. No scores are stored in the database.
 
 ### Editorial & Landing
 
@@ -104,7 +100,6 @@ Trust scores are pre-computed during import and cached on `catalog_entries` (`tr
 ### Key Constraints
 
 - `catalog_entries.chk_openness`: `is_open_source` and `open_source_level` must be mutually consistent.
-- `catalog_entries.chk_score_range`: `trust_score_100` must be 0-100 or NULL.
 - `entry_categories`: at most one primary category per entry (enforced via generated column + unique index).
 - All i18n columns use column-based storage (`_en` / `_de` suffixes), not a separate translations table.
 
@@ -114,8 +109,8 @@ Trust scores are pre-computed during import and cached on `catalog_entries` (`tr
 
 | Script | Language | Purpose |
 |---|---|---|
-| `scripts/db-schema.sql` | SQL | Full DDL for all 20 tables (run via `mysql` CLI) |
-| `scripts/db-import.php` | PHP | Read `catalog.json`, seed all 20 tables in a single transaction with advisory lock |
+| `scripts/db-schema.sql` | SQL | Full DDL for all 16 tables (run via `mysql` CLI) |
+| `scripts/db-import.php` | PHP | Read `catalog.json`, seed all 16 tables in a single transaction with advisory lock |
 | `scripts/db-backup.sh` | Bash | Backup the MySQL database |
 | `scripts/db-restore.sh` | Bash | Restore a database backup |
 
