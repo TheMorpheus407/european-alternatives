@@ -81,8 +81,8 @@ SELECT
     ce.trust_score_status,
     ce.trust_score_breakdown_json
 FROM catalog_entries ce
-WHERE ce.is_active = 1
-  AND ce.status = :status
+WHERE ce.status = :status
+  AND (ce.is_active = 1 OR ce.status = 'denied')
 ORDER BY ce.name ASC
 SQL;
 

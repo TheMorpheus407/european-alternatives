@@ -90,7 +90,7 @@ SELECT
     ce.trust_score_breakdown_json
 FROM catalog_entries ce
 WHERE ce.slug = :slug
-  AND ce.is_active = 1
+  AND (ce.is_active = 1 OR ce.status = 'denied')
 LIMIT 1
 SQL;
 
