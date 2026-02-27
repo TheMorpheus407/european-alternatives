@@ -6,6 +6,7 @@ import { getLocalizedAlternativeDescription } from '../utils/alternativeText';
 import { getAlternativeCategories } from '../utils/alternativeCategories';
 import { CUMULATIVE_PENALTY_CAP } from '../data/scoringConfig';
 import { getRecencyMultiplier, withEstimatedPenalties } from '../utils/trustScore';
+import { sanitizeHref } from '../utils/sanitizeHref';
 import type { Alternative, OpenSourceLevel, PenaltyTier, Reservation, USVendorComparison, ViewMode } from '../types';
 
 interface AlternativeCardProps {
@@ -402,7 +403,7 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
                           </p>
                           {reservation.sourceUrl && (
                             <a
-                              href={reservation.sourceUrl}
+                              href={sanitizeHref(reservation.sourceUrl) ?? '#'}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="alt-detail-source-link"
@@ -531,7 +532,7 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
                         </p>
                         {reservation.sourceUrl && (
                           <a
-                            href={reservation.sourceUrl}
+                            href={sanitizeHref(reservation.sourceUrl) ?? '#'}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="alt-detail-source-link"
@@ -570,7 +571,7 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
                         </p>
                         {signal.sourceUrl && (
                           <a
-                            href={signal.sourceUrl}
+                            href={sanitizeHref(signal.sourceUrl) ?? '#'}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="alt-detail-source-link"
@@ -586,7 +587,7 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
 
               <div className="alt-card-actions">
                 <a
-                  href={alternative.website}
+                  href={sanitizeHref(alternative.website) ?? '#'}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="alt-card-link alt-card-link-primary"
@@ -599,7 +600,7 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
                 </a>
                 {alternative.sourceCodeUrl && (
                   <a
-                    href={alternative.sourceCodeUrl}
+                    href={sanitizeHref(alternative.sourceCodeUrl) ?? '#'}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="alt-card-link alt-card-link-secondary"
@@ -614,7 +615,7 @@ export default function AlternativeCard({ alternative, viewMode }: AlternativeCa
                 {alternative.actionLinks?.map((link) => (
                   <a
                     key={`${alternative.id}-${link.url}`}
-                    href={link.url}
+                    href={sanitizeHref(link.url) ?? '#'}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="alt-card-link alt-card-link-secondary"

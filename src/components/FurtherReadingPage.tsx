@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useCatalog } from '../contexts/CatalogContext';
+import { sanitizeHref } from '../utils/sanitizeHref';
 import type { FurtherReadingSectionId } from '../types';
 
 const ISSUE_BASE_URL = 'https://github.com/TheMorpheus407/european-alternatives/issues/';
@@ -123,7 +124,7 @@ export default function FurtherReadingPage() {
                   )}
 
                   <a
-                    href={resource.website}
+                    href={sanitizeHref(resource.website) ?? '#'}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="reading-visit-link"

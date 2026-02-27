@@ -91,11 +91,29 @@ async function fetchCatalogFromApi(): Promise<Omit<CatalogData, 'loading' | 'err
     landingGroupsRes.json(),
   ]);
 
+  const alternatives = entriesJson?.data;
+  const categories = categoriesJson?.data;
+  const furtherReading = furtherReadingJson?.data;
+  const landingGroups = landingGroupsJson?.data;
+
+  if (!Array.isArray(alternatives)) throw new Error('API returned invalid entries payload');
+  if (!Array.isArray(categories)) throw new Error('API returned invalid categories payload');
+  if (!Array.isArray(furtherReading)) throw new Error('API returned invalid further-reading payload');
+  if (!Array.isArray(landingGroups)) throw new Error('API returned invalid landing-groups payload');
+
+  // Spot-check first element shape to catch contract drift early.
+  if (alternatives.length > 0 && typeof alternatives[0].id !== 'string') {
+    throw new Error('API entries payload has unexpected element shape (missing id)');
+  }
+  if (categories.length > 0 && typeof categories[0].id !== 'string') {
+    throw new Error('API categories payload has unexpected element shape (missing id)');
+  }
+
   return {
-    alternatives: entriesJson.data as Alternative[],
-    categories: categoriesJson.data as Category[],
-    furtherReadingResources: furtherReadingJson.data as FurtherReadingResource[],
-    landingCategoryGroups: landingGroupsJson.data as LandingCategoryGroup[],
+    alternatives: alternatives as Alternative[],
+    categories: categories as Category[],
+    furtherReadingResources: furtherReading as FurtherReadingResource[],
+    landingCategoryGroups: landingGroups as LandingCategoryGroup[],
   };
 }
 
