@@ -5,6 +5,7 @@ import Layout from './Layout';
 import LandingPage from './LandingPage';
 import BrowsePage from './BrowsePage';
 import FurtherReadingPage from './FurtherReadingPage';
+import { CatalogProvider } from '../contexts/CatalogContext';
 import { supportedLanguages, defaultLanguage, localeMap, detectBrowserLanguage, type SupportedLanguage } from '../i18n';
 
 function LocaleLayout() {
@@ -111,16 +112,18 @@ function CatchAllRedirect() {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/:lang" element={<LocaleLayout />}>
-        <Route index element={<LandingPage />} />
-        <Route path="browse" element={<BrowsePage />} />
-        <Route path="further-reading" element={<FurtherReadingPage />} />
-      </Route>
-      <Route path="/" element={<LanguageRedirect />} />
-      <Route path="/browse" element={<BrowseRedirect />} />
-      <Route path="/further-reading" element={<FurtherReadingRedirect />} />
-      <Route path="*" element={<CatchAllRedirect />} />
-    </Routes>
+    <CatalogProvider>
+      <Routes>
+        <Route path="/:lang" element={<LocaleLayout />}>
+          <Route index element={<LandingPage />} />
+          <Route path="browse" element={<BrowsePage />} />
+          <Route path="further-reading" element={<FurtherReadingPage />} />
+        </Route>
+        <Route path="/" element={<LanguageRedirect />} />
+        <Route path="/browse" element={<BrowseRedirect />} />
+        <Route path="/further-reading" element={<FurtherReadingRedirect />} />
+        <Route path="*" element={<CatchAllRedirect />} />
+      </Routes>
+    </CatalogProvider>
   );
 }

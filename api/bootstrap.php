@@ -41,6 +41,55 @@ function requireHttpMethod(string $method): void
 }
 
 /**
+ * Send a JSON error response and terminate.
+ *
+ * Convenience wrapper around sendJsonResponse for error payloads.
+ */
+function jsonError(int $code, string $message): never
+{
+    sendJsonResponse($code, [
+        'ok' => false,
+        'error' => $message,
+    ]);
+}
+
+/**
+ * Convenience alias for requireHttpMethod().
+ *
+ * Sends 405 Method Not Allowed if the current request method does not match.
+ */
+function requireMethod(string $method): void
+{
+    requireHttpMethod($method);
+}
+
+/**
+ * Read and validate the ?locale= query parameter.
+ *
+ * @return string 'en' or 'de' (defaults to 'en' for missing/invalid values)
+ */
+function getLocale(): string
+{
+    $locale = $_GET['locale'] ?? 'en';
+
+    if (!is_string($locale) || !in_array($locale, ['en', 'de'], true)) {
+        return 'en';
+    }
+
+    return $locale;
+}
+
+/**
+ * Alias for loadDbConfig() — provides a shorter name for import scripts and API endpoints.
+ *
+ * @return array{driver: string, host: string, port: int, database: string, username: string, password: string, charset: string}
+ */
+function getDbConfig(): array
+{
+    return loadDbConfig();
+}
+
+/**
  * Load database config from a file kept outside the web root.
  * Environment variables take precedence; file config is fallback.
  */

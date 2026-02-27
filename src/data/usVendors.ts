@@ -1,19 +1,19 @@
 import type { Reservation, USVendorComparison } from '../types';
 
-interface USVendorRecord {
+export interface USVendorRecord {
   id: string;
   name: string;
   aliases: string[];
 }
 
-interface USVendorTrustProfile {
+export interface USVendorTrustProfile {
   trustScore: number;
   description: string;
   descriptionDe: string;
   reservations: Reservation[];
 }
 
-const US_VENDOR_RECORDS: USVendorRecord[] = [
+export const US_VENDOR_RECORDS: USVendorRecord[] = [
   {
     id: 'gmail',
     name: 'Gmail',
@@ -440,7 +440,7 @@ const US_VENDOR_RECORDS: USVendorRecord[] = [
   },
 ];
 
-const US_VENDOR_TRUST_PROFILES: Record<string, USVendorTrustProfile> = {
+export const US_VENDOR_TRUST_PROFILES: Record<string, USVendorTrustProfile> = {
   gmail: {
     trustScore: 2.7,
     description:

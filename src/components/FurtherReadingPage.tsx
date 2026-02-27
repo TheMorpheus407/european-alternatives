@@ -1,13 +1,14 @@
 import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { furtherReadingResources } from '../data';
+import { useCatalog } from '../contexts/CatalogContext';
 import type { FurtherReadingSectionId } from '../types';
 
 const ISSUE_BASE_URL = 'https://github.com/TheMorpheus407/european-alternatives/issues/';
 const sectionOrder: FurtherReadingSectionId[] = ['directories', 'publicCatalogues', 'migrationGuides'];
 
 export default function FurtherReadingPage() {
+  const { furtherReadingResources, loading, error } = useCatalog();
   const { t } = useTranslation('furtherReading');
 
   const sections = useMemo(
@@ -16,8 +17,32 @@ export default function FurtherReadingPage() {
         sectionId,
         resources: furtherReadingResources.filter((resource) => resource.section === sectionId),
       })),
-    [],
+    [furtherReadingResources],
   );
+
+  if (loading) {
+    return (
+      <div className="reading-page">
+        <div className="reading-header">
+          <h1 className="reading-title">{t('title')}</h1>
+          <p className="reading-subtitle">{t('subtitle')}</p>
+        </div>
+        <div className="catalog-loading">Loading catalog data...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="reading-page">
+        <div className="reading-header">
+          <h1 className="reading-title">{t('title')}</h1>
+          <p className="reading-subtitle">{t('subtitle')}</p>
+        </div>
+        <div className="catalog-error" role="alert">Data temporarily unavailable. Please try again later.</div>
+      </div>
+    );
+  }
 
   return (
     <div className="reading-page">

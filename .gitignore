@@ -1,6 +1,10 @@
 # Logs
 logs
-tmp
+# Ignore tmp/ contents, but keep tmp/export/.gitkeep so the directory exists in the repo
+/tmp/*
+!/tmp/export/
+/tmp/export/*
+!/tmp/export/.gitkeep
 *.log
 npm-debug.log*
 yarn-debug.log*

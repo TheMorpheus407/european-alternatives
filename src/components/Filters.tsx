@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { alternatives, categories } from '../data';
+import { useCatalog } from '../contexts/CatalogContext';
 import type { SelectedFilters, SortBy, ViewMode } from '../types';
 
 const pricingKeys = ['free', 'freemium', 'paid'] as const;
@@ -33,12 +33,13 @@ export default function Filters({
   totalCount,
   filteredCount,
 }: FiltersProps) {
+  const { alternatives, categories } = useCatalog();
   const [showFilters, setShowFilters] = useState(false);
   const { t } = useTranslation(['browse', 'common', 'data']);
 
   const countryCodes = useMemo(
     () => Array.from(new Set(alternatives.map((alternative) => alternative.country))).sort(),
-    [],
+    [alternatives],
   );
 
   const hasActiveFilters =

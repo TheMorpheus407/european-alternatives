@@ -2,7 +2,7 @@ import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { alternatives, categories } from '../data';
+import { useCatalog } from '../contexts/CatalogContext';
 import AlternativeCard from './AlternativeCard';
 import Filters from './Filters';
 import { getLocalizedAlternativeDescription } from '../utils/alternativeText';
@@ -10,11 +10,15 @@ import { getAlternativeCategories } from '../utils/alternativeCategories';
 import { getEffectiveTrustScore } from '../utils/trustScore';
 import type { CategoryId, CountryCode, SelectedFilters, SortBy, ViewMode } from '../types';
 
-const validCategoryIds = new Set<string>(categories.map((category) => category.id));
-
 export default function BrowsePage() {
+  const { alternatives, categories, loading, error } = useCatalog();
   const [searchParams, setSearchParams] = useSearchParams();
   const { t, i18n } = useTranslation('browse');
+
+  const validCategoryIds = useMemo(
+    () => new Set<string>(categories.map((category) => category.id)),
+    [categories],
+  );
 
   const setSearchParamsRef = useRef(setSearchParams);
   useEffect(() => {
@@ -24,7 +28,7 @@ export default function BrowsePage() {
   const searchTerm = searchParams.get('q') ?? '';
   const categoryFilters = useMemo(
     () => searchParams.getAll('category').filter((category) => validCategoryIds.has(category)) as CategoryId[],
-    [searchParams],
+    [searchParams, validCategoryIds],
   );
 
   const latestParamsRef = useRef(new URLSearchParams(searchParams));
@@ -154,7 +158,31 @@ export default function BrowsePage() {
     });
 
     return result;
-  }, [searchTerm, selectedFilters, sortBy, i18n.language]);
+  }, [alternatives, searchTerm, selectedFilters, sortBy, i18n.language]);
+
+  if (loading) {
+    return (
+      <div className="browse-page">
+        <div className="browse-header">
+          <h1 className="browse-title">{t('title')}</h1>
+          <p className="browse-subtitle">{t('subtitle')}</p>
+        </div>
+        <div className="catalog-loading">Loading catalog data...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="browse-page">
+        <div className="browse-header">
+          <h1 className="browse-title">{t('title')}</h1>
+          <p className="browse-subtitle">{t('subtitle')}</p>
+        </div>
+        <div className="catalog-error" role="alert">Data temporarily unavailable. Please try again later.</div>
+      </div>
+    );
+  }
 
   return (
     <div className="browse-page">

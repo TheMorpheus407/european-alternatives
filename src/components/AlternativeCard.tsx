@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { categories } from '../data';
+import { useCatalog } from '../contexts/CatalogContext';
 import { getLocalizedAlternativeDescription } from '../utils/alternativeText';
 import { getAlternativeCategories } from '../utils/alternativeCategories';
 import { CUMULATIVE_PENALTY_CAP } from '../data/scoringConfig';
@@ -83,6 +83,7 @@ function getOpenSourceBadgeConfig(openSourceLevel: OpenSourceLevel): { className
 }
 
 export default function AlternativeCard({ alternative, viewMode }: AlternativeCardProps) {
+  const { categories } = useCatalog();
   const [expanded, setExpanded] = useState(false);
   const [usVendorDetailsExpanded, setUsVendorDetailsExpanded] = useState(false);
   const [trustBreakdownExpanded, setTrustBreakdownExpanded] = useState(false);

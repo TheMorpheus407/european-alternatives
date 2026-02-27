@@ -1,8 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { alternatives, categories } from '../data';
-import { landingCategoryGroups } from '../data/landingCategoryGroups';
+import { useCatalog } from '../contexts/CatalogContext';
 import { getAlternativeCategories } from '../utils/alternativeCategories';
 import type { CategoryId } from '../types';
 
@@ -21,9 +20,26 @@ const fadeUp = {
 };
 
 export default function LandingPage() {
+  const { alternatives, categories, landingCategoryGroups, loading, error } = useCatalog();
   const { lang } = useParams<{ lang: string }>();
   const { t } = useTranslation(['landing', 'common', 'data']);
   const langPrefix = lang ?? 'en';
+
+  if (loading) {
+    return (
+      <div className="landing-page">
+        <div className="catalog-loading">Loading catalog data...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="landing-page">
+        <div className="catalog-error" role="alert">Data temporarily unavailable. Please try again later.</div>
+      </div>
+    );
+  }
 
   const totalAlternatives = alternatives.length;
   const totalCategories = categories.filter(
