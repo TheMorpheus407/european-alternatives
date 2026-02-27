@@ -95,8 +95,11 @@ export default function LandingPage() {
       >
         {/* Hero Section */}
         <motion.div className="landing-hero" variants={fadeUp}>
-          <div className="landing-eu-flag" aria-hidden="true">
+          <div className="landing-hero-flags" aria-hidden="true">
             <span className="fi fi-eu landing-flag-icon"></span>
+            <svg className="landing-osi-icon" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+              <path fillRule="evenodd" d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 22c11 0 20 9 20 20 0 7.7-4.4 14.4-10.8 17.7L65 88H35l5.8-28.3C34.4 56.4 30 49.7 30 42c0-11 9-20 20-20z"/>
+            </svg>
           </div>
 
           <h1 className="landing-headline">{t('landing:headline')}</h1>

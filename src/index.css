@@ -376,7 +376,11 @@ button:disabled {
   width: 100%;
 }
 
-.landing-eu-flag {
+.landing-hero-flags {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xl);
   margin-bottom: var(--spacing-lg);
 }
 
@@ -385,9 +389,21 @@ button:disabled {
   border-radius: var(--radius-md);
 }
 
+.landing-osi-icon {
+  width: 4rem;
+  height: 4rem;
+  color: #3DA639;
+  border-radius: 50%;
+}
+
 @media (min-width: 768px) {
   .landing-flag-icon {
     font-size: 5rem;
+  }
+
+  .landing-osi-icon {
+    width: 5rem;
+    height: 5rem;
   }
 }
 
