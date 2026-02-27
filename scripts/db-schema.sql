@@ -36,7 +36,7 @@ CREATE TABLE `schema_migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------------
--- 2. countries — ISO 3166-1 alpha-2 codes (plus `eu` pseudo-code)
+-- 2. countries — ISO 3166-1 alpha-2 codes (plus `eu` and `oss` pseudo-codes)
 -- ---------------------------------------------------------------------------
 CREATE TABLE `countries` (
   `code`       VARCHAR(5)   NOT NULL,

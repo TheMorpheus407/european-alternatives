@@ -407,6 +407,11 @@ button:disabled {
   }
 }
 
+/* Open-source "flag" for fi fi-oss (OSI keyhole on dark background) */
+.fi-oss {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 480'%3E%3Crect width='640' height='480' rx='8' fill='%23252535'/%3E%3Cpath fill='%233DA639' fill-rule='evenodd' transform='translate(320,240) scale(3) translate(-50,-50)' d='M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 22c11 0 20 9 20 20 0 7.7-4.4 14.4-10.8 17.7L65 88H35l5.8-28.3C34.4 56.4 30 49.7 30 42c0-11 9-20 20-20z'/%3E%3C/svg%3E");
+}
+
 .landing-headline {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-2xl);

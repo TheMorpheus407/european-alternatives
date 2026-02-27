@@ -219,7 +219,8 @@
     "is": "Island",
     "us": "Vereinigte Staaten",
     "ca": "Kanada",
-    "eu": "Open Source (Nicht-EU-HQ)"
+    "eu": "Open Source (Nicht-EU-HQ)",
+    "oss": "Open Source"
   },
   "alternatives": {
     "tuta": {

@@ -121,6 +121,9 @@ function scoringAssignBaseClass(?string $countryCode, ?string $openSourceLevel):
     if ($countryCode === 'eu') {
         return 'eu';
     }
+    if ($countryCode === 'oss') {
+        return 'foss';
+    }
     if ($countryCode === 'us') {
         return 'us';
     }
