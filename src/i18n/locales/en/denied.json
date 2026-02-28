@@ -1,0 +1,135 @@
+{
+  "title": "Denied Alternatives",
+  "subtitle": "These services were evaluated and did not meet our inclusion criteria. We publish every denial with full reasoning and sources for transparency.",
+  "introTitle": "Why we publish denials",
+  "introText": "Curation means saying no. Every entry below was proposed, researched, and rejected against our gateway criteria. Publishing the reasoning lets you verify our standards and understand why a service you expected to find here is absent.",
+  "gatewayLabel": "Failed criteria",
+  "claimedOrigin": "Claimed origin",
+  "actualOrigin": "Actual origin",
+  "proposedIn": "Proposed in",
+  "removedIn": "Removed in",
+  "deniedOn": "Denied on",
+  "category": "Category",
+  "sources": "Sources",
+  "source": "Source {{index}}",
+  "showReasoning": "Show reasoning",
+  "hideReasoning": "Hide reasoning",
+  "gateways": {
+    "G1": "G1: Genuine headquarters",
+    "G2": "G2: Active maintenance",
+    "G3": "G3: Functional replacement",
+    "G4": "G4: Independent product",
+    "G5": "G5: Usable offering",
+    "G6": "G6: Open-source required",
+    "G7": "G7: No sanctions exposure",
+    "G8": "G8: No disqualifying concerns"
+  },
+  "gatewayDescriptions": {
+    "G1": "The actual corporate entity (not a shell or subsidiary) must be headquartered in an accepted jurisdiction. Beneficial ownership is traced.",
+    "G2": "The service or software must be alive and receiving updates. Abandoned projects are not listed.",
+    "G3": "Must serve a similar purpose to an identified US product. A clear replacement relationship is required.",
+    "G4": "Must not be a thin wrapper or reskin of a US service. Must not route data through US infrastructure without transparency.",
+    "G5": "Must have a publicly available product. No pre-alpha, no vaporware.",
+    "G6": "Non-European entries require full open-source — both client and server code publicly available under an OSI-approved license.",
+    "G7": "Revenue must not ultimately flow to sanctioned jurisdictions or beneficial owners. EU Regulation 833/2014 and equivalent apply.",
+    "G8": "Founders or owners must not have serious criminal or regulatory enforcement history that undermines the product's trustworthiness. Evaluated in context — severity, relevance, and time since incident all matter."
+  },
+  "badge": "Denied",
+  "reasoningLabel": "Denial reasoning for {{name}}",
+  "emptyState": "No denied alternatives on record yet.",
+  "framework": {
+    "title": "How We Evaluate Alternatives",
+    "intro": "Every denial is grounded in a transparent, evidence-based framework. The criteria below are applied consistently to every proposed alternative — no exceptions.",
+    "twoTierTitle": "Two-Tier System",
+    "twoTierIntro": "Alternatives are evaluated in two tiers based on headquarters jurisdiction. Each tier has different requirements.",
+    "tier1Label": "Tier 1: European",
+    "tier2Label": "Tier 2: Non-European",
+    "tierHeaders": {
+      "jurisdiction": "Jurisdictions",
+      "openSourceReq": "Open-source requirement",
+      "proprietaryAllowed": "Proprietary allowed?"
+    },
+    "tier1": {
+      "jurisdiction": "EU member states, CH, NO, GB, IS",
+      "openSourceReq": "None (but rewarded in scoring)",
+      "proprietaryAllowed": "Yes"
+    },
+    "tier2": {
+      "jurisdiction": "Any jurisdiction not in Tier 1",
+      "openSourceReq": "Full open-source required",
+      "proprietaryAllowed": "No"
+    },
+    "twoTierRationale": "European companies operate under GDPR, are subject to European courts, and keep data within European legal reach. Non-European companies lack that baseline — full open-source is the only compensating factor, allowing independent verification and self-hosting.",
+    "gatewayTitle": "Gateway Criteria (G1–G8)",
+    "gatewayIntro": "Every proposed alternative must pass ALL of the following. Failure on any single criterion results in denial.",
+    "g8Note": "A founder's past does not automatically disqualify an alternative. We evaluate severity, relevance to the product, compounding factors, and whether remediation has occurred. Only when concerns are both severe and unmitigable does G8 trigger denial.",
+    "flowchartTitle": "Decision Flowchart",
+    "flowchartIntro": "This is how a proposed alternative flows through our evaluation:",
+    "flowchartEuropean": "Is the company genuinely headquartered in Europe?",
+    "flowchartYesTier1": "YES → Tier 1 (European)",
+    "flowchartPassGateway": "Passes all gateway criteria (G1–G5, G7–G8)?",
+    "flowchartIncluded": "YES → Included (scored 0–10, reservations if needed)",
+    "flowchartDenied": "NO → Denied (documented with full reasoning)",
+    "flowchartNoTier2": "NO → Tier 2 (Non-European)",
+    "flowchartFullOSS": "Is it fully open-source (client + server, OSI license)?",
+    "flowchartOSSYes": "YES → Passes all gateway criteria?",
+    "flowchartOSSIncluded": "YES → Included (FOSS base class)",
+    "flowchartOSSDenied": "NO → Denied",
+    "flowchartOSSNo": "NO → Not eligible (non-European + not fully open-source)",
+    "examplesTitle": "Examples Demonstrating Consistency",
+    "examplesIntro": "Here is how real alternatives are evaluated under this framework to ensure consistency:",
+    "exampleHeaders": {
+      "alternative": "Alternative",
+      "country": "Country",
+      "openSource": "Open Source",
+      "outcome": "Outcome",
+      "reasoning": "Reasoning"
+    },
+    "examples": [
+      {
+        "name": "Nextcloud",
+        "country": "DE",
+        "openSource": "Full",
+        "outcome": "Included (high score)",
+        "reasoning": "EU + full open-source is the highest-trust combination"
+      },
+      {
+        "name": "Netcup",
+        "country": "DE",
+        "openSource": "None",
+        "outcome": "Included (lower score)",
+        "reasoning": "Proprietary but European jurisdiction provides trust baseline"
+      },
+      {
+        "name": "Bitwarden",
+        "country": "US",
+        "openSource": "Full",
+        "outcome": "Included (FOSS class)",
+        "reasoning": "Full open-source + self-hostable compensates for US jurisdiction"
+      },
+      {
+        "name": "Hubitat",
+        "country": "US",
+        "openSource": "None",
+        "outcome": "Not eligible",
+        "reasoning": "Non-European AND proprietary — fails G6"
+      },
+      {
+        "name": "Cryptostorm",
+        "country": "CA",
+        "openSource": "—",
+        "outcome": "Denied",
+        "reasoning": "Fails G1 (claimed Iceland, actually Canada) and G8"
+      },
+      {
+        "name": "ONLYOFFICE",
+        "country": "RU (via LV)",
+        "openSource": "Full",
+        "outcome": "Denied",
+        "reasoning": "Fails G1 (shell company) and G7 (sanctions exposure)"
+      }
+    ],
+    "collapse": "Collapse",
+    "expand": "Expand"
+  }
+}

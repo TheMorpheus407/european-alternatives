@@ -14,6 +14,7 @@ type CatalogContextValue = CatalogData;
 const EMPTY_CONTEXT: CatalogContextValue = {
   alternatives: [],
   usVendors: [],
+  deniedAlternatives: [],
   categories: [],
   furtherReadingResources: [],
   landingCategoryGroups: [],
@@ -34,9 +35,10 @@ const CatalogContext = createContext<CatalogContextValue>(EMPTY_CONTEXT);
 const API_BASE = '/api/catalog';
 
 async function fetchCatalogFromApi(): Promise<Omit<CatalogData, 'loading' | 'error'>> {
-  const [entriesRes, usEntriesRes, categoriesRes, furtherReadingRes, landingGroupsRes] = await Promise.all([
+  const [entriesRes, usEntriesRes, deniedRes, categoriesRes, furtherReadingRes, landingGroupsRes] = await Promise.all([
     fetch(`${API_BASE}/entries?status=alternative`),
     fetch(`${API_BASE}/entries?status=us`),
+    fetch(`${API_BASE}/entries?status=denied`),
     fetch(`${API_BASE}/categories`),
     fetch(`${API_BASE}/further-reading`),
     fetch(`${API_BASE}/landing-groups`),
@@ -44,13 +46,15 @@ async function fetchCatalogFromApi(): Promise<Omit<CatalogData, 'loading' | 'err
 
   if (!entriesRes.ok) throw new Error(`API error: entries returned ${entriesRes.status}`);
   if (!usEntriesRes.ok) throw new Error(`API error: us entries returned ${usEntriesRes.status}`);
+  if (!deniedRes.ok) throw new Error(`API error: denied entries returned ${deniedRes.status}`);
   if (!categoriesRes.ok) throw new Error(`API error: categories returned ${categoriesRes.status}`);
   if (!furtherReadingRes.ok) throw new Error(`API error: further-reading returned ${furtherReadingRes.status}`);
   if (!landingGroupsRes.ok) throw new Error(`API error: landing-groups returned ${landingGroupsRes.status}`);
 
-  const [entriesJson, usEntriesJson, categoriesJson, furtherReadingJson, landingGroupsJson] = await Promise.all([
+  const [entriesJson, usEntriesJson, deniedJson, categoriesJson, furtherReadingJson, landingGroupsJson] = await Promise.all([
     entriesRes.json(),
     usEntriesRes.json(),
+    deniedRes.json(),
     categoriesRes.json(),
     furtherReadingRes.json(),
     landingGroupsRes.json(),
@@ -58,12 +62,14 @@ async function fetchCatalogFromApi(): Promise<Omit<CatalogData, 'loading' | 'err
 
   const alternatives = entriesJson?.data;
   const usVendors = usEntriesJson?.data;
+  const deniedAlternatives = deniedJson?.data;
   const categories = categoriesJson?.data;
   const furtherReading = furtherReadingJson?.data;
   const landingGroups = landingGroupsJson?.data;
 
   if (!Array.isArray(alternatives)) throw new Error('API returned invalid entries payload');
   if (!Array.isArray(usVendors)) throw new Error('API returned invalid us entries payload');
+  if (!Array.isArray(deniedAlternatives)) throw new Error('API returned invalid denied entries payload');
   if (!Array.isArray(categories)) throw new Error('API returned invalid categories payload');
   if (!Array.isArray(furtherReading)) throw new Error('API returned invalid further-reading payload');
   if (!Array.isArray(landingGroups)) throw new Error('API returned invalid landing-groups payload');
@@ -79,6 +85,7 @@ async function fetchCatalogFromApi(): Promise<Omit<CatalogData, 'loading' | 'err
   return {
     alternatives: alternatives as Alternative[],
     usVendors: usVendors as Alternative[],
+    deniedAlternatives: deniedAlternatives as Alternative[],
     categories: categories as Category[],
     furtherReadingResources: furtherReading as FurtherReadingResource[],
     landingCategoryGroups: landingGroups as LandingCategoryGroup[],

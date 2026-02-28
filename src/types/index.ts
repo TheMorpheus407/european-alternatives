@@ -33,6 +33,18 @@ export interface Alternative {
   trustScoreStatus?: TrustScoreStatus;
   trustScoreBreakdown?: TrustScoreBreakdown;
   dateAdded?: string;
+  deniedDecision?: DeniedDecision;
+}
+
+export interface DeniedDecision {
+  reason: string;
+  proposedIn?: string;
+  claimedOrigin?: string;
+  actualOrigin?: string;
+  removedIn?: string;
+  rawCategoryLabel?: string;
+  failedGateways?: string[];
+  sources?: string[];
 }
 
 export interface Reservation {

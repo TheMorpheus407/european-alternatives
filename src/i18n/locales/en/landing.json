@@ -11,7 +11,8 @@
     "categories": "Categories",
     "country_one": "Country",
     "country_other": "Countries",
-    "openSource": "Open Source"
+    "openSource": "Open Source",
+    "denied": "Denied"
   },
   "browseByCategory": "Browse by Category",
   "categoryGroupsNavLabel": "Jump to category group",

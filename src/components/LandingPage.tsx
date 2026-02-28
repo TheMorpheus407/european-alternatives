@@ -20,7 +20,7 @@ const fadeUp = {
 };
 
 export default function LandingPage() {
-  const { alternatives, categories, landingCategoryGroups, loading, error } = useCatalog();
+  const { alternatives, categories, landingCategoryGroups, deniedAlternatives, loading, error } = useCatalog();
   const { lang } = useParams<{ lang: string }>();
   const { t } = useTranslation(['landing', 'common', 'data']);
   const langPrefix = lang ?? 'en';
@@ -150,6 +150,15 @@ export default function LandingPage() {
               <span className="landing-stats-number">{openSourceCount}</span>
               <span className="landing-stats-label">{t('landing:stats.openSource')}</span>
             </div>
+            {deniedAlternatives.length > 0 && (
+              <>
+                <div className="landing-stats-divider" />
+                <Link to={`/${langPrefix}/denied`} className="landing-stats-item landing-stats-item-link landing-stats-item-denied">
+                  <span className="landing-stats-number landing-stats-number-denied">{deniedAlternatives.length}</span>
+                  <span className="landing-stats-label">{t('landing:stats.denied')}</span>
+                </Link>
+              </>
+            )}
           </motion.div>
         )}
 

@@ -352,7 +352,74 @@ foreach ($repRows as $rr) {
 }
 
 // ---------------------------------------------------------------------------
-// 8. Assemble the final response array
+// 8. Batch-fetch denied_decisions (only for status=denied)
+// ---------------------------------------------------------------------------
+
+$deniedByEntry = [];
+if ($status === 'denied' && count($entryIds) > 0) {
+    [$inDd, $ddParams] = buildInPlaceholders($entryIds, 'dd');
+
+    $ddDescCol = $locale === 'de'
+        ? 'COALESCE(dd.text_de, dd.text_en)'
+        : 'dd.text_en';
+
+    $ddSql = <<<SQL
+SELECT
+    dd.entry_id,
+    {$ddDescCol}           AS reason_text,
+    dd.proposed_in,
+    dd.claimed_origin,
+    dd.actual_origin,
+    dd.removed_in,
+    dd.raw_category_label,
+    dd.failed_gateways_json,
+    dd.sources_json
+FROM denied_decisions dd
+WHERE dd.entry_id IN ({$inDd})
+SQL;
+
+    $ddStmt = $pdo->prepare($ddSql);
+    $ddStmt->execute($ddParams);
+    $ddRows = $ddStmt->fetchAll();
+
+    foreach ($ddRows as $ddr) {
+        $eid = (int)$ddr['entry_id'];
+        $decision = [
+            'reason' => $ddr['reason_text'],
+        ];
+        if ($ddr['proposed_in'] !== null) {
+            $decision['proposedIn'] = $ddr['proposed_in'];
+        }
+        if ($ddr['claimed_origin'] !== null) {
+            $decision['claimedOrigin'] = $ddr['claimed_origin'];
+        }
+        if ($ddr['actual_origin'] !== null) {
+            $decision['actualOrigin'] = $ddr['actual_origin'];
+        }
+        if ($ddr['removed_in'] !== null) {
+            $decision['removedIn'] = $ddr['removed_in'];
+        }
+        if ($ddr['raw_category_label'] !== null) {
+            $decision['rawCategoryLabel'] = $ddr['raw_category_label'];
+        }
+        if ($ddr['failed_gateways_json'] !== null) {
+            $decoded = json_decode($ddr['failed_gateways_json'], true);
+            if (is_array($decoded)) {
+                $decision['failedGateways'] = $decoded;
+            }
+        }
+        if ($ddr['sources_json'] !== null) {
+            $decoded = json_decode($ddr['sources_json'], true);
+            if (is_array($decoded)) {
+                $decision['sources'] = $decoded;
+            }
+        }
+        $deniedByEntry[$eid] = $decision;
+    }
+}
+
+// ---------------------------------------------------------------------------
+// 9. Assemble the final response array
 // ---------------------------------------------------------------------------
 
 $data = [];
@@ -462,11 +529,16 @@ foreach ($rows as $row) {
         $entry['trustScoreBreakdown'] = $trustResult['trustScoreBreakdown'];
     }
 
+    // Denied decision (only present for status=denied entries with a decision row)
+    if (isset($deniedByEntry[$eid])) {
+        $entry['deniedDecision'] = $deniedByEntry[$eid];
+    }
+
     $data[] = $entry;
 }
 
 // ---------------------------------------------------------------------------
-// 9. Send response
+// 10. Send response
 // ---------------------------------------------------------------------------
 
 sendCachedJsonResponse([

@@ -16,6 +16,9 @@ export interface CatalogData {
   /** US vendor entries (status='us'), fetched separately for client-side comparison building. */
   usVendors: Alternative[];
 
+  /** Denied alternatives with denial reasoning (status='denied'). */
+  deniedAlternatives: Alternative[];
+
   /** Category definitions including emoji and US giant mappings. */
   categories: Category[];
 

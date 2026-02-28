@@ -1,0 +1,135 @@
+{
+  "title": "Abgelehnte Alternativen",
+  "subtitle": "Diese Dienste wurden bewertet und erfüllten unsere Aufnahmekriterien nicht. Wir veröffentlichen jede Ablehnung mit vollständiger Begründung und Quellen für Transparenz.",
+  "introTitle": "Warum wir Ablehnungen veröffentlichen",
+  "introText": "Kuratieren heißt auch Nein sagen. Jeder Eintrag unten wurde vorgeschlagen, recherchiert und anhand unserer Gateway-Kriterien abgelehnt. Die Veröffentlichung der Begründung ermöglicht es dir, unsere Standards zu überprüfen und zu verstehen, warum ein erwarteter Dienst hier fehlt.",
+  "gatewayLabel": "Gescheiterte Kriterien",
+  "claimedOrigin": "Behauptete Herkunft",
+  "actualOrigin": "Tatsächliche Herkunft",
+  "proposedIn": "Vorgeschlagen in",
+  "removedIn": "Entfernt in",
+  "deniedOn": "Abgelehnt am",
+  "category": "Kategorie",
+  "sources": "Quellen",
+  "source": "Quelle {{index}}",
+  "showReasoning": "Begründung anzeigen",
+  "hideReasoning": "Begründung ausblenden",
+  "gateways": {
+    "G1": "G1: Echter Hauptsitz",
+    "G2": "G2: Aktive Wartung",
+    "G3": "G3: Funktionaler Ersatz",
+    "G4": "G4: Eigenständiges Produkt",
+    "G5": "G5: Nutzbares Angebot",
+    "G6": "G6: Open-Source erforderlich",
+    "G7": "G7: Keine Sanktionsbelastung",
+    "G8": "G8: Keine disqualifizierenden Bedenken"
+  },
+  "gatewayDescriptions": {
+    "G1": "Die tatsächliche Unternehmenseinheit (keine Briefkastenfirma oder Tochtergesellschaft) muss ihren Hauptsitz in einer akzeptierten Jurisdiktion haben. Die wirtschaftliche Eigentümerschaft wird nachverfolgt.",
+    "G2": "Der Dienst oder die Software muss aktiv sein und Updates erhalten. Aufgegebene Projekte werden nicht gelistet.",
+    "G3": "Muss einen ähnlichen Zweck wie ein identifiziertes US-Produkt erfüllen. Eine klare Ersatzbeziehung ist erforderlich.",
+    "G4": "Darf kein dünner Wrapper oder Reskin eines US-Dienstes sein. Darf keine Daten ohne Transparenz über US-Infrastruktur leiten.",
+    "G5": "Muss ein öffentlich verfügbares Produkt haben. Kein Pre-Alpha, keine Vaporware.",
+    "G6": "Nicht-europäische Einträge erfordern vollständiges Open-Source — sowohl Client- als auch Servercode müssen unter einer OSI-genehmigten Lizenz öffentlich verfügbar sein.",
+    "G7": "Einnahmen dürfen letztlich nicht an sanktionierte Jurisdiktionen oder wirtschaftliche Eigentümer fließen. EU-Verordnung 833/2014 und Äquivalente gelten.",
+    "G8": "Gründer oder Eigentümer dürfen keine schwerwiegende kriminelle oder regulatorische Durchsetzungsgeschichte haben, die die Vertrauenswürdigkeit des Produkts untergräbt. Bewertet im Kontext — Schwere, Relevanz und Zeit seit dem Vorfall werden berücksichtigt."
+  },
+  "badge": "Abgelehnt",
+  "reasoningLabel": "Ablehnungsbegründung für {{name}}",
+  "emptyState": "Noch keine abgelehnten Alternativen verzeichnet.",
+  "framework": {
+    "title": "Wie wir Alternativen bewerten",
+    "intro": "Jede Ablehnung basiert auf einem transparenten, evidenzbasierten Rahmenwerk. Die folgenden Kriterien werden konsistent auf jede vorgeschlagene Alternative angewandt — ohne Ausnahmen.",
+    "twoTierTitle": "Zwei-Tier-System",
+    "twoTierIntro": "Alternativen werden in zwei Stufen bewertet, basierend auf dem Hauptsitz der Jurisdiktion. Jede Stufe hat unterschiedliche Anforderungen.",
+    "tier1Label": "Tier 1: Europäisch",
+    "tier2Label": "Tier 2: Nicht-Europäisch",
+    "tierHeaders": {
+      "jurisdiction": "Jurisdiktionen",
+      "openSourceReq": "Open-Source-Anforderung",
+      "proprietaryAllowed": "Proprietär erlaubt?"
+    },
+    "tier1": {
+      "jurisdiction": "EU-Mitgliedstaaten, CH, NO, GB, IS",
+      "openSourceReq": "Keine (aber belohnt in der Bewertung)",
+      "proprietaryAllowed": "Ja"
+    },
+    "tier2": {
+      "jurisdiction": "Alle nicht in Tier 1 gelisteten Jurisdiktionen",
+      "openSourceReq": "Vollständiges Open-Source erforderlich",
+      "proprietaryAllowed": "Nein"
+    },
+    "twoTierRationale": "Europäische Unternehmen unterliegen der DSGVO, europäischen Gerichten und halten Daten in europäischer Rechtsreichweite. Nicht-europäischen Unternehmen fehlt diese Grundlage — vollständiges Open-Source ist der einzige kompensierende Faktor, der unabhängige Überprüfung und Self-Hosting ermöglicht.",
+    "gatewayTitle": "Gateway-Kriterien (G1–G8)",
+    "gatewayIntro": "Jede vorgeschlagene Alternative muss ALLE folgenden Kriterien bestehen. Das Scheitern an einem einzigen Kriterium führt zur Ablehnung.",
+    "g8Note": "Die Vergangenheit eines Gründers disqualifiziert eine Alternative nicht automatisch. Wir bewerten Schwere, Relevanz für das Produkt, verschärfende Faktoren und ob eine Aufarbeitung stattgefunden hat. Nur wenn Bedenken sowohl schwerwiegend als auch nicht abmilderbar sind, löst G8 eine Ablehnung aus.",
+    "flowchartTitle": "Entscheidungsflussdiagramm",
+    "flowchartIntro": "So durchläuft eine vorgeschlagene Alternative unsere Bewertung:",
+    "flowchartEuropean": "Hat das Unternehmen seinen echten Hauptsitz in Europa?",
+    "flowchartYesTier1": "JA → Tier 1 (Europäisch)",
+    "flowchartPassGateway": "Besteht alle Gateway-Kriterien (G1–G5, G7–G8)?",
+    "flowchartIncluded": "JA → Aufgenommen (bewertet 0–10, Vorbehalte bei Bedarf)",
+    "flowchartDenied": "NEIN → Abgelehnt (mit vollständiger Begründung dokumentiert)",
+    "flowchartNoTier2": "NEIN → Tier 2 (Nicht-Europäisch)",
+    "flowchartFullOSS": "Ist es vollständig Open-Source (Client + Server, OSI-Lizenz)?",
+    "flowchartOSSYes": "JA → Besteht alle Gateway-Kriterien?",
+    "flowchartOSSIncluded": "JA → Aufgenommen (FOSS-Basisklasse)",
+    "flowchartOSSDenied": "NEIN → Abgelehnt",
+    "flowchartOSSNo": "NEIN → Nicht berechtigt (nicht-europäisch + nicht vollständig Open-Source)",
+    "examplesTitle": "Beispiele zur Konsistenz",
+    "examplesIntro": "So werden reale Alternativen unter diesem Rahmenwerk bewertet, um Konsistenz sicherzustellen:",
+    "exampleHeaders": {
+      "alternative": "Alternative",
+      "country": "Land",
+      "openSource": "Open Source",
+      "outcome": "Ergebnis",
+      "reasoning": "Begründung"
+    },
+    "examples": [
+      {
+        "name": "Nextcloud",
+        "country": "DE",
+        "openSource": "Vollständig",
+        "outcome": "Aufgenommen (hoher Score)",
+        "reasoning": "EU + vollständiges Open-Source ist die vertrauenswürdigste Kombination"
+      },
+      {
+        "name": "Netcup",
+        "country": "DE",
+        "openSource": "Keines",
+        "outcome": "Aufgenommen (niedrigerer Score)",
+        "reasoning": "Proprietär, aber europäische Jurisdiktion bietet Vertrauensbasis"
+      },
+      {
+        "name": "Bitwarden",
+        "country": "US",
+        "openSource": "Vollständig",
+        "outcome": "Aufgenommen (FOSS-Klasse)",
+        "reasoning": "Vollständiges Open-Source + Self-Hosting kompensiert US-Jurisdiktion"
+      },
+      {
+        "name": "Hubitat",
+        "country": "US",
+        "openSource": "Keines",
+        "outcome": "Nicht berechtigt",
+        "reasoning": "Nicht-europäisch UND proprietär — scheitert an G6"
+      },
+      {
+        "name": "Cryptostorm",
+        "country": "CA",
+        "openSource": "—",
+        "outcome": "Abgelehnt",
+        "reasoning": "Scheitert an G1 (behauptet Island, tatsächlich Kanada) und G8"
+      },
+      {
+        "name": "ONLYOFFICE",
+        "country": "RU (via LV)",
+        "openSource": "Vollständig",
+        "outcome": "Abgelehnt",
+        "reasoning": "Scheitert an G1 (Briefkastenfirma) und G7 (Sanktionsbelastung)"
+      }
+    ],
+    "collapse": "Einklappen",
+    "expand": "Ausklappen"
+  }
+}

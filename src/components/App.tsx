@@ -5,6 +5,7 @@ import Layout from './Layout';
 import LandingPage from './LandingPage';
 import BrowsePage from './BrowsePage';
 import FurtherReadingPage from './FurtherReadingPage';
+import DeniedPage from './DeniedPage';
 import { CatalogProvider } from '../contexts/CatalogContext';
 import { supportedLanguages, defaultLanguage, localeMap, detectBrowserLanguage, type SupportedLanguage } from '../i18n';
 
@@ -105,6 +106,11 @@ function FurtherReadingRedirect() {
   return <Navigate to={`/${lang}/further-reading${search ? `?${search}` : ''}`} replace />;
 }
 
+function DeniedRedirect() {
+  const lang = detectBrowserLanguage();
+  return <Navigate to={`/${lang}/denied`} replace />;
+}
+
 function CatchAllRedirect() {
   const lang = detectBrowserLanguage();
   return <Navigate to={`/${lang}`} replace />;
@@ -118,10 +124,12 @@ export default function App() {
           <Route index element={<LandingPage />} />
           <Route path="browse" element={<BrowsePage />} />
           <Route path="further-reading" element={<FurtherReadingPage />} />
+          <Route path="denied" element={<DeniedPage />} />
         </Route>
         <Route path="/" element={<LanguageRedirect />} />
         <Route path="/browse" element={<BrowseRedirect />} />
         <Route path="/further-reading" element={<FurtherReadingRedirect />} />
+        <Route path="/denied" element={<DeniedRedirect />} />
         <Route path="*" element={<CatchAllRedirect />} />
       </Routes>
     </CatalogProvider>
