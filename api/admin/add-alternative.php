@@ -373,19 +373,26 @@ try {
         }
     }
 
-    // 8. INSERT into entry_replacements
+    // 8. INSERT into entry_replacements (auto-creates missing US vendor entries)
     if (count($replacesUs) > 0) {
         $replStmt = $pdo->prepare('
             INSERT INTO entry_replacements (entry_id, raw_name, replaced_entry_id, sort_order)
             VALUES (:entry_id, :raw_name, :replaced_entry_id, :sort_order)
         ');
 
-        // Try to resolve US vendor names to existing entry IDs (exact match first, then aliases)
+        // Try to resolve US vendor names to existing entry IDs (exact match → alias → auto-create)
         $resolveStmt = $pdo->prepare('
             SELECT id FROM catalog_entries WHERE name = :name AND status = :status LIMIT 1
         ');
         $aliasStmt = $pdo->prepare('
             SELECT entry_id FROM us_vendor_aliases WHERE alias = :alias LIMIT 1
+        ');
+        $createVendorStmt = $pdo->prepare('
+            INSERT INTO catalog_entries (slug, name, status, country_code, is_active, source_file)
+            VALUES (:slug, :name, :status, :country_code, :is_active, :source_file)
+        ');
+        $createAliasStmt = $pdo->prepare('
+            INSERT IGNORE INTO us_vendor_aliases (alias, entry_id) VALUES (:alias, :entry_id)
         ');
 
         $replSortOrder = 0;
@@ -405,6 +412,36 @@ try {
                 $aliasStmt->execute(['alias' => $rawName]);
                 $aliasRow = $aliasStmt->fetch();
                 $replacedEntryId = $aliasRow !== false ? (int) $aliasRow['entry_id'] : null;
+            }
+
+            // 3) Auto-create missing US vendor entry + self-alias
+            if ($replacedEntryId === null) {
+                $vendorSlug = strtolower(trim(preg_replace('/[^a-z0-9]+/i', '-', $rawName), '-'));
+                if ($vendorSlug !== '') {
+                    // Check slug isn't already taken (could differ from name match above)
+                    $slugCheck = $pdo->prepare('SELECT id FROM catalog_entries WHERE slug = :slug');
+                    $slugCheck->execute(['slug' => $vendorSlug]);
+                    $existingBySlug = $slugCheck->fetch();
+
+                    if ($existingBySlug !== false) {
+                        // Slug exists but name didn't match — use the existing entry
+                        $replacedEntryId = (int) $existingBySlug['id'];
+                    } else {
+                        // Create new US vendor entry
+                        $createVendorStmt->execute([
+                            'slug' => $vendorSlug,
+                            'name' => $rawName,
+                            'status' => 'us',
+                            'country_code' => 'us',
+                            'is_active' => 1,
+                            'source_file' => 'auto',
+                        ]);
+                        $replacedEntryId = (int) $pdo->lastInsertId();
+                        // Add self-alias so future lookups by name resolve immediately
+                        $createAliasStmt->execute(['alias' => $rawName, 'entry_id' => $replacedEntryId]);
+                        error_log("euroalt-admin: auto-created US vendor '$rawName' (id=$replacedEntryId, slug=$vendorSlug)");
+                    }
+                }
             }
 
             $replStmt->execute([
