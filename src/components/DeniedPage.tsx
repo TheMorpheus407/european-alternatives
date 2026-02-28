@@ -475,14 +475,15 @@ function DeniedCard({ alternative }: { alternative: Alternative }) {
                       <span className="denied-card-sources-label">{t('denied:sources')}:</span>
                       <ul className="denied-card-sources-list">
                         {decision.sources.map((source, idx) => {
-                          const href = sanitizeHref(source);
+                          const href = sanitizeHref(source.url);
                           if (!href) return null;
-                          let displayUrl: string;
-                          try {
-                            displayUrl = new URL(href).hostname.replace(/^www\./, '');
-                          } catch {
-                            displayUrl = href;
-                          }
+                          const displayText = source.title || (() => {
+                            try {
+                              return new URL(href).hostname.replace(/^www\./, '');
+                            } catch {
+                              return href;
+                            }
+                          })();
                           return (
                             <li key={idx}>
                               <a
@@ -491,7 +492,7 @@ function DeniedCard({ alternative }: { alternative: Alternative }) {
                                 rel="noopener noreferrer"
                                 className="denied-card-source-link"
                               >
-                                {displayUrl}
+                                {displayText}
                               </a>
                             </li>
                           );

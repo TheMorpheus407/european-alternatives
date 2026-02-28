@@ -44,7 +44,7 @@ export interface DeniedDecision {
   removedIn?: string;
   rawCategoryLabel?: string;
   failedGateways?: string[];
-  sources?: string[];
+  sources?: Array<{ title: string; url: string }>;
 }
 
 export interface Reservation {
