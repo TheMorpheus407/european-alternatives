@@ -72,6 +72,8 @@
       "us": "US",
       "autocracy": "Autocracy"
     },
+    "dateAdded": "Added",
+    "newBadge": "NEW",
     "reservations": "Reservations",
     "positiveSignals": "Positive Signals",
     "reservationSource": "Source"

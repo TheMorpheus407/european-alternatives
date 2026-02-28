@@ -63,6 +63,15 @@ function getOpenSourceLevel(alternative: Pick<Alternative, 'isOpenSource' | 'ope
   return alternative.isOpenSource ? 'full' : 'none';
 }
 
+function formatDateAdded(dateStr: string, language: string): string {
+  const date = new Date(dateStr + 'T00:00:00');
+  if (isNaN(date.getTime())) return dateStr;
+  return date.toLocaleDateString(
+    language.startsWith('de') ? 'de-DE' : 'en-US',
+    { year: 'numeric', month: 'short', day: 'numeric' },
+  );
+}
+
 function getOpenSourceBadgeConfig(openSourceLevel: OpenSourceLevel): { className: string; labelKey: string } {
   switch (openSourceLevel) {
     case 'full':
@@ -224,6 +233,14 @@ export default function AlternativeCard({ alternative, viewMode, usVendorLookup 
   const openSourceBadge = getOpenSourceBadgeConfig(openSourceLevel);
   const visibleTags = alternative.tags.filter((tag) => !opennessTagKeys.has(normalizeTagKey(tag)));
 
+  const isNew = useMemo(() => {
+    if (!alternative.dateAdded) return false;
+    const added = new Date(alternative.dateAdded + 'T00:00:00');
+    if (isNaN(added.getTime())) return false;
+    const diffDays = (Date.now() - added.getTime()) / (1000 * 60 * 60 * 24);
+    return diffDays >= 0 && diffDays <= 30;
+  }, [alternative.dateAdded]);
+
   return (
     <motion.div
       className={`alt-card ${viewMode === 'list' ? 'list-view' : ''}`}
@@ -245,6 +262,11 @@ export default function AlternativeCard({ alternative, viewMode, usVendorLookup 
             <span className={`fi fi-${alternative.country} alt-card-logo-fallback`}></span>
           )}
           <span className={`fi fi-${alternative.country} alt-card-flag-badge`}></span>
+          {isNew && (
+            <span className="alt-card-new-badge" role="img" aria-label={t('browse:card.newBadge')}>
+              {t('browse:card.newBadge')}
+            </span>
+          )}
         </div>
         <div className="alt-card-title-section">
           <div className="alt-card-title-row">
@@ -481,7 +503,7 @@ export default function AlternativeCard({ alternative, viewMode, usVendorLookup 
                 <p className="alt-detail-text">{translatedDescription}</p>
               </div>
 
-              {(alternative.foundedYear != null || alternative.headquartersCity || alternative.license) && (
+              {(alternative.foundedYear != null || alternative.headquartersCity || alternative.license || alternative.dateAdded) && (
                 <div className="alt-detail-section">
                   <h4 className="alt-detail-title">{t('browse:card.details')}</h4>
                   <div className="alt-detail-meta">
@@ -504,6 +526,12 @@ export default function AlternativeCard({ alternative, viewMode, usVendorLookup 
                       <div className="alt-detail-meta-item">
                         <span className="alt-detail-meta-label">{t('browse:card.license')}</span>
                         <span className="alt-detail-meta-value">{alternative.license}</span>
+                      </div>
+                    )}
+                    {alternative.dateAdded && (
+                      <div className="alt-detail-meta-item">
+                        <span className="alt-detail-meta-label">{t('browse:card.dateAdded')}</span>
+                        <span className="alt-detail-meta-value">{formatDateAdded(alternative.dateAdded, i18n.language)}</span>
                       </div>
                     )}
                   </div>

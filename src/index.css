@@ -1739,6 +1739,25 @@ button:disabled {
   box-shadow: var(--shadow-sm);
 }
 
+.alt-card-new-badge {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  background: var(--accent-gradient);
+  color: #fff;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 1px 5px;
+  border-radius: 2px;
+  transform: rotate(-35deg);
+  line-height: 1.4;
+  box-shadow: var(--shadow-sm);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .alt-card-title-section {
   display: flex;
   flex-direction: column;
@@ -2624,6 +2643,13 @@ button:disabled {
 
   .alt-card-trust-breakdown-item-amount {
     min-width: 0;
+  }
+
+  .alt-card-new-badge {
+    top: -5px;
+    left: -5px;
+    font-size: 0.5rem;
+    padding: 1px 4px;
   }
 }
 
