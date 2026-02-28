@@ -2,16 +2,20 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../db.php';
+require_once __DIR__ . '/../cache.php';
 
 requireHttpMethod('GET');
 
+$locale = ($_GET['locale'] ?? 'en');
+if (!in_array($locale, ['en', 'de'], true)) {
+    $locale = 'en';
+}
+
+$cacheParams = ['locale' => $locale];
+serveCachedResponse('categories', $cacheParams);
+
 try {
     $pdo = getDatabaseConnection();
-
-    $locale = ($_GET['locale'] ?? 'en');
-    if (!in_array($locale, ['en', 'de'], true)) {
-        $locale = 'en';
-    }
 
     $nameCol = $locale === 'de'
         ? 'COALESCE(NULLIF(c.name_de, \'\'), c.name_en)'
@@ -71,19 +75,13 @@ try {
         ];
     }
 
-    http_response_code(200);
-    header('Content-Type: application/json; charset=utf-8');
-    header('Cache-Control: public, max-age=300, stale-while-revalidate=60');
-    header('X-Content-Type-Options: nosniff');
-
-    echo json_encode([
+    sendCacheableJsonResponse('categories', $cacheParams, [
         'data' => $data,
         'meta' => [
             'count'  => count($data),
             'locale' => $locale,
         ],
-    ], JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES);
-    exit;
+    ]);
 } catch (Throwable $exception) {
     error_log(sprintf('[api][catalog/categories] %s', $exception->getMessage()));
     sendJsonResponse(500, [

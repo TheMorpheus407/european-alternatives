@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../db.php';
+require_once __DIR__ . '/../cache.php';
 require_once __DIR__ . '/auth.php';
 
 requireHttpMethod('POST');
@@ -454,6 +455,7 @@ try {
     }
 
     $pdo->commit();
+    invalidateCache();
 
     sendJsonResponse(201, [
         'ok' => true,

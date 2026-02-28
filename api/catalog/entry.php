@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../db.php';
+require_once __DIR__ . '/../cache.php';
 require_once __DIR__ . '/helpers.php';
 require_once __DIR__ . '/scoring.php';
 
@@ -40,6 +41,13 @@ if (!in_array($locale, $validLocales, true)) {
         'detail' => 'Allowed values: ' . implode(', ', $validLocales),
     ]);
 }
+
+// ---------------------------------------------------------------------------
+// Cache check — serve cached response if available
+// ---------------------------------------------------------------------------
+
+$cacheParams = ['slug' => $slug, 'locale' => $locale];
+serveCachedResponse('entry', $cacheParams);
 
 // ---------------------------------------------------------------------------
 // Database connection
@@ -446,7 +454,7 @@ if ($deniedDecision !== null) {
 // 10. Send response
 // ---------------------------------------------------------------------------
 
-sendCachedJsonResponse([
+sendCacheableJsonResponse('entry', $cacheParams, [
     'data' => $entry,
     'meta' => [
         'locale' => $locale,

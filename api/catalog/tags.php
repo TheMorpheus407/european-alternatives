@@ -2,8 +2,11 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../db.php';
+require_once __DIR__ . '/../cache.php';
 
 requireHttpMethod('GET');
+
+serveCachedResponse('tags');
 
 try {
     $pdo = getDatabaseConnection();
@@ -30,18 +33,12 @@ try {
         ];
     }
 
-    http_response_code(200);
-    header('Content-Type: application/json; charset=utf-8');
-    header('Cache-Control: public, max-age=300, stale-while-revalidate=60');
-    header('X-Content-Type-Options: nosniff');
-
-    echo json_encode([
+    sendCacheableJsonResponse('tags', [], [
         'data' => $data,
         'meta' => [
             'count' => count($data),
         ],
-    ], JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES);
-    exit;
+    ]);
 } catch (Throwable $exception) {
     error_log(sprintf('[api][catalog/tags] %s', $exception->getMessage()));
     sendJsonResponse(500, [
