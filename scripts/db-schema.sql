@@ -5,7 +5,7 @@
 -- Date:             2026-02-27
 -- Engine:           MySQL 8.0+ (InnoDB)
 -- Charset:          utf8mb4 / utf8mb4_unicode_ci
--- Tables:           16
+-- Tables:           17
 -- Schema for European Alternatives database
 --
 -- This schema creates the full normalized catalog database for the European
@@ -18,9 +18,9 @@
 -- To tear down (reverse FK order):
 --   DROP TABLE IF EXISTS landing_group_categories, landing_category_groups,
 --     further_reading_resources, denied_decisions, scoring_metadata,
---     positive_signals, reservations, entry_replacements, category_us_vendors,
---     entry_tags, entry_categories, catalog_entries, tags,
---     categories, countries, schema_migrations;
+--     positive_signals, reservations, us_vendor_aliases, entry_replacements,
+--     category_us_vendors, entry_tags, entry_categories, catalog_entries,
+--     tags, categories, countries, schema_migrations;
 -- =============================================================================
 
 SET NAMES utf8mb4;
@@ -181,7 +181,21 @@ CREATE TABLE `entry_replacements` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------------
--- 10. reservations — trust reservations (penalties) for catalog entries
+-- 10. us_vendor_aliases — maps product names / abbreviations to US vendor entries
+--     Depends on: catalog_entries
+--     Example: alias "Adobe Photoshop" → entry_id for "Adobe" (or vice versa)
+-- ---------------------------------------------------------------------------
+CREATE TABLE `us_vendor_aliases` (
+  `id`       BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `alias`    VARCHAR(255)    NOT NULL,
+  `entry_id` BIGINT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_alias` (`alias`),
+  CONSTRAINT `fk_uva_entry` FOREIGN KEY (`entry_id`) REFERENCES `catalog_entries` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ---------------------------------------------------------------------------
+-- 11. reservations — trust reservations (penalties) for catalog entries
 --     Depends on: catalog_entries
 -- ---------------------------------------------------------------------------
 CREATE TABLE `reservations` (

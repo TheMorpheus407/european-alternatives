@@ -380,9 +380,12 @@ try {
             VALUES (:entry_id, :raw_name, :replaced_entry_id, :sort_order)
         ');
 
-        // Try to resolve US vendor names to existing entry IDs
+        // Try to resolve US vendor names to existing entry IDs (exact match first, then aliases)
         $resolveStmt = $pdo->prepare('
             SELECT id FROM catalog_entries WHERE name = :name AND status = :status LIMIT 1
+        ');
+        $aliasStmt = $pdo->prepare('
+            SELECT entry_id FROM us_vendor_aliases WHERE alias = :alias LIMIT 1
         ');
 
         $replSortOrder = 0;
@@ -392,9 +395,17 @@ try {
             }
             $rawName = trim($rawName);
 
+            // 1) Exact name match against US vendor catalog entries
             $resolveStmt->execute(['name' => $rawName, 'status' => 'us']);
             $usRow = $resolveStmt->fetch();
             $replacedEntryId = $usRow !== false ? (int) $usRow['id'] : null;
+
+            // 2) Alias fallback — check us_vendor_aliases table
+            if ($replacedEntryId === null) {
+                $aliasStmt->execute(['alias' => $rawName]);
+                $aliasRow = $aliasStmt->fetch();
+                $replacedEntryId = $aliasRow !== false ? (int) $aliasRow['entry_id'] : null;
+            }
 
             $replStmt->execute([
                 'entry_id' => $entryId,
