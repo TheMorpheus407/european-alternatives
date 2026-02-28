@@ -42,3 +42,7 @@ AGENTS.md
 # Local runtime secrets for PHP API
 api/config/*.local.php
 api/config/db.env.php
+api/config/admin-token.php
+
+# Research pipeline (contains operational prompts, not for public)
+scripts/research-alternative.sh

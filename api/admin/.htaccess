@@ -1,0 +1,13 @@
+# Deny directory listing and all files by default
+Options -Indexes
+
+# Ensure Authorization header reaches PHP (CGI/FastCGI/LiteSpeed may strip it)
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+
+# Block everything by default (PHP, logs, config files, etc.)
+Require all denied
+
+# Allow only the specific endpoint(s)
+<Files "add-alternative.php">
+    Require all granted
+</Files>
