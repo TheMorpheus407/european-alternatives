@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useCatalog } from '../contexts/CatalogContext';
 import { getLocalizedAlternativeDescription } from '../utils/alternativeText';
 import { getAlternativeCategories } from '../utils/alternativeCategories';
@@ -13,6 +13,10 @@ interface AlternativeCardProps {
   alternative: Alternative;
   viewMode: ViewMode;
   usVendorLookup: Map<string, Alternative>;
+  onExpand?: (id: string) => void;
+  overlayMode?: boolean;
+  isComparing?: boolean;
+  onToggleCompare?: (id: string) => void;
 }
 
 function getTrustBadgeClass(score: number): string {
@@ -93,9 +97,8 @@ function getOpenSourceBadgeConfig(openSourceLevel: OpenSourceLevel): { className
   }
 }
 
-export default function AlternativeCard({ alternative, viewMode, usVendorLookup }: AlternativeCardProps) {
+export default function AlternativeCard({ alternative, viewMode, usVendorLookup, onExpand, overlayMode, isComparing, onToggleCompare }: AlternativeCardProps) {
   const { categories } = useCatalog();
-  const [expanded, setExpanded] = useState(false);
   const [usVendorDetailsExpanded, setUsVendorDetailsExpanded] = useState(false);
   const [trustBreakdownExpanded, setTrustBreakdownExpanded] = useState(false);
   const [logoError, setLogoError] = useState(false);
@@ -108,7 +111,7 @@ export default function AlternativeCard({ alternative, viewMode, usVendorLookup 
     .join(' · ');
   const translatedDescription = getLocalizedAlternativeDescription(alternative, i18n.language);
   const description = (() => {
-    if (viewMode !== 'grid' || translatedDescription.length <= 120) return translatedDescription;
+    if (overlayMode || viewMode !== 'grid' || translatedDescription.length <= 120) return translatedDescription;
     const truncated = translatedDescription.slice(0, 120);
     const lastSpace = truncated.lastIndexOf(' ');
     return `${(lastSpace > 80 ? truncated.slice(0, lastSpace) : truncated).trim()}...`;
@@ -244,9 +247,9 @@ export default function AlternativeCard({ alternative, viewMode, usVendorLookup 
   return (
     <motion.div
       className={`alt-card ${viewMode === 'list' ? 'list-view' : ''}`}
-      whileHover={{ scale: viewMode === 'grid' ? 1.02 : 1.01 }}
+      whileHover={!overlayMode ? { scale: viewMode === 'grid' ? 1.02 : 1.01 } : undefined}
       transition={{ duration: 0.2 }}
-      layout
+      layout={!overlayMode}
     >
       <div className="alt-card-header">
         <div className="alt-card-logo-wrap">
@@ -292,7 +295,7 @@ export default function AlternativeCard({ alternative, viewMode, usVendorLookup 
                       fill="currentColor"
                       aria-hidden="true"
                     >
-                      <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                      <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
                     </svg>
                   </button>
                 ) : (
@@ -402,7 +405,7 @@ export default function AlternativeCard({ alternative, viewMode, usVendorLookup 
               fill="currentColor"
               aria-hidden="true"
             >
-              <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+              <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
             </svg>
           </button>
         </div>
@@ -470,92 +473,108 @@ export default function AlternativeCard({ alternative, viewMode, usVendorLookup 
         ))}
       </div>
 
-      <button
-        className="alt-card-expand"
-        onClick={() => setExpanded(!expanded)}
-        aria-expanded={expanded}
-        aria-controls={`alt-details-${alternative.id}`}
-      >
-        <span>{expanded ? t('browse:card.showLess') : t('browse:card.showMore')}</span>
-        <svg
-          className={`alt-card-expand-icon ${expanded ? 'rotated' : ''}`}
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-        </svg>
-      </button>
-
-      <AnimatePresence>
-        {expanded && (
-          <motion.div
-            id={`alt-details-${alternative.id}`}
-            className="alt-card-details"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
+      {!overlayMode && (
+        <div className="alt-card-expand-row">
+          <button
+            className="alt-card-expand"
+            onClick={() => onExpand?.(alternative.id)}
+            aria-expanded={false}
+            aria-controls={`alt-details-${alternative.id}`}
           >
-            <div className="alt-card-details-content">
+            <span>{t('browse:card.showMore')}</span>
+            <svg
+              className="alt-card-expand-icon"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+            </svg>
+          </button>
+          <button
+            className={`alt-card-compare-toggle ${isComparing ? 'active' : ''}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggleCompare?.(alternative.id);
+            }}
+            aria-pressed={isComparing}
+            title={isComparing ? 'Aus Vergleich entfernen' : 'Zum Vergleich hinzufügen'}
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              {isComparing ? (
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+              ) : (
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+              )}
+            </svg>
+          </button>
+        </div>
+      )}
+
+      {overlayMode && (
+        <div
+          id={`alt-details-${alternative.id}`}
+          className="alt-card-details"
+        >
+          <div className="alt-card-details-content">
+            <div className="alt-detail-section">
+              <h4 className="alt-detail-title">{t('browse:card.about')}</h4>
+              <p className="alt-detail-text">{translatedDescription}</p>
+            </div>
+
+            {(alternative.foundedYear != null || alternative.headquartersCity || alternative.license || alternative.dateAdded) && (
               <div className="alt-detail-section">
-                <h4 className="alt-detail-title">{t('browse:card.about')}</h4>
-                <p className="alt-detail-text">{translatedDescription}</p>
+                <h4 className="alt-detail-title">{t('browse:card.details')}</h4>
+                <div className="alt-detail-meta">
+                  {alternative.foundedYear != null && (
+                    <div className="alt-detail-meta-item">
+                      <span className="alt-detail-meta-label">{t('browse:card.founded')}</span>
+                      <span className="alt-detail-meta-value">{alternative.foundedYear}</span>
+                    </div>
+                  )}
+                  {alternative.headquartersCity && (
+                    <div className="alt-detail-meta-item">
+                      <span className="alt-detail-meta-label">{t('browse:card.headquarters')}</span>
+                      <span className="alt-detail-meta-value">
+                        {alternative.headquartersCity}
+                        <span className={`fi fi-${alternative.country} alt-detail-meta-flag`}></span>
+                      </span>
+                    </div>
+                  )}
+                  {alternative.license && (
+                    <div className="alt-detail-meta-item">
+                      <span className="alt-detail-meta-label">{t('browse:card.license')}</span>
+                      <span className="alt-detail-meta-value">{alternative.license}</span>
+                    </div>
+                  )}
+                  {alternative.dateAdded && (
+                    <div className="alt-detail-meta-item">
+                      <span className="alt-detail-meta-label">{t('browse:card.dateAdded')}</span>
+                      <span className="alt-detail-meta-value">{formatDateAdded(alternative.dateAdded, i18n.language)}</span>
+                    </div>
+                  )}
+                </div>
               </div>
+            )}
 
-              {(alternative.foundedYear != null || alternative.headquartersCity || alternative.license || alternative.dateAdded) && (
-                <div className="alt-detail-section">
-                  <h4 className="alt-detail-title">{t('browse:card.details')}</h4>
-                  <div className="alt-detail-meta">
-                    {alternative.foundedYear != null && (
-                      <div className="alt-detail-meta-item">
-                        <span className="alt-detail-meta-label">{t('browse:card.founded')}</span>
-                        <span className="alt-detail-meta-value">{alternative.foundedYear}</span>
-                      </div>
-                    )}
-                    {alternative.headquartersCity && (
-                      <div className="alt-detail-meta-item">
-                        <span className="alt-detail-meta-label">{t('browse:card.headquarters')}</span>
-                        <span className="alt-detail-meta-value">
-                          {alternative.headquartersCity}
-                          <span className={`fi fi-${alternative.country} alt-detail-meta-flag`}></span>
-                        </span>
-                      </div>
-                    )}
-                    {alternative.license && (
-                      <div className="alt-detail-meta-item">
-                        <span className="alt-detail-meta-label">{t('browse:card.license')}</span>
-                        <span className="alt-detail-meta-value">{alternative.license}</span>
-                      </div>
-                    )}
-                    {alternative.dateAdded && (
-                      <div className="alt-detail-meta-item">
-                        <span className="alt-detail-meta-label">{t('browse:card.dateAdded')}</span>
-                        <span className="alt-detail-meta-value">{formatDateAdded(alternative.dateAdded, i18n.language)}</span>
-                      </div>
-                    )}
-                  </div>
+            {visibleTags.length > 0 && (
+              <div className="alt-detail-section">
+                <h4 className="alt-detail-title">{t('browse:card.tags')}</h4>
+                <div className="alt-detail-tags">
+                  {visibleTags.map((tag) => (
+                    <span key={tag} className="alt-detail-tag">{tag}</span>
+                  ))}
                 </div>
-              )}
+              </div>
+            )}
 
-              {visibleTags.length > 0 && (
-                <div className="alt-detail-section">
-                  <h4 className="alt-detail-title">{t('browse:card.tags')}</h4>
-                  <div className="alt-detail-tags">
-                    {visibleTags.map((tag) => (
-                      <span key={tag} className="alt-detail-tag">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {hasReservations && (
-                <div className="alt-detail-section">
-                  <h4 className="alt-detail-title">{t('browse:card.reservations')}</h4>
-                  <ul className="alt-detail-reservations">
-                    {alternative.reservations?.map((reservation) => {
-                      const reservationScore = reservationBreakdownById.get(reservation.id);
-                      return (
+            {hasReservations && (
+              <div className="alt-detail-section">
+                <h4 className="alt-detail-title">{t('browse:card.reservations')}</h4>
+                <ul className="alt-detail-reservations">
+                  {alternative.reservations?.map((reservation) => {
+                    const reservationScore = reservationBreakdownById.get(reservation.id);
+                    return (
                       <li key={reservation.id} className="alt-detail-reservation-item">
                         {reservationScore && (
                           <div className="alt-detail-score-meta">
@@ -583,18 +602,19 @@ export default function AlternativeCard({ alternative, viewMode, usVendorLookup 
                           </a>
                         )}
                       </li>
-                    )})}
-                  </ul>
-                </div>
-              )}
+                    )
+                  })}
+                </ul>
+              </div>
+            )}
 
-              {hasPositiveSignals && (
-                <div className="alt-detail-section">
-                  <h4 className="alt-detail-title">{t('browse:card.positiveSignals')}</h4>
-                  <ul className="alt-detail-signals">
-                    {alternative.positiveSignals?.map((signal) => {
-                      const signalScore = signalBreakdownById.get(signal.id);
-                      return (
+            {hasPositiveSignals && (
+              <div className="alt-detail-section">
+                <h4 className="alt-detail-title">{t('browse:card.positiveSignals')}</h4>
+                <ul className="alt-detail-signals">
+                  {alternative.positiveSignals?.map((signal) => {
+                    const signalScore = signalBreakdownById.get(signal.id);
+                    return (
                       <li key={signal.id} className="alt-detail-signal-item">
                         {signalScore && (
                           <div className="alt-detail-score-meta">
@@ -622,59 +642,59 @@ export default function AlternativeCard({ alternative, viewMode, usVendorLookup 
                           </a>
                         )}
                       </li>
-                    )})}
-                  </ul>
-                </div>
-              )}
+                    )
+                  })}
+                </ul>
+              </div>
+            )}
 
-              <div className="alt-card-actions">
+            <div className="alt-card-actions">
+              <a
+                href={sanitizeHref(alternative.website) ?? '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="alt-card-link alt-card-link-primary"
+                aria-label={t('browse:card.visitWebsite', { name: alternative.name })}
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                </svg>
+                {t('browse:card.website')}
+              </a>
+              {alternative.sourceCodeUrl && (
                 <a
-                  href={sanitizeHref(alternative.website) ?? '#'}
+                  href={sanitizeHref(alternative.sourceCodeUrl) ?? '#'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="alt-card-link alt-card-link-primary"
-                  aria-label={t('browse:card.visitWebsite', { name: alternative.name })}
+                  className="alt-card-link alt-card-link-secondary"
+                  aria-label={t('browse:card.sourceCode', { name: alternative.name })}
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    <path d="M8.7 16.7 4 12l4.7-4.7 1.4 1.4L6.8 12l3.3 3.3-1.4 1.4zm6.6 0-1.4-1.4 3.3-3.3-3.3-3.3 1.4-1.4L20 12l-4.7 4.7z" />
                   </svg>
-                  {t('browse:card.website')}
+                  {t('browse:card.sourceCodeLabel')}
                 </a>
-                {alternative.sourceCodeUrl && (
-                  <a
-                    href={sanitizeHref(alternative.sourceCodeUrl) ?? '#'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="alt-card-link alt-card-link-secondary"
-                    aria-label={t('browse:card.sourceCode', { name: alternative.name })}
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M8.7 16.7 4 12l4.7-4.7 1.4 1.4L6.8 12l3.3 3.3-1.4 1.4zm6.6 0-1.4-1.4 3.3-3.3-3.3-3.3 1.4-1.4L20 12l-4.7 4.7z"/>
-                    </svg>
-                    {t('browse:card.sourceCodeLabel')}
-                  </a>
-                )}
-                {alternative.actionLinks?.map((link) => (
-                  <a
-                    key={`${alternative.id}-${link.url}`}
-                    href={sanitizeHref(link.url) ?? '#'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="alt-card-link alt-card-link-secondary"
-                    aria-label={t('browse:card.visitWebsite', { name: link.label })}
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                      <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z"/>
-                      <path d="M5 5h6v2H7v10h10v-4h2v6H5V5z"/>
-                    </svg>
-                    {link.label}
-                  </a>
-                ))}
-              </div>
+              )}
+              {alternative.actionLinks?.map((link) => (
+                <a
+                  key={`${alternative.id}-${link.url}`}
+                  href={sanitizeHref(link.url) ?? '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="alt-card-link alt-card-link-secondary"
+                  aria-label={t('browse:card.visitWebsite', { name: link.label })}
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z" />
+                    <path d="M5 5h6v2H7v10h10v-4h2v6H5V5z" />
+                  </svg>
+                  {link.label}
+                </a>
+              ))}
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+          </div>
+        </div>
+      )}
+    </motion.div >
   );
 }
