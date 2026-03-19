@@ -77,5 +77,13 @@
     "reservations": "Vorbehalte",
     "positiveSignals": "Positive Signale",
     "reservationSource": "Quelle"
+  },
+  "compare": {
+    "addToCompare": "Zum Vergleich hinzufügen",
+    "removeFromCompare": "Aus Vergleich entfernen",
+    "selectedCount_one": "{{count}} Karte zum Vergleich ausgewählt",
+    "selectedCount_other": "{{count}} Karten zum Vergleich ausgewählt",
+    "open": "Vergleichen",
+    "close": "Schließen"
   }
 }

@@ -351,13 +351,13 @@ export default function BrowsePage() {
       {compareCardIds.size > 0 && expandedCardIds.size === 0 && (
         <div className="compare-floating-bar">
           <span className="compare-floating-count">
-            {compareCardIds.size} {compareCardIds.size === 1 ? 'Karte' : 'Karten'} zum Vergleich ausgewählt
+            {t('compare.selectedCount', { count: compareCardIds.size })}
           </span>
           <button className="compare-floating-open" onClick={handleOpenCompare}>
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3zm1-4h-2v2h2v-2z" />
             </svg>
-            Vergleichen
+            {t('compare.open')}
           </button>
           <button className="compare-floating-clear" onClick={handleClearCompare}>
             ✕
@@ -378,7 +378,7 @@ export default function BrowsePage() {
                 <button
                   className="card-overlay-close"
                   onClick={() => handleCollapse(alternative.id)}
-                  aria-label="Close"
+                  aria-label={t('compare.close')}
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />

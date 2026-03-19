@@ -478,8 +478,7 @@ export default function AlternativeCard({ alternative, viewMode, usVendorLookup,
           <button
             className="alt-card-expand"
             onClick={() => onExpand?.(alternative.id)}
-            aria-expanded={false}
-            aria-controls={`alt-details-${alternative.id}`}
+            aria-haspopup="dialog"
           >
             <span>{t('browse:card.showMore')}</span>
             <svg
@@ -498,7 +497,7 @@ export default function AlternativeCard({ alternative, viewMode, usVendorLookup,
               onToggleCompare?.(alternative.id);
             }}
             aria-pressed={isComparing}
-            title={isComparing ? 'Aus Vergleich entfernen' : 'Zum Vergleich hinzufügen'}
+            title={isComparing ? t('browse:compare.removeFromCompare') : t('browse:compare.addToCompare')}
           >
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               {isComparing ? (
@@ -695,6 +694,6 @@ export default function AlternativeCard({ alternative, viewMode, usVendorLookup,
           </div>
         </div>
       )}
-    </motion.div >
+    </motion.div>
   );
 }
