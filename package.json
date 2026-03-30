@@ -21,26 +21,26 @@
     "@fontsource/oswald": "^5.2.8",
     "@fontsource/roboto": "^5.2.10",
     "flag-icons": "^7.5.0",
-    "framer-motion": "^12.29.2",
+    "framer-motion": "^12.38.0",
     "i18next": "^25.8.4",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-i18next": "^16.5.4",
-    "react-router-dom": "^7.13.0"
+    "react-router-dom": "^7.13.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.0",
-    "@php-wasm/node": "^3.1.12",
+    "@php-wasm/node": "^3.1.13",
     "@php-wasm/universal": "^3.1.12",
-    "@types/react": "^19.1.8",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.5.2",
     "eslint": "^9.39.0",
     "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
+    "eslint-plugin-react-refresh": "^0.5.2",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.35.0",
+    "typescript-eslint": "^8.57.2",
     "vite": "^7.2.0",
-    "vitest": "^4.0.18"
+    "vitest": "^4.1.2"
   }
 }
