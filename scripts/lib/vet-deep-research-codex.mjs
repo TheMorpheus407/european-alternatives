@@ -114,6 +114,14 @@ function normalizeHost(url) {
   return host === "" ? null : host;
 }
 
+function hostsMatch(a, b) {
+  if (a === b) {
+    return true;
+  }
+
+  return a.endsWith(`.${b}`) || b.endsWith(`.${a}`);
+}
+
 function collectHostsFromBody(content) {
   if (typeof content !== "string" || content === "") {
     return [];
@@ -285,10 +293,33 @@ export function matchDocument({
 
   const winningSlug = candidates[0];
   const entry = bySlug.get(winningSlug);
+  const sources = candidateSources.get(winningSlug) ?? [];
 
-  return entryToResult(
-    entry,
-    documentPath,
-    candidateSources.get(winningSlug) ?? [],
-  );
+  // Domain-corroboration guard: a slug-only match (e.g. by filename) can
+  // pair a document to an unrelated catalog entry that merely shares the
+  // same name on a different domain (the "graphite.com" doc vs the
+  // "graphite.art" entry). When the match was not already corroborated by a
+  // body URL, require that the entry's website host appears among the hosts
+  // extracted from the document body. Only enforce this when the comparison
+  // is actually possible: the entry has a parseable host AND the document
+  // yielded at least one host. Otherwise fall back to the existing match.
+  if (!sources.includes("website")) {
+    const entryHost = normalizeHost(entry.website);
+
+    if (
+      entryHost !== null &&
+      hosts.length > 0 &&
+      !hosts.some((host) => hostsMatch(entryHost, host))
+    ) {
+      return {
+        documentPath,
+        reason: "website_mismatch",
+        rejectedSlug: entry.slug,
+        rejectedWebsite: entry.website,
+        documentHosts: hosts,
+      };
+    }
+  }
+
+  return entryToResult(entry, documentPath, sources);
 }

@@ -37,6 +37,9 @@ type MatchResult = {
   matchedVia?: string[];
   reason?: string;
   candidates?: string[];
+  rejectedSlug?: string;
+  rejectedWebsite?: string;
+  documentHosts?: string[];
 };
 
 type LibModule = {
@@ -334,6 +337,125 @@ describe("vet-deep-research-codex matchDocument", () => {
 
     expect(result.entrySlug).toBe("proton-mail");
     expect(result.matchedVia).toEqual(["filename", "website"]);
+  });
+
+  it("rejects a slug-only match when the entry website host is absent from the document hosts (graphite.com vs graphite.art)", async () => {
+    const { matchDocument } = await loadLibModule();
+
+    const snapshotEntries: ActiveEntry[] = [
+      {
+        id: 9,
+        slug: "graphite",
+        name: "Graphite",
+        website: "https://graphite.art/",
+      },
+    ];
+
+    const result = matchDocument({
+      documentPath: "tmp/deep/graphite.md",
+      content:
+        "# Graphite\nAI code review at https://graphite.com and https://graphite.dev/docs\n",
+      snapshotEntries,
+    });
+
+    expect(result.entrySlug).toBeUndefined();
+    expect(result.reason).toBe("website_mismatch");
+    expect(result.rejectedSlug).toBe("graphite");
+    expect(result.rejectedWebsite).toBe("https://graphite.art/");
+    expect(result.documentHosts).toEqual(["graphite.com", "graphite.dev"]);
+  });
+
+  it("keeps a slug match when the entry website host appears in the document hosts", async () => {
+    const { matchDocument } = await loadLibModule();
+
+    const snapshotEntries: ActiveEntry[] = [
+      {
+        id: 9,
+        slug: "graphite",
+        name: "Graphite",
+        website: "https://graphite.art/",
+      },
+    ];
+
+    const result = matchDocument({
+      documentPath: "tmp/deep/graphite.md",
+      content:
+        "# Graphite\nThe open-source editor lives at https://graphite.art/learn\n",
+      snapshotEntries,
+    });
+
+    expect(result.entrySlug).toBe("graphite");
+    expect(result.reason).toBeUndefined();
+    expect(result.matchedVia).toEqual(["filename", "website"]);
+  });
+
+  it("accepts a slug match when the entry host is a parent of a document subdomain host", async () => {
+    const { matchDocument } = await loadLibModule();
+
+    const snapshotEntries: ActiveEntry[] = [
+      {
+        id: 9,
+        slug: "graphite",
+        name: "Graphite",
+        website: "https://graphite.art/",
+      },
+    ];
+
+    const result = matchDocument({
+      documentPath: "tmp/deep/graphite.md",
+      content: "# Graphite\nApp at https://app.graphite.art/dashboard\n",
+      snapshotEntries,
+    });
+
+    expect(result.entrySlug).toBe("graphite");
+    expect(result.reason).toBeUndefined();
+  });
+
+  it("falls back to the slug match when the document yields no hosts (comparison impossible)", async () => {
+    const { matchDocument } = await loadLibModule();
+
+    const snapshotEntries: ActiveEntry[] = [
+      {
+        id: 9,
+        slug: "graphite",
+        name: "Graphite",
+        website: "https://graphite.art/",
+      },
+    ];
+
+    const result = matchDocument({
+      documentPath: "tmp/deep/graphite.md",
+      content: "# Graphite\nA standalone vector editor with no links.\n",
+      snapshotEntries,
+    });
+
+    expect(result.entrySlug).toBe("graphite");
+    expect(result.reason).toBeUndefined();
+    expect(result.matchedVia).toEqual(["filename"]);
+  });
+
+  it("falls back to the slug match when the entry has no parseable website (comparison impossible)", async () => {
+    const { matchDocument } = await loadLibModule();
+
+    const snapshotEntries: ActiveEntry[] = [
+      {
+        id: 9,
+        slug: "graphite",
+        name: "Graphite",
+        website: null,
+      },
+    ];
+
+    const result = matchDocument({
+      documentPath: "tmp/deep/graphite.md",
+      content:
+        "# Graphite\nAI code review at https://graphite.com and https://graphite.dev/docs\n",
+      snapshotEntries,
+    });
+
+    expect(result.entrySlug).toBe("graphite");
+    expect(result.reason).toBeUndefined();
+    expect(result.matchedVia).toEqual(["filename"]);
   });
 });
 
