@@ -22,10 +22,10 @@
     "@fontsource/roboto": "^5.2.10",
     "flag-icons": "^7.5.0",
     "framer-motion": "^12.42.0",
-    "i18next": "^25.8.4",
+    "i18next": "^26.0.10",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "react-i18next": "^16.5.4",
+    "react-i18next": "^17.0.7",
     "react-router-dom": "^7.18.0"
   },
   "devDependencies": {
@@ -38,7 +38,7 @@
     "eslint": "^10.5.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.3",
-    "typescript": "~5.8.3",
+    "typescript": "~6.0.3",
     "typescript-eslint": "^8.62.0",
     "vite": "^8.0.16",
     "vitest": "^4.1.9"
