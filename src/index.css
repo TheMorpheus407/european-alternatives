@@ -3340,6 +3340,13 @@ button:disabled {
   grid-template-columns: 1fr;
 }
 
+/* Grid item wrapper around each card. Without min-width: 0 the implicit
+   minmax(auto, 1fr) tracks are floored by the card's min-content size,
+   forcing the grid to overflow the viewport horizontally. */
+.browse-morph-card {
+  min-width: 0;
+}
+
 .alt-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
