@@ -3460,11 +3460,13 @@ button:disabled {
   min-width: 0;
 }
 
+/* Stack title above the trust score so the name always gets the
+   card's full width and wraps far less (issue #549). */
 .alt-card-title-row {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-xs);
   width: 100%;
 }
 
@@ -4646,14 +4648,6 @@ body.overlay-open {
   .alt-card-us-vendor-summary {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .alt-card-title-row {
-    flex-wrap: wrap;
-  }
-
-  .alt-card-trust-stamp {
-    white-space: normal;
   }
 
   .alt-card-trust-breakdown-item {
