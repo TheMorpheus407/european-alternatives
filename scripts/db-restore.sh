@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
+
+# shellcheck source=scripts/lib/load-php-env.sh
+source "$SCRIPT_DIR/lib/load-php-env.sh"
+
 # =============================================================================
 # European Alternatives — Database Restore
 # =============================================================================
@@ -16,6 +22,9 @@ set -euo pipefail
 #   EUROALT_DB_NAME   (required) Database name
 #   EUROALT_DB_USER   (required) MySQL user
 #   EUROALT_DB_PASS   (required) MySQL password
+#
+# Local development: gitignored api/config/db.env.php is loaded automatically
+# when these variables are not already exported.
 # =============================================================================
 
 # ---------------------------------------------------------------------------
@@ -56,6 +65,14 @@ if [ ! -f "$BACKUP_FILE" ]; then
     echo "ERROR: File not found: $BACKUP_FILE" >&2
     exit 1
 fi
+
+load_euroalt_php_env_vars "$PROJECT_DIR" \
+    EUROALT_DB_HOST \
+    EUROALT_DB_PORT \
+    EUROALT_DB_NAME \
+    EUROALT_DB_USER \
+    EUROALT_DB_PASS \
+    EUROALT_DB_CHARSET
 
 # ---------------------------------------------------------------------------
 # Validate required environment variables

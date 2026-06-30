@@ -6,6 +6,9 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 RUNNER="$SCRIPT_DIR/insert-verified-alternative-run.mjs"
 
+# shellcheck source=scripts/lib/load-php-env.sh
+source "$SCRIPT_DIR/lib/load-php-env.sh"
+
 usage() {
     cat <<'USAGE'
 Usage:
@@ -26,6 +29,8 @@ Options:
 Environment:
   EUROALT_API_BASE                Base URL of the API host (required).
   EUROALT_ADMIN_TOKEN             Admin bearer token (required for non-dry-run).
+                                  The wrapper auto-loads gitignored local PHP
+                                  env files before invoking the Node runner.
 USAGE
 }
 
@@ -80,4 +85,5 @@ if ! command -v node >/dev/null 2>&1; then
 fi
 
 cd "$REPO_ROOT"
+load_euroalt_php_env_vars "$REPO_ROOT" EUROALT_API_BASE EUROALT_ADMIN_TOKEN
 exec node "$RUNNER" "${ARGS[@]}"

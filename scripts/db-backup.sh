@@ -16,11 +16,24 @@ set -euo pipefail
 #   EUROALT_DB_USER   (required) MySQL user
 #   EUROALT_DB_PASS   (required) MySQL password
 #   RETENTION_DAYS    (optional, default: 30) Delete backups older than N days
+#
+# Local development: gitignored api/config/db.env.php is loaded automatically
+# when these variables are not already exported.
 # =============================================================================
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 BACKUP_DIR="$PROJECT_DIR/tmp/backups"
+
+# shellcheck source=scripts/lib/load-php-env.sh
+source "$SCRIPT_DIR/lib/load-php-env.sh"
+load_euroalt_php_env_vars "$PROJECT_DIR" \
+    EUROALT_DB_HOST \
+    EUROALT_DB_PORT \
+    EUROALT_DB_NAME \
+    EUROALT_DB_USER \
+    EUROALT_DB_PASS \
+    EUROALT_DB_CHARSET
 
 # ---------------------------------------------------------------------------
 # Validate required environment variables

@@ -540,7 +540,9 @@ Remote deployments should also keep MySQL secure transport mandatory on the serv
 
 See `api/config/db.env.example.php` for the template.
 
-For local development, `api/config/db.env.php` is loaded automatically when present. That file is gitignored and uses the same `putenv(...)` format as `api/config/db.env.example.php`. You can still override this by exporting `EUROALT_DB_*` variables directly or by setting `EUROALT_ENV_LOADER` to an approved secrets-loader path.
+For local development, `api/config/db.env.php` is loaded automatically when present. That file is gitignored and uses the same `putenv(...)` format as `api/config/db.env.example.php`. Bash wrappers that need DB credentials, such as `scripts/db-backup.sh` and `scripts/db-restore.sh`, also load the same local PHP env file before validating `EUROALT_DB_*`. You can still override this by exporting `EUROALT_DB_*` variables directly or by setting `EUROALT_ENV_LOADER` to an approved secrets-loader path.
+
+The local admin bearer token may be kept in gitignored `api/config/admin-token.php`. Local PHP admin endpoints and the `scripts/insert-verified-alternative.sh` wrapper load it automatically when `EUROALT_ADMIN_TOKEN` is not already exported. Non-dry-run API clients still require an explicit `EUROALT_API_BASE` unless that value is also supplied by the local PHP env file.
 
 ---
 

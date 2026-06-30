@@ -8,6 +8,7 @@ const APP_ADMIN_TOKEN_PATH_ENV = 'EUROALT_ADMIN_TOKEN_PATH';
 const APP_ADMIN_RATE_LIMIT_DIR_ENV = 'EUROALT_ADMIN_RATE_LIMIT_DIR';
 const APP_ADMIN_RATE_LIMIT_NOW_ENV = 'EUROALT_ADMIN_AUTH_NOW';
 const DEFAULT_ADMIN_TOKEN_PATH = '/home/u688914453/.secrets/euroalt-admin-token.php';
+const LOCAL_ADMIN_TOKEN_PATH = __DIR__ . '/../config/admin-token.php';
 const DEFAULT_ADMIN_RATE_LIMIT_DIR = '/home/u688914453/.local/state/euroalt-admin-auth';
 const ADMIN_AUTH_SHORT_WINDOW_SECONDS = 900;
 const ADMIN_AUTH_SHORT_WINDOW_MAX_FAILURES = 5;
@@ -28,15 +29,42 @@ function loadAdminToken(): string
     }
 
     $envPath = getenv(APP_ADMIN_TOKEN_PATH_ENV);
-    $tokenPath = is_string($envPath) && $envPath !== '' ? $envPath : DEFAULT_ADMIN_TOKEN_PATH;
+    if (is_string($envPath) && $envPath !== '') {
+        $token = loadAdminTokenFromRestrictedPath($envPath);
+        if ($token !== null) {
+            return $token;
+        }
+
+        throw new RuntimeException('Admin token is not configured.');
+    }
+
+    $token = loadAdminTokenFromRestrictedPath(DEFAULT_ADMIN_TOKEN_PATH);
+    if ($token !== null) {
+        return $token;
+    }
+
+    $token = loadLocalAdminToken();
+    if ($token !== null) {
+        return $token;
+    }
+
+    throw new RuntimeException('Admin token is not configured.');
+}
+
+function loadAdminTokenFromRestrictedPath(string $tokenPath): ?string
+{
     // Defense-in-depth: restrict token file to the secrets directory to prevent
     // require_once of arbitrary paths if the env var is ever controllable (e.g., misconfigured CGI/FastCGI).
     $realTokenPath = realpath($tokenPath);
     if ($realTokenPath === false) {
-        // File does not exist — fall through to the RuntimeException below
-    } elseif (!str_starts_with($realTokenPath, APP_SECRETS_DIRECTORY)) {
+        return null;
+    }
+
+    if (!str_starts_with($realTokenPath, APP_SECRETS_DIRECTORY)) {
         throw new RuntimeException('Admin token path is outside the allowed directory.');
-    } elseif (is_readable($realTokenPath)) {
+    }
+
+    if (is_readable($realTokenPath)) {
         require_once $realTokenPath;
         $token = getenv(APP_ADMIN_TOKEN_ENV);
         if (is_string($token) && $token !== '') {
@@ -44,7 +72,34 @@ function loadAdminToken(): string
         }
     }
 
-    throw new RuntimeException('Admin token is not configured.');
+    return null;
+}
+
+function loadLocalAdminToken(): ?string
+{
+    $realTokenPath = realpath(LOCAL_ADMIN_TOKEN_PATH);
+    if ($realTokenPath === false) {
+        return null;
+    }
+
+    $realLocalConfigDirectory = realpath(__DIR__ . '/../config');
+    if ($realLocalConfigDirectory === false) {
+        return null;
+    }
+
+    if (!str_starts_with($realTokenPath, $realLocalConfigDirectory . DIRECTORY_SEPARATOR)) {
+        throw new RuntimeException('Local admin token path is outside the API config directory.');
+    }
+
+    if (is_readable($realTokenPath)) {
+        require_once $realTokenPath;
+        $token = getenv(APP_ADMIN_TOKEN_ENV);
+        if (is_string($token) && $token !== '') {
+            return validateTokenFormat($token);
+        }
+    }
+
+    return null;
 }
 
 function validateTokenFormat(string $token): string
