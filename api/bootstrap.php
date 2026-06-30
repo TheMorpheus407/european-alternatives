@@ -11,6 +11,7 @@ const APP_DB_CONFIG_ENV = 'EUROALT_DB_CONFIG';
 const DEFAULT_DB_CONFIG_PATH = '/home/u688914453/.secrets/euroalt-db.php';
 const APP_ENV_LOADER_PATH_ENV = 'EUROALT_ENV_LOADER';
 const DEFAULT_ENV_LOADER_PATH = '/home/u688914453/.secrets/euroalt-db-env.php';
+const LOCAL_ENV_LOADER_PATH = __DIR__ . '/config/db.env.php';
 const STRICT_TRANSPORT_SECURITY_HEADER_VALUE = 'max-age=31536000; includeSubDomains; preload';
 const CONTENT_SECURITY_POLICY_HEADER_VALUE = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests";
 const REFERRER_POLICY_HEADER_VALUE = 'strict-origin-when-cross-origin';
@@ -221,23 +222,64 @@ function loadEnvironmentOverrides(): void
     }
     $loaded = true;
 
-    $envLoaderPath = getenv(APP_ENV_LOADER_PATH_ENV) ?: DEFAULT_ENV_LOADER_PATH;
-    if (!is_string($envLoaderPath) || $envLoaderPath === '') {
+    $configuredEnvLoaderPath = getenv(APP_ENV_LOADER_PATH_ENV);
+    if (is_string($configuredEnvLoaderPath)) {
+        if ($configuredEnvLoaderPath === '') {
+            return;
+        }
+
+        loadRestrictedEnvironmentLoader($configuredEnvLoaderPath);
         return;
     }
 
+    if (loadRestrictedEnvironmentLoader(DEFAULT_ENV_LOADER_PATH)) {
+        return;
+    }
+
+    loadLocalEnvironmentLoader();
+}
+
+function loadRestrictedEnvironmentLoader(string $envLoaderPath): bool
+{
     // Defense-in-depth: restrict env loader file to the secrets directory to prevent
     // require_once of arbitrary paths if the env var is ever controllable (e.g., misconfigured CGI/FastCGI).
     $realEnvLoaderPath = realpath($envLoaderPath);
     if ($realEnvLoaderPath === false) {
-        return;
+        return false;
     }
     if (!str_starts_with($realEnvLoaderPath, APP_SECRETS_DIRECTORY)) {
         throw new RuntimeException('Env loader path is outside the allowed directory.');
     }
     if (is_readable($realEnvLoaderPath)) {
         require_once $realEnvLoaderPath;
+        return true;
     }
+
+    return false;
+}
+
+function loadLocalEnvironmentLoader(): bool
+{
+    $realEnvLoaderPath = realpath(LOCAL_ENV_LOADER_PATH);
+    if ($realEnvLoaderPath === false) {
+        return false;
+    }
+
+    $realLocalConfigDirectory = realpath(__DIR__ . '/config');
+    if ($realLocalConfigDirectory === false) {
+        return false;
+    }
+
+    if (!str_starts_with($realEnvLoaderPath, $realLocalConfigDirectory . DIRECTORY_SEPARATOR)) {
+        throw new RuntimeException('Local env loader path is outside the API config directory.');
+    }
+
+    if (is_readable($realEnvLoaderPath)) {
+        require_once $realEnvLoaderPath;
+        return true;
+    }
+
+    return false;
 }
 
 /**

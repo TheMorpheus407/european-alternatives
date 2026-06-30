@@ -540,7 +540,7 @@ Remote deployments should also keep MySQL secure transport mandatory on the serv
 
 See `api/config/db.env.example.php` for the template.
 
-For local development, set environment variables or point `EUROALT_ENV_LOADER` to a local env loader file.
+For local development, `api/config/db.env.php` is loaded automatically when present. That file is gitignored and uses the same `putenv(...)` format as `api/config/db.env.example.php`. You can still override this by exporting `EUROALT_DB_*` variables directly or by setting `EUROALT_ENV_LOADER` to an approved secrets-loader path.
 
 ---
 
