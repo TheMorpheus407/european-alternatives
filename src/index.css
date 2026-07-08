@@ -3409,7 +3409,15 @@ button:disabled {
   height: 56px;
   border-radius: var(--radius-md);
   object-fit: contain;
-  background: var(--bg-secondary);
+  /* Constant light chip in both themes (the old theme-flipping background hid
+     dark logos on the dark theme — the reason 31 logos needed pale `-dark-safe`
+     variants, reverted in migration 081). The catalog also has many white/light
+     logos that would in turn wash out on a light chip, so a faint dark outline
+     gives every logo a legible edge; it is imperceptible behind dark/coloured
+     marks and adds no per-logo asset maintenance. */
+  background: #f4f5f7;
+  filter: drop-shadow(0 0 0.6px rgba(20, 20, 25, 0.55))
+    drop-shadow(0 0 0.6px rgba(20, 20, 25, 0.55));
   padding: var(--spacing-xs);
 }
 

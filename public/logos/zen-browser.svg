@@ -8,11 +8,6 @@
         text-align: center;
         fill: #1f1f1f;
       }
-      @media (prefers-color-scheme: dark) {
-        .label {
-          fill: #d1cfc0;
-        }
-      }
     </style>
   </defs>
   <text class="label" y="38" x="5">Zen Browser</text>
