@@ -53,7 +53,8 @@ export default function Filters({
     selectedFilters.category.length > 0 ||
     selectedFilters.country.length > 0 ||
     selectedFilters.pricing.length > 0 ||
-    selectedFilters.openSourceOnly;
+    selectedFilters.openSourceOnly ||
+    selectedFilters.selfHostable;
 
   const toggleFilter = (
     type: "category" | "country" | "pricing",
@@ -311,6 +312,32 @@ export default function Filters({
                   </span>
                   <span className="filter-label-text">
                     {t("browse:filters.openSourceOnly")}
+                  </span>
+                </label>
+
+                <label className="filter-label">
+                  <input
+                    type="checkbox"
+                    className="filter-checkbox"
+                    checked={selectedFilters.selfHostable}
+                    onChange={() =>
+                      onFilterChange(
+                        "selfHostable",
+                        !selectedFilters.selfHostable,
+                      )
+                    }
+                  />
+                  <span className="filter-checkbox-custom">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                    </svg>
+                  </span>
+                  <span className="filter-label-text">
+                    {t("browse:filters.selfHostable")}
                   </span>
                 </label>
               </div>

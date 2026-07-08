@@ -405,4 +405,5 @@ export interface SelectedFilters {
   country: CountryCode[];
   pricing: string[];
   openSourceOnly: boolean;
+  selfHostable: boolean;
 }

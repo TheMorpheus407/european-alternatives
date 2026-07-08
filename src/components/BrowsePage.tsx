@@ -76,6 +76,7 @@ export default function BrowsePage() {
   const [countryFilters, setCountryFilters] = useState<CountryCode[]>([]);
   const [pricingFilters, setPricingFilters] = useState<string[]>([]);
   const [openSourceOnly, setOpenSourceOnly] = useState(false);
+  const [selfHostable, setSelfHostable] = useState(false);
   const [sortBy, setSortBy] = useState<SortBy>("trustScore");
   const [browseLayout, setBrowseLayout] = useState<CardViewMode>("grid");
   const [expandedCardIds, setExpandedCardIds] = useState<Set<string>>(
@@ -216,8 +217,15 @@ export default function BrowsePage() {
       country: countryFilters,
       pricing: pricingFilters,
       openSourceOnly,
+      selfHostable,
     }),
-    [categoryFilters, countryFilters, pricingFilters, openSourceOnly],
+    [
+      categoryFilters,
+      countryFilters,
+      pricingFilters,
+      openSourceOnly,
+      selfHostable,
+    ],
   );
 
   const handleSearchChange = useCallback((term: string) => {
@@ -261,6 +269,9 @@ export default function BrowsePage() {
         case "openSourceOnly":
           setOpenSourceOnly(values as boolean);
           break;
+        case "selfHostable":
+          setSelfHostable(values as boolean);
+          break;
       }
     },
     [matrixCategory],
@@ -277,6 +288,7 @@ export default function BrowsePage() {
     setCountryFilters([]);
     setPricingFilters([]);
     setOpenSourceOnly(false);
+    setSelfHostable(false);
     setBrowseLayout("grid");
   }, []);
 
@@ -342,6 +354,10 @@ export default function BrowsePage() {
 
     if (selectedFilters.openSourceOnly) {
       result = result.filter((alternative) => alternative.isOpenSource);
+    }
+
+    if (selectedFilters.selfHostable) {
+      result = result.filter((alternative) => alternative.selfHostable);
     }
 
     result.sort((a, b) => {

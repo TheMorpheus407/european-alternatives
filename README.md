@@ -28,7 +28,7 @@ This is not about nationalism. It's about choice, transparency, and building a h
 ## Features
 
 - **Browse by category** — Email, Cloud Storage, Messaging, AI, Payments, and 14 more
-- **Filter by country, pricing, and open-source status** — find exactly what you need
+- **Filter by country, pricing, open-source status, and self-hostability** — find exactly what you need
 - **Category-specific fit filters** — refine one selected category by product-fit facts while keeping `Unverified` results visible by default
 - **Trust Score (1-10) + vetting status** — transparent scoring with reservations and confidence level
 - **Search across all alternatives** — matches names, descriptions, tags, and replaced services

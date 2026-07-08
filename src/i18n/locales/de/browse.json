@@ -40,7 +40,8 @@
     "categoryTitle": "Kategorie",
     "countryTitle": "Land",
     "pricingTitle": "Preismodell",
-    "openSourceOnly": "Nur Open Source"
+    "openSourceOnly": "Nur Open Source",
+    "selfHostable": "Selbst hostbar"
   },
   "matrixView": {
     "title": "Vergleichsmatrix für {{category}}",
