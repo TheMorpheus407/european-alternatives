@@ -2141,7 +2141,9 @@ function renderFullCoverageOptions(
     <span className="category-matrix-option-list category-matrix-option-list--coverage">
       {criterion.options.map((option) =>
         renderOption(criterion, option.id, t, {
-          tone: selected.has(option.id) ? "positive" : "negative",
+          tone: selected.has(option.id)
+            ? coveragePresentTone(option.displayTone)
+            : "negative",
         }),
       )}
       {unknownSelected.map((optionId) =>
@@ -2149,6 +2151,19 @@ function renderFullCoverageOptions(
       )}
     </span>
   );
+}
+
+// Tone for a *supported* option in a coverage row. Presence is the primary
+// signal, so a supported option with a neutral (or unset) catalogue tone still
+// reads as positive/green — matching the "present = good" reading of coverage
+// rows (e.g. a mail service that offers POP3 or an app that runs on iOS). A
+// tradeoff/warning/negative tone is preserved so a supported-but-cautionary
+// option stays amber or red rather than being painted green. Absent options are
+// always negative (red), handled by the caller.
+function coveragePresentTone(
+  tone: MatrixDisplayTone | undefined,
+): MatrixDisplayTone {
+  return tone === undefined || tone === "neutral" ? "positive" : tone;
 }
 
 type MatrixBooleanTone = "positive" | "warning" | "negative" | "neutral";

@@ -144,6 +144,7 @@ function fixture(): CategoryMatrixApiResponse {
           options: [
             { id: "reactions", label: "Reactions", displayTone: "positive" },
             { id: "threads", label: "Threads", displayTone: "positive" },
+            { id: "polls", label: "Polls", displayTone: "tradeoff" },
           ],
         }),
       ],
@@ -185,7 +186,7 @@ function fixture(): CategoryMatrixApiResponse {
       },
       reactions_threads: {
         status: "verified",
-        value: ["reactions"],
+        value: ["reactions", "polls"],
       },
     }),
     matrixAlternative("alpha-chat", "Alpha Chat", {
@@ -492,6 +493,19 @@ describe("matrix cell color-independence", () => {
     );
     expect(html).toMatch(
       /category-matrix-option--negative[^>]*aria-label="Negative \/ not supported: Threads"/u,
+    );
+  });
+
+  it("keeps a supported-but-tradeoff coverage option amber, not green", async () => {
+    const html = await renderMatrix();
+
+    // Presence upgrades neutral options to green, but a supported option whose
+    // catalogue tone is a tradeoff must stay amber so it is not overstated.
+    expect(html).toMatch(
+      /category-matrix-option--tradeoff[^>]*aria-label="[^"]*Polls"/u,
+    );
+    expect(html).not.toMatch(
+      /category-matrix-option--positive[^>]*aria-label="[^"]*Polls"/u,
     );
   });
 });
