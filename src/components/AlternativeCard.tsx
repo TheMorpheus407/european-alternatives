@@ -136,6 +136,21 @@ function getOpenSourceBadgeConfig(openSourceLevel: OpenSourceLevel): {
   }
 }
 
+// Derive a compact monogram for entries whose logo asset is missing or fails to
+// load, so the card shows a legible placeholder instead of a broken image or a
+// (misleading) country flag. Multi-word names use the first letter of the first
+// two words; single-word names use the first two letters.
+function getLogoInitials(name: string): string {
+  const words = name.trim().split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+  if (words.length === 0) {
+    return "?";
+  }
+  if (words.length === 1) {
+    return words[0].slice(0, 2).toUpperCase();
+  }
+  return (words[0][0] + words[1][0]).toUpperCase();
+}
+
 export default function AlternativeCard({
   alternative,
   viewMode,
@@ -360,9 +375,9 @@ export default function AlternativeCard({
               onError={() => setLogoError(true)}
             />
           ) : (
-            <span
-              className={`fi fi-${alternative.country} alt-card-logo-fallback`}
-            ></span>
+            <span className="alt-card-logo-fallback" aria-hidden="true">
+              {getLogoInitials(alternative.name)}
+            </span>
           )}
           <span
             className={`fi fi-${alternative.country} alt-card-flag-badge`}

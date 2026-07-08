@@ -3419,7 +3419,10 @@ button:disabled {
   justify-content: center;
   width: 56px;
   height: 56px;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--text-secondary);
   border-radius: var(--radius-md);
   background: var(--bg-secondary);
 }
@@ -4682,7 +4685,7 @@ body.overlay-open {
   .alt-card-logo-fallback {
     width: 44px;
     height: 44px;
-    font-size: 2rem;
+    font-size: 1.25rem;
   }
 
   .alt-card.list-view {
