@@ -34,6 +34,17 @@ function getTrustBadgeClass(score: number): string {
   return "alt-card-badge-trust-high";
 }
 
+// Per-dimension colour is driven by the RATIO effective/max, not the absolute
+// ten-scale value: production dimension maxes are 12/8/6/6 (so effective10 is
+// always <= 1.2), which would collapse every dimension into the "low" bucket if
+// bucketed on the absolute score. Fractional bands make a weak dimension read
+// red and a strong one green regardless of that dimension's own ceiling.
+function getDimensionScoreClass(ratio: number): string {
+  if (ratio < 0.5) return "alt-card-trust-dimension-score-low";
+  if (ratio <= 0.7) return "alt-card-trust-dimension-score-medium";
+  return "alt-card-trust-dimension-score-high";
+}
+
 function formatScore(value: number): string {
   return (Math.round(value * 10) / 10).toFixed(1);
 }
@@ -139,9 +150,6 @@ export default function AlternativeCard({
   const [trustBreakdownExpanded, setTrustBreakdownExpanded] = useState(
     () => overlayMode === true,
   );
-  const [expandedUsVendorBreakdowns, setExpandedUsVendorBreakdowns] = useState<
-    Set<string>
-  >(new Set());
   const [logoError, setLogoError] = useState(false);
   const { t, i18n } = useTranslation(["browse", "common", "data"]);
 
@@ -292,35 +300,16 @@ export default function AlternativeCard({
     return alternative.replacesUS.map((slugOrName) => {
       const vendor = usVendorLookup.get(slugOrName);
       if (vendor) {
-        const vb = vendor.trustScoreBreakdown;
+        // Issue #550: the US company profile is a plain list — vendor name +
+        // at-a-glance scalar trust score only. The heavy per-vendor score
+        // breakdown (equation + summary table) is deliberately not built here,
+        // as US scores are structurally low and duplicating that block wastes
+        // render cost for little signal.
         return {
           id: vendor.id,
           name: vendor.name,
           trustScoreStatus: vendor.trustScoreStatus ?? ("pending" as const),
           trustScore: vendor.trustScore,
-          breakdown: vb
-            ? {
-                baseClass: vb.baseClass,
-                baseScore10: toTenScale(vb.baseScore),
-                operationalTotal10: toTenScale(vb.operationalTotal),
-                penaltyTotal10: toTenScale(vb.penaltyTotal),
-                signalTotal10: toTenScale(vb.signalTotal),
-                rawScore10: toTenScale(vb.baseScore + vb.operationalTotal),
-                finalScore10: toTenScale(vb.finalScore100),
-                classCap10:
-                  vb.capApplied != null ? toTenScale(vb.capApplied) : null,
-                dimensions: PENALTY_TIERS.map((tier) => {
-                  const dim = vb.dimensions[tier];
-                  return {
-                    tier,
-                    effective10: toTenScale(dim.effective),
-                    max10: toTenScale(dim.max),
-                    penalties10: toTenScale(dim.penalties),
-                    signals10: toTenScale(dim.signals),
-                  };
-                }),
-              }
-            : undefined,
           description: vendor.description,
           descriptionDe: vendor.localizedDescriptions?.de,
           reservations: vendor.reservations,
@@ -432,6 +421,39 @@ export default function AlternativeCard({
           </div>
           {categoryLabel && (
             <span className="alt-card-category">{categoryLabel}</span>
+          )}
+          {trustBreakdown && !trustBreakdownExpanded && (
+            <div
+              className="alt-card-trust-dimensions"
+              role="list"
+              aria-label={t("browse:card.trustScoreBreakdownTitle")}
+            >
+              {trustBreakdown.dimensions.map((dimension) => {
+                // Guard max === 0 / non-finite to a defined bucket (-> "low").
+                const ratio =
+                  dimension.max10 > 0 &&
+                  Number.isFinite(dimension.effective10)
+                    ? dimension.effective10 / dimension.max10
+                    : 0;
+                return (
+                  <div
+                    key={dimension.tier}
+                    className="alt-card-trust-dimension"
+                    role="listitem"
+                  >
+                    <span className="alt-card-trust-dimension-label">
+                      {t(`browse:card.penaltyTier.${dimension.tier}`)}
+                    </span>
+                    <strong
+                      className={`alt-card-trust-dimension-score ${getDimensionScoreClass(ratio)}`}
+                    >
+                      {formatScore(dimension.effective10)}/
+                      {formatScore(dimension.max10)}
+                    </strong>
+                  </div>
+                );
+              })}
+            </div>
           )}
           {trustBreakdown && trustBreakdownExpanded && (
             <div
@@ -605,184 +627,19 @@ export default function AlternativeCard({
                 <span className="alt-card-us-vendor-name">{vendor.name}</span>
                 {vendor.trustScoreStatus === "ready" &&
                 vendor.trustScore != null ? (
-                  vendor.breakdown ? (
-                    <button
-                      type="button"
-                      className={`alt-card-trust-stamp alt-card-trust-stamp-button ${getTrustBadgeClass(vendor.trustScore).replace("alt-card-badge", "alt-card-trust-stamp")}`}
-                      onClick={() =>
-                        setExpandedUsVendorBreakdowns((prev) => {
-                          const next = new Set(prev);
-                          if (next.has(vendor.id)) {
-                            next.delete(vendor.id);
-                          } else {
-                            next.add(vendor.id);
-                          }
-                          return next;
-                        })
-                      }
-                      aria-expanded={expandedUsVendorBreakdowns.has(vendor.id)}
-                      aria-controls={`alt-us-vendor-breakdown-${vendor.id}`}
-                    >
-                      <span>
-                        {t("browse:card.trustScoreLabel", {
-                          score: vendor.trustScore.toFixed(1),
-                        })}
-                      </span>
-                      <svg
-                        className={`alt-card-trust-stamp-icon ${expandedUsVendorBreakdowns.has(vendor.id) ? "rotated" : ""}`}
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
-                      </svg>
-                    </button>
-                  ) : (
-                    <span
-                      className={`alt-card-badge ${getTrustBadgeClass(vendor.trustScore)}`}
-                    >
-                      {t("browse:card.trustScoreLabel", {
-                        score: vendor.trustScore.toFixed(1),
-                      })}
-                    </span>
-                  )
+                  <span
+                    className={`alt-card-badge ${getTrustBadgeClass(vendor.trustScore)}`}
+                  >
+                    {t("browse:card.trustScoreLabel", {
+                      score: vendor.trustScore.toFixed(1),
+                    })}
+                  </span>
                 ) : (
                   <span className="alt-card-badge alt-card-badge-trust-pending">
                     {t("browse:card.trustScorePending")}
                   </span>
                 )}
               </div>
-              {expandedUsVendorBreakdowns.has(vendor.id) &&
-                vendor.breakdown && (
-                  <div
-                    id={`alt-us-vendor-breakdown-${vendor.id}`}
-                    className="alt-card-trust-breakdown"
-                    role="region"
-                    aria-label={t("browse:card.trustScoreBreakdownTitle")}
-                  >
-                    <h4 className="alt-card-trust-breakdown-title">
-                      {t("browse:card.trustScoreBreakdownTitle")}
-                    </h4>
-                    <p className="alt-card-trust-breakdown-explanation">
-                      {t("browse:card.trustScoreBreakdownExplanation")}
-                    </p>
-                    <p className="alt-card-trust-breakdown-equation">
-                      {t(
-                        vendor.breakdown.classCap10 != null
-                          ? "browse:card.trustScoreBreakdownEquationCapped"
-                          : "browse:card.trustScoreBreakdownEquation",
-                        {
-                          base: formatScore(vendor.breakdown.baseScore10),
-                          operational: formatScore(
-                            vendor.breakdown.operationalTotal10,
-                          ),
-                          cap:
-                            vendor.breakdown.classCap10 != null
-                              ? formatScore(vendor.breakdown.classCap10)
-                              : undefined,
-                          final: formatScore(vendor.breakdown.finalScore10),
-                        },
-                      )}
-                    </p>
-                    <div className="alt-card-trust-breakdown-summary">
-                      <div className="alt-card-trust-breakdown-row">
-                        <span>
-                          {t("browse:card.trustScoreBreakdownBase", {
-                            baseClass: t(
-                              `browse:card.baseClass.${vendor.breakdown.baseClass}`,
-                            ),
-                          })}
-                        </span>
-                        <strong>
-                          +{formatScore(vendor.breakdown.baseScore10)}
-                        </strong>
-                      </div>
-                      {vendor.breakdown.penaltyTotal10 > 0 && (
-                        <div className="alt-card-trust-breakdown-row">
-                          <span>
-                            {t("browse:card.trustScoreBreakdownReservations")}
-                          </span>
-                          <strong className="alt-card-trust-breakdown-delta-neg">
-                            −{formatScore(vendor.breakdown.penaltyTotal10)}
-                          </strong>
-                        </div>
-                      )}
-                      {vendor.breakdown.signalTotal10 > 0 && (
-                        <div className="alt-card-trust-breakdown-row">
-                          <span>
-                            {t("browse:card.trustScoreBreakdownSignals")}
-                          </span>
-                          <strong className="alt-card-trust-breakdown-delta-pos">
-                            +{formatScore(vendor.breakdown.signalTotal10)}
-                          </strong>
-                        </div>
-                      )}
-                      <div className="alt-card-trust-breakdown-row">
-                        <span>
-                          {t("browse:card.trustScoreBreakdownOperational")}
-                        </span>
-                        <strong>
-                          +{formatScore(vendor.breakdown.operationalTotal10)}
-                        </strong>
-                      </div>
-                      <div className="alt-card-trust-breakdown-row">
-                        <span>{t("browse:card.trustScoreBreakdownRaw")}</span>
-                        <strong>
-                          {formatScore(vendor.breakdown.rawScore10)}
-                        </strong>
-                      </div>
-                      {vendor.breakdown.classCap10 != null && (
-                        <div className="alt-card-trust-breakdown-row">
-                          <span>
-                            {t("browse:card.trustScoreBreakdownClassCap")}
-                          </span>
-                          <strong>
-                            {formatScore(vendor.breakdown.classCap10)}
-                          </strong>
-                        </div>
-                      )}
-                      <div className="alt-card-trust-breakdown-row alt-card-trust-breakdown-row-final">
-                        <span>{t("browse:card.trustScoreBreakdownFinal")}</span>
-                        <strong>
-                          {formatScore(vendor.breakdown.finalScore10)}/10
-                        </strong>
-                      </div>
-                    </div>
-                    <div className="alt-card-trust-breakdown-dimensions">
-                      {vendor.breakdown.dimensions.map((dim) => (
-                        <div
-                          key={dim.tier}
-                          className="alt-card-trust-breakdown-dimension"
-                        >
-                          <span>
-                            {t(`browse:card.penaltyTier.${dim.tier}`)}
-                          </span>
-                          <span className="alt-card-trust-breakdown-dimension-desc">
-                            {t(`browse:card.dimensionDesc.${dim.tier}`)}
-                          </span>
-                          <strong>
-                            {formatScore(dim.effective10)}/
-                            {formatScore(dim.max10)}
-                          </strong>
-                          {(dim.penalties10 > 0 || dim.signals10 > 0) && (
-                            <div className="alt-card-trust-breakdown-dimension-deltas">
-                              {dim.penalties10 > 0 && (
-                                <span className="alt-card-trust-breakdown-dimension-delta alt-card-trust-breakdown-dimension-delta-neg">
-                                  −{formatScore(dim.penalties10)}
-                                </span>
-                              )}
-                              {dim.signals10 > 0 && (
-                                <span className="alt-card-trust-breakdown-dimension-delta alt-card-trust-breakdown-dimension-delta-pos">
-                                  +{formatScore(dim.signals10)}
-                                </span>
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
               {usVendorDetailsExpanded && (
                 <div className="alt-card-us-vendor-content">
                   {((i18n.language.startsWith("de") && vendor.descriptionDe) ||

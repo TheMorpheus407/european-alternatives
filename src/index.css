@@ -3656,6 +3656,50 @@ button:disabled {
   color: var(--success);
 }
 
+/* Compact, always-visible per-dimension trust strip (issue #550). Surfaces the
+   four dimension scores at a glance in grid and list view without a click. */
+.alt-card-trust-dimensions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-xs);
+}
+
+.alt-card-trust-dimension {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-hover);
+}
+
+.alt-card-trust-dimension-label {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.alt-card-trust-dimension-score {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.alt-card-trust-dimension-score-high {
+  color: var(--success);
+}
+
+.alt-card-trust-dimension-score-medium {
+  color: var(--warning);
+}
+
+.alt-card-trust-dimension-score-low {
+  color: var(--error);
+}
+
 .alt-card-trust-breakdown-explanation {
   margin: 0;
   font-size: var(--font-size-xs);

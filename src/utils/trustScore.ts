@@ -70,3 +70,16 @@ export function getEffectiveTrustScore(
   if (alternative.trustScoreStatus !== 'ready') return 0;
   return alternative.trustScore ?? 0;
 }
+
+/**
+ * Return a single trust dimension's effective score (0–100 scale) for sorting.
+ * Mirrors {@link getEffectiveTrustScore}: pending / unscored entries and any
+ * missing dimension coalesce to 0 so they sort to the bottom deterministically.
+ */
+export function getEffectiveDimensionScore(
+  alternative: Pick<Alternative, 'trustScoreStatus' | 'trustScoreBreakdown'>,
+  tier: PenaltyTier,
+): number {
+  if (alternative.trustScoreStatus !== 'ready') return 0;
+  return alternative.trustScoreBreakdown?.dimensions[tier]?.effective ?? 0;
+}

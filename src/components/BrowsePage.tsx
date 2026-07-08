@@ -11,7 +11,10 @@ import ResultModeSwitch from "./ResultModeSwitch";
 import { fetchCategoryMatrix } from "../data/categoryMatrix";
 import { getLocalizedAlternativeDescription } from "../utils/alternativeText";
 import { getAlternativeCategories } from "../utils/alternativeCategories";
-import { getEffectiveTrustScore } from "../utils/trustScore";
+import {
+  getEffectiveDimensionScore,
+  getEffectiveTrustScore,
+} from "../utils/trustScore";
 import type {
   Alternative,
   CardViewMode,
@@ -355,6 +358,16 @@ export default function BrowsePage() {
           return a.country.localeCompare(b.country);
         case "category":
           return a.category.localeCompare(b.category);
+        case "security":
+        case "governance":
+        case "reliability":
+        case "contract": {
+          const dimensionDelta =
+            getEffectiveDimensionScore(b, sortBy) -
+            getEffectiveDimensionScore(a, sortBy);
+          if (dimensionDelta !== 0) return dimensionDelta;
+          return a.name.localeCompare(b.name);
+        }
         default:
           return 0;
       }

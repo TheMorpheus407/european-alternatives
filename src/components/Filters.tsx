@@ -120,6 +120,18 @@ export default function Filters({
               <option value="category">
                 {t("browse:filters.sortCategory")}
               </option>
+              <option value="security">
+                {t("browse:filters.sortSecurity")}
+              </option>
+              <option value="governance">
+                {t("browse:filters.sortGovernance")}
+              </option>
+              <option value="reliability">
+                {t("browse:filters.sortReliability")}
+              </option>
+              <option value="contract">
+                {t("browse:filters.sortContract")}
+              </option>
             </select>
             <svg
               className="sort-icon"

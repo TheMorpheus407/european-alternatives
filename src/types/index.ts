@@ -390,7 +390,12 @@ export interface LandingCategoryGroup {
   categories: CategoryId[];
 }
 
-export type SortBy = "trustScore" | "name" | "country" | "category";
+export type SortBy =
+  | "trustScore"
+  | "name"
+  | "country"
+  | "category"
+  | PenaltyTier;
 export type CardViewMode = "grid" | "list";
 export type ViewMode = CardViewMode | "matrix";
 export type ResultMode = "browse" | "matrix";
