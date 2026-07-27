@@ -1,19 +1,15 @@
 import {
-  existsSync,
   mkdtempSync,
   readFileSync,
   rmSync,
-  writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
 import { spawnSync } from "node:child_process";
 
 import { describe, expect, it } from "vitest";
 
 const logoUrl = new URL("../public/logos/ph24.svg", import.meta.url);
-const logoPath = fileURLToPath(logoUrl);
 const svg = readFileSync(logoUrl, "utf8");
 
 function findChromium(): string | null {
@@ -39,12 +35,40 @@ function findChromium(): string | null {
   return null;
 }
 
-function captureSvg(
-  browser: string,
-  sourcePath: string,
-  screenshotPath: string,
-  profilePath: string,
-): Buffer {
+function renderSvg(browser: string, profilePath: string): string {
+  const svgDataUrl = `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
+  const html = `<!doctype html>
+<html>
+  <body data-result="pending">
+    <script>
+      const image = new Image();
+      image.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = 800;
+        canvas.height = 210;
+        const context = canvas.getContext("2d");
+        context.drawImage(image, 0, 0, canvas.width, canvas.height);
+        const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+        let wordmarkPixels = 0;
+        const wordmarkStartX = 300;
+        for (let y = 0; y < canvas.height; y += 1) {
+          for (let x = wordmarkStartX; x < canvas.width; x += 1) {
+            if (pixels[(y * canvas.width + x) * 4 + 3] > 0) {
+              wordmarkPixels += 1;
+            }
+          }
+        }
+        document.body.dataset.wordmarkPixels = String(wordmarkPixels);
+        document.body.dataset.result = wordmarkPixels > 1000 ? "ok" : "blank";
+      };
+      image.onerror = () => {
+        document.body.dataset.result = "decode-error";
+      };
+      image.src = ${JSON.stringify(svgDataUrl)};
+    </script>
+  </body>
+</html>`;
+  const pageUrl = `data:text/html;base64,${Buffer.from(html).toString("base64")}`;
   const result = spawnSync(
     browser,
     [
@@ -52,24 +76,24 @@ function captureSvg(
       "--no-sandbox",
       "--disable-background-networking",
       "--disable-gpu",
-      "--hide-scrollbars",
+      "--disable-dev-shm-usage",
       "--no-first-run",
       `--user-data-dir=${profilePath}`,
-      "--window-size=800,300",
-      `--screenshot=${screenshotPath}`,
-      pathToFileURL(sourcePath).href,
+      "--virtual-time-budget=3000",
+      "--dump-dom",
+      pageUrl,
     ],
     {
       encoding: "utf8",
-      timeout: 20_000,
+      maxBuffer: 2 * 1024 * 1024,
+      timeout: 45_000,
     },
   );
 
   expect(result.error).toBeUndefined();
   expect(result.status, result.stderr).toBe(0);
-  expect(existsSync(screenshotPath)).toBe(true);
 
-  return readFileSync(screenshotPath);
+  return result.stdout;
 }
 
 describe("ph24 self-contained logo", () => {
@@ -143,31 +167,16 @@ describe("ph24 self-contained logo", () => {
       const workspace = mkdtempSync(join(tmpdir(), "ph24-logo-render-"));
 
       try {
-        const iconOnlySvg = svg.replace(
-          /\s*<!--[\s\S]*?Montserrat SemiBold[\s\S]*?-->\s*<path id="ph24-wordmark"[\s\S]*?\/>/,
-          "",
-        );
-        const iconOnlyPath = join(workspace, "ph24-icon-only.svg");
-        writeFileSync(iconOnlyPath, iconOnlySvg);
-
-        const fullScreenshot = captureSvg(
+        const renderedDom = renderSvg(
           chromium ?? "",
-          logoPath,
-          join(workspace, "ph24-full.png"),
-          join(workspace, "full-profile"),
-        );
-        const iconOnlyScreenshot = captureSvg(
-          chromium ?? "",
-          iconOnlyPath,
-          join(workspace, "ph24-icon-only.png"),
-          join(workspace, "icon-profile"),
+          join(workspace, "profile"),
         );
 
-        expect(fullScreenshot.subarray(0, 8)).toEqual(
-          Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]),
+        expect(renderedDom).toContain('data-result="ok"');
+        const wordmarkPixels = Number(
+          renderedDom.match(/data-wordmark-pixels="(\d+)"/)?.[1] ?? 0,
         );
-        expect(fullScreenshot.equals(iconOnlyScreenshot)).toBe(false);
-        expect(fullScreenshot.length).toBeGreaterThan(iconOnlyScreenshot.length);
+        expect(wordmarkPixels).toBeGreaterThan(1000);
       } finally {
         rmSync(workspace, { force: true, recursive: true });
       }
