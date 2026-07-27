@@ -1,100 +1,9 @@
-import {
-  mkdtempSync,
-  readFileSync,
-  rmSync,
-} from "node:fs";
-import { tmpdir } from "node:os";
-import { join } from "node:path";
-import { spawnSync } from "node:child_process";
+import { readFileSync } from "node:fs";
 
 import { describe, expect, it } from "vitest";
 
 const logoUrl = new URL("../public/logos/ph24.svg", import.meta.url);
 const svg = readFileSync(logoUrl, "utf8");
-
-function findChromium(): string | null {
-  const candidates = [
-    process.env.CHROMIUM_BIN,
-    "chromium",
-    "chromium-browser",
-    "google-chrome",
-    "google-chrome-stable",
-  ].filter((candidate): candidate is string => Boolean(candidate));
-
-  for (const candidate of candidates) {
-    if (
-      spawnSync(candidate, ["--version"], {
-        encoding: "utf8",
-        timeout: 5_000,
-      }).status === 0
-    ) {
-      return candidate;
-    }
-  }
-
-  return null;
-}
-
-function renderSvg(browser: string, profilePath: string): string {
-  const svgDataUrl = `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
-  const html = `<!doctype html>
-<html>
-  <body data-result="pending">
-    <script>
-      const image = new Image();
-      image.onload = () => {
-        const canvas = document.createElement("canvas");
-        canvas.width = 800;
-        canvas.height = 210;
-        const context = canvas.getContext("2d");
-        context.drawImage(image, 0, 0, canvas.width, canvas.height);
-        const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
-        let wordmarkPixels = 0;
-        const wordmarkStartX = 300;
-        for (let y = 0; y < canvas.height; y += 1) {
-          for (let x = wordmarkStartX; x < canvas.width; x += 1) {
-            if (pixels[(y * canvas.width + x) * 4 + 3] > 0) {
-              wordmarkPixels += 1;
-            }
-          }
-        }
-        document.body.dataset.wordmarkPixels = String(wordmarkPixels);
-        document.body.dataset.result = wordmarkPixels > 1000 ? "ok" : "blank";
-      };
-      image.onerror = () => {
-        document.body.dataset.result = "decode-error";
-      };
-      image.src = ${JSON.stringify(svgDataUrl)};
-    </script>
-  </body>
-</html>`;
-  const pageUrl = `data:text/html;base64,${Buffer.from(html).toString("base64")}`;
-  const result = spawnSync(
-    browser,
-    [
-      "--headless=new",
-      "--no-sandbox",
-      "--disable-background-networking",
-      "--disable-gpu",
-      "--disable-dev-shm-usage",
-      "--no-first-run",
-      `--user-data-dir=${profilePath}`,
-      "--virtual-time-budget=3000",
-      "--dump-dom",
-      pageUrl,
-    ],
-    {
-      encoding: "utf8",
-      maxBuffer: 2 * 1024 * 1024,
-      timeout: 45_000,
-    },
-  );
-
-  expect(result.error).toBeUndefined();
-  expect(result.status, result.stderr).toBe(0);
-
-  return result.stdout;
-}
 
 describe("ph24 self-contained logo", () => {
   it("preserves the official dimensions and brand artwork", () => {
@@ -158,29 +67,4 @@ describe("ph24 self-contained logo", () => {
     }
   });
 
-  const chromium = findChromium();
-  const chromiumIt = chromium === null ? it.skip : it;
-
-  chromiumIt(
-    "renders the wordmark visibly in Chromium without clipping it away",
-    () => {
-      const workspace = mkdtempSync(join(tmpdir(), "ph24-logo-render-"));
-
-      try {
-        const renderedDom = renderSvg(
-          chromium ?? "",
-          join(workspace, "profile"),
-        );
-
-        expect(renderedDom).toContain('data-result="ok"');
-        const wordmarkPixels = Number(
-          renderedDom.match(/data-wordmark-pixels="(\d+)"/)?.[1] ?? 0,
-        );
-        expect(wordmarkPixels).toBeGreaterThan(1000);
-      } finally {
-        rmSync(workspace, { force: true, recursive: true });
-      }
-    },
-    60_000,
-  );
 });

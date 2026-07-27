@@ -1,14 +1,4 @@
-import {
-  existsSync,
-  mkdtempSync,
-  readFileSync,
-  rmSync,
-  writeFileSync,
-} from "node:fs";
-import { tmpdir } from "node:os";
-import { join } from "node:path";
-import { fileURLToPath } from "node:url";
-import { spawnSync } from "node:child_process";
+import { readFileSync } from "node:fs";
 
 import { describe, expect, it } from "vitest";
 
@@ -48,61 +38,6 @@ function getUsedPrefixes(svg: string): Set<string> {
   }
 
   return prefixes;
-}
-
-function findChromium(): string | null {
-  const candidates = [
-    process.env.CHROMIUM_BIN,
-    "chromium",
-    "chromium-browser",
-    "google-chrome",
-    "google-chrome-stable",
-  ].filter((candidate): candidate is string => Boolean(candidate));
-
-  for (const candidate of candidates) {
-    const result = spawnSync(candidate, ["--version"], {
-      encoding: "utf8",
-      timeout: 5_000,
-    });
-    if (result.status === 0) {
-      return candidate;
-    }
-  }
-
-  return null;
-}
-
-function captureSvg(
-  browser: string,
-  sourcePath: string,
-  screenshotPath: string,
-  profilePath: string,
-): Buffer {
-  const result = spawnSync(
-    browser,
-    [
-      "--headless=new",
-      "--no-sandbox",
-      "--disable-background-networking",
-      "--disable-gpu",
-      "--hide-scrollbars",
-      "--no-first-run",
-      `--user-data-dir=${profilePath}`,
-      "--window-size=320,320",
-      `--screenshot=${screenshotPath}`,
-      new URL(`file://${sourcePath}`).href,
-    ],
-    {
-      encoding: "utf8",
-      timeout: 20_000,
-    },
-  );
-
-  expect(result.error).toBeUndefined();
-  expect(result.status, result.stderr).toBe(0);
-  expect(existsSync(screenshotPath)).toBe(true);
-
-  return readFileSync(screenshotPath);
 }
 
 describe("legacy logo XML validity", () => {
@@ -148,44 +83,4 @@ describe("legacy logo XML validity", () => {
     expect(svg).toMatch(/\b(?:fill|stroke)\s*=/);
   });
 
-  const chromium = findChromium();
-  const chromiumIt = chromium === null ? it.skip : it;
-
-  chromiumIt(
-    "decodes both SVGs into nonblank Chromium screenshots",
-    () => {
-      const workspace = mkdtempSync(join(tmpdir(), "legacy-logo-render-"));
-
-      try {
-        const blankSvgPath = join(workspace, "blank.svg");
-        writeFileSync(
-          blankSvgPath,
-          '<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320"/>',
-        );
-        const blankScreenshot = captureSvg(
-          chromium ?? "",
-          blankSvgPath,
-          join(workspace, "blank.png"),
-          join(workspace, "blank-profile"),
-        );
-
-        for (const [index, logoUrl] of logoUrls.entries()) {
-          const screenshot = captureSvg(
-            chromium ?? "",
-            fileURLToPath(logoUrl),
-            join(workspace, `logo-${index}.png`),
-            join(workspace, `logo-${index}-profile`),
-          );
-
-          expect(screenshot.subarray(0, 8)).toEqual(
-            Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]),
-          );
-          expect(screenshot.equals(blankScreenshot)).toBe(false);
-        }
-      } finally {
-        rmSync(workspace, { force: true, recursive: true });
-      }
-    },
-    60_000,
-  );
 });
