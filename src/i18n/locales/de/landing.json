@@ -2,6 +2,12 @@
   "headline": "Europäische & Open-Source-Alternativen",
   "subtext": "Entdecke europäische und Open-Source-Alternativen zu US-Tech-Giganten. Unterstütze digitale Souveränität, Datenschutz und lokale Innovation.",
   "nudge": "Das soll niemanden zum Wechsel zwingen, erst recht nicht sofort. Es soll zeigen, dass Europa bereits starke Alternativen hat, die wir wirklich nutzen können, und dass wir technologisch nicht hinterher sind.",
+  "search": {
+    "label": "Alternativenkatalog durchsuchen",
+    "placeholder": "Alternativen suchen...",
+    "submit": "Suchen",
+    "hint": "Suche nach Alternative, US-Dienst oder Stichwort."
+  },
   "heroContribution": {
     "cta": "Alternative auf GitHub vorschlagen",
     "hint": "Kennst du eine starke europäische oder Open-Source-Option? Reiche sie als Issue ein."

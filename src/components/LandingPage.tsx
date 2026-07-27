@@ -1,8 +1,10 @@
-import { Link, useParams } from 'react-router-dom';
+import { useState, type FormEvent } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { useCatalog } from '../contexts/CatalogContext';
 import { getAlternativeCategories } from '../utils/alternativeCategories';
+import { buildBrowseSearchPath } from '../utils/browseSearch';
 import type { CategoryId } from '../types';
 
 const stagger = {
@@ -23,7 +25,14 @@ export default function LandingPage() {
   const { alternatives, categories, landingCategoryGroups, deniedAlternatives, loading, error } = useCatalog();
   const { lang } = useParams<{ lang: string }>();
   const { t } = useTranslation(['landing', 'common', 'data']);
+  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');
   const langPrefix = lang ?? 'en';
+
+  const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    navigate(buildBrowseSearchPath(langPrefix, searchTerm));
+  };
 
   if (loading) {
     return (
@@ -111,6 +120,46 @@ export default function LandingPage() {
           <p className="landing-nudge">
             {t('landing:nudge')}
           </p>
+
+          <form
+            className="landing-search"
+            role="search"
+            aria-label={t('landing:search.label')}
+            action={`/${langPrefix}/browse`}
+            method="get"
+            onSubmit={handleSearchSubmit}
+          >
+            <div className="landing-search-controls">
+              <div className="landing-search-field">
+                <svg
+                  className="landing-search-icon"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                </svg>
+                <label className="sr-only" htmlFor="landing-catalog-search">
+                  {t('landing:search.label')}
+                </label>
+                <input
+                  id="landing-catalog-search"
+                  name="q"
+                  type="search"
+                  value={searchTerm}
+                  onChange={(event) => setSearchTerm(event.target.value)}
+                  placeholder={t('landing:search.placeholder')}
+                  aria-describedby="landing-search-hint"
+                />
+              </div>
+              <button className="landing-search-submit" type="submit">
+                {t('landing:search.submit')}
+              </button>
+            </div>
+            <p id="landing-search-hint" className="landing-search-hint">
+              {t('landing:search.hint')}
+            </p>
+          </form>
 
           <div className="landing-hero-actions">
             <a
