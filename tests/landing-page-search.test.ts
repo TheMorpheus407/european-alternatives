@@ -45,7 +45,7 @@ vi.mock("react", async () => {
   };
 });
 
-vi.mock("react-router-dom", async () => {
+vi.mock("react-router", async () => {
   const React = await vi.importActual<typeof import("react")>("react");
 
   return {

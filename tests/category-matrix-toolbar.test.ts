@@ -295,7 +295,7 @@ const browseTestMocks = vi.hoisted(() => ({
   viewMode: "grid" as BrowseViewModeForTest,
 }));
 
-vi.mock("react-router-dom", () => ({
+vi.mock("react-router", () => ({
   useSearchParams: () => [
     new URLSearchParams(browseTestMocks.search),
     browseTestMocks.setSearchParams,

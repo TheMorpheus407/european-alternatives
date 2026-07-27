@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, Outlet, useParams, useSearchParams } from 'react-router-dom';
+import { Routes, Route, Navigate, Outlet, useParams, useSearchParams } from 'react-router';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Layout from './Layout';

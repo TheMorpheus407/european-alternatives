@@ -115,7 +115,7 @@ vi.mock("react-i18next", () => {
   };
 });
 
-vi.mock("react-router-dom", () => ({
+vi.mock("react-router", () => ({
   useSearchParams: () => [
     new URLSearchParams(browseTestMocks.search),
     browseTestMocks.setSearchParams,

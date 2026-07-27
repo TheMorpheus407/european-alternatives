@@ -1,4 +1,4 @@
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router';
 import { supportedLanguages, languageEndonyms, type SupportedLanguage } from '../i18n';
 
 export default function LanguageSwitcher() {
