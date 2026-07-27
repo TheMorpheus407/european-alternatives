@@ -46,5 +46,9 @@ RewriteRule ^ - [L]
 RewriteCond %{DOCUMENT_ROOT}/dist%{REQUEST_URI} -f
 RewriteRule ^ dist%{REQUEST_URI} [L]
 
+# Missing static assets must return 404 instead of the SPA shell.
+# Existing assets have already been served by the rule above.
+RewriteRule ^(?:assets|logos)(?:/|$) - [R=404,L,NC]
+
 # SPA fallback: all other routes serve dist/index.html
 RewriteRule ^ dist/index.html [L]

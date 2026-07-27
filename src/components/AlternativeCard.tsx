@@ -10,6 +10,7 @@ import {
   withEstimatedPenalties,
 } from "../utils/trustScore";
 import { sanitizeHref } from "../utils/sanitizeHref";
+import { logoNeedsDarkChip } from "../utils/logoPresentation";
 import type {
   Alternative,
   CardViewMode,
@@ -370,7 +371,11 @@ export default function AlternativeCard({
             <img
               src={alternative.logo}
               alt={t("common:logoSuffix", { name: alternative.name })}
-              className="alt-card-logo"
+              className={`alt-card-logo${
+                logoNeedsDarkChip(alternative.id)
+                  ? " alt-card-logo-dark-chip"
+                  : ""
+              }`}
               loading="lazy"
               onError={() => setLogoError(true)}
             />

@@ -453,16 +453,13 @@ foreach ($rows as $row) {
         $replacesUS = array_values($replacesUSByEntry[$eid]);
     }
 
-    // Logo fallback
-    $logo = $row['logo_path'] ?? '/logos/' . $row['slug'] . '.svg';
-
     // Build the entry object matching the Alternative TypeScript interface
     $entry = [
         'id'              => $row['slug'],
         'name'            => $row['name'],
         'description'     => $row['description'] ?? '',
         'website'         => $row['website_url'] ?? '',
-        'logo'            => $logo,
+        'logo'            => $row['logo_path'],
         'country'         => $row['country_code'],
         'category'        => $primaryCategory,
         'replacesUS'      => $replacesUS,

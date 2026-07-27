@@ -3525,6 +3525,16 @@ button:disabled {
   padding: var(--spacing-xs);
 }
 
+/* Reviewed white/near-white artwork needs a genuinely contrasting surface,
+   not merely an outline. This modifier is assigned by catalog slug, so dark
+   and coloured logos keep the standard light chip in both themes. */
+.alt-card-logo-dark-chip {
+  background: #252831;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    var(--shadow-sm);
+}
+
 .alt-card-logo-fallback {
   display: flex;
   align-items: center;

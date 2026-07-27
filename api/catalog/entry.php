@@ -375,14 +375,12 @@ SQL;
 // 9. Assemble the entry object
 // ---------------------------------------------------------------------------
 
-$logo = $row['logo_path'] ?? '/logos/' . $row['slug'] . '.svg';
-
 $entry = [
     'id'              => $row['slug'],
     'name'            => $row['name'],
     'description'     => $row['description'] ?? '',
     'website'         => $row['website_url'] ?? '',
-    'logo'            => $logo,
+    'logo'            => $row['logo_path'],
     'country'         => $row['country_code'],
     'category'        => $primaryCategory,
     'replacesUS'      => $replacesUS,

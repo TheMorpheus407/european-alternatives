@@ -60,6 +60,7 @@ type MatrixFact = {
 type MatrixAlternative = {
   id: string;
   status?: string;
+  logo: string | null;
   country: string | null;
   category: string | null;
   secondaryCategories?: string[];
@@ -223,7 +224,7 @@ const matrixScenario: MatrixScenario = {
       is_active: 1,
       country_code: "fr",
       website_url: "https://secondary-chat.example",
-      logo_path: "/logos/secondary-chat.svg",
+      logo_path: null,
       open_source_level: "partial",
       self_hostable: 0,
       memberships: [
@@ -1229,6 +1230,20 @@ describe("catalog matrix API endpoint", () => {
       category: null,
       secondaryCategories: ["messaging"],
     });
+  });
+
+  it("returns persisted logo paths verbatim and keeps a missing path null", async () => {
+    const response = await runMatrixRequest({
+      category: "messaging",
+      locale: "en",
+    });
+    const payload = expectMatrixPayload(response);
+    const explicitLogo = findAlternative(payload, "primary-chat");
+    const missingLogo = findAlternative(payload, "secondary-chat");
+
+    expect(explicitLogo).toHaveProperty("logo", "/logos/primary-chat.svg");
+    expect(missingLogo).toHaveProperty("logo", null);
+    expect(response.stdoutText).not.toContain("/logos/secondary-chat.svg");
   });
 
   it("prepends the global Trust Score criterion and exposes only vetted scores", async () => {

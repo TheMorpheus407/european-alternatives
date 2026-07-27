@@ -13,7 +13,7 @@ export interface Alternative {
     de?: string;
   };
   website: string;
-  logo?: string;
+  logo?: string | null;
   country: CountryCode;
   category: CategoryId;
   secondaryCategories?: CategoryId[];
