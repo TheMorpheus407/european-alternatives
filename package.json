@@ -19,30 +19,30 @@
     "db:restore": "bash scripts/db-restore.sh"
   },
   "dependencies": {
-    "@fontsource/oswald": "^5.2.8",
-    "@fontsource/roboto": "^5.2.10",
+    "@fontsource/oswald": "^5.3.0",
+    "@fontsource/roboto": "^5.3.0",
     "flag-icons": "^7.5.0",
     "framer-motion": "^12.42.0",
-    "i18next": "^26.0.10",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-    "react-i18next": "^17.0.7",
+    "i18next": "^26.3.6",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-i18next": "^17.0.11",
     "react-router": "8.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@php-wasm/node": "3.1.42",
-    "@php-wasm/universal": "3.1.42",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.3",
-    "eslint": "^10.5.0",
+    "@php-wasm/node": "3.1.48",
+    "@php-wasm/universal": "3.1.48",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.0.5",
+    "eslint": "^10.8.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.3",
     "fast-xml-parser": "^5.10.1",
     "typescript": "~6.0.3",
-    "typescript-eslint": "^8.62.0",
-    "vite": "^8.0.16",
-    "vitest": "^4.1.9"
+    "typescript-eslint": "^8.66.0",
+    "vite": "^8.2.1",
+    "vitest": "^4.1.10"
   }
 }
