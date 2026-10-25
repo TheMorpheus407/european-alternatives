@@ -128,7 +128,6 @@ If you're contributing a logo file via PR, make sure:
 | `databases`          | Databases             | Oracle Database, SQL Server, Amazon RDS, Cloud SQL   |
 | `payments`           | Payments              | Stripe, PayPal, Square                               |
 | `ecommerce`          | E-Commerce            | Shopify, Amazon, eBay                                |
-| `game-stores`        | Game Stores & Launchers | Steam, Epic Games Store, EA app                    |
 | `e-readers`          | E-Readers             | Amazon Kindle, Rakuten Kobo, BOOX                    |
 | `other`              | Other                 | —                                                    |
 
