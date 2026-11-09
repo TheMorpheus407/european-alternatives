@@ -112,6 +112,7 @@ export type CountryCode =
   | "mx"
   | "cn"
   | "vg"
+  | "vn"
   // Meta
   | "eu"
   | "oss";
